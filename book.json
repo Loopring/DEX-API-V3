@@ -1,3 +1,11 @@
 {
-    "gitbook": ">=3.2.3"
+    "gitbook": ">=3.2.3",
+    "plugins": ["expandable-chapters"],
+    "variables": {
+        "apis": [
+            "/api/v1/timestamp",
+            "/api/v1/depth",
+            "/api/v1/ticker"
+        ]
+    }
 }
