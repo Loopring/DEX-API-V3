@@ -1,3 +1,5 @@
-_book
+**/_book
 **.swp
-node_modules
+**/node_modules
+generated
+models

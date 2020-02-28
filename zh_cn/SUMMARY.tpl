@@ -8,10 +8,9 @@
 ## 去中心化交易所
 
 * [DEX API](dex_api_overview.md)
-    * [timestamp](dex_apis/timestamp.md)
-    * [depth](dex_apis/depth.md)
-    * [ticker](dex_apis/ticker.md)
-    * [price](dex_apis/price.md)
+{% for api in apis %}
+    * [{{ api }}](dex_apis/{{ api }}.md)
+{% endfor %}
 * [DEX 集成文档](dex_integration_overview.md)
     * [注册账号](dex_integrations/register.md)
     * [充值](dex_integrations/deposit.md)
