@@ -20,5 +20,5 @@
 
 ## 钱包
 
-* [钱包API](wallet_api_overview.md)
 * [钱包集成文档](wallet_integration_overview.md)
+* [钱包API](wallet_api_overview.md)
