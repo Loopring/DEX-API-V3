@@ -2,4 +2,6 @@
 **.swp
 **/node_modules
 generated
+.generated
 models
+**.DS_Store
