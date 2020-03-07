@@ -40,7 +40,7 @@ gitbook serve
 ```
 You just need install plugins only once.
 
-** Make sure gitbook related commands running in generated folder. **
+** Make sure gitbook commands running in generated folder. **
 
 ## Publish doc
 Run:

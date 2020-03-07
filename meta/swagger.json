@@ -1,0 +1,2914 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "LightCone DEX function interpretation",
+    "version" : "1.0",
+    "title" : "LightCone 2.0 API Documentation",
+    "termsOfService" : "http://Loopring.com",
+    "contact" : {
+      "name" : "Loopring@Loopring.com"
+    },
+    "license" : {
+      "name" : "license Loopring",
+      "url" : "https://loopring.org"
+    }
+  },
+  "host" : "aff459ce9385b11eaba4006942ed3f94-2090819739.us-east-2.elb.amazonaws.com",
+  "basePath" : "/",
+  "tags" : [ {
+    "name" : "LightCone WebSocket API"
+  }, {
+    "name" : "LightCone Restful API"
+  } ],
+  "paths" : {
+    "/v2/ws" : {
+      "get" : {
+        "tags" : [ "LightCone WebSocket API" ],
+        "summary" : " build websocket connection with server",
+        "description" : "documentation please refer to https://loopring.github.io/lightcone2/websocket.html",
+        "operationId" : "ws",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/WebSocket"
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/timestamp" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get time stamp from server",
+        "description" : "Returns time in millisecond",
+        "operationId" : "getTimestamp",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetTimestampResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          }
+        }
+      }
+    },
+    "/api/v1/depth" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get depth from exchange",
+        "description" : "Returns depth information of specified market",
+        "operationId" : "getDepth",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get depth params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetDepthRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetDepthResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "108000" : {
+            "description" : "ERR_DEPTH_UNSUPPORTED_MARKET"
+          },
+          "108001" : {
+            "description" : "ERR_DEPTH_UNSUPPORTED_LEVEL"
+          }
+        }
+      }
+    },
+    "/api/v1/ticker" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get market ticker information",
+        "description" : "Returns ticker information of specified market",
+        "operationId" : "getTicker",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get ticker params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetTickerRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetTickerResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "100001" : {
+            "description" : "ERR_INVALID_ARGUMENT"
+          }
+        }
+      }
+    },
+    "/api/v1/price" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get CMC price information",
+        "description" : "Returns ticker information of specified market",
+        "operationId" : "getPrice",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get CMC price params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetPriceRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetPriceResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "100001" : {
+            "description" : "ERR_INVALID_ARGUMENT"
+          }
+        }
+      }
+    },
+    "/api/v1/trade" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get token information",
+        "description" : "Returns information of specified token",
+        "operationId" : "getMarketTrade",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get trade params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetMarketTradesRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetMarketTradesResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          }
+        }
+      }
+    },
+    "/api/v1/candlestick" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get Candlestick data of specified market",
+        "description" : "Returns candlestick data",
+        "operationId" : "getCandlestick",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get candlestick params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetCandlestickRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetCandlestickResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "100001" : {
+            "description" : "ERR_INVALID_ARGUMENT"
+          }
+        }
+      }
+    },
+    "/api/v1/ethNonce" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get Ethereum nonce of specified address",
+        "description" : "Returns nonce",
+        "operationId" : "getEthNonce",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get Ethereum nonce params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetEthNonceRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetEthNonceResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104202" : {
+            "description" : "NO_ACCESSIBLE_ETHEREUM_NODE"
+          },
+          "104203" : {
+            "description" : "UNEXPECTED_RESPONSE"
+          },
+          "104205" : {
+            "description" : "REQUEST_BLOCK_DELEGATOR_FAILED"
+          },
+          "104208" : {
+            "description" : "ETHEREUM_RETRUN_ERROR"
+          }
+        }
+      }
+    },
+    "/api/v1/ethBalances" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get Ethereum balances of specified address",
+        "description" : "Returns Ethereum balances",
+        "operationId" : "getEthBalances",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get Ethereum balances params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetEthBalancesRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetEthBalancesResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104202" : {
+            "description" : "NO_ACCESSIBLE_ETHEREUM_NODE"
+          },
+          "104203" : {
+            "description" : "UNEXPECTED_RESPONSE"
+          },
+          "104205" : {
+            "description" : "REQUEST_BLOCK_DELEGATOR"
+          },
+          "104208" : {
+            "description" : "ETHEREUM_RETRUN_ERROR"
+          }
+        }
+      }
+    },
+    "/api/v1/tokenBalances" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get token balances of specified address",
+        "description" : "Returns Token Balances",
+        "operationId" : "getTokenBalances",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get token balances params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetTokenBalancesRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetTokenBalancesResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104202" : {
+            "description" : "NO_ACCESSIBLE_ETHEREUM_NODE"
+          },
+          "104203" : {
+            "description" : "UNEXPECTED_RESPONSE"
+          },
+          "104205" : {
+            "description" : "REQUEST_BLOCK_DELEGATOR"
+          },
+          "104208" : {
+            "description" : "ETHEREUM_RETRUN_ERROR"
+          }
+        }
+      }
+    },
+    "/api/v1/allowances" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get token allowances of specified address",
+        "description" : "Returns allowances",
+        "operationId" : "getAllowances",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get token allowances params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetAllowancesRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetAllowancesResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104202" : {
+            "description" : "NO_ACCESSIBLE_ETHEREUM_NODE"
+          },
+          "104203" : {
+            "description" : "UNEXPECTED_RESPONSE"
+          },
+          "104205" : {
+            "description" : "REQUEST_BLOCK_DELEGATOR_FAILED"
+          },
+          "104208" : {
+            "description" : "ETHEREUM_RETRUN_ERROR"
+          }
+        }
+      }
+    },
+    "/api/v1/recommendedGasPrice" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get Recommended Gas Price",
+        "description" : "Returns Recommended Gas Price In GWEI",
+        "operationId" : "getRecommendedGasPrice",
+        "produces" : [ "application/json" ],
+        "parameters" : [ ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetRecommendedGasPriceResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "105001" : {
+            "description" : "ERR_COMM_GET_RECOM_GAS_PRICE"
+          }
+        }
+      }
+    },
+    "/api/v1/account" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get account in DEX of specified Ethereum address",
+        "description" : "Returns account information of exchange",
+        "operationId" : "getAccount",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get account params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetAccountRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetAccountResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "101001" : {
+            "description" : "ERR_ADDRESS_NOT_FOUND"
+          },
+          "101002" : {
+            "description" : "ERR_ACCOUNT_NOT_FOUND"
+          }
+        }
+      }
+    },
+    "/api/v1/getApiKey" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get API key of specified account ID",
+        "description" : "Returns API key",
+        "operationId" : "getApiKey",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get API key params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetApiKeyRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetApiKeyResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "100001" : {
+            "description" : "ERR_INVALID_ARGUMENT"
+          },
+          "101002" : {
+            "description" : "ERR_ACCOUNT_NOT_FOUND"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          },
+          "104004" : {
+            "description" : "ERR_REST_EXPECT_SIGNATURE"
+          },
+          "104005" : {
+            "description" : "ERR_REST_INVALID_SIGNATURE"
+          }
+        }
+      }
+    },
+    "/api/v1/applyApiKey" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Apply API key of specified account ID",
+        "description" : "Returns API key",
+        "operationId" : "applyApiKey",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get API key params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetApiKeyRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetApiKeyResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "100001" : {
+            "description" : "ERR_INVALID_ARGUMENT"
+          },
+          "101002" : {
+            "description" : "ERR_ACCOUNT_NOT_FOUND"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          },
+          "104004" : {
+            "description" : "ERR_REST_EXPECT_SIGNATURE"
+          },
+          "104005" : {
+            "description" : "ERR_REST_INVALID_SIGNATURE"
+          }
+        }
+      }
+    },
+    "/api/v1/orderId" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get order ID of order to submit",
+        "description" : "Returns order ID",
+        "operationId" : "getNextOrderId",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get order ID params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetNextOrderIdRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetNextOrderIdResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          }
+        }
+      }
+    },
+    "/api/v1/dexNonce" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get DEX nonce of specified account ID. NOT implemented yet, coming soon with BETA3",
+        "description" : "Returns DEX nonce",
+        "operationId" : "getDexNonce",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "query",
+          "description" : "get DEX nonce params",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetDexNonceResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          }
+        }
+      }
+    },
+    "/api/v1/order" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Submit order of given information",
+        "description" : "Returns hash of order",
+        "operationId" : "submitOrder",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "post submit order param body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/SubmitOrderRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/SubmitOrderResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "102001" : {
+            "description" : "ERR_EXCHANGE_ID_INVALID"
+          },
+          "102002" : {
+            "description" : "ERR_TOKEN_ID_UNSUPPORT"
+          },
+          "102003" : {
+            "description" : "ERR_ACCOUNT_ID_INVALID"
+          },
+          "102004" : {
+            "description" : "ERR_ORDER_ID_INVALID"
+          },
+          "102005" : {
+            "description" : "ERR_MARKET_UNSUPPORT"
+          },
+          "102006" : {
+            "description" : "ERR_FEE_BIP_SETTING_UNSUPPORT"
+          },
+          "102007" : {
+            "description" : "ERR_ORDER_EXIST"
+          },
+          "102008" : {
+            "description" : "ERR_ORDER_EXPIRED"
+          },
+          "102009" : {
+            "description" : "ERR_AMOUNT_S_TOO_SMALL"
+          },
+          "102010" : {
+            "description" : "ERR_LACK_SIGN_INFO"
+          },
+          "102011" : {
+            "description" : "ERR_BALANCE_NOT_ENOUGH"
+          },
+          "102012" : {
+            "description" : "ERR_AMOUNT_LESS_THAN_DUST"
+          },
+          "102014" : {
+            "description" : "ERR_FREEZE_BALANCE_FAILED"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          },
+          "104004" : {
+            "description" : "ERR_REST_EXPECT_SIGNATURE"
+          },
+          "104005" : {
+            "description" : "ERR_REST_INVALID_SIGNATURE"
+          }
+        }
+      }
+    },
+    "/api/v1/orderDetail" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get order detail of specified order hash",
+        "description" : "Returns order detail",
+        "operationId" : "getOrderDetail",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get order detail params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetOrderDetailRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetOrderDetailResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "107003" : {
+            "description" : "ERR_USERTX_ORDER_HASH_EMPTY"
+          },
+          "107004" : {
+            "description" : "ERR_USERTX_ORDER_NOT_EXIST"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          }
+        }
+      }
+    },
+    "/api/v1/deleteOrders" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Cancel order of specified order hash",
+        "description" : "Returns cancel result",
+        "operationId" : "cancelOrders",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "cancel orders param body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/CancelOrdersRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/CancelOrdersResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "102117" : {
+            "description" : "ERR_NO_ORDER_FOUND_TO_CANCEL"
+          },
+          "102118" : {
+            "description" : "ERR_CANCEL_ORDER_FAILED"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          },
+          "104004" : {
+            "description" : "ERR_REST_EXPECT_SIGNATURE"
+          },
+          "104005" : {
+            "description" : "ERR_REST_INVALID_SIGNATURE"
+          }
+        }
+      }
+    },
+    "/api/v1/orders" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get orders of specified params",
+        "description" : "Returns orders",
+        "operationId" : "getOrders",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get orders params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetOrdersRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetOrdersResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "107003" : {
+            "description" : "ERR_USERTX_ORDER_HASH_EMPTY"
+          },
+          "107004" : {
+            "description" : "ERR_USERTX_ORDER_NOT_EXIST"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          }
+        }
+      }
+    },
+    "/api/v1/createAccount" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Create account in DEX",
+        "description" : "Returns sending result",
+        "operationId" : "createAccount",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "post create account param body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ForwardEthTxRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ForwardEthTxResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104202" : {
+            "description" : "NO_ACCESSIBLE_ETHEREUM_NODE"
+          },
+          "104203" : {
+            "description" : "UNEXPECTED_RESPONSE"
+          },
+          "104205" : {
+            "description" : "REQUEST_BLOCK_DELEGATOR_FAILED"
+          },
+          "104208" : {
+            "description" : "ETHEREUM_RETRUN_ERROR"
+          }
+        }
+      }
+    },
+    "/api/v1/deposit" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Submit deposit to DEX",
+        "description" : "Returns sending result",
+        "operationId" : "deposit",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "post deposit param body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ForwardEthTxRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ForwardEthTxResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104202" : {
+            "description" : "NO_ACCESSIBLE_ETHEREUM_NODE"
+          },
+          "104203" : {
+            "description" : "UNEXPECTED_RESPONSE"
+          },
+          "104205" : {
+            "description" : "REQUEST_BLOCK_DELEGATOR_FAILED"
+          },
+          "104208" : {
+            "description" : "ETHEREUM_RETRUN_ERROR"
+          }
+        }
+      }
+    },
+    "/api/v1/onchainWithdrawal" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Submit on-chain withdrawal to DEX",
+        "description" : "Returns sending result",
+        "operationId" : "onchainWithdrawal",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "post on-chain withdrawal param body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ForwardEthTxRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ForwardEthTxResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104202" : {
+            "description" : "NO_ACCESSIBLE_ETHEREUM_NODE"
+          },
+          "104203" : {
+            "description" : "UNEXPECTED_RESPONSE"
+          },
+          "104205" : {
+            "description" : "REQUEST_BLOCK_DELEGATOR_FAILED"
+          },
+          "104208" : {
+            "description" : "ETHEREUM_RETRUN_ERROR"
+          }
+        }
+      }
+    },
+    "/api/v1/updatePassword" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Update account password in DEX",
+        "description" : "Returns sending result",
+        "operationId" : "updatePassword",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "update account password param body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ForwardEthTxRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ForwardEthTxResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104202" : {
+            "description" : "NO_ACCESSIBLE_ETHEREUM_NODE"
+          },
+          "104203" : {
+            "description" : "UNEXPECTED_RESPONSE"
+          },
+          "104205" : {
+            "description" : "REQUEST_BLOCK_DELEGATOR_FAILED"
+          },
+          "104208" : {
+            "description" : "ETHEREUM_RETRUN_ERROR"
+          }
+        }
+      }
+    },
+    "/api/v1/enableToken" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Enable token to trade in DEX",
+        "description" : "Returns operation result",
+        "operationId" : "approve",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "enable token param body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ForwardEthTxRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ForwardEthTxResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104202" : {
+            "description" : "NO_ACCESSIBLE_ETHEREUM_NODE"
+          },
+          "104203" : {
+            "description" : "UNEXPECTED_RESPONSE"
+          },
+          "104205" : {
+            "description" : "REQUEST_BLOCK_DELEGATOR_FAILED"
+          },
+          "104208" : {
+            "description" : "ETHEREUM_RETRUN_ERROR"
+          }
+        }
+      }
+    },
+    "/api/v1/offchainWithdrawal" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Submit off-chain withdrawal to DEX. NOT implemented yet, coming soon with BETA3",
+        "description" : "Returns submit result",
+        "operationId" : "submitWithdrawal",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "post submit off-chain withdrawal param body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/SubmitWithdrawalRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/SubmitWithdrawalResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          },
+          "104004" : {
+            "description" : "ERR_REST_EXPECT_SIGNATURE"
+          },
+          "104005" : {
+            "description" : "ERR_REST_INVALID_SIGNATURE"
+          }
+        }
+      }
+    },
+    "/api/v1/transfer" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Submit off-chain transfer to DEX. NOT implemented yet, coming soon with BETA3",
+        "description" : "Returns submit result",
+        "operationId" : "submitTransfer",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "post submit off-chain transfer param body",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/SubmitTransferRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/SubmitTransferResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          }
+        }
+      }
+    },
+    "/api/v1/user/balances" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get user balances in DEX by account ID",
+        "description" : "Returns user balances",
+        "operationId" : "getUserBalances",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get user balances params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetUserBalancesRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetUserBalancesResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          }
+        }
+      }
+    },
+    "/api/v1/user/deposits" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get user deposits in DEX by account ID",
+        "description" : "Returns user deposits record",
+        "operationId" : "getUserDeposits",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get user deposits params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetUserTxsRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetUserTxsResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "107001" : {
+            "description" : "ERR_USERTX_ACCOUNT_ID_INVALID"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          }
+        }
+      }
+    },
+    "/api/v1/user/withdrawals" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get user withdrawals in DEX by account ID",
+        "description" : "Returns user withdrawals record",
+        "operationId" : "getUserWithdrawals",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get user withdrawals params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetUserTxsRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetUserTxsResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "107001" : {
+            "description" : "ERR_USERTX_ACCOUNT_ID_INVALID"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          }
+        }
+      }
+    },
+    "/api/v1/user/transfers" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get user transfers in DEX by account ID",
+        "description" : "Returns user transfers record",
+        "operationId" : "getUserTransfers",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get user transfers params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetUserTxsRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetUserTxsResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "107001" : {
+            "description" : "ERR_USERTX_ACCOUNT_ID_INVALID"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          }
+        }
+      }
+    },
+    "/api/v1/user/createAcccounts" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get account create records in DEX of account ID",
+        "description" : "Returns account creation records",
+        "operationId" : "getUserCreate",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get account creation records params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetUserTxsRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetUserActionsResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "107001" : {
+            "description" : "ERR_USERTX_ACCOUNT_ID_INVALID"
+          }
+        }
+      }
+    },
+    "/api/v1/user/updatePasswords" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get password update records in DEX of account ID",
+        "description" : "Returns password update records",
+        "operationId" : "getUserUpdate",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get password update records params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetUserTxsRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetUserActionsResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "107001" : {
+            "description" : "ERR_USERTX_ACCOUNT_ID_INVALID"
+          }
+        }
+      }
+    },
+    "/api/v1/user/trades" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get User Trades in DEX of account ID",
+        "description" : "Returns User Trades",
+        "operationId" : "getUserTrades",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get user trades params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetUserTradesRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetUserTradesResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          }
+        }
+      }
+    },
+    "/api/v1/user/feeRates" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "summary" : "Get User Fee Rate from DEX of specified account ID. NOT implemented yet, coming soon with BETA3",
+        "description" : "Returns User Fee Rate",
+        "operationId" : "getUserFeeRates",
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "body",
+          "description" : "get user fee rate params",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/GetUserFeeRatesRequest"
+          }
+        } ],
+        "responses" : {
+          "0" : {
+            "description" : "successful operation",
+            "schema" : {
+              "$ref" : "#/definitions/GetUserFeeRatesResponse"
+            }
+          },
+          "100000" : {
+            "description" : "ERR_INTERNAL_UNKNOWN"
+          },
+          "104001" : {
+            "description" : "ERR_REST_EXPECT_APIKEY"
+          },
+          "104002" : {
+            "description" : "ERR_REST_APIKEY_NOT_MATCH"
+          },
+          "104003" : {
+            "description" : "ERR_REST_ACCOUNT_NOT_EXIST"
+          }
+        }
+      }
+    },
+    "/api/v1/crawl" : {
+      "get" : {
+        "tags" : [ "LightCone Restful API" ],
+        "operationId" : "crawlSite",
+        "parameters" : [ {
+          "name" : "site",
+          "in" : "query",
+          "required" : false,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "headers" : { },
+            "schema" : {
+              "$ref" : "#/definitions/ActionAnyContent"
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/sign/apiKey" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "operationId" : "signApiKey",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "headers" : { },
+            "schema" : {
+              "$ref" : "#/definitions/ActionAnyContent"
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/sign/cancel" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "operationId" : "signCancel",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "headers" : { },
+            "schema" : {
+              "$ref" : "#/definitions/ActionAnyContent"
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/sign/order" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "operationId" : "signOrder",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "headers" : { },
+            "schema" : {
+              "$ref" : "#/definitions/ActionAnyContent"
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/sign/withdrawal" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "operationId" : "signWithdrawal",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "headers" : { },
+            "schema" : {
+              "$ref" : "#/definitions/ActionAnyContent"
+            }
+          }
+        }
+      }
+    },
+    "/api/v2/sign/verify" : {
+      "post" : {
+        "tags" : [ "LightCone Restful API" ],
+        "operationId" : "verify",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "successful operation",
+            "headers" : { },
+            "schema" : {
+              "$ref" : "#/definitions/ActionAnyContent"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "WebSocket" : {
+      "type" : "object"
+    },
+    "GetTimestampResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "timestamp" : {
+          "type" : "object"
+        }
+      }
+    },
+    "ResultInfo" : {
+      "type" : "object",
+      "required" : [ "code", "message" ],
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Depth" : {
+      "type" : "object",
+      "required" : [ "asks", "bids", "timestamp", "version" ],
+      "properties" : {
+        "version" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "timestamp" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "bids" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Slot"
+          }
+        },
+        "asks" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Slot"
+          }
+        }
+      }
+    },
+    "GetDepthResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "depth" : {
+          "$ref" : "#/definitions/Depth"
+        }
+      }
+    },
+    "Slot" : {
+      "type" : "object",
+      "required" : [ "count", "price", "size", "volume" ],
+      "properties" : {
+        "price" : {
+          "type" : "string"
+        },
+        "size" : {
+          "type" : "string"
+        },
+        "volume" : {
+          "type" : "string"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "GetDepthRequest" : {
+      "type" : "object",
+      "required" : [ "level", "market" ],
+      "properties" : {
+        "market" : {
+          "type" : "string",
+          "example" : "LRC-ETH",
+          "description" : "The market identifier which is case insensitive and should be formatted as ABC-XYZ where ABC is the base token symbol and XYZ is the quote token symbol."
+        },
+        "level" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2,
+          "description" : "The aggregation level for the depth data. If maxLevel = 5, level = 3, then depth will aggregate in two decimal places."
+        },
+        "limit" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 50,
+          "description" : "The maximum number of depth items to return for each side of the market. Defaults to 50."
+        }
+      }
+    },
+    "GetTickerResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo", "tickers" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "tickers" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Ticker"
+          }
+        }
+      }
+    },
+    "Ticker" : {
+      "type" : "object",
+      "required" : [ "ask", "bid", "close", "count", "high", "low", "market", "open", "size", "timestamp", "volume" ],
+      "properties" : {
+        "market" : {
+          "type" : "string"
+        },
+        "timestamp" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "size" : {
+          "type" : "string"
+        },
+        "volume" : {
+          "type" : "string"
+        },
+        "open" : {
+          "type" : "string"
+        },
+        "high" : {
+          "type" : "string"
+        },
+        "low" : {
+          "type" : "string"
+        },
+        "close" : {
+          "type" : "string"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "bid" : {
+          "type" : "string"
+        },
+        "ask" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetTickerRequest" : {
+      "type" : "object",
+      "required" : [ "markets" ],
+      "properties" : {
+        "markets" : {
+          "type" : "string",
+          "example" : "LRC-ETH",
+          "description" : "The market identifier which is case insensitive and should be formatted as ABC-XYZ where ABC is the base token symbol and XYZ is the quote token symbol."
+        },
+        "limit" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 50,
+          "description" : "The maximum number of depth items to return for each side of the market. Defaults to 50."
+        }
+      }
+    },
+    "GetPriceResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo", "tickers" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "tickers" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Price"
+          }
+        }
+      }
+    },
+    "Price" : {
+      "type" : "object",
+      "required" : [ "price", "symbol", "timestamp" ],
+      "properties" : {
+        "symbol" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "string"
+        },
+        "timestamp" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "GetPriceRequest" : {
+      "type" : "object",
+      "required" : [ "legal" ],
+      "properties" : {
+        "legal" : {
+          "type" : "string",
+          "example" : "USD",
+          "description" : "legal coin ratio, which includes: USD, CNY, JPY, EUR, GBP, KRW, HKD, MOP, CAD, AUD, SGD, PHP, THB, RUB",
+          "enum" : [ "USD", "CNY", "JPY", "EUR", "GBP", "KRW", "HKD", "MOP", "CAD", "AUD", "SGD", "PHP", "THB", "RUB" ]
+        }
+      }
+    },
+    "GetMarketTradesResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo", "totalNum", "trades" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "totalNum" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "trades" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Trade"
+          }
+        }
+      }
+    },
+    "Trade" : {
+      "type" : "object",
+      "required" : [ "fee", "market", "price", "side", "size", "timestamp", "tradeId" ],
+      "properties" : {
+        "timestamp" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "tradeId" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "side" : {
+          "type" : "string"
+        },
+        "size" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "string"
+        },
+        "market" : {
+          "type" : "string"
+        },
+        "fee" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetMarketTradesRequest" : {
+      "type" : "object",
+      "required" : [ "market" ],
+      "properties" : {
+        "market" : {
+          "type" : "string",
+          "example" : "LRC-ETH",
+          "description" : "The market identifier which is case insensitive and should be formatted as ABC-XYZ where ABC is the base token symbol and XYZ is the quote token symbol."
+        },
+        "fromId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 0,
+          "description" : "specify later than which, id of market trades will returns. Defaults to 0"
+        },
+        "limit" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 20,
+          "description" : "The maximum number of depth items to return for each side of the market. Defaults to 20"
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 0,
+          "description" : "Offset of fill markets. Defaults to 0"
+        }
+      }
+    },
+    "Candlestick" : {
+      "type" : "object",
+      "required" : [ "close", "count", "high", "low", "open", "size", "start", "volume" ],
+      "properties" : {
+        "start" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "count" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "open" : {
+          "type" : "string"
+        },
+        "close" : {
+          "type" : "string"
+        },
+        "high" : {
+          "type" : "string"
+        },
+        "low" : {
+          "type" : "string"
+        },
+        "size" : {
+          "type" : "string"
+        },
+        "volume" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetCandlestickResponse" : {
+      "type" : "object",
+      "required" : [ "candles", "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "candles" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Candlestick"
+          }
+        }
+      }
+    },
+    "GetCandlestickRequest" : {
+      "type" : "object",
+      "required" : [ "interval", "market" ],
+      "properties" : {
+        "market" : {
+          "type" : "string",
+          "example" : "LRC-ETH",
+          "description" : "The market identifier which is case insensitive and should be formatted as ABC-XYZ where ABC is the base token symbol and XYZ is the quote token symbol."
+        },
+        "interval" : {
+          "type" : "string",
+          "example" : "5min",
+          "description" : "The candlestick data interval, which includes: 1min, 5min, 15min, 30min, 1hr, 2hr, 4hr, 12hr, 1d, 1w",
+          "enum" : [ "1min", "5min", "15min", "30min", "1hr", "2hr", "4hr", "12hr", "1d", "1w" ]
+        },
+        "start" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1567053142,
+          "description" : "The start time of candlestick data. Defaults to current timestamp."
+        },
+        "end" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1567053142,
+          "description" : "The end time of candlestick data."
+        },
+        "limit" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 120,
+          "description" : "The number of candlestick data points. Defaults to 120."
+        }
+      }
+    },
+    "GetEthNonceResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "nonce" : {
+          "type" : "object"
+        }
+      }
+    },
+    "GetEthNonceRequest" : {
+      "type" : "object",
+      "required" : [ "address" ],
+      "properties" : {
+        "address" : {
+          "type" : "string",
+          "example" : "0x9a439ff88267c68cb98b513166b50d2ca75fae382d693c96092be5f47450451e",
+          "description" : "The owning Ethereum address of the account"
+        }
+      }
+    },
+    "GetEthBalancesResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "balances" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetEthBalancesRequest" : {
+      "type" : "object",
+      "required" : [ "address" ],
+      "properties" : {
+        "address" : {
+          "type" : "string",
+          "example" : "0x9a439ff88267c68cb98b513166b50d2ca75fae382d693c96092be5f47450451e",
+          "description" : "The owning Ethereum address of the account"
+        }
+      }
+    },
+    "GetTokenBalancesResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "balances" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetTokenBalancesRequest" : {
+      "type" : "object",
+      "required" : [ "owner", "token" ],
+      "properties" : {
+        "owner" : {
+          "type" : "string",
+          "example" : "0x9a439ff88267c68cb98b513166b50d2ca75fae382d693c96092be5f47450451e",
+          "description" : "The owning Ethereum address of the account"
+        },
+        "token" : {
+          "type" : "string",
+          "example" : "0x9a439ff88267c68cb98b513166b50d2ca75fae382d693c96092be5f47450451e",
+          "description" : "The token's ERC20 smart contract address. Use 0x0 as the pseudo-address of Ether (ETH)."
+        }
+      }
+    },
+    "GetAllowancesResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "allowances" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetAllowancesRequest" : {
+      "type" : "object",
+      "required" : [ "owner", "token" ],
+      "properties" : {
+        "owner" : {
+          "type" : "string",
+          "example" : "0x9a439ff88267c68cb98b513166b50d2ca75fae382d693c96092be5f47450451e",
+          "description" : "The owning Ethereum address of the account"
+        },
+        "token" : {
+          "type" : "string",
+          "example" : "0x9a439ff88267c68cb98b513166b50d2ca75fae382d693c96092be5f47450451e",
+          "description" : "The token's ERC20 smart contract address. Use 0x0 as the pseudo-address of Ether (ETH)."
+        }
+      }
+    },
+    "GetRecommendedGasPriceResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "price" : {
+          "type" : "string"
+        }
+      }
+    },
+    "DexAccount" : {
+      "type" : "object",
+      "required" : [ "accountId", "isFreeze", "publicKeyX", "publicKeyY" ],
+      "properties" : {
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "isFreeze" : {
+          "type" : "boolean"
+        },
+        "publicKeyX" : {
+          "type" : "string"
+        },
+        "publicKeyY" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetAccountResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "account" : {
+          "$ref" : "#/definitions/DexAccount"
+        }
+      }
+    },
+    "GetAccountRequest" : {
+      "type" : "object",
+      "required" : [ "address" ],
+      "properties" : {
+        "address" : {
+          "type" : "string",
+          "example" : "0x9a439ff88267c68cb98b513166b50d2ca75fae382d693c96092be5f47450451e",
+          "description" : "The owning Ethereum address of the account"
+        }
+      }
+    },
+    "GetApiKeyResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "account" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetApiKeyRequest" : {
+      "type" : "object",
+      "required" : [ "accountId", "publicKeyX", "publicKeyY" ],
+      "properties" : {
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "The user's account ID"
+        },
+        "publicKeyX" : {
+          "type" : "string",
+          "example" : "13375450901292179417154974849571793069911517354720397125027633242680470075859",
+          "description" : "public key X in account's key pair"
+        },
+        "publicKeyY" : {
+          "type" : "string",
+          "example" : "13375450901292179417154974849571793069911517354720397125027633242680470075859",
+          "description" : "public key Y in account's key pair"
+        }
+      }
+    },
+    "GetNextOrderIdResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "orderId" : {
+          "type" : "object"
+        }
+      }
+    },
+    "GetNextOrderIdRequest" : {
+      "type" : "object",
+      "required" : [ "accountId", "tokenSId" ],
+      "properties" : {
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "The unique ID of this exchange (DEX)"
+        },
+        "tokenSId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 0,
+          "description" : "selling token ID in exchange"
+        }
+      }
+    },
+    "GetDexNonceResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "nonce" : {
+          "type" : "object"
+        }
+      }
+    },
+    "SubmitOrderResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "orderHash" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SubmitOrderRequest" : {
+      "type" : "object",
+      "required" : [ "accountId", "allOrNone", "amountB", "amountS", "buy", "exchangeId", "label", "maxFeeBips", "orderId", "signatureRx", "signatureRy", "signatureS", "tokenBId", "tokenSId", "validSince", "validUntil" ],
+      "properties" : {
+        "exchangeId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "exchange id"
+        },
+        "orderId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "this order id"
+        },
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "account id in exchange"
+        },
+        "tokenSId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 0,
+          "description" : "selling token id in exchange"
+        },
+        "tokenBId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 2,
+          "description" : "buying token id in exchange"
+        },
+        "amountS" : {
+          "type" : "string",
+          "example" : "1000000000000000000",
+          "description" : "selling amount of token, decimal string in WEI"
+        },
+        "amountB" : {
+          "type" : "string",
+          "example" : "1000000000000000000",
+          "description" : "buying amount of token, decimal string in WEI"
+        },
+        "allOrNone" : {
+          "type" : "string",
+          "example" : "true",
+          "description" : "all or none"
+        },
+        "buy" : {
+          "type" : "string",
+          "example" : "true",
+          "description" : "buy"
+        },
+        "validSince" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1567053142,
+          "description" : "beginning period of this order, timestamp in second"
+        },
+        "validUntil" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1567053142,
+          "description" : "ending period of this order, timestamp in second"
+        },
+        "maxFeeBips" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 20,
+          "description" : "max accepted fee of this order, selling amount times x/10000"
+        },
+        "label" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 20,
+          "description" : "label"
+        },
+        "signatureRx" : {
+          "type" : "string",
+          "example" : "13375450901292179417154974849571793069911517354720397125027633242680470075859",
+          "description" : "trading signature Rx of this order, decimal string"
+        },
+        "signatureRy" : {
+          "type" : "string",
+          "example" : "13375450901292179417154974849571793069911517354720397125027633242680470075859",
+          "description" : "trading signature Ry of this order, decimal string"
+        },
+        "signatureS" : {
+          "type" : "string",
+          "example" : "13375450901292179417154974849571793069911517354720397125027633242680470075859",
+          "description" : "trading signature S of this order, decimal string"
+        },
+        "clientOrderId" : {
+          "type" : "string",
+          "example" : "1",
+          "description" : "client specified ID of this order"
+        },
+        "channelId" : {
+          "type" : "string",
+          "example" : "1",
+          "description" : "client specified channel ID of this order"
+        }
+      }
+    },
+    "GetOrderDetailResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "orderDetail" : {
+          "$ref" : "#/definitions/OrderDetail"
+        }
+      }
+    },
+    "OrderDetail" : {
+      "type" : "object",
+      "required" : [ "clientOrderId", "createdAt", "filledFee", "filledSize", "filledVolume", "hash", "market", "price", "side", "size", "status", "validSince", "validUntil", "volume" ],
+      "properties" : {
+        "hash" : {
+          "type" : "string"
+        },
+        "clientOrderId" : {
+          "type" : "string"
+        },
+        "size" : {
+          "type" : "string"
+        },
+        "volume" : {
+          "type" : "string"
+        },
+        "price" : {
+          "type" : "string"
+        },
+        "filledSize" : {
+          "type" : "string"
+        },
+        "filledVolume" : {
+          "type" : "string"
+        },
+        "filledFee" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "validSince" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "validUntil" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "createdAt" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "side" : {
+          "type" : "string"
+        },
+        "market" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetOrderDetailRequest" : {
+      "type" : "object",
+      "required" : [ "accountId", "orderHash" ],
+      "properties" : {
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "The unique ID of this exchange (DEX)"
+        },
+        "orderHash" : {
+          "type" : "string",
+          "example" : "2600105125336468966417510367500403435128941502452005674156103328855968837178",
+          "description" : "hash of order detail to fetch, decimal string"
+        }
+      }
+    },
+    "CancelOrdersResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "success" : {
+          "type" : "object"
+        }
+      }
+    },
+    "CancelOrdersRequest" : {
+      "type" : "object",
+      "required" : [ "accountId" ],
+      "properties" : {
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "The unique ID of this exchange (DEX)"
+        },
+        "orderHash" : {
+          "type" : "string",
+          "example" : "2600105125336468966417510367500403435128941502452005674156103328855968837178",
+          "description" : "hash of specified order to cancel, decimal string"
+        },
+        "clientOrderId" : {
+          "type" : "string",
+          "example" : "10",
+          "description" : "client specified ID of order to cancel"
+        }
+      }
+    },
+    "GetOrdersResponse" : {
+      "type" : "object",
+      "required" : [ "orders", "resultInfo", "totalNum" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "totalNum" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "orders" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/OrderDetail"
+          }
+        }
+      }
+    },
+    "GetOrdersRequest" : {
+      "type" : "object",
+      "required" : [ "accountId" ],
+      "properties" : {
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "The unique ID of this exchange (DEX)"
+        },
+        "market" : {
+          "type" : "string",
+          "example" : "LRC-ETH",
+          "description" : "The market identifier which is case insensitive and should be formatted as ABC-XYZ where ABC is the base token symbol and XYZ is the quote token symbol."
+        },
+        "statuses" : {
+          "type" : "string",
+          "example" : "processing",
+          "description" : "The status set of the orders to be returned, which includes: waiting, processing, processed, failed, cancelled, expired",
+          "enum" : [ "processing", "processed", "failed", "cancelled", "expired" ]
+        },
+        "start" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1567053142,
+          "description" : "beginning time, timestamp in millisecond"
+        },
+        "end" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1567053142,
+          "description" : "ending time, timestamp in millisecond"
+        },
+        "fromHash" : {
+          "type" : "string",
+          "example" : "2600105125336468966417510367500403435128941502452005674156103328855968837178",
+          "description" : "from which hash to get, decimal string. Use for paging"
+        },
+        "limit" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "obtain count of user orders. Defaults to 50"
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "offset of user orders, used for paging. Defaults to 0"
+        },
+        "side" : {
+          "type" : "string",
+          "example" : "buy",
+          "description" : "side of user orders, which includes: sell, buy",
+          "enum" : [ "buy", "sell" ]
+        }
+      }
+    },
+    "ForwardEthTxResponse" : {
+      "type" : "object",
+      "required" : [ "id", "jsonrpc", "result", "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "id" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "jsonrpc" : {
+          "type" : "string"
+        },
+        "result" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ForwardEthTxRequest" : {
+      "type" : "object",
+      "properties" : {
+        "data" : {
+          "type" : "string",
+          "example" : "0xf8aa0a8502540be400830186a0949032dbf5669341c3d95bc02b4bde90e4e051db3580b844095ea7b30000000000000000000000001d307532a97879b866a6fe33bf4a517bd28de854ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff25a071af95d2a3eb01bb11f84d9c66d09924d97a2b3ce38e0079a2d56dfb13035df0a07404b3a48c40cc3e7b9893d88512ef526a67bf3c274548ec09f94386e0062fc2",
+          "description" : "SIGNED Ethereum transaction data, HEX string"
+        }
+      }
+    },
+    "SubmitWithdrawalResponse" : {
+      "type" : "object",
+      "required" : [ "orderId", "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "orderId" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "SubmitWithdrawalRequest" : {
+      "type" : "object",
+      "required" : [ "accountId", "amount", "amountF", "exchangeId", "label", "nonce", "signatureRx", "signatureRy", "signatureS", "tokenFId", "tokenId" ],
+      "properties" : {
+        "exchangeId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "exchange id"
+        },
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "account id in exchange"
+        },
+        "tokenId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "withdraw token id in exchange"
+        },
+        "amount" : {
+          "type" : "string",
+          "example" : "1000000000000000000",
+          "description" : "withdraw amount of token, decimal string in WEI"
+        },
+        "tokenFId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "fee token id in exchange"
+        },
+        "amountF" : {
+          "type" : "string",
+          "example" : "1000000000000000000",
+          "description" : "fee amount of token, decimal string in WEI"
+        },
+        "nonce" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "dex nonce of account"
+        },
+        "label" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 20,
+          "description" : "label"
+        },
+        "signatureRx" : {
+          "type" : "string",
+          "example" : "13375450901292179417154974849571793069911517354720397125027633242680470075859",
+          "description" : "trading signature Rx of this order, decimal string"
+        },
+        "signatureRy" : {
+          "type" : "string",
+          "example" : "13375450901292179417154974849571793069911517354720397125027633242680470075859",
+          "description" : "trading signature Ry of this order, decimal string"
+        },
+        "signatureS" : {
+          "type" : "string",
+          "example" : "13375450901292179417154974849571793069911517354720397125027633242680470075859",
+          "description" : "trading signature S of this order, decimal string"
+        }
+      }
+    },
+    "SubmitTransferResponse" : {
+      "type" : "object",
+      "required" : [ "orderId", "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "orderId" : {
+          "type" : "integer",
+          "format" : "int32"
+        }
+      }
+    },
+    "SubmitTransferRequest" : {
+      "type" : "object",
+      "required" : [ "accountId", "tokenId" ],
+      "properties" : {
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "The user's account ID"
+        },
+        "tokenId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "selling token id in exchange"
+        }
+      }
+    },
+    "Balance" : {
+      "type" : "object",
+      "required" : [ "accountId", "frozenAmount", "tokenId", "totalAmount" ],
+      "properties" : {
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "tokenId" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "totalAmount" : {
+          "type" : "string"
+        },
+        "frozenAmount" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetUserBalancesResponse" : {
+      "type" : "object",
+      "required" : [ "balances", "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "balances" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Balance"
+          }
+        }
+      }
+    },
+    "GetUserBalancesRequest" : {
+      "type" : "object",
+      "required" : [ "accountId" ],
+      "properties" : {
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "The user's account ID"
+        },
+        "tokenIds" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : "0,2",
+          "description" : "selling token ids in exchange"
+        }
+      }
+    },
+    "GetUserTxsResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo", "totalNum", "transactions" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "totalNum" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "transactions" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/TxData"
+          }
+        }
+      }
+    },
+    "TxData" : {
+      "type" : "object",
+      "required" : [ "amount", "feeAmount", "id", "progress", "realAmount", "receiver", "status", "symbol", "timestamp", "txHash", "txType" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "txType" : {
+          "type" : "string"
+        },
+        "symbol" : {
+          "type" : "string"
+        },
+        "amount" : {
+          "type" : "string"
+        },
+        "realAmount" : {
+          "type" : "string"
+        },
+        "receiver" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "txHash" : {
+          "type" : "string"
+        },
+        "feeAmount" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "progress" : {
+          "type" : "string"
+        },
+        "timestamp" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "GetUserTxsRequest" : {
+      "type" : "object",
+      "required" : [ "accountId", "types" ],
+      "properties" : {
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "The user's account ID"
+        },
+        "statuses" : {
+          "type" : "string",
+          "example" : "processing",
+          "description" : "Get user transactions by status, which includes: processing, processed, failed, received",
+          "enum" : [ "processing", "processed", "failed", "received" ]
+        },
+        "types" : {
+          "type" : "string",
+          "example" : "deposit, onchainWithdrawal",
+          "description" : "get user transactions by type, which includes: deposit, onchainWithdrawal",
+          "enum" : [ "deposit", "onchainWithdrawal" ]
+        },
+        "start" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1567053142,
+          "description" : "beginning time, timestamp in millisecond"
+        },
+        "end" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 1567053142,
+          "description" : "ending time, timestamp in millisecond"
+        },
+        "fromHash" : {
+          "type" : "string",
+          "example" : "0x9a439ff88267c68cb98b513166b50d2ca75fae382d693c96092be5f47450451e",
+          "description" : "from which hash to get user transactions, hex string"
+        },
+        "limit" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 50,
+          "description" : "obtain count of user actions. Defaults to 50"
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 0,
+          "description" : "offset of user transactions. Defaults to 0"
+        },
+        "tokenSymbol" : {
+          "type" : "string",
+          "example" : "ETH",
+          "description" : "token symbol of user transactions. Defaults to ''"
+        }
+      }
+    },
+    "ActionData" : {
+      "type" : "object",
+      "required" : [ "feeAmount", "id", "progress", "status", "timestamp", "txHash", "txType" ],
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "txType" : {
+          "type" : "string"
+        },
+        "txHash" : {
+          "type" : "string"
+        },
+        "status" : {
+          "type" : "string"
+        },
+        "feeAmount" : {
+          "type" : "string"
+        },
+        "progress" : {
+          "type" : "string"
+        },
+        "timestamp" : {
+          "type" : "integer",
+          "format" : "int64"
+        }
+      }
+    },
+    "GetUserActionsResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo", "updates" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "updates" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/ActionData"
+          }
+        }
+      }
+    },
+    "GetUserTradesResponse" : {
+      "type" : "object",
+      "required" : [ "resultInfo", "totalNum", "trades" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "totalNum" : {
+          "type" : "integer",
+          "format" : "int64"
+        },
+        "trades" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Trade"
+          }
+        }
+      }
+    },
+    "GetUserTradesRequest" : {
+      "type" : "object",
+      "required" : [ "accountId" ],
+      "properties" : {
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "The user's account ID"
+        },
+        "orderHash" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : "13375450901292179417154974849571793069911517354720397125027633242680470075859",
+          "description" : "hash of order to fetch, decimal string"
+        },
+        "market" : {
+          "type" : "string",
+          "example" : "LRC-ETH",
+          "description" : "The market identifier which is case insensitive and should be formatted as ABC-XYZ where ABC is the base token symbol and XYZ is the quote token symbol."
+        },
+        "fromId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 0,
+          "description" : "specify later than which, ID of user trades will returns. Defaults to 0"
+        },
+        "limit" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 20,
+          "description" : "obtain count of user trades, used for paging. Defaults to 20"
+        },
+        "offset" : {
+          "type" : "integer",
+          "format" : "int64",
+          "example" : 0,
+          "description" : "offset of user fills, used for paging. Defaults to 0"
+        }
+      }
+    },
+    "FeeRate" : {
+      "type" : "object",
+      "required" : [ "fee", "makerRebateFee", "symbol", "takerRebateFee" ],
+      "properties" : {
+        "symbol" : {
+          "type" : "string"
+        },
+        "fee" : {
+          "type" : "string"
+        },
+        "makerRebateFee" : {
+          "type" : "string"
+        },
+        "takerRebateFee" : {
+          "type" : "string"
+        }
+      }
+    },
+    "GetUserFeeRatesResponse" : {
+      "type" : "object",
+      "required" : [ "feeRates", "resultInfo" ],
+      "properties" : {
+        "resultInfo" : {
+          "$ref" : "#/definitions/ResultInfo"
+        },
+        "feeRates" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/FeeRate"
+          }
+        }
+      }
+    },
+    "GetUserFeeRatesRequest" : {
+      "type" : "object",
+      "required" : [ "accountId", "markets" ],
+      "properties" : {
+        "accountId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "example" : 1,
+          "description" : "account id in exchange"
+        },
+        "markets" : {
+          "type" : "string",
+          "example" : "LRC-BTC, LRC-ETH, LRC-USDT",
+          "description" : "account id in exchange"
+        }
+      }
+    },
+    "Action" : {
+      "type" : "object"
+    },
+    "ActionAnyContent" : {
+      "type" : "object"
+    }
+  }
+}

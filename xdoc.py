@@ -19,19 +19,18 @@ logging.basicConfig(level=logging.DEBUG,
 
 LOGGER = logging.getLogger(__name__)
 
+PURGE_DIR = '.generated'
+OUTPUT_DIR = 'generated'
+PURGE_IGNORE = ['swp', 'py', 'generated', '.generated', '.git', 'docs', '_book',
+                'README.md', '.gitignore', 'build.sh', 'meta', 'tpl', 'i18n']
+OUTPUT_IGNORE = ['_book', 'docs', 'node_modules']
+
 def run_command_with_return_info(cmd):
     try:
         return (True, subprocess.check_output([cmd], shell = True))
     except:
         LOGGER.error('Command %s failed.'%(cmd))
         return (False, None)
-
-PURGE_DIR = '.generated'
-OUTPUT_DIR = 'generated'
-PURGE_IGNORE = ['swp', 'py', 'generated', '.generated', '.git', 'docs', '_book',
-                'README.md', '.gitignore', 'build.sh']
-OUTPUT_IGNORE = ['_book', 'docs', 'node_modules']
-
 
 def sync_out():
     if not os.path.exists(OUTPUT_DIR):
@@ -105,13 +104,13 @@ def purge_and_generate():
 
 
 def generate_structs():
-    LOGGER.info('Creating gitbook files...')
     purge_and_generate()
-    LOGGER.info('Syncing gitbook files...')
-    sync_out()
 
 def main():
+    LOGGER.info('Creating gitbook files...')
     generate_structs()
+    LOGGER.info('Syncing gitbook files...')
+    sync_out()
 
 if __name__ == '__main__':
     main()
