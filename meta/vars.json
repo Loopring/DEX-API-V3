@@ -1,0 +1,7 @@
+{
+    "langs": ["zh"],
+    "enable_apis" : [
+        "/api/v1/timestamp",
+        "/api/v1/depth"
+    ]
+}
