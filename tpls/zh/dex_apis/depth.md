@@ -88,7 +88,7 @@ curl https://api.loopring.io/api/v2/depth?market=LRC-ETH&level=1&limit=3
 ### 返回码
 
 | 返回码 | 名称 | 描述 |
-| ---- | ---- |
+| ---- | ---- | ---- |
 | 108000 | ERR_DEPTH_UNSUPPORTED_MARKET | 不支持的市场对 |
 | 108001 | ERR_DEPTH_UNSUPPORTED_LEVEL | 不支持的深度级别 |
 

@@ -27,5 +27,38 @@
             "session1" : "钱包集成文档",
             "session2" : "钱包API"
         }
+    },
+
+    "apidoc" : {
+        "overview" : "API 摘要",
+        "function" : "功能",
+        "method" : "HTTP 方法",
+        "path" : "访问路径",
+        "desc" : "API 描述",
+        "reqparam" : "请求参数",
+        "reqexpl" : "请求示例",
+        "resfield" : "响应字段",
+        "resexpl" : "响应示例",
+        "retcode" : "返回码",
+        "retmsg" : "返回消息.  该返回消息更多用来调试，不要直接在前端显示",
+        "model" : "模型",
+        "common" : "公共信息",
+        "urlhost" : "访问地址",
+        "header" : "请求头",
+        "field" : "字段",
+        "fdesc" : "说明",
+        "ftype" : "类型",
+        "frequire" : "是否必现",
+        "fsample" : "举例",
+        "resp" : "响应",
+        "yes" : "是",
+        "no" : "否",
+        "keydesc" : "API Key. 写操作接口需要",
+        "sigdesc" : "签名信息. getapikey, cancelorder 接口需要",
+        "resdesc" : "调用结果",
+        "codedesc" : "描述",
+        "code0" : "成功",
+        "code1000000" : "内部未知错误",
+        "code1000001" : "参数非法"
     }
 }

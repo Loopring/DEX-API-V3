@@ -34,6 +34,10 @@ SWAGGER_JSON_PATH = '/swagger.json'
 
 VARS = None
 
+path = '{}/tpls/'.format(os.path.dirname(__file__))
+loader = FileSystemLoader(path)
+ENV = Environment(loader=loader)
+
 
 def run_command_with_return_info(cmd):
     try:
@@ -195,7 +199,6 @@ def load_info_with_lang(lang):
 
 def generate_api_doc(path, filename):
     # TODO(hoss): TBD
-    print('kakakaka')
     return os.path.join(path, filename) + '.md'
 
 def func_replace(matched):
@@ -203,21 +206,31 @@ def func_replace(matched):
     return eval(value)
 
 def render_exec_func(content):
-    return re.sub('<(?P<func>.+)>', func_replace, content)
+    return re.sub('<#(?P<func>.+)#>', func_replace, content)
+
+def output_file(content, fullpath):
+    dirpath = os.path.dirname(os.path.realpath(fullpath))
+    if not os.path.exists(dirpath):
+        run_command_with_return_info('mkdir -p %s'%(dirpath))
+
+    outf = open(fullpath, 'w')
+    outf.write(content)
+    outf.close()
 
 def render_with_lang(lang):
     load_info_with_lang(lang)
 
-    path = '{}/tpls/'.format(os.path.dirname(__file__))
-    loader = FileSystemLoader(path)
-    env = Environment(loader=loader)
-
-    summaryTpl = env.get_template('SUMMARY.tpl')
+    summaryTpl = ENV.get_template('SUMMARY.tpl')
     summary = summaryTpl.render(l = VARS['l'], apis = VARS['apis'].values())
-    rendered = render_exec_func(summary)
-    print(rendered)
+    rSummary = render_exec_func(summary)
 
+    output_file(rSummary, os.path.join('./', PURGE_DIR, lang, 'SUMMARY.md'))
 
+    commonTpl = ENV.get_template('common.tpl')
+    common = commonTpl.render(l = VARS['l'])
+    rCommon = render_exec_func(common)
+
+    output_file(rCommon, os.path.join('./', PURGE_DIR, lang, 'common.md'))
 
     # TODO(hoss): TBD
 
