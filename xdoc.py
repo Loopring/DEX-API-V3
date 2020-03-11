@@ -24,15 +24,12 @@ LOGGER = logging.getLogger(__name__)
 
 PURGE_DIR = '.generated'
 OUTPUT_DIR = 'generated'
-PURGE_IGNORE = ['swp', 'py', 'generated', '.generated', '.git', 'docs', '_book',
-                'README.md', '.gitignore', 'build.sh', 'meta', 'tpl', 'i18n']
+PURGE_IGNORE = ['swp', 'tpl']
 OUTPUT_IGNORE = ['_book', 'docs', 'node_modules']
 
-SWAGGER_JSON_BASE = 'api.loopring.io'
-# TODO(hoss): Change this to http://api.loopring.io/api after released.
-SWAGGER_JSON_PATH = '/swagger.json'
+SWAGGER_JSON_PATH = '/api'
 
-VARS = None
+VARS = {}
 
 path = '{}/tpls/'.format(os.path.dirname(__file__))
 loader = FileSystemLoader(path)
@@ -65,11 +62,6 @@ def get_first_layer_nodes(root, black):
                    os.listdir(root))
     return nodes
 
-
-def render_file(filename):
-    # TODO(hoss):
-    return (False, None)
-
 def forward_sync(sourceDir, targetDir, nodes):
     for node in nodes:
         fullSourcePath = os.path.join(sourceDir, node)
@@ -100,14 +92,11 @@ def recursive_generate(sourceDir, targetDir, nodes):
         fullSourcePath = os.path.join(sourceDir, node)
         fullTargetPath = os.path.join(targetDir, node)
         if os.path.isfile(fullSourcePath):
-            (res, content) = render_file(fullSourcePath)
-            if (not res):
-                run_command_with_return_info(
-                    'cp %s %s'%(fullSourcePath, fullTargetPath))
-            else:
-                pass  # TODO(hoss):
+            run_command_with_return_info(
+                'cp %s %s'%(fullSourcePath, fullTargetPath))
         else:
-            run_command_with_return_info('mkdir %s'%(fullTargetPath))
+            if not os.path.exists(fullTargetPath):
+                run_command_with_return_info('mkdir %s'%(fullTargetPath))
             recursive_generate(fullSourcePath, fullTargetPath,
                               os.listdir(fullSourcePath))
 
@@ -149,32 +138,44 @@ def parse_model(name, modelInfo):
     model['properties'] = properties
     return model
 
+def parse_params(parameters):
+    params = []
+    for parameter in parameters:
+        p = {}
+        params.append(p)
+    return params
+
 def parse_api(path, apiInfo):
     api = {}
     api['path'] = path
-    api['method'] = list(apiInfo.keys())[0]
+    api['method'] = list(apiInfo.keys())[0].upper()
     rawInfo = list(apiInfo.values())[0]
     api['operationId'] = rawInfo['operationId']
     api['description'] = rawInfo['description']
     api['summary'] = rawInfo['summary']
+    api['params'] = parse_params(rawInfo['parameters'])
     return api
 
 def load_api_desc(lang):
-    # TODO(hoss): Change this function
-    inf = open('./meta/swagger.json')
-    swagger = json.loads(inf.read())
-    inf.close()
-    # Uncomment this when everythis is done
-    # conn = http.client.HTTPSConnection(SWAGGER_JSON_BASE)
-    # conn.request("GET", SWAGGER_JSON_PATH + '?hl=%s'%(lang))
-    # swagger = json.loads(conn.getresponse().read())
+
+    conn = None
+
+    if VARS['v']['hosturl'].startswith('https://'):
+        host = VARS['v']['hosturl'].replace('https://', '')
+        conn = http.client.HTTPSConnection(host)
+    else:
+        host = VARS['v']['hosturl'].replace('http://', '')
+        conn = http.client.HTTPConnection(host)
+
+    conn.request("GET", SWAGGER_JSON_PATH + '?hl=%s'%(lang))
+    swagger = json.loads(conn.getresponse().read())
 
     apis = {}
 
     paths = swagger['paths']
 
     for path in paths.keys():
-        if path in VARS['enable_apis']:
+        if path in VARS['v']['enable_apis']:
             apis[path] = parse_api(path, paths[path])
 
     VARS['apis'] = apis
@@ -197,9 +198,14 @@ def load_info_with_lang(lang):
     load_message(lang)
     load_api_desc(lang)
 
-def generate_api_doc(path, filename):
-    # TODO(hoss): TBD
-    return os.path.join(path, filename) + '.md'
+def generate_api_doc(name, path, filename):
+    apiTpl = ENV.get_template('api_doc.tpl')
+    apidoc = apiTpl.render(l = VARS['l'], api = VARS['apis'][name])
+
+    output_file(apidoc, os.path.join(
+        './', PURGE_DIR, VARS['currentLang'], path, filename))
+
+    return os.path.join(path, filename)
 
 def func_replace(matched):
     value = matched.group('func')
@@ -218,6 +224,7 @@ def output_file(content, fullpath):
     outf.close()
 
 def render_with_lang(lang):
+    VARS['currentLang'] = lang
     load_info_with_lang(lang)
 
     summaryTpl = ENV.get_template('SUMMARY.tpl')
@@ -227,25 +234,24 @@ def render_with_lang(lang):
     output_file(rSummary, os.path.join('./', PURGE_DIR, lang, 'SUMMARY.md'))
 
     commonTpl = ENV.get_template('common.tpl')
-    common = commonTpl.render(l = VARS['l'])
-    rCommon = render_exec_func(common)
+    common = commonTpl.render(l = VARS['l'], v = VARS['v'])
 
-    output_file(rCommon, os.path.join('./', PURGE_DIR, lang, 'common.md'))
-
-    # TODO(hoss): TBD
+    output_file(common, os.path.join('./', PURGE_DIR, lang, 'common.md'))
 
 def generate_structs():
     run_command_with_return_info('rm -rf %s'%(PURGE_DIR))
     run_command_with_return_info('mkdir %s'%(PURGE_DIR))
-    # recursive_generate('.', PURGE_DIR, get_first_layer_nodes('.', PURGE_IGNORE))
     copy_static_files()
-    for lang in VARS['langs']:
+    for lang in VARS['v']['langs']:
         render_with_lang(lang)
+
+    recursive_generate(
+        './tpls', PURGE_DIR, get_first_layer_nodes('./tpls', PURGE_IGNORE))
 
 def load_info():
     global VARS
     inf = open('./meta/vars.json')
-    VARS = json.loads(inf.read())
+    VARS['v'] = json.loads(inf.read())
     inf.close()
 
 def main():
@@ -253,8 +259,8 @@ def main():
     load_info()
     LOGGER.info('Creating gitbook files...')
     generate_structs()
-    # LOGGER.info('Syncing gitbook files...')
-    # sync_out()
+    LOGGER.info('Syncing gitbook files...')
+    sync_out()
 
 if __name__ == '__main__':
     main()

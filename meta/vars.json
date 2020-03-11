@@ -1,7 +1,9 @@
 {
     "langs": ["zh"],
     "enable_apis" : [
-        "/api/v1/timestamp",
-        "/api/v1/depth"
-    ]
+        "/api/v2/order",
+        "/api/v2/depth"
+    ],
+    "# hosturl" : "https://api.loopring.io",
+    "hosturl" : "http://localhost:9000"
 }
