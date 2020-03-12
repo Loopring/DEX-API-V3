@@ -107,13 +107,16 @@ def copy_static_files():
     run_command_with_return_info('cp ./LANGS.md %s'%(PURGE_DIR))
     run_command_with_return_info('cp ./book.json %s'%(PURGE_DIR))
 
+def set_field(f, t, field):
+    if (f.get(field) is not None):
+        t[field] = f[field]
+
 def parse_model(name, modelInfo):
     model = {}
     model['type'] = modelInfo['type']
-    required = []
+    model['description'] = modelInfo.get('description', '')
+    required = modelInfo.get('required', [])
     properties = []
-    if (modelInfo.get('required') is not None):
-        required = modelInfo['required']
     if (modelInfo.get('properties') is not None):
         propjson = modelInfo['properties']
         for prop in propjson.keys():
@@ -125,16 +128,16 @@ def parse_model(name, modelInfo):
                 property_['required'] = False
 
             if (propjson[prop].get('$ref') is not None):
-                property_['ref'] = propjson[prop]['$ref']
+                property_['$ref'] = propjson[prop]['$ref']
             else:
                 property_['type'] = propjson[prop]['type']
+                set_field(propjson[prop], property_, 'description')
+                set_field(propjson[prop], property_, 'example')
                 if (property_['type'] == 'array'):
-                    property_['itemType'] = propjson[prop]['items']['$ref']
-                else:
-                    if (propjson[prop].get('example') is not None):
-                        property_['example'] = propjson[prop]['example']
-                    if (propjson[prop].get('description') is not None):
-                        property_['description'] = propjson[prop]['description']
+                    set_field(propjson[prop]['items'], property_, '$ref')
+                    if (propjson[prop]['items'].get('type') is not None):
+                        property_['itemType'] = propjson[prop]['items']['type']
+
             properties.append(property_)
     model['properties'] = properties
     return model
@@ -143,8 +146,34 @@ def parse_params(parameters):
     params = []
     for parameter in parameters:
         p = {}
+        set_field(parameter, p, 'name')
+        set_field(parameter, p, 'description')
+        set_field(parameter, p, 'required')
+        set_field(parameter, p, 'type')
+        set_field(parameter, p, 'x-example')
+        if (parameter.get('schema') is not None):
+            set_field(parameter['schema'], p, '$ref')
         params.append(p)
     return params
+
+def parse_responses(responses):
+    errorCodes = responses.keys()
+    resps = {}
+    codes = []
+    for error in errorCodes:
+        if (error == '0' or error == '200'):
+            ret = {}
+            set_field(responses[error], ret, 'description')
+            if (responses[error].get('schema') is not None):
+                set_field(responses[error]['schema'], ret, '$ref')
+            resps['ret'] = ret
+        else:
+            r = {}
+            r['ec'] = error
+            set_field(responses[error], r, 'description')
+            codes.append(r)
+    resps['codes'] = codes
+    return resps
 
 def parse_api(path, apiInfo):
     api = {}
@@ -155,6 +184,7 @@ def parse_api(path, apiInfo):
     api['description'] = rawInfo['description']
     api['summary'] = rawInfo['summary']
     api['params'] = parse_params(rawInfo['parameters'])
+    api['responses'] = parse_responses(rawInfo['responses'])
     return api
 
 def load_api_desc(lang):
@@ -171,6 +201,8 @@ def load_api_desc(lang):
         if path in VARS['v']['enable_apis']:
             apis[path] = parse_api(path, paths[path])
 
+    # LOGGER.info(apis)
+
     VARS['apis'] = apis
 
     models = {}
@@ -178,6 +210,8 @@ def load_api_desc(lang):
 
     for model in definitions.keys():
         models[model] = parse_model(model, definitions[model])
+
+    # LOGGER.info(models)
 
     VARS['models'] = models
 
