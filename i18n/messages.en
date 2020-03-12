@@ -1,2 +1,68 @@
 {
+    "summary" : {
+        "chapter1" : {
+            "title" : "Loopring",
+            "session1" : "Introduction",
+            "session2" : "Glossory"
+        },
+        "chapter2" : {
+            "title" : "DEX",
+            "session1" : {
+                "title" : "DEX integration doc",
+                "sub1" : {
+                    "title" : "Frontend integration",
+                    "subsub1": "Register account",
+                    "subsub2": "Deposit"
+                },
+                "sub2" : "Market making"
+            },
+            "session2" : {
+                "title" : "DEX API",
+                "sub1" : "Restful API",
+                "sub2" : "Websocket API"
+            }
+        },
+        "chapter3" : {
+            "title" : "Smart wallet",
+            "session1" : "Wallet integration doc",
+            "session2" : "Wallet API"
+        }
+    },
+
+    "apidoc" : {
+        "overview" : "API Overview",
+        "function" : "Function",
+        "method" : "HTTP method",
+        "path" : "Visit path",
+        "desc" : "API description",
+        "reqparam" : "Request parameters",
+        "reqexpl" : "Request sample",
+        "resfield" : "Response fields",
+        "resexpl" : "Response sample",
+        "retcode" : "Return code",
+        "retmsg" : "Return message.  This is used for debug only. Do not show to users",
+        "model" : "Model",
+        "common" : "Common info",
+        "hosturl" : "API host",
+        "header" : "Header",
+        "field" : "Field",
+        "fdesc" : "Description",
+        "ftype" : "Type",
+        "frequire" : "Required",
+        "fsample" : "Sample",
+        "resp" : "Response",
+        "yes" : "Y",
+        "no" : "N",
+        "keydesc" : "API Key. Needed by updating api",
+        "sigdesc" : "Signature info. Needed by getapikey and cancelorder api",
+        "resdesc" : "Result of api invoking",
+        "codedesc" : "Description",
+        "code0" : "Success",
+        "code1000000" : "Internal unknown error",
+        "code1000001" : "Illegality parameter"
+    },
+
+    "comment" : {
+        "claim" : "This file is generated automatically. Please do not modify."
+    }
 }

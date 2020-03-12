@@ -1,5 +1,5 @@
 {
-    "langs": ["zh"],
+    "langs": ["zh", "en"],
     "enable_apis" : [
         "/api/v2/order",
         "/api/v2/depth"
