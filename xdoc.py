@@ -5,6 +5,7 @@
 
 __author__ = 'chao@loopring.org (Ma Chao)'
 
+import argparse
 import http.client
 import json
 import logging
@@ -158,17 +159,9 @@ def parse_api(path, apiInfo):
 
 def load_api_desc(lang):
 
-    conn = None
-
-    if VARS['v']['hosturl'].startswith('https://'):
-        host = VARS['v']['hosturl'].replace('https://', '')
-        conn = http.client.HTTPSConnection(host)
-    else:
-        host = VARS['v']['hosturl'].replace('http://', '')
-        conn = http.client.HTTPConnection(host)
-
-    conn.request("GET", SWAGGER_JSON_PATH + '?hl=%s'%(lang))
-    swagger = json.loads(conn.getresponse().read())
+    inf = open('./meta/swagger_%s.json'%(lang))
+    swagger = json.loads(inf.read())
+    inf.close()
 
     apis = {}
 
@@ -254,13 +247,54 @@ def load_info():
     VARS['v'] = json.loads(inf.read())
     inf.close()
 
-def main():
+def build_doc():
     LOGGER.info('Loading info...')
     load_info()
     LOGGER.info('Creating gitbook files...')
     generate_structs()
     LOGGER.info('Syncing gitbook files...')
     sync_out()
+
+def fetch_and_save_swagger_json(lang):
+    conn = None
+
+    if VARS['v']['hosturl'].startswith('https://'):
+        host = VARS['v']['hosturl'].replace('https://', '')
+        conn = http.client.HTTPSConnection(host)
+    else:
+        host = VARS['v']['hosturl'].replace('http://', '')
+        conn = http.client.HTTPConnection(host)
+
+    LOGGER.info('Fetching swagger.json with lang %s...'%(lang))
+    conn.request("GET", SWAGGER_JSON_PATH + '?hl=%s'%(lang))
+    swagger = json.dumps(json.loads(conn.getresponse().read()))
+
+    LOGGER.info('Writing swagger.json with lang %s...'%(lang))
+    output_file(swagger, './meta/swagger_%s.json'%(lang))
+
+def refresh_swagger():
+    LOGGER.info('Loading info...')
+    load_info()
+    for lang in VARS['v']['langs']:
+        fetch_and_save_swagger_json(lang)
+
+def main():
+    """Main for xdoc"""
+
+    parser = argparse.ArgumentParser(description = 'This tool is used for' +
+                                     ' generating API docs (gitbook hosted).',
+                                     fromfile_prefix_chars = '@')
+    parser.add_argument('command', type = str, default = 'build',
+                        choices = ['build', 'refresh'])
+
+    args = parser.parse_args()
+
+    if args.command == 'build':
+        build_doc()
+    elif args.command == 'refresh':
+        refresh_swagger()
+    else:
+        build_doc()
 
 if __name__ == '__main__':
     main()
