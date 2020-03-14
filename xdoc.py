@@ -10,7 +10,7 @@ import http.client
 import json
 import logging
 import os
-import re
+# import re
 import subprocess
 
 from functools import partial
@@ -36,6 +36,37 @@ path = '{}/tpls/'.format(os.path.dirname(__file__))
 loader = FileSystemLoader(path)
 ENV = Environment(loader=loader)
 
+INDENT = 4
+SEG_SIZE = 20
+
+
+def get_request_parames(params, method):
+    if method == 'GET':
+        return params
+    elif method == 'POST':
+        modelName = params[0]['$ref']
+        return VARS['models'][modelName]['properties']
+    else:
+        return params
+
+def get_response_fields(response):
+    modelName = response['$ref']
+    return VARS['models'][modelName]['properties']
+
+def create_html_type(field):
+    # if (field.get('type') is None or field['type'] == 'object'):
+    if (field.get('$ref') is not None):
+        cleanRef = field['$ref']
+        return '<a href="#%s">%s</a>'%(cleanRef, cleanRef)
+    elif (field['type'] == 'array'):
+        cleanRef = ''
+        if (field.get('$ref') is not None):
+            cleanRef = field['$ref']
+            return 'list[<a href="#%s">%s</a>]'%(cleanRef, cleanRef)
+        else:
+            return 'list[%s]'%(field['itemType'])
+    else:
+        return field['type']
 
 def run_command_with_return_info(cmd):
     try:
@@ -107,9 +138,35 @@ def copy_static_files():
     run_command_with_return_info('cp ./LANGS.md %s'%(PURGE_DIR))
     run_command_with_return_info('cp ./book.json %s'%(PURGE_DIR))
 
-def set_field(f, t, field):
+def set_field(f, t, field, tField = None):
     if (f.get(field) is not None):
-        t[field] = f[field]
+        if (tField is None):
+            tField = field
+        t[tField] = f[field]
+        if (field == '$ref'):
+            t[tField] = t[tField].replace('#/definitions/', '')
+        elif ((field == 'example' or field == 'x-example') and
+              (t[tField] == True or t[tField] == False)):
+            t[tField] = 'true' if t[tField] else 'false'
+        elif (isinstance(t[tField], str)):
+            t[tField] = modify_str(t[tField])
+
+# This function is used to seg long word
+# for better shown in markdown table cell.
+def seg_str(word):
+    length = len(word)
+    if (length < SEG_SIZE):
+        return word
+    segs = []
+    i = 0
+    while (i < length):
+        segs.append(word[i : i + SEG_SIZE])
+        i += SEG_SIZE
+    return '<br/>'.join(segs)
+
+def modify_str(content):
+    words = content.split(' ')
+    return ' '.join([seg_str(word) for word in words])
 
 def parse_model(name, modelInfo):
     model = {}
@@ -127,16 +184,15 @@ def parse_model(name, modelInfo):
             else:
                 property_['required'] = False
 
-            if (propjson[prop].get('$ref') is not None):
-                property_['$ref'] = propjson[prop]['$ref']
-            else:
-                property_['type'] = propjson[prop]['type']
-                set_field(propjson[prop], property_, 'description')
-                set_field(propjson[prop], property_, 'example')
-                if (property_['type'] == 'array'):
-                    set_field(propjson[prop]['items'], property_, '$ref')
-                    if (propjson[prop]['items'].get('type') is not None):
-                        property_['itemType'] = propjson[prop]['items']['type']
+            set_field(propjson[prop], property_, '$ref')
+            set_field(propjson[prop], property_, 'type')
+            set_field(propjson[prop], property_, 'description')
+            set_field(propjson[prop], property_, 'example')
+            if (property_.get('type') is not None and
+                property_['type'] == 'array'):
+                set_field(propjson[prop]['items'], property_, '$ref')
+                if (propjson[prop]['items'].get('type') is not None):
+                    property_['itemType'] = propjson[prop]['items']['type']
 
             properties.append(property_)
     model['properties'] = properties
@@ -144,28 +200,32 @@ def parse_model(name, modelInfo):
 
 def parse_params(parameters):
     params = []
+    refs = []
     for parameter in parameters:
         p = {}
         set_field(parameter, p, 'name')
         set_field(parameter, p, 'description')
         set_field(parameter, p, 'required')
         set_field(parameter, p, 'type')
-        set_field(parameter, p, 'x-example')
+        set_field(parameter, p, 'x-example', 'example')
         if (parameter.get('schema') is not None):
             set_field(parameter['schema'], p, '$ref')
+            refs.append(p['$ref'])
         params.append(p)
-    return params
+    return (params, refs)
 
 def parse_responses(responses):
     errorCodes = responses.keys()
     resps = {}
     codes = []
+    refs = []
     for error in errorCodes:
         if (error == '0' or error == '200'):
             ret = {}
             set_field(responses[error], ret, 'description')
             if (responses[error].get('schema') is not None):
                 set_field(responses[error]['schema'], ret, '$ref')
+                refs.append(ret['$ref'])
             resps['ret'] = ret
         else:
             r = {}
@@ -173,7 +233,7 @@ def parse_responses(responses):
             set_field(responses[error], r, 'description')
             codes.append(r)
     resps['codes'] = codes
-    return resps
+    return (resps, refs)
 
 def parse_api(path, apiInfo):
     api = {}
@@ -183,8 +243,9 @@ def parse_api(path, apiInfo):
     api['operationId'] = rawInfo['operationId']
     api['description'] = rawInfo['description']
     api['summary'] = rawInfo['summary']
-    api['params'] = parse_params(rawInfo['parameters'])
-    api['responses'] = parse_responses(rawInfo['responses'])
+    (api['params'], reqRefs) = parse_params(rawInfo['parameters'])
+    (api['responses'], resRefs) = parse_responses(rawInfo['responses'])
+    api['refs'] = reqRefs + resRefs
     return api
 
 def load_api_desc(lang):
@@ -201,8 +262,6 @@ def load_api_desc(lang):
         if path in VARS['v']['enable_apis']:
             apis[path] = parse_api(path, paths[path])
 
-    # LOGGER.info(apis)
-
     VARS['apis'] = apis
 
     models = {}
@@ -210,8 +269,6 @@ def load_api_desc(lang):
 
     for model in definitions.keys():
         models[model] = parse_model(model, definitions[model])
-
-    # LOGGER.info(models)
 
     VARS['models'] = models
 
@@ -225,21 +282,88 @@ def load_info_with_lang(lang):
     load_message(lang)
     load_api_desc(lang)
 
+def prop_to_json(prop, spaceNum):
+    valStr = ''
+    if (prop.get('type') is None):
+        valStr = model_to_json(
+            prop['$ref'],
+            spaceNum).lstrip()
+    else:
+        if (prop['type'] == 'string'):
+            valStr = '"%s"'%(prop.get('example', ''))
+        else:
+            if (prop.get('example') is not None):
+                valStr = prop['example']
+            elif (prop['type'] == 'object'):
+                valStr = model_to_json(
+                    prop['$ref'],
+                    spaceNum).lstrip()
+            elif (prop['type'] == 'array'):
+                valStr = '[\n'
+                if (prop.get('$ref') is not None):
+                    valStr += model_to_json(
+                        prop['$ref'],
+                        spaceNum + INDENT) + '\n'
+                else:
+                    valStr += ' ' * (spaceNum + INDENT) + prop['itemType'] + '\n'
+                valStr += ' ' * spaceNum + ']'
+            else:
+                valStr = prop['type']
+    return ' ' * spaceNum + '"%s"'%(prop['name']) + ' : ' + str(valStr)
+
+def model_to_json(modelName, spaceNum = 0):
+    model = VARS['models'][modelName]
+    ret = ' ' * spaceNum + '{\n'
+    ret += prop_to_json(model['properties'][0], spaceNum + INDENT)
+    for prop in model['properties'][1:]:
+        ret += ',\n'
+        ret += prop_to_json(prop, spaceNum + INDENT)
+    ret += '\n' + ' ' * spaceNum + '}'
+    return ret
+
+def create_response_example(api):
+    return model_to_json(api['responses']['ret']['$ref'])
+
+def create_request_example(api):
+    ret = 'curl %s%s'%(VARS['v']['hosturl'], api['path'])
+    param = ''
+    if (api['method'] == 'GET'):
+        for p in api['params']:
+            param += p['name'] + '=' + str(p['example']) + '&'
+        if (param == ''):
+            return ret
+        else:
+            return ret + '?' + param[0: -1]
+    elif (api['method'] == 'POST'):
+        payload = model_to_json(
+            api['params'][0]['$ref'])
+        if (payload == ''):
+            return ret
+        else:
+            return ret + ' -X POST -H "Content-Type:application/json" -d \\\n\'%s\''%(payload)
+
 def generate_api_doc(name, path, filename):
     apiTpl = ENV.get_template('api_doc.tpl')
-    apidoc = apiTpl.render(l = VARS['l'], api = VARS['apis'][name])
+    apidoc = apiTpl.render(
+        l = VARS['l'],
+        api = VARS['apis'][name],
+        c_type = create_html_type,
+        c_request_example = create_request_example,
+        g_response_fields = get_response_fields,
+        g_request_params = get_request_parames,
+        c_response_example = create_response_example)
 
     output_file(apidoc, os.path.join(
-        './', PURGE_DIR, VARS['currentLang'], path, filename))
+        './', PURGE_DIR, VARS['currentLang'], path, filename + '.md'))
 
-    return os.path.join(path, filename)
+    return os.path.join(path, filename + '.md')
 
 def func_replace(matched):
     value = matched.group('func')
     return eval(value)
 
-def render_exec_func(content):
-    return re.sub('<#(?P<func>.+)#>', func_replace, content)
+# def render_exec_func(content):
+    # return re.sub('<#(?P<func>.+)#>', func_replace, content)
 
 def output_file(content, fullpath):
     dirpath = os.path.dirname(os.path.realpath(fullpath))
@@ -255,10 +379,13 @@ def render_with_lang(lang):
     load_info_with_lang(lang)
 
     summaryTpl = ENV.get_template('SUMMARY.tpl')
-    summary = summaryTpl.render(l = VARS['l'], apis = VARS['apis'].values())
-    rSummary = render_exec_func(summary)
+    summary = summaryTpl.render(
+        l = VARS['l'],
+        apis = VARS['apis'].values(),
+        g_api_doc = generate_api_doc)
+    # rSummary = render_exec_func(summary)
 
-    output_file(rSummary, os.path.join('./', PURGE_DIR, lang, 'SUMMARY.md'))
+    output_file(summary, os.path.join('./', PURGE_DIR, lang, 'SUMMARY.md'))
 
     commonTpl = ENV.get_template('common.tpl')
     common = commonTpl.render(l = VARS['l'], v = VARS['v'])
@@ -318,16 +445,14 @@ def main():
     parser = argparse.ArgumentParser(description = 'This tool is used for' +
                                      ' generating API docs (gitbook hosted).',
                                      fromfile_prefix_chars = '@')
-    parser.add_argument('command', type = str, default = 'build',
+    parser.add_argument('command', type = str, nargs = '+', default = 'build',
                         choices = ['build', 'refresh'])
 
     args = parser.parse_args()
 
-    if args.command == 'build':
-        build_doc()
-    elif args.command == 'refresh':
+    if 'refresh' in args.command:
         refresh_swagger()
-    else:
+    if 'build' in args.command:
         build_doc()
 
 if __name__ == '__main__':

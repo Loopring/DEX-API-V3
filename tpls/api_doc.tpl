@@ -24,25 +24,51 @@
 
 | {{ l.apidoc.field }} |  {{ l.apidoc.ftype }} | {{ l.apidoc.frequire }} | {{ l.apidoc.fdesc }} | {{ l.apidoc.fsample }} |
 | ---- | ---- | ---- | ---- | --- |
-{% for param in api.params %}
-| | | | | |
-TBD
-{% endfor %}
+{%- for field in g_request_params(api.params, api.method) %}
+| {{field.name}} | {{c_type(field)}} |
+{%- if field.required -%}
+{{l.apidoc.yes}}
+{%- else -%}
+{{l.apidoc.no}}
+{%- endif -%}
+| {{field.description}} |
+{%- if field['example'] -%}
+{{field['example']}} |
+{%- else -%}
+/ |
+{%- endif -%}
+{%- endfor %}
 
 #### {{ l.apidoc.reqexpl }}
 
-TBD
+``` bash
+{{c_request_example(api)}}
+```
 
 #### {{ l.apidoc.resfield }}
 
 | {{ l.apidoc.field }} |  {{ l.apidoc.ftype }} | {{ l.apidoc.frequire }} | {{ l.apidoc.fdesc }} | {{ l.apidoc.fsample }} |
 | ---- | ---- | ---- | ---- | --- |
-
-TBD
+{%- for field in g_response_fields(api.responses.ret) %}
+| {{field.name}} | {{c_type(field)}} |
+{%- if field.required -%}
+{{l.apidoc.yes}}
+{%- else -%}
+{{l.apidoc.no}}
+{%- endif -%}
+| {{field.description}} |
+{%- if field['example'] -%}
+{{field['example']}} |
+{%- else -%}
+/ |
+{%- endif -%}
+{%- endfor %}
 
 #### {{ l.apidoc.resexpl }}
 
-TBD
+``` json
+{{c_response_example(api)}}
+```
 
 #### {{ l.apidoc.retcode }}
 

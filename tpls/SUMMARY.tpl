@@ -15,7 +15,7 @@
 * [{{ l.summary.chapter2.session2.title }}](dex_api_overview.md)
     * [{{ l.summary.chapter2.session2.sub1 }}]()
         {% for api in apis %}
-        * [{{ api.summary }}](<#generate_api_doc("{{api.path}}", "dex_apis", "{{api.operationId}}.md")#>)
+        * [{{ api.summary }}]({{g_api_doc(api.path, "dex_apis", api.operationId)}})
         {% endfor %}
     * [{{ l.summary.chapter2.session2.sub2 }}]()
 
