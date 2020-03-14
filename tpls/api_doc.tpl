@@ -74,8 +74,10 @@
 
 | {{ l.apidoc.retcode }} | {{ l.apidoc.codedesc }} |
 | ---- | ---- |
+{%- for code in api.responses.codes %}
+|{{code.ec}}|{{code.description}}|
+{%- endfor %}
 
-TBD
 
 ### {{ l.apidoc.model }}
 ----

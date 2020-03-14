@@ -138,35 +138,37 @@ def copy_static_files():
     run_command_with_return_info('cp ./LANGS.md %s'%(PURGE_DIR))
     run_command_with_return_info('cp ./book.json %s'%(PURGE_DIR))
 
-def set_field(f, t, field, tField = None):
+def set_field(f, t, field, tField = None, segSize = SEG_SIZE):
     if (f.get(field) is not None):
         if (tField is None):
             tField = field
         t[tField] = f[field]
         if (field == '$ref'):
             t[tField] = t[tField].replace('#/definitions/', '')
-        elif ((field == 'example' or field == 'x-example') and
-              (t[tField] == True or t[tField] == False)):
-            t[tField] = 'true' if t[tField] else 'false'
-        elif (isinstance(t[tField], str)):
-            t[tField] = modify_str(t[tField])
+        elif (field == 'example' or field == 'x-example'):
+            if isinstance(t[tField], bool):
+                t[tField] = str(t[tField]).lower()
+            elif (t[tField] == 0):
+                t[tField] = '0'
+        if (isinstance(t[tField], str)):
+            t[tField] = modify_str(t[tField], segSize)
 
 # This function is used to seg long word
 # for better shown in markdown table cell.
-def seg_str(word):
+def seg_str(word, segSize):
     length = len(word)
-    if (length < SEG_SIZE):
+    if (length < segSize):
         return word
     segs = []
     i = 0
     while (i < length):
-        segs.append(word[i : i + SEG_SIZE])
-        i += SEG_SIZE
+        segs.append(word[i : i + segSize])
+        i += segSize
     return '<br/>'.join(segs)
 
-def modify_str(content):
+def modify_str(content, segSize):
     words = content.split(' ')
-    return ' '.join([seg_str(word) for word in words])
+    return ' '.join([seg_str(word, segSize) for word in words])
 
 def parse_model(name, modelInfo):
     model = {}
@@ -230,7 +232,7 @@ def parse_responses(responses):
         else:
             r = {}
             r['ec'] = error
-            set_field(responses[error], r, 'description')
+            set_field(responses[error], r, 'description', 100)
             codes.append(r)
     resps['codes'] = codes
     return (resps, refs)
