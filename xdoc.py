@@ -232,7 +232,7 @@ def parse_responses(responses):
         else:
             r = {}
             r['ec'] = error
-            set_field(responses[error], r, 'description', 100)
+            set_field(responses[error], r, 'description', segSize = 100)
             codes.append(r)
     resps['codes'] = codes
     return (resps, refs)
