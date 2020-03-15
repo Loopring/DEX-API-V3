@@ -34,6 +34,12 @@ http://localhost:4000/
 ```
 页面会自动刷新。
 
+如果API swagger的定义发生了变化，可以用下面的命令更新：
+```
+./xdoc.py refresh
+```
+如果编辑非Restful API部分，可以忽略refresh命令（使用meta目录下默认的文件）。
+
 如果gitbook server挂了，重新运行即可：
 ```
 gitbook serve
