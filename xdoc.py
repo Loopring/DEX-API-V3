@@ -10,7 +10,6 @@ import http.client
 import json
 import logging
 import os
-# import re
 import subprocess
 
 from functools import partial
@@ -55,18 +54,25 @@ def get_response_fields(response):
 
 def create_html_type(field):
     # if (field.get('type') is None or field['type'] == 'object'):
-    if (field.get('$ref') is not None):
-        cleanRef = field['$ref']
-        return '<a href="#%s">%s</a>'%(cleanRef, cleanRef)
-    elif (field['type'] == 'array'):
-        cleanRef = ''
+    if (field.get('type') is None):
         if (field.get('$ref') is not None):
             cleanRef = field['$ref']
-            return 'list[<a href="#%s">%s</a>]'%(cleanRef, cleanRef)
+            return '<a href="#%s">%s</a>'%(cleanRef, cleanRef)
         else:
-            return 'list[%s]'%(field['itemType'])
+            return '/'
     else:
-        return field['type']
+        if (field['type'] == 'array'):
+            cleanRef = ''
+            if (field.get('$ref') is not None):
+                cleanRef = field['$ref']
+                return 'list< <a href="#%s">%s</a> >'%(cleanRef, cleanRef)
+            else:
+                return 'list< %s >'%(field['itemType'])
+        elif (field.get('$ref') is not None):
+            cleanRef = field['$ref']
+            return '<a href="#%s">%s</a>'%(cleanRef, cleanRef)
+        else:
+            return field['type']
 
 def run_command_with_return_info(cmd):
     try:
@@ -172,6 +178,7 @@ def modify_str(content, segSize):
 
 def parse_model(name, modelInfo):
     model = {}
+    model['name'] = name
     model['type'] = modelInfo['type']
     model['description'] = modelInfo.get('description', '')
     required = modelInfo.get('required', [])
@@ -344,6 +351,28 @@ def create_request_example(api):
         else:
             return ret + ' -X POST -H "Content-Type:application/json" -d \\\n\'%s\''%(payload)
 
+def expend_models(modelName):
+    modelNames = []
+    for prop in VARS['models'][modelName]['properties']:
+        if prop.get('$ref') is not None:
+            name = prop.get('$ref')
+            modelNames.append(name)
+            modelNames += expend_models(name)
+    return modelNames
+
+
+def get_ref_models(api):
+    modelNames = []
+    for ref in api['refs']:
+        m = VARS['models'][ref]
+        for prop in m['properties']:
+            if prop.get('$ref') is not None:
+                name = prop.get('$ref')
+                modelNames.append(name)
+                modelNames += expend_models(name)
+    ret = [VARS['models'][x] for x in modelNames if x != 'ResultInfo' ]
+    return ret
+
 def generate_api_doc(name, path, filename):
     apiTpl = ENV.get_template('api_doc.tpl')
     apidoc = apiTpl.render(
@@ -353,7 +382,8 @@ def generate_api_doc(name, path, filename):
         c_request_example = create_request_example,
         g_response_fields = get_response_fields,
         g_request_params = get_request_parames,
-        c_response_example = create_response_example)
+        c_response_example = create_response_example,
+        g_ref_models = get_ref_models)
 
     output_file(apidoc, os.path.join(
         './', PURGE_DIR, VARS['currentLang'], path, filename + '.md'))
@@ -363,9 +393,6 @@ def generate_api_doc(name, path, filename):
 def func_replace(matched):
     value = matched.group('func')
     return eval(value)
-
-# def render_exec_func(content):
-    # return re.sub('<#(?P<func>.+)#>', func_replace, content)
 
 def output_file(content, fullpath):
     dirpath = os.path.dirname(os.path.realpath(fullpath))
@@ -385,7 +412,6 @@ def render_with_lang(lang):
         l = VARS['l'],
         apis = VARS['apis'].values(),
         g_api_doc = generate_api_doc)
-    # rSummary = render_exec_func(summary)
 
     output_file(summary, os.path.join('./', PURGE_DIR, lang, 'SUMMARY.md'))
 
