@@ -1,0 +1,2 @@
+GET       /api/v2/depth                                   controllers.HomeController.getDepth(market, level:Int, limit:Option[Int] ?= None)
+POST      /api/v2/order                                   controllers.HomeController.submitOrder
