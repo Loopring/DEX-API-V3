@@ -5,10 +5,6 @@
 ### {{ l.apidoc.overview }}
 ----
 
-#### {{ l.apidoc.function }}
-
-{{ api.description }}
-
 #### {{ l.apidoc.method }}
 
 **{{ api.method }}**
@@ -16,6 +12,11 @@
 #### {{ l.apidoc.path }}
 
 **{{ api.path }}**
+
+#### {{ l.apidoc.function }}
+
+{{ g_desc(api) }}
+
 
 ### {{ l.apidoc.desc }}
 ----

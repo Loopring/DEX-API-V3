@@ -373,6 +373,17 @@ def get_ref_models(api):
     ret = [VARS['models'][x] for x in modelNames if x != 'ResultInfo' ]
     return ret
 
+def get_description(api):
+    if (api['description'] is not None and api['description'] != ''):
+        return api['description']
+    descFilePath = os.path.join('./tpls', VARS['currentLang'], 'segments',
+        api['operationId'] + '_desc.md')
+    if os.path.exists(descFilePath):
+        return '{% include "../segments/' + api['operationId'] + '_desc.md" %}'
+    else:
+        return '/'
+
+
 def generate_api_doc(name, path, filename):
     apiTpl = ENV.get_template('api_doc.tpl')
     apidoc = apiTpl.render(
@@ -383,7 +394,8 @@ def generate_api_doc(name, path, filename):
         g_response_fields = get_response_fields,
         g_request_params = get_request_parames,
         c_response_example = create_response_example,
-        g_ref_models = get_ref_models)
+        g_ref_models = get_ref_models,
+        g_desc = get_description)
 
     output_file(apidoc, os.path.join(
         './', PURGE_DIR, VARS['currentLang'], path, filename + '.md'))
