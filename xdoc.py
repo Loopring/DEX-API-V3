@@ -53,7 +53,6 @@ def get_response_fields(response):
     return VARS['models'][modelName]['properties']
 
 def create_html_type(field):
-    # if (field.get('type') is None or field['type'] == 'object'):
     if (field.get('type') is None):
         if (field.get('$ref') is not None):
             cleanRef = field['$ref']
@@ -183,7 +182,8 @@ def modify_str(content, segSize):
     words = content.split(' ')
     return ' '.join([seg_str(word, segSize) for word in words])
 
-def parse_model(name, modelInfo):
+def parse_model(name):
+    modelInfo = VARS['definitions'][name]
     model = {}
     model['name'] = name
     model['type'] = modelInfo['type']
@@ -276,7 +276,6 @@ def parse_api(path, apiInfo):
     set_field(rawInfo, api, 'description')
     set_field(rawInfo, api, 'summary', showMsgIfMiss = True,
               message = 'API %s has no summary'%(path))
-    # api['summary'] = rawInfo['summary']
     (api['params'], reqRefs) = parse_params(rawInfo['parameters'])
     (api['responses'], resRefs) = parse_responses(rawInfo['responses'])
     api['refs'] = reqRefs + resRefs
@@ -292,19 +291,25 @@ def load_api_desc(lang):
 
     paths = swagger['paths']
 
+    refModels = ['ResultInfo']
     for path in paths.keys():
         if path in VARS['v']['enable_apis']:
             apis[path] = parse_api(path, paths[path])
+            refModels += apis[path]['refs']
+    refModels = set(refModels)
 
     VARS['apis'] = apis
 
-    models = {}
-    definitions = swagger['definitions']
+    VARS['definitions'] = swagger['definitions']
+    VARS['models'] = {}
 
-    for model in definitions.keys():
-        models[model] = parse_model(model, definitions[model])
+    while (len(refModels) > 0):
+        model = refModels.pop()
+        VARS['models'][model] = parse_model(model)
+        for newRef in expend_models(model):
+            if (newRef not in VARS['models']):
+                refModels.add(newRef)
 
-    VARS['models'] = models
 
 def load_message(lang):
     inf = open('./i18n/messages.%s'%(lang))
@@ -383,7 +388,9 @@ def expend_models(modelName):
             name = prop.get('$ref')
             if (name not in modelNames):
                 modelNames.append(name)
-                modelNames += expend_models(name)
+                if (name not in VARS['models']):
+                    VARS['models'][name] = parse_model(name)
+                    modelNames += expend_models(name)
     return modelNames
 
 
