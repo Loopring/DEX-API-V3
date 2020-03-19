@@ -1,18 +1,20 @@
 {
-    "langs": ["zh", "en"],
-    "# langs": ["zh"],
+    "# langs": ["zh", "en"],
+    "langs": ["zh"],
     "enable_apis" : [
         "/api/v2/timestamp",
+        "/api/v2/depth",
+        "/api/v2/price",
+        "/api/v2/trade",
         "/api/v2/ethNonce",
         "/api/v2/ethBalances",
         "/api/v2/tokenBalances",
         "/api/v2/allowances",
+        "/api/v2/user/balances",
         "/api/v2/user/trades",
-        "/api/v2/user/feeRates",
-        "/api/v2/price",
-        "/api/v2/trade",
         "/api/v2/exchange/markets",
-        "/api/v2/depth"
+        "/api/v2/exchange/tokens",
+        "/api/v2/exchange/info"
     ],
     "hosturl" : "https://api.loopring.io",
     "# hosturl" : "http://161.189.106.255:31610"
