@@ -143,7 +143,7 @@ def copy_static_files():
     run_command_with_return_info('cp ./LANGS.md %s'%(PURGE_DIR))
     run_command_with_return_info('cp ./book.json %s'%(PURGE_DIR))
 
-def set_field(f, t, field, tField = None, segSize = SEG_SIZE,
+def set_field(f, t, field, tField = None,
               showMsgIfMiss = False, message = None):
     if (f.get(field) is not None):
         if (tField is None):
@@ -156,8 +156,6 @@ def set_field(f, t, field, tField = None, segSize = SEG_SIZE,
                 t[tField] = str(t[tField]).lower()
             elif (t[tField] == 0):
                 t[tField] = '0'
-            if (isinstance(t[tField], str)):
-                t[tField] = modify_str(t[tField], segSize)
         return
     if (showMsgIfMiss):
         if message is None:
@@ -178,7 +176,7 @@ def seg_str(word, segSize):
         i += segSize
     return '<br/>'.join(segs)
 
-def modify_str(content, segSize):
+def modifyStr(content, segSize):
     words = content.split(' ')
     return ' '.join([seg_str(word, segSize) for word in words])
 
@@ -265,7 +263,7 @@ def parse_responses(responses):
         else:
             r = {}
             r['ec'] = error
-            set_field(responses[error], r, 'description', segSize = 100,
+            set_field(responses[error], r, 'description',
                       showMsgIfMiss = True)
             codes.append(r)
     resps['codes'] = codes
@@ -422,6 +420,15 @@ def get_description(api):
         LOGGER.error('API %s has no description.'%(api['operationId']))
         return '/'
 
+def get_example(example):
+    if not example:
+        return '/'
+    if not isinstance(example, str):
+        return example
+    if example.strip() != '':
+        return modifyStr(example.strip(), SEG_SIZE)
+    else:
+        return '/'
 
 def generate_api_doc(name, path, filename):
     apiTpl = ENV.get_template('api_doc.tpl')
@@ -434,7 +441,8 @@ def generate_api_doc(name, path, filename):
         g_request_params = get_request_parames,
         c_response_example = create_response_example,
         g_ref_models = get_ref_models,
-        g_desc = get_description)
+        g_desc = get_description,
+        g_example = get_example)
 
     output_file(apidoc, os.path.join(
         './', PURGE_DIR, VARS['currentLang'], path, filename + '.md'))

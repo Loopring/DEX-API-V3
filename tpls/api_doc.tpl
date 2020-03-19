@@ -35,12 +35,7 @@
 {%- else -%}
 {{l.apidoc.no}}
 {%- endif -%}
-| {{field.description}} |
-{%- if field['example'] -%}
-{{field['example']}} |
-{%- else -%}
-/ |
-{%- endif -%}
+| {{field.description}} | {{ g_example(field['example']) }} |
 {%- endfor %}
 {% else %}
 {{l.apidoc.none}}
@@ -63,12 +58,7 @@
 {%- else -%}
 {{l.apidoc.no}}
 {%- endif -%}
-| {{field.description}} |
-{%- if field['example'] -%}
-{{field['example']}} |
-{%- else -%}
-/ |
-{%- endif -%}
+| {{field.description}} | {{ g_example(field['example']) }} |
 {%- endfor %}
 
 #### {{ l.apidoc.resexpl }}
@@ -106,12 +96,7 @@
 {%- else -%}
 {{l.apidoc.no}}
 {%- endif -%}
-| {{field.description}} |
-{%- if field['example'] -%}
-{{field['example']}} |
-{%- else -%}
-/ |
-{%- endif -%}
+| {{field.description}} | {{ g_example(field['example']) }} |
 {%- endfor %}
 
 {% endfor %}
