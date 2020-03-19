@@ -210,6 +210,10 @@ def parse_model(name):
                                  and property_['type'] != 'array'
                                  and property_['type'] != 'object'),
                 message = '%s of %s has no example'%(prop, name))
+            if (property_.get('type') is not None
+                and property_['type'] == 'object'
+                and property_.get('example') is not None):
+                LOGGER.error('The type of %s in %s may wrong.'%(prop, name))
             if (property_.get('type') is not None and
                 property_['type'] == 'array'):
                 set_field(propjson[prop]['items'], property_, '$ref')
