@@ -205,6 +205,10 @@ def parse_model(name):
             set_field(propjson[prop], property_, 'type',
                 showMsgIfMiss = (property_.get('$ref') is None),
                 message = 'Must set $ref or type for %s of %s'%(prop, name))
+            if (property_.get('type', '') == 'object'
+                and property_.get('$ref') is None):
+                LOGGER.error('%s of %s has no $ref'%(prop, name))
+                property_['$ref'] = 'ResultInfo'
             set_field(propjson[prop], property_, 'description')
             set_field(propjson[prop], property_, 'example',
                 showMsgIfMiss = (property_.get('type') is not None
