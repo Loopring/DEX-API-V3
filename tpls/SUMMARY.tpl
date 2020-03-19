@@ -13,11 +13,11 @@
         {** [{{ l.summary.chapter2.session1.sub1.subsub2 }}](dex_integrations/deposit.md)*}
     * [{{ l.summary.chapter2.session1.sub2 }}]()
 * [{{ l.summary.chapter2.session2.title }}](dex_api_overview.md)
-    * [{{ l.summary.chapter2.session2.sub1 }}]()
+    * [{{ l.summary.chapter2.session2.sub1 }}](restful_api_overview.md)
         {% for api in apis %}
         * [{{ api.summary }}]({{g_api_doc(api.path, "dex_apis", api.operationId)}})
         {% endfor %}
-    * [{{ l.summary.chapter2.session2.sub2 }}]()
+    * [{{ l.summary.chapter2.session2.sub2 }}](websocket_overview.md)
 
 {*## {{ l.summary.chapter3.title }}*}
 

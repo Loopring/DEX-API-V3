@@ -116,7 +116,3 @@
 
 {% endfor %}
 {% endif %}
-
-{% raw %}
-{% include "../common.md" %}
-{% endraw %}

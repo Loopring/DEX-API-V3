@@ -32,5 +32,5 @@
 
 | {{ l.apidoc.field }} |  {{ l.apidoc.ftype }} | {{ l.apidoc.frequire }} | {{ l.apidoc.fdesc }} | {{ l.apidoc.fsample }} |
 | ---- | ---- | ---- |   ----   |  --- |
-| code | number | {{ l.apidoc.yes }} | {{ l.apidoc.retcode }} | 0 |
+| code | integer | {{ l.apidoc.yes }} | {{ l.apidoc.retcode }} | 0 |
 | message | string | {{ l.apidoc.yes }} | {{ l.apidoc.retmsg }} | "SUCCESS" |

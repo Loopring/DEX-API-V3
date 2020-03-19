@@ -295,7 +295,7 @@ def load_api_desc(lang):
 
     paths = swagger['paths']
 
-    refModels = ['ResultInfo']
+    refModels = []
     for path in paths.keys():
         if path in VARS['v']['enable_apis']:
             apis[path] = parse_api(path, paths[path])
@@ -408,7 +408,7 @@ def get_ref_models(api):
                 if (name not in modelNames):
                     modelNames.append(name)
                     modelNames += expend_models(name)
-    ret = [VARS['models'][x] for x in modelNames if x != 'ResultInfo' ]
+    ret = [VARS['models'][x] for x in modelNames]
     return ret
 
 def get_description(api):
