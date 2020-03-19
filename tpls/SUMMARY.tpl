@@ -15,7 +15,7 @@
 * [{{ l.summary.chapter2.session2.title }}](dex_api_overview.md)
     * [{{ l.summary.chapter2.session2.sub1 }}](restful_api_overview.md)
         {% for api in apis %}
-        * [{{ api.summary }}]({{g_api_doc(api.path, "dex_apis", api.operationId)}})
+        * [{{ api.summary }}]({{g_api_doc(api.operationId, "dex_apis", api.operationId)}})
         {% endfor %}
     * [{{ l.summary.chapter2.session2.sub2 }}](websocket_overview.md)
 

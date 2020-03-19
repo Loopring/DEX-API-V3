@@ -43,6 +43,8 @@ def get_request_parames(params, method):
     if method == 'GET':
         return params
     elif method == 'POST':
+        if (len(params) == 0):
+            return []
         modelName = params[0]['$ref']
         return VARS['models'][modelName]['properties']
     else:
@@ -270,18 +272,21 @@ def parse_responses(responses):
     return (resps, refs)
 
 def parse_api(path, apiInfo):
-    api = {}
-    api['path'] = path
-    api['method'] = list(apiInfo.keys())[0].upper()
-    rawInfo = list(apiInfo.values())[0]
-    api['operationId'] = rawInfo['operationId']
-    set_field(rawInfo, api, 'description')
-    set_field(rawInfo, api, 'summary', showMsgIfMiss = True,
-              message = 'API %s has no summary'%(path))
-    (api['params'], reqRefs) = parse_params(rawInfo['parameters'])
-    (api['responses'], resRefs) = parse_responses(rawInfo['responses'])
-    api['refs'] = reqRefs + resRefs
-    return api
+    apis = []
+    for method in apiInfo.keys():
+        api = {}
+        api['path'] = path
+        api['method'] = method.upper()
+        rawInfo = apiInfo[method]
+        api['operationId'] = rawInfo['operationId']
+        set_field(rawInfo, api, 'description')
+        set_field(rawInfo, api, 'summary', showMsgIfMiss = True,
+                  message = 'API %s has no summary'%(path))
+        (api['params'], reqRefs) = parse_params(rawInfo['parameters'])
+        (api['responses'], resRefs) = parse_responses(rawInfo['responses'])
+        api['refs'] = reqRefs + resRefs
+        apis.append(api)
+    return apis
 
 def load_api_desc(lang):
 
@@ -296,8 +301,9 @@ def load_api_desc(lang):
     refModels = []
     for path in paths.keys():
         if path in VARS['v']['enable_apis']:
-            apis[path] = parse_api(path, paths[path])
-            refModels += apis[path]['refs']
+            for parsedApi in parse_api(path, paths[path]):
+                apis[parsedApi['operationId']] = parsedApi
+                refModels += apis[parsedApi['operationId']]['refs']
     refModels = set(refModels)
 
     VARS['apis'] = apis
@@ -376,6 +382,9 @@ def create_request_example(api):
         else:
             return ret + '?' + param[0: -1]
     elif (api['method'] == 'POST'):
+        if (len(api['params']) == 0):
+            LOGGER.error('%s has no parameters.'%(api['operationId']))
+            return 'error'
         payload = model_to_json(
             api['params'][0]['$ref'])
         if (payload == ''):
@@ -430,11 +439,11 @@ def get_example(example):
     else:
         return '/'
 
-def generate_api_doc(name, path, filename):
+def generate_api_doc(operationId, path, filename):
     apiTpl = ENV.get_template('api_doc.tpl')
     apidoc = apiTpl.render(
         l = VARS['l'],
-        api = VARS['apis'][name],
+        api = VARS['apis'][operationId],
         c_type = create_html_type,
         c_request_example = create_request_example,
         g_response_fields = get_response_fields,
