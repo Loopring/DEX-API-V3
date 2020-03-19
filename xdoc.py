@@ -242,12 +242,15 @@ def parse_params(parameters):
         set_field(parameter, p, 'name', showMsgIfMiss = True)
         set_field(parameter, p, 'description', showMsgIfMiss = True)
         set_field(parameter, p, 'required', showMsgIfMiss = True)
-        set_field(parameter, p, 'type', showMsgIfMiss = True)
-        set_field(parameter, p, 'x-example', 'example', showMsgIfMiss = True)
+        set_field(parameter, p, 'type')
+        set_field(parameter, p, 'x-example', 'example')
         if (parameter.get('schema') is not None):
             set_field(parameter['schema'], p, '$ref', showMsgIfMiss = True)
             if (p['$ref'] not in refs):
                 refs.append(p['$ref'])
+        else:
+            if p.get('example') is None:
+                LOGGER.error('%s has no example.'%(parameter))
         params.append(p)
     return (params, refs)
 
