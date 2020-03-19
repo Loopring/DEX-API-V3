@@ -144,20 +144,27 @@ def copy_static_files():
     run_command_with_return_info('cp ./LANGS.md %s'%(PURGE_DIR))
     run_command_with_return_info('cp ./book.json %s'%(PURGE_DIR))
 
-def set_field(f, t, field, tField = None, segSize = SEG_SIZE):
+def set_field(f, t, field, tField = None, segSize = SEG_SIZE,
+              showMsgIfMiss = False, message = None):
     if (f.get(field) is not None):
         if (tField is None):
             tField = field
         t[tField] = f[field]
         if (field == '$ref'):
             t[tField] = t[tField].replace('#/definitions/', '')
-        elif (field == 'example' or field == 'x-example'):
+        elif (field == 'example' or field == 'x-example' or field == 'description'):
             if isinstance(t[tField], bool):
                 t[tField] = str(t[tField]).lower()
             elif (t[tField] == 0):
                 t[tField] = '0'
-        if (isinstance(t[tField], str)):
-            t[tField] = modify_str(t[tField], segSize)
+            if (isinstance(t[tField], str)):
+                t[tField] = modify_str(t[tField], segSize)
+        return
+    if (showMsgIfMiss):
+        if message is None:
+            LOGGER.error('%s has no %s'%(f, field))
+        else:
+            LOGGER.error(message)
 
 # This function is used to seg long word
 # for better shown in markdown table cell.
@@ -194,14 +201,25 @@ def parse_model(name, modelInfo):
                 property_['required'] = False
 
             set_field(propjson[prop], property_, '$ref')
-            set_field(propjson[prop], property_, 'type')
+            set_field(propjson[prop], property_, 'type',
+                showMsgIfMiss = (property_.get('$ref') is None),
+                message = 'Must set $ref or type for %s of %s'%(prop, name))
             set_field(propjson[prop], property_, 'description')
-            set_field(propjson[prop], property_, 'example')
+            set_field(propjson[prop], property_, 'example',
+                showMsgIfMiss = (property_.get('type') is not None
+                                 and property_['type'] != 'array'
+                                 and property_['type'] != 'object'),
+                message = '%s of %s has no example'%(prop, name))
             if (property_.get('type') is not None and
                 property_['type'] == 'array'):
                 set_field(propjson[prop]['items'], property_, '$ref')
                 if (propjson[prop]['items'].get('type') is not None):
                     property_['itemType'] = propjson[prop]['items']['type']
+                    if (property_.get('example') is None):
+                        LOGGER.error('%s of %s has no example.'%(prop, name))
+                if (property_.get('$ref') is None
+                    and property_.get('itemType') is None):
+                    LOGGER.error('%s of %s miss $ref or itemType'%(prop, name))
 
             properties.append(property_)
     model['properties'] = properties
@@ -212,13 +230,13 @@ def parse_params(parameters):
     refs = []
     for parameter in parameters:
         p = {}
-        set_field(parameter, p, 'name')
-        set_field(parameter, p, 'description')
-        set_field(parameter, p, 'required')
-        set_field(parameter, p, 'type')
-        set_field(parameter, p, 'x-example', 'example')
+        set_field(parameter, p, 'name', showMsgIfMiss = True)
+        set_field(parameter, p, 'description', showMsgIfMiss = True)
+        set_field(parameter, p, 'required', showMsgIfMiss = True)
+        set_field(parameter, p, 'type', showMsgIfMiss = True)
+        set_field(parameter, p, 'x-example', 'example', showMsgIfMiss = True)
         if (parameter.get('schema') is not None):
-            set_field(parameter['schema'], p, '$ref')
+            set_field(parameter['schema'], p, '$ref', showMsgIfMiss = True)
             refs.append(p['$ref'])
         params.append(p)
     return (params, refs)
@@ -231,15 +249,18 @@ def parse_responses(responses):
     for error in errorCodes:
         if (error == '0' or error == '200'):
             ret = {}
-            set_field(responses[error], ret, 'description')
+            set_field(responses[error], ret, 'description',
+                      showMsgIfMiss = True)
             if (responses[error].get('schema') is not None):
-                set_field(responses[error]['schema'], ret, '$ref')
+                set_field(responses[error]['schema'], ret, '$ref',
+                          showMsgIfMiss = True)
                 refs.append(ret['$ref'])
             resps['ret'] = ret
         else:
             r = {}
             r['ec'] = error
-            set_field(responses[error], r, 'description', segSize = 100)
+            set_field(responses[error], r, 'description', segSize = 100,
+                      showMsgIfMiss = True)
             codes.append(r)
     resps['codes'] = codes
     return (resps, refs)
@@ -250,8 +271,10 @@ def parse_api(path, apiInfo):
     api['method'] = list(apiInfo.keys())[0].upper()
     rawInfo = list(apiInfo.values())[0]
     api['operationId'] = rawInfo['operationId']
-    api['description'] = rawInfo['description']
-    api['summary'] = rawInfo['summary']
+    set_field(rawInfo, api, 'description')
+    set_field(rawInfo, api, 'summary', showMsgIfMiss = True,
+              message = 'API %s has no summary'%(path))
+    # api['summary'] = rawInfo['summary']
     (api['params'], reqRefs) = parse_params(rawInfo['parameters'])
     (api['responses'], resRefs) = parse_responses(rawInfo['responses'])
     api['refs'] = reqRefs + resRefs
@@ -374,13 +397,14 @@ def get_ref_models(api):
     return ret
 
 def get_description(api):
-    if (api['description'] is not None and api['description'] != ''):
+    if (api.get('description') is not None and api['description'] != ''):
         return api['description']
     descFilePath = os.path.join('./tpls', VARS['currentLang'], 'segments',
         api['operationId'] + '_desc.md')
     if os.path.exists(descFilePath):
         return '{% include "../segments/' + api['operationId'] + '_desc.md" %}'
     else:
+        LOGGER.error('API %s has no description.'%(api['operationId']))
         return '/'
 
 
