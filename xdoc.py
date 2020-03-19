@@ -153,7 +153,8 @@ def set_field(f, t, field, tField = None,
         t[tField] = f[field]
         if (field == '$ref'):
             t[tField] = t[tField].replace('#/definitions/', '')
-        elif (field == 'example' or field == 'x-example' or field == 'description'):
+        elif (field == 'example' or field == 'x-example'
+              or field == 'description'):
             if isinstance(t[tField], bool):
                 t[tField] = str(t[tField]).lower()
             elif (t[tField] == 0):
@@ -352,7 +353,8 @@ def prop_to_json(prop, spaceNum):
                         prop['$ref'],
                         spaceNum + INDENT) + '\n'
                 else:
-                    valStr += ' ' * (spaceNum + INDENT) + prop['itemType'] + '\n'
+                    valStr += ' ' * (spaceNum + INDENT) + \
+                            prop['itemType'] + '\n'
                 valStr += ' ' * spaceNum + ']'
             else:
                 valStr = prop['type']
@@ -390,7 +392,8 @@ def create_request_example(api):
         if (payload == ''):
             return ret
         else:
-            return ret + ' -X POST -H "Content-Type:application/json" -d \\\n\'%s\''%(payload)
+            return ret + ' -X POST -H "Content-Type:application/json" -d' + \
+                    ' \\\n\'%s\''%(payload)
 
 def expend_models(modelName):
     modelNames = []
