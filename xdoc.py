@@ -237,7 +237,8 @@ def parse_params(parameters):
         set_field(parameter, p, 'x-example', 'example', showMsgIfMiss = True)
         if (parameter.get('schema') is not None):
             set_field(parameter['schema'], p, '$ref', showMsgIfMiss = True)
-            refs.append(p['$ref'])
+            if (p['$ref'] not in refs):
+                refs.append(p['$ref'])
         params.append(p)
     return (params, refs)
 
@@ -254,7 +255,8 @@ def parse_responses(responses):
             if (responses[error].get('schema') is not None):
                 set_field(responses[error]['schema'], ret, '$ref',
                           showMsgIfMiss = True)
-                refs.append(ret['$ref'])
+                if (ret['$ref'] not in refs):
+                    refs.append(ret['$ref'])
             resps['ret'] = ret
         else:
             r = {}
@@ -379,8 +381,9 @@ def expend_models(modelName):
     for prop in VARS['models'][modelName]['properties']:
         if prop.get('$ref') is not None:
             name = prop.get('$ref')
-            modelNames.append(name)
-            modelNames += expend_models(name)
+            if (name not in modelNames):
+                modelNames.append(name)
+                modelNames += expend_models(name)
     return modelNames
 
 
@@ -391,8 +394,9 @@ def get_ref_models(api):
         for prop in m['properties']:
             if prop.get('$ref') is not None:
                 name = prop.get('$ref')
-                modelNames.append(name)
-                modelNames += expend_models(name)
+                if (name not in modelNames):
+                    modelNames.append(name)
+                    modelNames += expend_models(name)
     ret = [VARS['models'][x] for x in modelNames if x != 'ResultInfo' ]
     return ret
 
