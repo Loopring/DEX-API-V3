@@ -307,8 +307,10 @@ def load_api_desc(lang):
     paths = swagger['paths']
 
     refModels = []
-    for path in paths.keys():
-        if path in VARS['v']['enable_apis']:
+    for path in VARS['v']['enable_apis']:
+        if path not in paths.keys():
+            LOGGER.error('API %s not found.'%(path))
+        else:
             for parsedApi in parse_api(path, paths[path]):
                 apis[parsedApi['operationId']] = parsedApi
                 refModels += apis[parsedApi['operationId']]['refs']
@@ -381,26 +383,35 @@ def create_response_example(api):
     return model_to_json(api['responses']['ret']['$ref'])
 
 def create_request_example(api):
-    ret = 'curl %s%s'%(VARS['v']['hosturl'], api['path'])
+    ret = 'curl ' + '%s' + '%s%s'%(VARS['v']['hosturl'], api['path'])
     param = ''
     if (api['method'] == 'GET'):
         for p in api['params']:
             param += p['name'] + '=' + str(p['example']) + '&'
         if (param == ''):
-            return ret
+            return ret%('')
         else:
-            return ret + '?' + param[0: -1]
+            return ret%('') + '?' + param[0: -1]
+    elif (api['method'] == 'DELETE'):
+        for p in api['params']:
+            param += p['name'] + '=' + str(p['example']) + '&'
+        if (param == ''):
+            return ret%('-X DELETE')
+        else:
+            return ret%('-X DELETE ') + '?' + param[0: -1]
     elif (api['method'] == 'POST'):
         if (len(api['params']) == 0):
             LOGGER.error('%s has no parameters.'%(api['operationId']))
             return 'error'
-        payload = model_to_json(
-            api['params'][0]['$ref'])
+        payload = model_to_json(api['params'][0]['$ref'])
         if (payload == ''):
-            return ret
+            return ret%('-X POST')
         else:
-            return ret + ' -X POST -H "Content-Type:application/json" -d' + \
+            return ret%('-X POST ') + ' -H "Content-Type:application/json" -d' + \
                     ' \\\n\'%s\''%(payload)
+    else:
+        LOGGER.error('%s is not supported with method %s'%(api['path'],
+                                                           api['method']))
 
 def expend_models(modelName):
     modelNames = []
