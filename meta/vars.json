@@ -1,6 +1,6 @@
 {
-    "langs": ["zh", "en"],
-    "# langs": ["zh"],
+    "# langs": ["zh", "en"],
+    "langs": ["zh"],
     "enable_apis" : [
         "/api/v2/timestamp",
         "/api/v2/ethNonce",

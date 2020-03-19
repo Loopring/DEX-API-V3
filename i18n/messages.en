@@ -57,6 +57,7 @@
         "sigdesc" : "Signature info. Needed by getapikey and cancelorder api",
         "resdesc" : "Result of api invoking",
         "codedesc" : "Description",
+        "none" : "None",
         "code0" : "Success",
         "code1000000" : "Internal unknown error",
         "code1000001" : "Illegality parameter"

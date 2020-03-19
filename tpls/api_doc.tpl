@@ -23,9 +23,12 @@
 
 #### {{ l.apidoc.reqparam }}
 
+{% set fields = g_request_params(api.params, api.method) %}
+{% if fields|length > 0 %}
+
 | {{ l.apidoc.field }} |  {{ l.apidoc.ftype }} | {{ l.apidoc.frequire }} | {{ l.apidoc.fdesc }} | {{ l.apidoc.fsample }} |
 | ---- | ---- | ---- | ---- | --- |
-{%- for field in g_request_params(api.params, api.method) %}
+{%- for field in fields %}
 | {{field.name}} | {{c_type(field)}} |
 {%- if field.required -%}
 {{l.apidoc.yes}}
@@ -39,6 +42,9 @@
 / |
 {%- endif -%}
 {%- endfor %}
+{% else %}
+{{l.apidoc.none}}
+{% endif %}
 
 #### {{ l.apidoc.reqexpl }}
 
