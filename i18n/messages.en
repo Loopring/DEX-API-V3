@@ -60,7 +60,11 @@
         "none" : "None",
         "code0" : "Success",
         "code1000000" : "Internal unknown error",
-        "code1000001" : "Illegality parameter"
+        "code1000001" : "Illegality parameter",
+        "code1000002" : "Request timeout",
+        "code1000202" : "Update fail",
+        "code1000203" : "Internal persistence error",
+        "code1000204" : "Submit duplicated"
     },
 
     "comment" : {
