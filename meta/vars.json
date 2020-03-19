@@ -1,6 +1,6 @@
 {
-    "# langs": ["zh", "en"],
-    "langs": ["zh"],
+    "langs": ["zh", "en"],
+    "# langs": ["zh"],
     "enable_apis" : [
         "/api/v2/timestamp",
         "/api/v2/ethNonce",
@@ -14,6 +14,6 @@
         "/api/v2/exchange/markets",
         "/api/v2/depth"
     ],
-    "# hosturl" : "https://api.loopring.io",
-    "hosturl" : "http://161.189.106.255:31610"
+    "hosturl" : "https://api.loopring.io",
+    "# hosturl" : "http://161.189.106.255:31610"
 }
