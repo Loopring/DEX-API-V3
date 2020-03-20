@@ -5,6 +5,6 @@
         "custom-favicon"
     ],
     "pluginsConfig" : {
-        "favicon": "./images/favicon.ico"
+        "favicon": "./gitbook/images/favicon.ico"
     }
 }
