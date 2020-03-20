@@ -206,7 +206,7 @@
                 <a href="getApiKey.html">
             
                     
-                    获取用户ApiKey
+                    查询用户ApiKey
             
                 </a>
             
@@ -479,7 +479,7 @@
                 <a href="getAccount.html">
             
                     
-                    获取用户信息
+                    查询用户信息
             
                 </a>
             
@@ -680,7 +680,7 @@
 <td>interval</td>
 <td>string</td>
 <td>&#x662F;</td>
-<td>&#x95F4;&#x9694;</td>
+<td>&#x95F4;&#x9694;&#xFF0C;&#x53EF;&#x4EE5;&#x662F;: 1min, 5min, 15min, 30min, 1hr, 2hr, 4hr, 12hr, 1d, 1w</td>
 <td>5min</td>
 </tr>
 <tr>
@@ -688,14 +688,14 @@
 <td>integer</td>
 <td>&#x5426;</td>
 <td>&#x5F00;&#x59CB;&#x65F6;&#x95F4;</td>
-<td>1567053142</td>
+<td>1584479105000</td>
 </tr>
 <tr>
 <td>end</td>
 <td>integer</td>
 <td>&#x5426;</td>
 <td>&#x7ED3;&#x675F;&#x65F6;&#x95F4;</td>
-<td>1567053142</td>
+<td>1584565505000</td>
 </tr>
 <tr>
 <td>limit</td>
@@ -707,7 +707,7 @@
 </tbody>
 </table>
 <h4 id="&#x8BF7;&#x6C42;&#x793A;&#x4F8B;">&#x8BF7;&#x6C42;&#x793A;&#x4F8B;</h4>
-<pre><code class="lang-bash">curl https://api.loopring.io/api/v2/candlestick?market=LRC-ETH&amp;interval=5min&amp;start=1567053142&amp;end=1567053142&amp;<span class="hljs-built_in">limit</span>=120
+<pre><code class="lang-bash">curl https://api.loopring.io/api/v2/candlestick?market=LRC-ETH&amp;interval=5min&amp;start=1584479105000&amp;end=1584565505000&amp;<span class="hljs-built_in">limit</span>=120
 </code></pre>
 <h4 id="&#x54CD;&#x5E94;&#x5B57;&#x6BB5;">&#x54CD;&#x5E94;&#x5B57;&#x6BB5;</h4>
 <table>
@@ -916,7 +916,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"查询K线数据","level":"2.2.1.18","depth":3,"next":{"title":"查询token法币价","level":"2.2.1.19","depth":3,"path":"dex_apis/getPrice.md","ref":"dex_apis/getPrice.md","articles":[]},"previous":{"title":"查询交易所Ticker","level":"2.2.1.17","depth":3,"path":"dex_apis/getTicker.md","ref":"dex_apis/getTicker.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","custom-favicon"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./gitbook/images/favicon.ico","custom-favicon":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh","gitbook":"*"},"file":{"path":"dex_apis/getCandlestick.md","mtime":"2020-03-20T05:14:28.380Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-20T05:14:29.388Z"},"basePath":"..","book":{"language":"zh"}});
+            gitbook.page.hasChanged({"page":{"title":"查询K线数据","level":"2.2.1.18","depth":3,"next":{"title":"查询token法币价","level":"2.2.1.19","depth":3,"path":"dex_apis/getPrice.md","ref":"dex_apis/getPrice.md","articles":[]},"previous":{"title":"查询交易所Ticker","level":"2.2.1.17","depth":3,"path":"dex_apis/getTicker.md","ref":"dex_apis/getTicker.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","custom-favicon"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./gitbook/images/favicon.ico","custom-favicon":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh","gitbook":"*"},"file":{"path":"dex_apis/getCandlestick.md","mtime":"2020-03-20T07:11:54.681Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-20T07:11:55.980Z"},"basePath":"..","book":{"language":"zh"}});
         });
     </script>
 </div>
