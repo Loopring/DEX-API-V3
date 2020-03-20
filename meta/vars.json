@@ -40,5 +40,6 @@
         "/api/v2/user/trades"
     ],
     "hosturl" : "https://api.loopring.io",
-    "# hosturl" : "http://161.189.106.255:31610"
+    "fetchurl" : "http://161.189.106.255:31610",
+    "# fetchurl" : "http://localhost:31610"
 }

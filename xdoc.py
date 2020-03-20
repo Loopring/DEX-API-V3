@@ -536,11 +536,11 @@ def build_doc():
 def fetch_and_save_swagger_json(lang):
     conn = None
 
-    if VARS['v']['hosturl'].startswith('https://'):
-        host = VARS['v']['hosturl'].replace('https://', '')
+    if VARS['v']['fetchurl'].startswith('https://'):
+        host = VARS['v']['fetchurl'].replace('https://', '')
         conn = http.client.HTTPSConnection(host)
     else:
-        host = VARS['v']['hosturl'].replace('http://', '')
+        host = VARS['v']['fetchurl'].replace('http://', '')
         conn = http.client.HTTPConnection(host)
 
     LOGGER.info('Fetching swagger.json with lang %s...'%(lang))

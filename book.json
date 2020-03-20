@@ -1,4 +1,10 @@
 {
     "gitbook": ">=3.2.3",
-    "plugins": ["expandable-chapters"]
+    "plugins": [
+        "expandable-chapters",
+        "custom-favicon"
+    ],
+    "pluginsConfig" : {
+        "favicon": "./images/favicon.ico"
+    }
 }
