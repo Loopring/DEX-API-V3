@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>获取市场深度信息 · GitBook</title>
+        <title>查询服务器当前时间 · GitBook</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="getTicker.html" />
+    <link rel="next" href="getApiKey.html" />
     
     
-    <link rel="prev" href="getExchangeInfo.html" />
+    <link rel="prev" href="../restful_api_overview.html" />
     
 
     </head>
@@ -188,7 +188,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.2.1.1" data-path="getTimestamp.html">
+        <li class="chapter active" data-level="2.2.1.1" data-path="getTimestamp.html">
             
                 <a href="getTimestamp.html">
             
@@ -383,7 +383,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2.1.16" data-path="getDepth.html">
+        <li class="chapter " data-level="2.2.1.16" data-path="getDepth.html">
             
                 <a href="getDepth.html">
             
@@ -631,7 +631,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >获取市场深度信息</a>
+        <a href=".." >查询服务器当前时间</a>
     </h1>
 </div>
 
@@ -646,54 +646,21 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x83B7;&#x53D6;&#x5E02;&#x573A;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;">&#x83B7;&#x53D6;&#x5E02;&#x573A;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;</h2>
+                                <h2 id="&#x67E5;&#x8BE2;&#x670D;&#x52A1;&#x5668;&#x5F53;&#x524D;&#x65F6;&#x95F4;">&#x67E5;&#x8BE2;&#x670D;&#x52A1;&#x5668;&#x5F53;&#x524D;&#x65F6;&#x95F4;</h2>
 <h3 id="api-&#x6458;&#x8981;">API &#x6458;&#x8981;</h3>
 <hr>
 <h4 id="http-&#x65B9;&#x6CD5;">HTTP &#x65B9;&#x6CD5;</h4>
 <p><strong>GET</strong></p>
 <h4 id="&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;">&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;</h4>
-<p><strong>/api/v2/depth</strong></p>
+<p><strong>/api/v2/timestamp</strong></p>
 <h4 id="&#x529F;&#x80FD;">&#x529F;&#x80FD;</h4>
-<p>&#x83B7;&#x53D6;&#x67D0;&#x4E2A;&#x5E02;&#x573A;&#x5BF9;&#x7684;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;</p>
+<p>&#x8FD4;&#x56DE;&#x670D;&#x52A1;&#x5668;&#x5F53;&#x524D;&#x65F6;&#x95F4;&#xFF0C;&#x4EE5;&#x6BEB;&#x79D2;&#x4E3A;&#x5355;&#x4F4D;</p>
 <h3 id="api-&#x63CF;&#x8FF0;">API &#x63CF;&#x8FF0;</h3>
 <hr>
 <h4 id="&#x8BF7;&#x6C42;&#x53C2;&#x6570;">&#x8BF7;&#x6C42;&#x53C2;&#x6570;</h4>
-<table>
-<thead>
-<tr>
-<th>&#x5B57;&#x6BB5;</th>
-<th>&#x7C7B;&#x578B;</th>
-<th>&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
-<th>&#x8BF4;&#x660E;</th>
-<th>&#x4E3E;&#x4F8B;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>market</td>
-<td>string</td>
-<td>&#x662F;</td>
-<td>&#x5E02;&#x573A;&#x5BF9;</td>
-<td>LRC-ETH</td>
-</tr>
-<tr>
-<td>level</td>
-<td>integer</td>
-<td>&#x662F;</td>
-<td>&#x6DF1;&#x5EA6;&#x7B49;&#x7EA7;&#xFF0C;&#x8D8A;&#x5927;&#x8868;&#x793A;&#x5408;&#x5E76;&#x7684;&#x6DF1;&#x5EA6;&#x8D8A;&#x591A;</td>
-<td>2</td>
-</tr>
-<tr>
-<td>limit</td>
-<td>integer</td>
-<td>&#x5426;</td>
-<td>&#x8FD4;&#x56DE;&#x6761;&#x6570;&#x9650;&#x5236;</td>
-<td>2</td>
-</tr>
-</tbody>
-</table>
+<p>&#x65E0;</p>
 <h4 id="&#x8BF7;&#x6C42;&#x793A;&#x4F8B;">&#x8BF7;&#x6C42;&#x793A;&#x4F8B;</h4>
-<pre><code class="lang-bash">curl https://api.loopring.io/api/v2/depth?market=LRC-ETH&amp;level=2&amp;<span class="hljs-built_in">limit</span>=2
+<pre><code class="lang-bash">curl https://api.loopring.io/api/v2/timestamp
 </code></pre>
 <h4 id="&#x54CD;&#x5E94;&#x5B57;&#x6BB5;">&#x54CD;&#x5E94;&#x5B57;&#x6BB5;</h4>
 <table>
@@ -716,10 +683,10 @@
 </tr>
 <tr>
 <td>data</td>
-<td><a href="#Depth">Depth</a></td>
+<td>integer</td>
 <td>&#x5426;</td>
-<td>&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;</td>
-<td>/</td>
+<td>&#x83B7;&#x53D6;&#x670D;&#x52A1;&#x5668;&#x65F6;&#x95F4;&#x8FD4;&#x56DE;</td>
+<td>1584354752</td>
 </tr>
 </tbody>
 </table>
@@ -729,26 +696,7 @@
         <span class="hljs-string">&quot;code&quot;</span> : <span class="hljs-number">0</span>,
         <span class="hljs-string">&quot;message&quot;</span> : <span class="hljs-string">&quot;SUCCESS&quot;</span>
     },
-    <span class="hljs-string">&quot;data&quot;</span> : {
-        <span class="hljs-string">&quot;version&quot;</span> : <span class="hljs-number">147</span>,
-        <span class="hljs-string">&quot;timestamp&quot;</span> : <span class="hljs-number">432312312</span>,
-        <span class="hljs-string">&quot;bids&quot;</span> : [
-            {
-                <span class="hljs-string">&quot;price&quot;</span> : <span class="hljs-string">&quot;0.002&quot;</span>,
-                <span class="hljs-string">&quot;size&quot;</span> : <span class="hljs-string">&quot;21000&quot;</span>,
-                <span class="hljs-string">&quot;volume&quot;</span> : <span class="hljs-string">&quot;33220000&quot;</span>,
-                <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">4</span>
-            }
-        ],
-        <span class="hljs-string">&quot;asks&quot;</span> : [
-            {
-                <span class="hljs-string">&quot;price&quot;</span> : <span class="hljs-string">&quot;0.002&quot;</span>,
-                <span class="hljs-string">&quot;size&quot;</span> : <span class="hljs-string">&quot;21000&quot;</span>,
-                <span class="hljs-string">&quot;volume&quot;</span> : <span class="hljs-string">&quot;33220000&quot;</span>,
-                <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">4</span>
-            }
-        ]
-    }
+    <span class="hljs-string">&quot;data&quot;</span> : <span class="hljs-number">1584354752</span>
 }
 </code></pre>
 <h4 id="&#x8FD4;&#x56DE;&#x7801;">&#x8FD4;&#x56DE;&#x7801;</h4>
@@ -762,15 +710,7 @@
 <tbody>
 <tr>
 <td>100000</td>
-<td>ERR_INTERNAL_UNKNOWN</td>
-</tr>
-<tr>
-<td>108000</td>
-<td>ERR_DEPTH_UNSUPPORTED_MARKET</td>
-</tr>
-<tr>
-<td>108001</td>
-<td>ERR_DEPTH_UNSUPPORTED_LEVEL</td>
+<td>&#x672A;&#x77E5;&#x9519;&#x8BEF;</td>
 </tr>
 </tbody>
 </table>
@@ -805,92 +745,6 @@
 </tr>
 </tbody>
 </table>
-<h4 id="depth">Depth</h4>
-<p><span id="Depth"></span>&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;</p>
-<table>
-<thead>
-<tr>
-<th>&#x5B57;&#x6BB5;</th>
-<th>&#x7C7B;&#x578B;</th>
-<th>&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
-<th>&#x8BF4;&#x660E;</th>
-<th>&#x4E3E;&#x4F8B;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>version</td>
-<td>integer</td>
-<td>&#x662F;</td>
-<td>&#x7248;&#x672C;&#x53F7;</td>
-<td>147</td>
-</tr>
-<tr>
-<td>timestamp</td>
-<td>integer</td>
-<td>&#x662F;</td>
-<td>&#x65F6;&#x95F4;&#x6233;</td>
-<td>432312312</td>
-</tr>
-<tr>
-<td>bids</td>
-<td>list&lt; <a href="#Slot">Slot</a> &gt;</td>
-<td>&#x662F;</td>
-<td>&#x4E70;&#x5355;&#x6DF1;&#x5EA6;</td>
-<td>/</td>
-</tr>
-<tr>
-<td>asks</td>
-<td>list&lt; <a href="#Slot">Slot</a> &gt;</td>
-<td>&#x662F;</td>
-<td>&#x5356;&#x5355;&#x6DF1;&#x5EA6;</td>
-<td>/</td>
-</tr>
-</tbody>
-</table>
-<h4 id="slot">Slot</h4>
-<p><span id="Slot"></span>&#x6BCF;&#x4E00;&#x6761;&#x6DF1;&#x5EA6;&#x6570;&#x636E;</p>
-<table>
-<thead>
-<tr>
-<th>&#x5B57;&#x6BB5;</th>
-<th>&#x7C7B;&#x578B;</th>
-<th>&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
-<th>&#x8BF4;&#x660E;</th>
-<th>&#x4E3E;&#x4F8B;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>price</td>
-<td>string</td>
-<td>&#x662F;</td>
-<td>&#x4EF7;&#x683C;</td>
-<td>0.002</td>
-</tr>
-<tr>
-<td>size</td>
-<td>string</td>
-<td>&#x662F;</td>
-<td>&#x6302;&#x5355;&#x91CF;</td>
-<td>21000</td>
-</tr>
-<tr>
-<td>volume</td>
-<td>string</td>
-<td>&#x662F;</td>
-<td>&#x6302;&#x5355;&#x603B;&#x91CF;</td>
-<td>33220000</td>
-</tr>
-<tr>
-<td>count</td>
-<td>integer</td>
-<td>&#x662F;</td>
-<td>&#x805A;&#x5408;&#x7684;&#x8BA2;&#x5355;&#x6570;&#x76EE;</td>
-<td>4</td>
-</tr>
-</tbody>
-</table>
 
                                 
                                 </section>
@@ -918,12 +772,12 @@
 
             
                 
-                <a href="getExchangeInfo.html" class="navigation navigation-prev " aria-label="Previous page: 查询交易所的基本必要信息">
+                <a href="../restful_api_overview.html" class="navigation navigation-prev " aria-label="Previous page: Restful API">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="getTicker.html" class="navigation navigation-next " aria-label="Next page: 查询交易所Ticker">
+                <a href="getApiKey.html" class="navigation navigation-next " aria-label="Next page: 获取用户ApiKey">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -934,7 +788,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"获取市场深度信息","level":"2.2.1.16","depth":3,"next":{"title":"查询交易所Ticker","level":"2.2.1.17","depth":3,"path":"dex_apis/getTicker.md","ref":"dex_apis/getTicker.md","articles":[]},"previous":{"title":"查询交易所的基本必要信息","level":"2.2.1.15","depth":3,"path":"dex_apis/getExchangeInfo.md","ref":"dex_apis/getExchangeInfo.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh","gitbook":"*"},"file":{"path":"dex_apis/getDepth.md","mtime":"2020-03-20T02:07:17.915Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-20T02:07:19.548Z"},"basePath":"..","book":{"language":"zh"}});
+            gitbook.page.hasChanged({"page":{"title":"查询服务器当前时间","level":"2.2.1.1","depth":3,"next":{"title":"获取用户ApiKey","level":"2.2.1.2","depth":3,"path":"dex_apis/getApiKey.md","ref":"dex_apis/getApiKey.md","articles":[]},"previous":{"title":"Restful API","level":"2.2.1","depth":2,"path":"restful_api_overview.md","ref":"restful_api_overview.md","articles":[{"title":"查询服务器当前时间","level":"2.2.1.1","depth":3,"path":"dex_apis/getTimestamp.md","ref":"dex_apis/getTimestamp.md","articles":[]},{"title":"获取用户ApiKey","level":"2.2.1.2","depth":3,"path":"dex_apis/getApiKey.md","ref":"dex_apis/getApiKey.md","articles":[]},{"title":"申请用户ApiKey","level":"2.2.1.3","depth":3,"path":"dex_apis/applyApiKey.md","ref":"dex_apis/applyApiKey.md","articles":[]},{"title":"获取下一个有效OrderId","level":"2.2.1.4","depth":3,"path":"dex_apis/getNextOrderId.md","ref":"dex_apis/getNextOrderId.md","articles":[]},{"title":"获取订单详情","level":"2.2.1.5","depth":3,"path":"dex_apis/getOrderDetail.md","ref":"dex_apis/getOrderDetail.md","articles":[]},{"title":"提交订单","level":"2.2.1.6","depth":3,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},{"title":"根据用户订单列表","level":"2.2.1.7","depth":3,"path":"dex_apis/getOrders.md","ref":"dex_apis/getOrders.md","articles":[]},{"title":"取消订单","level":"2.2.1.8","depth":3,"path":"dex_apis/cancelOrders.md","ref":"dex_apis/cancelOrders.md","articles":[]},{"title":"发送以太坊交易","level":"2.2.1.9","depth":3,"path":"dex_apis/sendTransaction.md","ref":"dex_apis/sendTransaction.md","articles":[]},{"title":"查询nonce","level":"2.2.1.10","depth":3,"path":"dex_apis/getEthNonce.md","ref":"dex_apis/getEthNonce.md","articles":[]},{"title":"查询ETH余额","level":"2.2.1.11","depth":3,"path":"dex_apis/getEthBalance.md","ref":"dex_apis/getEthBalance.md","articles":[]},{"title":"获取推荐gas","level":"2.2.1.12","depth":3,"path":"dex_apis/getRecommendedGasPrice.md","ref":"dex_apis/getRecommendedGasPrice.md","articles":[]},{"title":"查询市场配置","level":"2.2.1.13","depth":3,"path":"dex_apis/getMarkets.md","ref":"dex_apis/getMarkets.md","articles":[]},{"title":"查询交易所支持的通证信息","level":"2.2.1.14","depth":3,"path":"dex_apis/getTokens.md","ref":"dex_apis/getTokens.md","articles":[]},{"title":"查询交易所的基本必要信息","level":"2.2.1.15","depth":3,"path":"dex_apis/getExchangeInfo.md","ref":"dex_apis/getExchangeInfo.md","articles":[]},{"title":"获取市场深度信息","level":"2.2.1.16","depth":3,"path":"dex_apis/getDepth.md","ref":"dex_apis/getDepth.md","articles":[]},{"title":"查询交易所Ticker","level":"2.2.1.17","depth":3,"path":"dex_apis/getTicker.md","ref":"dex_apis/getTicker.md","articles":[]},{"title":"查询K线数据","level":"2.2.1.18","depth":3,"path":"dex_apis/getCandlestick.md","ref":"dex_apis/getCandlestick.md","articles":[]},{"title":"查询token法币价","level":"2.2.1.19","depth":3,"path":"dex_apis/getPrice.md","ref":"dex_apis/getPrice.md","articles":[]},{"title":"查询市场交易","level":"2.2.1.20","depth":3,"path":"dex_apis/getMarketTrade.md","ref":"dex_apis/getMarketTrade.md","articles":[]},{"title":"查询授权","level":"2.2.1.21","depth":3,"path":"dex_apis/getAllowance.md","ref":"dex_apis/getAllowance.md","articles":[]},{"title":"查询Token余额","level":"2.2.1.22","depth":3,"path":"dex_apis/getTokenBalance.md","ref":"dex_apis/getTokenBalance.md","articles":[]},{"title":"获取用户信息","level":"2.2.1.23","depth":3,"path":"dex_apis/getAccount.md","ref":"dex_apis/getAccount.md","articles":[]},{"title":"获取用户开户记录","level":"2.2.1.24","depth":3,"path":"dex_apis/getUserCreate.md","ref":"dex_apis/getUserCreate.md","articles":[]},{"title":"获取用户更新记录","level":"2.2.1.25","depth":3,"path":"dex_apis/getUserUpdate.md","ref":"dex_apis/getUserUpdate.md","articles":[]},{"title":"查询用户交易所余额","level":"2.2.1.26","depth":3,"path":"dex_apis/getUserBalances.md","ref":"dex_apis/getUserBalances.md","articles":[]},{"title":"获取用户充值记录","level":"2.2.1.27","depth":3,"path":"dex_apis/getUserDeposits.md","ref":"dex_apis/getUserDeposits.md","articles":[]},{"title":"获取用户提取记录","level":"2.2.1.28","depth":3,"path":"dex_apis/getUserWithdrawals.md","ref":"dex_apis/getUserWithdrawals.md","articles":[]},{"title":"获取用户转账记录","level":"2.2.1.29","depth":3,"path":"dex_apis/getUserTransfers.md","ref":"dex_apis/getUserTransfers.md","articles":[]},{"title":"获取用户交易记录","level":"2.2.1.30","depth":3,"path":"dex_apis/getUserTrades.md","ref":"dex_apis/getUserTrades.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"expandable-chapters":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh","gitbook":"*"},"file":{"path":"dex_apis/getTimestamp.md","mtime":"2020-03-20T02:07:18.060Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-20T02:07:19.548Z"},"basePath":"..","book":{"language":"zh"}});
         });
     </script>
 </div>
