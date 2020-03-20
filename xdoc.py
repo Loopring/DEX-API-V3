@@ -387,18 +387,18 @@ def create_request_example(api):
     param = ''
     if (api['method'] == 'GET'):
         for p in api['params']:
-            param += p['name'] + '=' + str(p['example']) + '&'
+            param += p['name'] + '\=' + str(p['example']) + '\&'
         if (param == ''):
             return ret%('')
         else:
-            return ret%('') + '?' + param[0: -1]
+            return ret%('') + '\?' + param[0: -2]
     elif (api['method'] == 'DELETE'):
         for p in api['params']:
-            param += p['name'] + '=' + str(p['example']) + '&'
+            param += p['name'] + '\=' + str(p['example']) + '\&'
         if (param == ''):
             return ret%('-X DELETE')
         else:
-            return ret%('-X DELETE ') + '?' + param[0: -1]
+            return ret%('-X DELETE ') + '\?' + param[0: -2]
     elif (api['method'] == 'POST'):
         if (len(api['params']) == 0):
             LOGGER.error('%s has no parameters.'%(api['operationId']))
