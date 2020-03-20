@@ -1,0 +1,933 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>api.getCandlestick.value · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="getPrice.html" />
+    
+    
+    <link rel="prev" href="getTicker.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Loopring</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../GLOSSORY.html">
+            
+                <a href="../GLOSSORY.html">
+            
+                    
+                    Glossory
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">DEX</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../dex_integration_overview.md">
+            
+                <span>
+            
+                    
+                    DEX integration doc
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    Market making
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../dex_api_overview.md">
+            
+                <span>
+            
+                    
+                    DEX API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../restful_api_overview.md">
+            
+                <span>
+            
+                    
+                    Restful API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="getTimestamp.html">
+            
+                <a href="getTimestamp.html">
+            
+                    
+                    api.timestamp.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.2" data-path="getApiKey.html">
+            
+                <a href="getApiKey.html">
+            
+                    
+                    api.getApiKey.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.3" data-path="applyApiKey.html">
+            
+                <a href="applyApiKey.html">
+            
+                    
+                    api.applyApiKey.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.4" data-path="getNextOrderId.html">
+            
+                <a href="getNextOrderId.html">
+            
+                    
+                    api.GetNextOrderIdRequest.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.5" data-path="getOrderDetail.html">
+            
+                <a href="getOrderDetail.html">
+            
+                    
+                    api.getOrderDetail.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.6" data-path="submitOrder.html">
+            
+                <a href="submitOrder.html">
+            
+                    
+                    api.submitOrder.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.7" data-path="getOrders.html">
+            
+                <a href="getOrders.html">
+            
+                    
+                    api.getOrders.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.8" data-path="cancelOrders.html">
+            
+                <a href="cancelOrders.html">
+            
+                    
+                    api.cancelOrders.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.9" data-path="sendTransaction.html">
+            
+                <a href="sendTransaction.html">
+            
+                    
+                    api.sendTx.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.10" data-path="getEthNonce.html">
+            
+                <a href="getEthNonce.html">
+            
+                    
+                    api.getEthNonce.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.11" data-path="getEthBalance.html">
+            
+                <a href="getEthBalance.html">
+            
+                    
+                    api.getEthBalance.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.12" data-path="getRecommendedGasPrice.html">
+            
+                <a href="getRecommendedGasPrice.html">
+            
+                    
+                    api.getRecommendedGasPrice.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.13" data-path="getMarkets.html">
+            
+                <a href="getMarkets.html">
+            
+                    
+                    api.getMarkets.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.14" data-path="getTokens.html">
+            
+                <a href="getTokens.html">
+            
+                    
+                    api.getTokens.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.15" data-path="getExchangeInfo.html">
+            
+                <a href="getExchangeInfo.html">
+            
+                    
+                    api.getExchangeInfo.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.16" data-path="getDepth.html">
+            
+                <a href="getDepth.html">
+            
+                    
+                    api.getDepth.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.17" data-path="getTicker.html">
+            
+                <a href="getTicker.html">
+            
+                    
+                    api.getTicker.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2.1.18" data-path="getCandlestick.html">
+            
+                <a href="getCandlestick.html">
+            
+                    
+                    api.getCandlestick.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.19" data-path="getPrice.html">
+            
+                <a href="getPrice.html">
+            
+                    
+                    api.getPrice.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.20" data-path="getMarketTrade.html">
+            
+                <a href="getMarketTrade.html">
+            
+                    
+                    api.getMarketTrade.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.21" data-path="getAllowance.html">
+            
+                <a href="getAllowance.html">
+            
+                    
+                    api.getAllowance.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.22" data-path="getTokenBalance.html">
+            
+                <a href="getTokenBalance.html">
+            
+                    
+                    api.getTokenBalance.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.23" data-path="getAccount.html">
+            
+                <a href="getAccount.html">
+            
+                    
+                    api.getAccount.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.24" data-path="getUserBalances.html">
+            
+                <a href="getUserBalances.html">
+            
+                    
+                    api.getUserBalances.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.25" data-path="getUserDeposits.html">
+            
+                <a href="getUserDeposits.html">
+            
+                    
+                    api.getUserDeposits.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.26" data-path="getUserWithdrawals.html">
+            
+                <a href="getUserWithdrawals.html">
+            
+                    
+                    api.getUserWithdrawals.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.27" data-path="getUserTransfers.html">
+            
+                <a href="getUserTransfers.html">
+            
+                    
+                    api.getUserTransfers.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.28" data-path="getUserTrades.html">
+            
+                <a href="getUserTrades.html">
+            
+                    
+                    api.getUserTrades.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../websocket_overview.md">
+            
+                <span>
+            
+                    
+                    Websocket API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >api.getCandlestick.value</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="apigetcandlestickvalue">api.getCandlestick.value</h2>
+<h3 id="api-overview">API Overview</h3>
+<hr>
+<h4 id="http-method">HTTP method</h4>
+<p><strong>GET</strong></p>
+<h4 id="visit-path">Visit path</h4>
+<p><strong>/api/v2/candlestick</strong></p>
+<h4 id="function">Function</h4>
+<p>api.getCandlestick.notes</p>
+<h3 id="api-description">API description</h3>
+<hr>
+<h4 id="request-parameters">Request parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>market</td>
+<td>string</td>
+<td>Y</td>
+<td>request.getCandlestick.market</td>
+<td>LRC-ETH</td>
+</tr>
+<tr>
+<td>interval</td>
+<td>string</td>
+<td>Y</td>
+<td>request.getCandlestick.interval</td>
+<td>5min</td>
+</tr>
+<tr>
+<td>start</td>
+<td>integer</td>
+<td>N</td>
+<td>request.getCandlestick.start</td>
+<td>1567053142</td>
+</tr>
+<tr>
+<td>end</td>
+<td>integer</td>
+<td>N</td>
+<td>request.getCandlestick.end</td>
+<td>1567053142</td>
+</tr>
+<tr>
+<td>limit</td>
+<td>integer</td>
+<td>N</td>
+<td>request.getCandlestick.limit</td>
+<td>120</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-sample">Request sample</h4>
+<pre><code class="lang-bash">curl https://api.loopring.io/api/v2/candlestick?market=LRC-ETH&amp;interval=5min&amp;start=1567053142&amp;end=1567053142&amp;<span class="hljs-built_in">limit</span>=120
+</code></pre>
+<h4 id="response-fields">Response fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resultInfo</td>
+<td><a href="#ResultInfo">ResultInfo</a></td>
+<td>Y</td>
+<td>model.resultInfo.description</td>
+<td>/</td>
+</tr>
+<tr>
+<td>candles</td>
+<td>list&lt; <a href="#Candlestick">Candlestick</a> &gt;</td>
+<td>N</td>
+<td>field.getCandlestickResponse.data</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-sample">Response sample</h4>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;resultInfo&quot;</span> : {
+        <span class="hljs-string">&quot;code&quot;</span> : <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;message&quot;</span> : <span class="hljs-string">&quot;SUCCESS&quot;</span>
+    },
+    <span class="hljs-string">&quot;candles&quot;</span> : [
+        {
+            <span class="hljs-string">&quot;start&quot;</span> : LRC-ETH,
+            <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">5</span>,
+            <span class="hljs-string">&quot;open&quot;</span> : <span class="hljs-string">&quot;1.5&quot;</span>,
+            <span class="hljs-string">&quot;close&quot;</span> : <span class="hljs-string">&quot;5.5&quot;</span>,
+            <span class="hljs-string">&quot;high&quot;</span> : <span class="hljs-string">&quot;8.8&quot;</span>,
+            <span class="hljs-string">&quot;low&quot;</span> : <span class="hljs-string">&quot;0.5&quot;</span>,
+            <span class="hljs-string">&quot;size&quot;</span> : <span class="hljs-string">&quot;0.5&quot;</span>,
+            <span class="hljs-string">&quot;volume&quot;</span> : <span class="hljs-string">&quot;0.5&quot;</span>
+        }
+    ]
+}
+</code></pre>
+<h4 id="return-code">Return code</h4>
+<table>
+<thead>
+<tr>
+<th>Return code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3 id="model">Model</h3>
+<hr>
+<h4 id="resultinfo">ResultInfo</h4>
+<p><span id="ResultInfo"></span>model.resultInfo.description</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>integer</td>
+<td>Y</td>
+<td>field.resultInfo.code</td>
+<td>0</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>Y</td>
+<td>field.resultInfo.message</td>
+<td>SUCCESS</td>
+</tr>
+</tbody>
+</table>
+<h4 id="candlestick">Candlestick</h4>
+<p><span id="Candlestick"></span>model.candlestick.description</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>start</td>
+<td>integer</td>
+<td>Y</td>
+<td>filed.candlestick.start</td>
+<td>LRC-ETH</td>
+</tr>
+<tr>
+<td>count</td>
+<td>integer</td>
+<td>Y</td>
+<td>filed.candlestick.count</td>
+<td>5</td>
+</tr>
+<tr>
+<td>open</td>
+<td>string</td>
+<td>Y</td>
+<td>filed.candlestick.open</td>
+<td>1.5</td>
+</tr>
+<tr>
+<td>close</td>
+<td>string</td>
+<td>Y</td>
+<td>filed.candlestick.close</td>
+<td>5.5</td>
+</tr>
+<tr>
+<td>high</td>
+<td>string</td>
+<td>Y</td>
+<td>filed.candlestick.high</td>
+<td>8.8</td>
+</tr>
+<tr>
+<td>low</td>
+<td>string</td>
+<td>Y</td>
+<td>filed.candlestick.low</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>size</td>
+<td>string</td>
+<td>Y</td>
+<td>filed.candlestick.size</td>
+<td>0.5</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>string</td>
+<td>Y</td>
+<td>filed.candlestick.volume</td>
+<td>0.5</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="getTicker.html" class="navigation navigation-prev " aria-label="Previous page: api.getTicker.value">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="getPrice.html" class="navigation navigation-next " aria-label="Next page: api.getPrice.value">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"api.getCandlestick.value","level":"2.2.1.18","depth":3,"next":{"title":"api.getPrice.value","level":"2.2.1.19","depth":3,"path":"dex_apis/getPrice.md","ref":"dex_apis/getPrice.md","articles":[]},"previous":{"title":"api.getTicker.value","level":"2.2.1.17","depth":3,"path":"dex_apis/getTicker.md","ref":"dex_apis/getTicker.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","custom-favicon"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./images/favicon.ico","custom-favicon":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"dex_apis/getCandlestick.md","mtime":"2020-03-20T04:45:08.910Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-20T04:45:10.055Z"},"basePath":"..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

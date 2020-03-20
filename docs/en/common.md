@@ -3,7 +3,7 @@
 
 #### API host
 
-**http://localhost:9000**
+**https://api.loopring.io**
 
 #### Header
 
@@ -24,6 +24,10 @@
 | 0 | Success |
 | 100000 | Internal unknown error |
 | 100001 | Illegality parameter |
+| 100002 | Request timeout |
+| 100202 | Update fail |
+| 100203 | Internal persistence error |
+| 100204 | Submit duplicated |
 
 #### 模型
 
@@ -32,5 +36,5 @@
 
 | Field |  Type | Required | Description | Sample |
 | ---- | ---- | ---- |   ----   |  --- |
-| code | number | Y | Return code | 0 |
+| code | integer | Y | Return code | 0 |
 | message | string | Y | Return message.  This is used for debug only. Do not show to users | "SUCCESS" |

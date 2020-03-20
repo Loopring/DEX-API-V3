@@ -1,0 +1,979 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>api.getOrderDetail.value · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="submitOrder.html" />
+    
+    
+    <link rel="prev" href="getNextOrderId.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">Loopring</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Introduction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../GLOSSORY.html">
+            
+                <a href="../GLOSSORY.html">
+            
+                    
+                    Glossory
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">DEX</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../dex_integration_overview.md">
+            
+                <span>
+            
+                    
+                    DEX integration doc
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" >
+            
+                <span>
+            
+                    
+                    Market making
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../dex_api_overview.md">
+            
+                <span>
+            
+                    
+                    DEX API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1" data-path="../restful_api_overview.md">
+            
+                <span>
+            
+                    
+                    Restful API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="getTimestamp.html">
+            
+                <a href="getTimestamp.html">
+            
+                    
+                    api.timestamp.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.2" data-path="getApiKey.html">
+            
+                <a href="getApiKey.html">
+            
+                    
+                    api.getApiKey.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.3" data-path="applyApiKey.html">
+            
+                <a href="applyApiKey.html">
+            
+                    
+                    api.applyApiKey.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.4" data-path="getNextOrderId.html">
+            
+                <a href="getNextOrderId.html">
+            
+                    
+                    api.GetNextOrderIdRequest.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2.1.5" data-path="getOrderDetail.html">
+            
+                <a href="getOrderDetail.html">
+            
+                    
+                    api.getOrderDetail.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.6" data-path="submitOrder.html">
+            
+                <a href="submitOrder.html">
+            
+                    
+                    api.submitOrder.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.7" data-path="getOrders.html">
+            
+                <a href="getOrders.html">
+            
+                    
+                    api.getOrders.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.8" data-path="cancelOrders.html">
+            
+                <a href="cancelOrders.html">
+            
+                    
+                    api.cancelOrders.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.9" data-path="sendTransaction.html">
+            
+                <a href="sendTransaction.html">
+            
+                    
+                    api.sendTx.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.10" data-path="getEthNonce.html">
+            
+                <a href="getEthNonce.html">
+            
+                    
+                    api.getEthNonce.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.11" data-path="getEthBalance.html">
+            
+                <a href="getEthBalance.html">
+            
+                    
+                    api.getEthBalance.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.12" data-path="getRecommendedGasPrice.html">
+            
+                <a href="getRecommendedGasPrice.html">
+            
+                    
+                    api.getRecommendedGasPrice.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.13" data-path="getMarkets.html">
+            
+                <a href="getMarkets.html">
+            
+                    
+                    api.getMarkets.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.14" data-path="getTokens.html">
+            
+                <a href="getTokens.html">
+            
+                    
+                    api.getTokens.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.15" data-path="getExchangeInfo.html">
+            
+                <a href="getExchangeInfo.html">
+            
+                    
+                    api.getExchangeInfo.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.16" data-path="getDepth.html">
+            
+                <a href="getDepth.html">
+            
+                    
+                    api.getDepth.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.17" data-path="getTicker.html">
+            
+                <a href="getTicker.html">
+            
+                    
+                    api.getTicker.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.18" data-path="getCandlestick.html">
+            
+                <a href="getCandlestick.html">
+            
+                    
+                    api.getCandlestick.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.19" data-path="getPrice.html">
+            
+                <a href="getPrice.html">
+            
+                    
+                    api.getPrice.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.20" data-path="getMarketTrade.html">
+            
+                <a href="getMarketTrade.html">
+            
+                    
+                    api.getMarketTrade.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.21" data-path="getAllowance.html">
+            
+                <a href="getAllowance.html">
+            
+                    
+                    api.getAllowance.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.22" data-path="getTokenBalance.html">
+            
+                <a href="getTokenBalance.html">
+            
+                    
+                    api.getTokenBalance.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.23" data-path="getAccount.html">
+            
+                <a href="getAccount.html">
+            
+                    
+                    api.getAccount.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.24" data-path="getUserBalances.html">
+            
+                <a href="getUserBalances.html">
+            
+                    
+                    api.getUserBalances.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.25" data-path="getUserDeposits.html">
+            
+                <a href="getUserDeposits.html">
+            
+                    
+                    api.getUserDeposits.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.26" data-path="getUserWithdrawals.html">
+            
+                <a href="getUserWithdrawals.html">
+            
+                    
+                    api.getUserWithdrawals.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.27" data-path="getUserTransfers.html">
+            
+                <a href="getUserTransfers.html">
+            
+                    
+                    api.getUserTransfers.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.28" data-path="getUserTrades.html">
+            
+                <a href="getUserTrades.html">
+            
+                    
+                    api.getUserTrades.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="../websocket_overview.md">
+            
+                <span>
+            
+                    
+                    Websocket API
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >api.getOrderDetail.value</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="apigetorderdetailvalue">api.getOrderDetail.value</h2>
+<h3 id="api-overview">API Overview</h3>
+<hr>
+<h4 id="http-method">HTTP method</h4>
+<p><strong>GET</strong></p>
+<h4 id="visit-path">Visit path</h4>
+<p><strong>/api/v2/order</strong></p>
+<h4 id="function">Function</h4>
+<p>api.getOrderDetail.notes</p>
+<h3 id="api-description">API description</h3>
+<hr>
+<h4 id="request-parameters">Request parameters</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accountId</td>
+<td>integer</td>
+<td>Y</td>
+<td>request.getOrderDetail.accountId</td>
+<td>1</td>
+</tr>
+<tr>
+<td>orderHash</td>
+<td>string</td>
+<td>Y</td>
+<td>request.getOrderDetail.orderHash</td>
+<td>13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859</td>
+</tr>
+</tbody>
+</table>
+<h4 id="request-sample">Request sample</h4>
+<pre><code class="lang-bash">curl https://api.loopring.io/api/v2/order?accountId=1&amp;orderHash=13375450901292179417154974849571793069911517354720397125027633242680470075859
+</code></pre>
+<h4 id="response-fields">Response fields</h4>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>resultInfo</td>
+<td><a href="#ResultInfo">ResultInfo</a></td>
+<td>Y</td>
+<td>model.resultInfo.description</td>
+<td>/</td>
+</tr>
+<tr>
+<td>data</td>
+<td><a href="#OrderDetail">OrderDetail</a></td>
+<td>N</td>
+<td>field.GetOrderDetailResponseV2.data</td>
+<td>/</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-sample">Response sample</h4>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;resultInfo&quot;</span> : {
+        <span class="hljs-string">&quot;code&quot;</span> : <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;message&quot;</span> : <span class="hljs-string">&quot;SUCCESS&quot;</span>
+    },
+    <span class="hljs-string">&quot;data&quot;</span> : {
+        <span class="hljs-string">&quot;hash&quot;</span> : <span class="hljs-string">&quot;0xfb5e711c2f044e94322ed262229cd8f0d0da00c22e1a00a0f5d881e45a38e1cf&quot;</span>,
+        <span class="hljs-string">&quot;clientOrderId&quot;</span> : <span class="hljs-string">&quot;200310143135081332&quot;</span>,
+        <span class="hljs-string">&quot;size&quot;</span> : <span class="hljs-string">&quot;8210000000000001024&quot;</span>,
+        <span class="hljs-string">&quot;volume&quot;</span> : <span class="hljs-string">&quot;163182534700000032&quot;</span>,
+        <span class="hljs-string">&quot;price&quot;</span> : <span class="hljs-string">&quot;0.01987608&quot;</span>,
+        <span class="hljs-string">&quot;filledSize&quot;</span> : <span class="hljs-string">&quot;0&quot;</span>,
+        <span class="hljs-string">&quot;filledVolume&quot;</span> : <span class="hljs-string">&quot;0&quot;</span>,
+        <span class="hljs-string">&quot;filledFee&quot;</span> : <span class="hljs-string">&quot;0&quot;</span>,
+        <span class="hljs-string">&quot;status&quot;</span> : <span class="hljs-string">&quot;ORDER_STATUS_PROCESSING&quot;</span>,
+        <span class="hljs-string">&quot;validSince&quot;</span> : <span class="hljs-number">1583929591</span>,
+        <span class="hljs-string">&quot;validUntil&quot;</span> : <span class="hljs-number">1586521591</span>,
+        <span class="hljs-string">&quot;createdAt&quot;</span> : <span class="hljs-number">1583933191494</span>,
+        <span class="hljs-string">&quot;side&quot;</span> : <span class="hljs-string">&quot;SELL&quot;</span>,
+        <span class="hljs-string">&quot;market&quot;</span> : <span class="hljs-string">&quot;LRC-ETH&quot;</span>
+    }
+}
+</code></pre>
+<h4 id="return-code">Return code</h4>
+<table>
+<thead>
+<tr>
+<th>Return code</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>100000</td>
+<td>ERR_INTERNAL_UNKNOWN</td>
+</tr>
+<tr>
+<td>107003</td>
+<td>ERR_USERTX_ORDER_HASH_EMPTY</td>
+</tr>
+<tr>
+<td>107004</td>
+<td>ERR_USERTX_ORDER_NOT_EXIST</td>
+</tr>
+<tr>
+<td>104001</td>
+<td>ERR_REST_EXPECT_APIKEY</td>
+</tr>
+<tr>
+<td>104002</td>
+<td>ERR_REST_APIKEY_NOT_MATCH</td>
+</tr>
+<tr>
+<td>104003</td>
+<td>ERR_REST_ACCOUNT_NOT_EXIST</td>
+</tr>
+</tbody>
+</table>
+<h3 id="model">Model</h3>
+<hr>
+<h4 id="resultinfo">ResultInfo</h4>
+<p><span id="ResultInfo"></span>model.resultInfo.description</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>code</td>
+<td>integer</td>
+<td>Y</td>
+<td>field.resultInfo.code</td>
+<td>0</td>
+</tr>
+<tr>
+<td>message</td>
+<td>string</td>
+<td>Y</td>
+<td>field.resultInfo.message</td>
+<td>SUCCESS</td>
+</tr>
+</tbody>
+</table>
+<h4 id="orderdetail">OrderDetail</h4>
+<p><span id="OrderDetail"></span>model.OrderDetail.description</p>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Type</th>
+<th>Required</th>
+<th>Description</th>
+<th>Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>hash</td>
+<td>string</td>
+<td>Y</td>
+<td>field.OrderDetail.hash</td>
+<td>0xfb5e711c2f044e9432<br>2ed262229cd8f0d0da00<br>c22e1a00a0f5d881e45a<br>38e1cf</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>string</td>
+<td>Y</td>
+<td>field.OrderDetail.clientOrderId</td>
+<td>200310143135081332</td>
+</tr>
+<tr>
+<td>size</td>
+<td>string</td>
+<td>Y</td>
+<td>field.OrderDetail.size</td>
+<td>8210000000000001024</td>
+</tr>
+<tr>
+<td>volume</td>
+<td>string</td>
+<td>Y</td>
+<td>field.OrderDetail.volume</td>
+<td>163182534700000032</td>
+</tr>
+<tr>
+<td>price</td>
+<td>string</td>
+<td>Y</td>
+<td>field.OrderDetail.price</td>
+<td>0.01987608</td>
+</tr>
+<tr>
+<td>filledSize</td>
+<td>string</td>
+<td>Y</td>
+<td>field.OrderDetail.filledSize</td>
+<td>0</td>
+</tr>
+<tr>
+<td>filledVolume</td>
+<td>string</td>
+<td>Y</td>
+<td>field.OrderDetail.filledVolume</td>
+<td>0</td>
+</tr>
+<tr>
+<td>filledFee</td>
+<td>string</td>
+<td>Y</td>
+<td>field.OrderDetail.filledFee</td>
+<td>0</td>
+</tr>
+<tr>
+<td>status</td>
+<td>string</td>
+<td>Y</td>
+<td>field.OrderDetail.status</td>
+<td>ORDER_STATUS_PROCESS<br>ING</td>
+</tr>
+<tr>
+<td>validSince</td>
+<td>integer</td>
+<td>Y</td>
+<td>field.OrderDetail.validSince</td>
+<td>1583929591</td>
+</tr>
+<tr>
+<td>validUntil</td>
+<td>integer</td>
+<td>Y</td>
+<td>field.OrderDetail.validUntil</td>
+<td>1586521591</td>
+</tr>
+<tr>
+<td>createdAt</td>
+<td>integer</td>
+<td>Y</td>
+<td>field.OrderDetail.createdAt</td>
+<td>1583933191494</td>
+</tr>
+<tr>
+<td>side</td>
+<td>string</td>
+<td>Y</td>
+<td>field.OrderDetail.side</td>
+<td>SELL</td>
+</tr>
+<tr>
+<td>market</td>
+<td>string</td>
+<td>Y</td>
+<td>field.OrderDetail.market</td>
+<td>LRC-ETH</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="getNextOrderId.html" class="navigation navigation-prev " aria-label="Previous page: api.GetNextOrderIdRequest.value">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="submitOrder.html" class="navigation navigation-next " aria-label="Next page: api.submitOrder.value">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"api.getOrderDetail.value","level":"2.2.1.5","depth":3,"next":{"title":"api.submitOrder.value","level":"2.2.1.6","depth":3,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},"previous":{"title":"api.GetNextOrderIdRequest.value","level":"2.2.1.4","depth":3,"path":"dex_apis/getNextOrderId.md","ref":"dex_apis/getNextOrderId.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","custom-favicon"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./images/favicon.ico","custom-favicon":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"en","gitbook":"*"},"file":{"path":"dex_apis/getOrderDetail.md","mtime":"2020-03-20T04:45:09.052Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-20T04:45:10.055Z"},"basePath":"..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

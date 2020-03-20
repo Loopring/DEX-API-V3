@@ -1,6 +1,6 @@
 {
-    "# langs": ["zh", "en"],
     "langs": ["zh"],
+    "# langs": ["zh"],
     "notOk": [
         "/api/v2/dexNonce",
         "/api/v2/offchainWithdrawal",
