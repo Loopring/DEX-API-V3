@@ -394,7 +394,7 @@ def create_response_example(api):
 def create_request_http_example(apiObj):
     hostUrl = VARS['v']['hosturl']
     apiObj['hosturl'] = hostUrl[hostUrl.index('://') + 3 :]
-    url = apiObj['path']
+    url = '%s%s'%(hostUrl, apiObj['path'])
     headers = []
     for header in get_request_headers(apiObj['operationId']):
         headers.append({'key' : header, 'value' : EXAM_HEADERS[header]})
