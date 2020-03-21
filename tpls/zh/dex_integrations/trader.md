@@ -117,9 +117,17 @@
   order.orderId = token_orderid_mapping['LRC']
   ```
 
-- 当前`LoopringDEX`每一个币种的最大订单`OrderID`为$$2^{20}​$$，如果当前账户某个币种的`OrderID`超过该值，则下单失败。后续版本的`LoopringDEX`将会更新此限制。
-- 同时存活有效的订单数最大为$$2^{14}​$$即16384。
-- 如果两个未成交的订单 A和B的OrderID对16384同余，即$$OrderA.OrderID \% 2^{14} = OrderB.OrderID \% 2^{14}​$$，必须取消前面一个，否则后面一个会被服务器拒绝。
+- 当前`LoopringDEX`每一个币种的最大订单`OrderID`为$$ 2^{20} $$，如果当前账户某个币种的`OrderID`超过该值，则下单失败。后续版本的`LoopringDEX`将会更新此限制。
+
+- 同时存活有效的订单数最大为$$ 2^{14} $$即16384。
+
+- 如果两个未成交的订单 A和B的OrderID对16384同余，即：
+
+  $$
+  OrderA.OrderID\ \%\ 2^{14} \equiv OrderB.OrderID\ \%\ 2^{14}
+  $$
+
+  必须取消前面一个，否则后面一个会被服务器拒绝。
 
 ### 需要API-KEY的API接口
 
