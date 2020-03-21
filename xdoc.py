@@ -38,6 +38,11 @@ ENV = Environment(loader=loader)
 INDENT = 4
 SEG_SIZE = 20
 
+EXAM_HEADERS = {
+    'X-API-KEY' : 'sra1aavfa',
+    'X-API-SIG' : 'dkkfinfasdf'
+}
+
 
 def get_request_parames(params, method):
     if method == 'GET':
@@ -386,32 +391,60 @@ def model_to_json(modelName, spaceNum = 0):
 def create_response_example(api):
     return model_to_json(api['responses']['ret']['$ref'])
 
-def create_request_example(api):
-    ret = 'curl ' + '%s' + '%s%s'%(VARS['v']['hosturl'], api['path'])
+def create_request_http_example(apiObj):
+    hostUrl = VARS['v']['hosturl']
+    apiObj['hosturl'] = hostUrl[hostUrl.index('://') + 3 :]
+    url = apiObj['path']
+    headers = []
+    for header in get_request_headers(apiObj['operationId']):
+        headers.append({'key' : header, 'value' : EXAM_HEADERS[header]})
+    if (apiObj['method'] == 'POST'):
+        apiObj['payload'] = model_to_json(apiObj['params'][0]['$ref'])
+        headers.append({'key':'Content-Type', 'value':'application/json'})
+    else:
+        param = ''
+        for p in apiObj['params']:
+            param += p['name'] + '=' + str(p['example']) + '&'
+        url += '?' + param[0 : -1]
+    apiObj['pathWithParams'] = url
+    apiObj['headers'] = headers
+    httpTpl = ENV.get_template('http.tpl')
+    return httpTpl.render(api = apiObj)
+
+def create_request_curl_headers(operationId):
+    ret = ''
+    for header in get_request_headers(operationId):
+        ret += ' -H "%s:%s"'%(header, EXAM_HEADERS[header])
+    return ret
+
+def create_request_curl_example(api):
+    ret = 'curl' + '%s' + '%s' + ' %s%s'%(VARS['v']['hosturl'], api['path'])
+    headers = create_request_curl_headers(api['operationId'])
     param = ''
     if (api['method'] == 'GET'):
         for p in api['params']:
             param += p['name'] + '\=' + str(p['example']) + '\&'
         if (param == ''):
-            return ret%('')
+            return ret%('', headers)
         else:
-            return ret%('') + '\?' + param[0: -2]
+            return ret%('', headers) + '\?' + param[0 : -2]
     elif (api['method'] == 'DELETE'):
         for p in api['params']:
             param += p['name'] + '\=' + str(p['example']) + '\&'
         if (param == ''):
-            return ret%('-X DELETE')
+            return ret%(' -X DELETE', headers)
         else:
-            return ret%('-X DELETE ') + '\?' + param[0: -2]
+            return ret%(' -X DELETE', headers) + '\?' + param[0: -2]
     elif (api['method'] == 'POST'):
         if (len(api['params']) == 0):
             LOGGER.error('%s has no parameters.'%(api['operationId']))
             return 'error'
         payload = model_to_json(api['params'][0]['$ref'])
         if (payload == ''):
-            return ret%('-X POST')
+            return ret%(' -X POST', headers)
         else:
-            return ret%('-X POST ') + ' -H "Content-Type:application/json" -d' + \
+            headers += ' -H "Content-Type:application/json"'
+            return ret%(' -X POST', headers) + ' -d' + \
                     ' \\\n\'%s\''%(payload)
     else:
         LOGGER.error('%s is not supported with method %s'%(api['path'],
@@ -464,19 +497,29 @@ def get_example(example):
     else:
         return '/'
 
+def get_request_headers(operationId):
+    ret = []
+    if operationId not in VARS['v']['no_key']:
+        ret.append('X-API-KEY')
+    if operationId in VARS['v']['has_sig']:
+        ret.append('X-API-SIG')
+    return ret
+
 def generate_api_doc(operationId, path, filename):
     apiTpl = ENV.get_template('api_doc.tpl')
     apidoc = apiTpl.render(
         l = VARS['l'],
         api = VARS['apis'][operationId],
         c_type = create_html_type,
-        c_request_example = create_request_example,
+        c_request_curl_example = create_request_curl_example,
+        c_request_http_example = create_request_http_example,
         g_response_fields = get_response_fields,
         g_request_params = get_request_parames,
         c_response_example = create_response_example,
         g_ref_models = get_ref_models,
         g_desc = get_description,
-        g_example = get_example)
+        g_example = get_example,
+        g_request_headers = get_request_headers)
 
     output_file(apidoc, os.path.join(
         './', PURGE_DIR, VARS['currentLang'], path, filename + '.md'))

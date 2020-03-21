@@ -2,7 +2,8 @@
     "gitbook": ">=3.2.3",
     "plugins": [
         "expandable-chapters",
-        "custom-favicon"
+        "custom-favicon",
+        "codetabs"
     ],
     "pluginsConfig" : {
         "favicon": "./gitbook/images/favicon.ico"
