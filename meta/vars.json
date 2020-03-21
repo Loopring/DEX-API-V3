@@ -1,7 +1,7 @@
 {
     "langs": ["zh"],
     "# langs": ["zh"],
-    "notOk": [
+    "not_ready": [
         "/api/v2/dexNonce",
         "/api/v2/offchainWithdrawal",
         "/api/v2/transfer",
@@ -39,6 +39,9 @@
         "/api/v2/user/transfers",
         "/api/v2/user/trades"
     ],
+    "no_key": ["getApiKey"],
+    "has_sig": ["getApiKey", "cancelOrders"],
+    "cir_sig": ["submitOrder"],
     "hosturl" : "https://api.loopring.io",
     "fetchurl" : "http://161.189.106.255:31610",
     "# fetchurl" : "http://localhost:31610"

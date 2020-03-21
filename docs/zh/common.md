@@ -9,8 +9,8 @@
 
 | 字段 |  类型 | 必须 | 说明 | 举例 |
 | ---- | ---- | ---- |   ----   |  --- |
-| X-API-KEY | string | 否 | API Key. 写操作接口需要 | "sra1aavfa" |
-| X-API-SIG | string | 否 | 签名信息. getapikey, cancelorder 接口需要 | "dkkfinfasdf" |
+| X-API-KEY | string | 否 | API Key | "sra1aavfa" |
+| X-API-SIG | string | 否 | 签名信息 | "dkkfinfasdf" |
 
 #### 响应
 

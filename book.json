@@ -3,7 +3,8 @@
     "plugins": [
         "expandable-chapters",
         "custom-favicon",
-        "mathjax"
+        "mathjax",
+        "codetabs"
     ],
     "pluginsConfig" : {
         "favicon": "./gitbook/images/favicon.ico"

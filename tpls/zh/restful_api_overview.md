@@ -4,8 +4,21 @@
 
 ## Http header
 
-API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。大多数请求都需要X-API-KEY才能访问；一些关键请求需要EDDSA签名信息：X-API-SIG。
-还有一些请求需要使用特殊的方式来进行EDDSA签名。下面详细说明。
+API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。请求都需要X-API-KEY才能访问；一些关键请求需要EDDSA签名信息：X-API-SIG。
+还有一些请求需要使用特殊的方式来进行EDDSA签名。
+
+需要X-API-KEY的请求：
+
+- 除[getApiKey](./dex_apis/getApiKey.md)以外的所有请求
+
+需要X-API-SIG的请求：
+
+- [getApiKey](./dex_apis/getApiKey.md)
+- [cancelOrder](./dex_apis/cancelOrder.md)
+
+需要特殊签名的请求：
+
+- [submitOrder](./dex_apis/submitOrder.md)
 
 ### 获取API key
 
@@ -22,6 +35,8 @@ API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。大多数请求都
 需要注意，这两个接口的调用都是需要签名信息的。签名方法会在下面描述。
 
 ### 请求签名
+
+**请求参数是大小写不敏感的**
 
 如上所述，路印DEX的一部分链下请求需要使用签名，这其中又有两类签名方式。
 
