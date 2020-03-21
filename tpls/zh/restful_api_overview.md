@@ -4,8 +4,21 @@
 
 ## Http header
 
-API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。大多数请求都需要X-API-KEY才能访问；一些关键请求需要EDDSA签名信息：X-API-SIG。
-还有一些请求需要使用特殊的方式来进行EDDSA签名。下面详细说明。
+API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。请求都需要X-API-KEY才能访问；一些关键请求需要EDDSA签名信息：X-API-SIG。
+还有一些请求需要使用特殊的方式来进行EDDSA签名。
+
+需要X-API-KEY的请求：
+
+- 除[getApiKey](./dex_apis/getApiKey.md)以外的所有请求
+
+需要X-API-SIG的请求：
+
+- [getApiKey](./dex_apis/getApiKey.md)
+- [cancelOrder](./dex_apis/cancelOrder.md)
+
+需要特殊签名的请求：
+
+- [submitOrder](./dex_apis/submitOrder.md)
 
 ### 获取API key
 
@@ -23,8 +36,11 @@ API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。大多数请求都
 
 ### 请求签名
 
-如上所述，路印DEX的一部分链下请求需要使用EDDSA进行签名，这其中又有两类签名方式：
-TODO(yongfeng): 描述下两种签名方式，一种是电路不感知的，如何签名；一种是电路感知的，给出相关API(我的理解只有submitOrder和cancelOrder两个接口)的链接即可，相关API的描述会有细节。
+**请求参数是大小写不敏感的**
+
+如上所述，路印DEX的一部分链下请求需要使用签名，这其中又有两类签名方式。
+
+一种是电路不感知的，使用SHA256来进行签名：
 
 **[X-API-SIG]**
 
@@ -35,6 +51,8 @@ TODO(yongfeng): 描述下两种签名方式，一种是电路不感知的，如�
 ```py
 poseidon_params(SNARK_SCALAR_FIELD, 6, 6, 52, b'poseidon', 5, security_target=128)
 ```
+
+另外一种是电路感知的，使用EDDSA进行的签名：
 
 **[电路签名]**
 

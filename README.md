@@ -53,9 +53,6 @@ gitbook install 命令用来安装插件，一般来说运行一次即可。除�
 
 ```
 ./publish.sh
-git add .
-git commit -m "YOUR_COMMENT"
-git push origin master
 ```
 
 文档会发布到下面的页面：
