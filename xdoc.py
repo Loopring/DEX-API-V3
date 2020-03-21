@@ -148,18 +148,19 @@ def copy_static_files():
 def set_field(f, t, field, tField = None,
               showMsgIfMiss = False, message = None):
     if (f.get(field) is not None):
-        if (tField is None):
-            tField = field
-        t[tField] = f[field]
-        if (field == '$ref'):
-            t[tField] = t[tField].replace('#/definitions/', '')
-        elif (field == 'example' or field == 'x-example'
-              or field == 'description'):
-            if isinstance(t[tField], bool):
-                t[tField] = str(t[tField]).lower()
-            elif (t[tField] == 0):
-                t[tField] = '0'
-        return
+        if not isinstance(f[field], str) or f[field].strip() != 'None':
+            if (tField is None):
+                tField = field
+            t[tField] = f[field]
+            if (field == '$ref'):
+                t[tField] = t[tField].replace('#/definitions/', '')
+            elif (field == 'example' or field == 'x-example'
+                  or field == 'description'):
+                if isinstance(t[tField], bool):
+                    t[tField] = str(t[tField]).lower()
+                elif (t[tField] == 0):
+                    t[tField] = '0'
+            return
     if (showMsgIfMiss):
         if message is None:
             LOGGER.error('%s has no %s'%(f, field))
@@ -210,6 +211,7 @@ def parse_model(name):
                 LOGGER.error('%s of %s has no $ref'%(prop, name))
                 property_['$ref'] = 'ResultInfo'
             set_field(propjson[prop], property_, 'description')
+            set_field(propjson[prop], property_, 'enum')
             set_field(propjson[prop], property_, 'example',
                 showMsgIfMiss = (property_.get('type') is not None
                                  and property_['type'] != 'array'
@@ -243,6 +245,8 @@ def parse_params(parameters):
         set_field(parameter, p, 'description', showMsgIfMiss = True)
         set_field(parameter, p, 'required', showMsgIfMiss = True)
         set_field(parameter, p, 'type')
+        set_field(parameter, p, 'default')
+        set_field(parameter, p, 'enum')
         set_field(parameter, p, 'x-example', 'example')
         if (parameter.get('schema') is not None):
             set_field(parameter['schema'], p, '$ref', showMsgIfMiss = True)

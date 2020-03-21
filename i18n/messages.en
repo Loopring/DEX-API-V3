@@ -58,6 +58,8 @@
         "resdesc" : "Result of api invoking",
         "codedesc" : "Description",
         "none" : "None",
+        "default" : "Default",
+        "allow" : "Allowable",
         "code0" : "Success",
         "code1000000" : "Internal unknown error",
         "code1000001" : "Illegality parameter",

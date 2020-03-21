@@ -35,7 +35,14 @@
 {%- else -%}
 {{l.apidoc.no}}
 {%- endif -%}
-| {{field.description}} | {{ g_example(field['example']) }} |
+| {{field.description}}
+{%- if field.default -%}
+<br/>{{l.apidoc.default}} : {{ field.default }}
+{%- endif -%}
+{%- if field.enum -%}
+<br/>{{l.apidoc.allow}} : {{ field.enum }}
+{%- endif -%}
+| {{ g_example(field['example']) }} |
 {%- endfor %}
 {% else %}
 {{l.apidoc.none}}
@@ -58,7 +65,14 @@
 {%- else -%}
 {{l.apidoc.no}}
 {%- endif -%}
-| {{field.description}} | {{ g_example(field['example']) }} |
+| {{field.description}}
+{%- if field.default -%}
+<br/>{{l.apidoc.default}} : {{ field.default }}
+{%- endif -%}
+{%- if field.enum -%}
+<br/>{{l.apidoc.allow}} : {{ field.enum }}
+{%- endif -%}
+| {{ g_example(field['example']) }} |
 {%- endfor %}
 
 #### {{ l.apidoc.resexpl }}
@@ -96,7 +110,14 @@
 {%- else -%}
 {{l.apidoc.no}}
 {%- endif -%}
-| {{field.description}} | {{ g_example(field['example']) }} |
+| {{field.description}}
+{%- if field.default -%}
+<br/>{{l.apidoc.default}} : {{ field.default }}
+{%- endif -%}
+{%- if field.enum -%}
+<br/>{{l.apidoc.allow}} : {{ field.enum }}
+{%- endif -%}
+| {{ g_example(field['example']) }} |
 {%- endfor %}
 
 {% endfor %}
