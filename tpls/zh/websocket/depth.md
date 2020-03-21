@@ -6,7 +6,7 @@
 
 主题&市场&归并等级
 
-- 支持的市场以及市场对应支持的归并等级，可以通过api接口[api/v2/exchange/markets](./dex_apis/getMarkets.md) 获取
+- 支持的市场以及市场对应支持的归并等级，可以通过api接口[api/v2/exchange/markets](../dex_apis/getMarkets.md) 获取
 
 #### 返回错误码
 
@@ -74,7 +74,7 @@
 
 2. 开始缓存收到的更新。同一个价位，后收到的更新覆盖前面的。
 
-3. 访问接口 [api/v1/depth](./dex_apis/getDepth.md) 获得一个全量的深度快照。
+3. 访问接口 [api/v1/depth](../dex_apis/getDepth.md) 获得一个全量的深度快照。
 
 4. 3中获取的快照如果version大约本地version（endVersion），则直接覆盖，如果小于本地version，则相同的价格不覆盖，不同的价格则覆盖。
 

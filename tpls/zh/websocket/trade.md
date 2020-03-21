@@ -6,7 +6,7 @@
 
 主题&市场
 
-- 支持的市场可以通过api接口[api/v2/exchange/markets](./dex_apis/getMarkets.md) 获取
+- 支持的市场可以通过api接口[api/v2/exchange/markets](../dex_apis/getMarkets.md) 获取
 
 #### 返回错误码
 

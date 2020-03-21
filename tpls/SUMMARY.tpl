@@ -17,14 +17,14 @@
         {% for api in apis %}
         * [{{ api.summary }}]({{g_api_doc(api.operationId, "dex_apis", api.operationId)}})
         {% endfor %}
-    * [{{ l.summary.chapter2.session2.sub2 }}](websocket_overview.md)
-        * [{{l.websocket.depth}}](depth.md)
-        * [{{l.websocket.depth10}}](depth10.md)
-        * [{{l.websocket.trade}}](trade.md)
-        * [{{l.websocket.ticker}}](ticker.md)
-        * [{{l.websocket.candleStick}}](candleStick.md)
-        * [{{l.websocket.account}}](account.md)
-        * [{{l.websocket.order}}](order.md)
+    * [{{ l.summary.chapter2.session2.sub2 }}](websocket/overview.md)
+        * [{{l.websocket.depth}}](websocket/depth.md)
+        * [{{l.websocket.depth10}}](websocket/depth10.md)
+        * [{{l.websocket.trade}}](websocket/trade.md)
+        * [{{l.websocket.ticker}}](websocket/ticker.md)
+        * [{{l.websocket.candleStick}}](websocket/candleStick.md)
+        * [{{l.websocket.account}}](websocket/account.md)
+        * [{{l.websocket.order}}](websocket/order.md)
 {*## {{ l.summary.chapter3.title }}*}
 
 {** [{{ l.summary.chapter3.session1 }}](wallet_integration_overview.md)*}

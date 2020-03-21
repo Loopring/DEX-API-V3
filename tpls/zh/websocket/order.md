@@ -8,7 +8,7 @@
 
 订阅该主题必须传apikey
 
-- 支持的市场可以通过api接口[https://api.loopring.io/api/v2/exchange/markets](https://api.loopring.io/api/v2/exchange/markets) 获取
+- 支持的市场可以通过api接口[api/v2/exchange/markets](../dex_apis/getMarkets.md) 获取
 
 #### 返回错误码
 

@@ -6,7 +6,7 @@
 
 主题&市场&间隔
 
-- 支持的市场可以通过api接口[https://api.loopring.io/api/v2/exchange/markets](https://api.loopring.io/api/v2/exchange/markets)获取
+- 支持的市场可以通过api接口[api/v2/exchange/markets](../dex_apis/getMarkets.md)获取
 
 - 支持的间隔（interval）为1min, 5min, 15min, 30min, 1hr, 2hr, 4hr, 12hr, 1d, 1w
 
