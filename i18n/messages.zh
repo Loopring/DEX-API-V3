@@ -69,5 +69,15 @@
 
     "comment" : {
         "claim" : "本文件由代码自动生成，请勿直接修改。"
+    },
+
+    "websocket":{
+        "depth":"订阅订单簿更新",
+        "depth10":"订阅订单簿买卖前10的全量推送",
+        "trade":"订阅市场交易的更新",
+        "ticker":"订阅市场Ticker的更新",
+        "candleStick":"订阅市场CandleStick更新",
+        "account":"订阅用户余额更新",
+        "order":"订阅用户订单更新"
     }
 }
