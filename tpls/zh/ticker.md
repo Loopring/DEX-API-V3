@@ -21,17 +21,17 @@
   "topic": "ticker&LRC-ETH",
   "ts": 1584717910000,
   "data": [
-    "LRC-ETH",										//market
-    "1584717910000",							//timestamp
-    "5000000",										//size
-    "1000",												//volume
-    "0.0002",											//open
-    "0.00025",										//high
-    "0.0002",											//low
-    "0.00025",										//close				
-    "5000",												//count		
-    "0.00026",										//bid
-    "0.00027"											//ask
+    "LRC-ETH",  //market
+    "1584717910000",  //timestamp
+    "5000000",  //size
+    "1000",  //volume
+    "0.0002",  //open
+    "0.00025",  //high
+    "0.0002",  //low
+    "0.00025",  //close				
+    "5000",  //count		
+    "0.00026",  //bid
+    "0.00027"  //ask
   ]
 }
 ```
