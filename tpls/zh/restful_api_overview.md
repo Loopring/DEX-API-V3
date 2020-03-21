@@ -44,6 +44,14 @@ API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。请求都需要X-A
 
 **[X-API-SIG]**
 
+当用户请求获取API-KEY或取消订单时，需要在header里添加X-API-SIG，生成规则如下：
+1. 将请求参数按key字典顺序排序后生成Json String
+2. 使用SHA-256计算json字符串的hash
+3. 使用创建账户时的EdDSA私钥，对hash签名，将签名结果`Rx,Ry,S`三部分按"`,`"分隔并以上述顺序拼成一个字符串，作为X-API-SIG的值放入请求的header里。签名使用的`EDDSA`参考`ethsnarks`，其内部使用`Poseidon HASH`算法，参数如下：
+```py
+poseidon_params(SNARK_SCALAR_FIELD, 6, 6, 52, b'poseidon', 5, security_target=128)
+```
+
 另外一种是电路感知的，使用EDDSA进行的签名：
 
 **[电路签名]**
