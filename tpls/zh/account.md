@@ -42,4 +42,3 @@
 | totalAmount  | string  |    是    |  用户余额  | "24439253519655" |
 | frezeeAmount | string  |    是    | 冻结的余额 |       "0"        |
 
-### 

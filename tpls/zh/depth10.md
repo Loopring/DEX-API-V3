@@ -6,7 +6,7 @@
 
 ​	主题&市场&归并等级
 
-- 支持的市场以及市场对应支持的归并等级，可以通过api接口[https://api.loopring.io/api/v2/exchange/markets](https://api.loopring.io/api/v2/exchange/markets) 获取
+- 支持的市场以及市场对应支持的归并等级，可以通过api接口[api/v2/exchange/markets](./dex_apis/getMarkets.md) 获取
 
 #### 返回错误码
 
@@ -68,4 +68,3 @@
 |    2     | string | 是       | 挂单量         | "21000"    |
 |    3     | string | 是       | 挂单总量       | "33220000" |
 |    4     | string | 是       | 聚合的订单数目 | "4"        |
-

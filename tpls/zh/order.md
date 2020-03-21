@@ -79,4 +79,3 @@
 | cancelled  |                  订单取消                  |
 |  expired   |                  订单过期                  |
 |  waiting   |                订单还未生效                |
-
