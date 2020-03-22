@@ -573,7 +573,6 @@ def load_info():
     inf.close()
 
 def build_doc():
-    LOGGER.info('Loading info...')
     load_info()
     LOGGER.info('Creating gitbook files...')
     generate_structs()
@@ -598,7 +597,6 @@ def fetch_and_save_swagger_json(lang):
     output_file(swagger, './meta/swagger_%s.json'%(lang))
 
 def refresh_swagger():
-    LOGGER.info('Loading info...')
     load_info()
     for lang in VARS['v']['langs']:
         fetch_and_save_swagger_json(lang)
