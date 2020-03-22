@@ -48,6 +48,14 @@ gitbook install 命令用来安装插件，一般来说运行一次即可。除�
 
 ** 确保你的gitbook命令运行在 generated 目录下。 **
 
+### I18N
+
+需要完成以下三部分内容的翻译：
+
+- tpl/en 目录下所有文件的翻译
+- i18n 目录下messages.en文件的翻译
+- 完成[gateway(play framework)](https://github.com/Loopring/lightcone/tree/master/gateway)的i18n: 将 gateway/conf/messages.zh 的内容翻译后放到 gateway/conf/messages 中。
+
 ## 发布文档
 执行：
 
