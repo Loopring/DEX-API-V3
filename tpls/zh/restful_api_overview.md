@@ -2,7 +2,7 @@
 
 本部分主要讨论路印DEX Restful API的共性部分。
 
-## Http header
+## Http 请求头
 
 API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。请求都需要X-API-KEY才能访问；一些关键请求需要EDDSA签名信息：X-API-SIG。
 还有一些请求需要使用特殊的方式来进行EDDSA签名。
