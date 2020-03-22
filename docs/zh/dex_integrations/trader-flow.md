@@ -1,4 +1,14 @@
-## 怎样提交订单
+## 注册账户
+
+   路印DEX通过发送ETH交易调用智能合约来完成账户的创建，充值，提现等操作（此类请求成为链上请求）。
+
+   对于做市商用户，我们推荐在[路印DEX网站](https://www.loopring.io)完成此类操作，从而省去对接ETH的工作。
+
+## 获取API key
+
+   创建好账户之后，您可以使用官网的'导出账号'功能导出API key及EDDSA公私钥（publicKeyX, publicKeyY, privateKey），路印DEX链下请求需要这些信息。
+
+## 提交订单
 
 - 准备发送订单的参数举例，API参数细节详见[提交订单](../dex_apis/submitOrder.md)。
 
@@ -30,18 +40,18 @@
 
   ```python
   order = {
-  	'exchangeId': 2,
-  	'accountId': 1234,
-  	'tokenSId': 2,	#LRC
-  	'tokenBId': 3,	#USDT
-  	'amountS': '500000000000000000000', # 500 * 10**18
-  	'amountB': '15000000',				#  15 * 10**6
-  	'allOrNone': 'false',
-  	'buy': 'false', 					# 卖出
-  	'validSince': 1582094327,			# 生效时间，比下单时间提前15分钟，见注意事项
-  	'validUntil': 1587278341,			# 失效时间
-  	'maxFeeBips': 50,					# 最大费率，实际费率由服务器计算
-  	'label': 'hebao::subchannel::0001'
+    'exchangeId': 2,
+    'accountId': 1234,
+    'tokenSId': 2,  #LRC
+    'tokenBId': 3,  #USDT
+    'amountS': '500000000000000000000', # 500 * 10**18
+    'amountB': '15000000',              #  15 * 10**6
+    'allOrNone': 'false',
+    'buy': 'false',                     # 卖出
+    'validSince': 1582094327,           # 生效时间，比下单时间提前15分钟，见注意事项
+    'validUntil': 1587278341,           # 失效时间
+    'maxFeeBips': 50,                   # 最大费率，实际费率由服务器计算
+    'label': 'hebao::subchannel::0001'
   }
   ```
 
@@ -55,10 +65,11 @@
   ```
 
 - 对订单签名，签名使用`EDDSA PoseidonHASH`算法，并更新订单数据。签名过程详见[注意事项](./trader-notes.md)签名部分，算法细节请查询参考文献[3]和[4]。
+<span id="OrderSig"></span>
 
   ```python
   from ethsnarks.poseidon import poseidon_params, poseidon
-  
+
   # 对订单数据签名
   PoseidonHashParams = poseidon_params(SNARK_SCALAR_FIELD, 14, 6, 53, b'poseidon', 5, security_target=128)
   msgHash = poseidon(msg_parts, PoseidonHashParams)

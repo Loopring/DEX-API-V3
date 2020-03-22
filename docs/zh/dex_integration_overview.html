@@ -21,6 +21,10 @@
                 
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-codetabs/codetabs.css">
                 
             
@@ -587,9 +591,9 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.2" data-path="websocket_overview.html">
+        <li class="chapter " data-level="2.2.2" data-path="websocket/overview.html">
             
-                <a href="websocket_overview.html">
+                <a href="websocket/overview.html">
             
                     
                     Websocket API
@@ -597,6 +601,103 @@
                 </a>
             
 
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.2.1" data-path="websocket/depth.html">
+            
+                <a href="websocket/depth.html">
+            
+                    
+                    订阅订单簿更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.2" data-path="websocket/depth10.html">
+            
+                <a href="websocket/depth10.html">
+            
+                    
+                    订阅订单簿买卖前10的全量推送
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.3" data-path="websocket/trade.html">
+            
+                <a href="websocket/trade.html">
+            
+                    
+                    订阅市场交易的更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.4" data-path="websocket/ticker.html">
+            
+                <a href="websocket/ticker.html">
+            
+                    
+                    订阅市场Ticker的更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.5" data-path="websocket/candleStick.html">
+            
+                <a href="websocket/candleStick.html">
+            
+                    
+                    订阅市场CandleStick更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.6" data-path="websocket/account.html">
+            
+                <a href="websocket/account.html">
+            
+                    
+                    订阅用户余额更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.7" data-path="websocket/order.html">
+            
+                <a href="websocket/order.html">
+            
+                    
+                    订阅用户订单更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -651,7 +752,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x96C6;&#x6210;&#x6587;&#x6863;&#x6982;&#x8FF0;">&#x96C6;&#x6210;&#x6587;&#x6863;&#x6982;&#x8FF0;</h1>
-<p>&#x8FD9;&#x4E2A;&#x6587;&#x6863;&#x4E3B;&#x8981;&#x662F;&#x4E00;&#x4E9B;API&#x7684;&#x96C6;&#x6210;&#x573A;&#x666F;&#xFF0C;&#x6BD4;&#x5982;&#x60F3;&#x8981;&#x5B8C;&#x6210;&#x4E0B;&#x5355;&#x64CD;&#x4F5C;&#xFF0C;&#x5E94;&#x8BE5;&#x4F7F;&#x7528;&#x90A3;&#x51E0;&#x4E2A;API&#xFF0C;&#x6D41;&#x7A0B;&#x662F;&#x4EC0;&#x4E48;&#x6837;&#x7684;&#xFF0C;&#x5982;&#x4F55;handle&#x9047;&#x5230;&#x7684;&#x9519;&#x8BEF;&#x7B49;&#x7B49;&#x3002;</p>
+<p>&#x672C;&#x90E8;&#x5206;&#x63CF;&#x8FF0;&#x4E86;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x8DEF;&#x5370;API&#x6765;&#x8FDB;&#x884C;&#x81EA;&#x52A8;&#x5316;&#x4EA4;&#x6613;&#x751A;&#x81F3;&#x642D;&#x5EFA;&#x81EA;&#x5DF1;&#x7684;&#x524D;&#x7AEF;&#x3002;&#x56E0;&#x4E3A;&#x8DEF;&#x5370;DEX&#x4F7F;&#x7528;&#x4E86;ZKP&#x6280;&#x672F;&#xFF0C;&#x4E00;&#x4E9B;&#x5730;&#x65B9;&#x9700;&#x8981;&#x505A;&#x76F8;&#x5E94;&#x7684;&#x9002;&#x914D;&#x3002;&#x6BD4;&#x5982;&#x7B7E;&#x540D;&#x65B9;&#x5F0F;&#xFF08;EDDSA&#xFF09;&#x7684;&#x9002;&#x914D;&#xFF1B;&#x8BA2;&#x5355;&#x53F7;&#x7684;&#x7EF4;&#x62A4;&#x7B49;&#x3002;&#x4F7F;&#x7528;API&#x4EA7;&#x54C1;&#x524D;&#x8BF7;&#x4ED4;&#x7EC6;&#x9605;&#x8BFB;&#x672C;&#x7AE0;&#x8282;&#x3002;</p>
 
                                 
                                 </section>
@@ -695,7 +796,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"DEX 集成文档","level":"2.1","depth":1,"next":{"title":"做市","level":"2.1.1","depth":2,"path":"dex_integrations/trader.md","ref":"dex_integrations/trader.md","articles":[]},"previous":{"title":"术语","level":"1.2","depth":1,"path":"GLOSSORY.md","ref":"GLOSSORY.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","custom-favicon","mathjax","codetabs"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./gitbook/images/favicon.ico","custom-favicon":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh","gitbook":"*"},"file":{"path":"dex_integration_overview.md","mtime":"2020-03-21T23:05:37.677Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-21T23:05:38.626Z"},"basePath":".","book":{"language":"zh"}});
+            gitbook.page.hasChanged({"page":{"title":"DEX 集成文档","level":"2.1","depth":1,"next":{"title":"做市","level":"2.1.1","depth":2,"path":"dex_integrations/trader.md","ref":"dex_integrations/trader.md","articles":[]},"previous":{"title":"术语","level":"1.2","depth":1,"path":"GLOSSORY.md","ref":"GLOSSORY.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","custom-favicon","katex","codetabs"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./gitbook/images/favicon.ico","custom-favicon":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh","gitbook":"*"},"file":{"path":"dex_integration_overview.md","mtime":"2020-03-22T02:24:06.041Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-22T02:24:07.203Z"},"basePath":".","book":{"language":"zh"}});
         });
     </script>
 </div>
@@ -706,14 +807,6 @@
     
         
         <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
-        
-    
-        
-        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-        
-    
-        
-        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
         
     
         

@@ -44,9 +44,9 @@
 
 ### 需要API-KEY的API接口
 
-- API密钥可以从`loopringDEX`网页导出。
+- API密钥可以从`loopringDEX`网页导出或通过API获取。
 
-- 和个人账户相关的API接口，比如查询订单个数/状态/账户余额时候需要API-KEY，API信息请查询[Restful API 概述](../restful_api_overview.md)。
+- 所有接口（除[查询用户ApiKey](./dex_apis/getApiKey.md)）都需要传入API-KEY，API信息请查询[Restful API 概述](../restful_api_overview.md)。
 
 - API密钥数据放在`http request header`里的`X-API-KEY`中。
 
@@ -58,7 +58,7 @@
       return session
   ```
 
-### 需要签名的API接口 
+### 需要签名的API接口
 
 - 和账户信息有关的都需要签名，详见[Restful API 概述](../restful_api_overview.md)，这里以[取消订单](../dex_apis/cancelOrders.md)为例。
 
@@ -100,32 +100,32 @@
           PoseidonHashParams = poseidon_params(SNARK_SCALAR_FIELD, 6, 6, 52, b'poseidon', 5, security_target=128)
           inputMsg = list(as_scalar(*args))
           return poseidon(inputMsg, PoseidonHashParams)
-  
+
   #对数据签名并返回签名
   def sign_api_data(api_request_params，api_secret):
       data = serialize_api_data(api_request_params)
-  	hasher = hashlib.sha256()
-  	msgBuf = ujson.dumps(data).encode('utf-8')
+    hasher = hashlib.sha256()
+    msgBuf = ujson.dumps(data).encode('utf-8')
       hasher.update(msgBuf)
-  	msgHash = int(hasher.hexdigest(), 16) % SNARK_SCALAR_FIELD
-  	signed = PoseidonEdDSA.sign(msgHash, FQ(int(api_secret)))
-  	signature = ','.join(str(_) for _ in [signed.sig.R.x, signed.sig.R.y, signed.sig.s])
-  	return signature
-  
+    msgHash = int(hasher.hexdigest(), 16) % SNARK_SCALAR_FIELD
+    signed = PoseidonEdDSA.sign(msgHash, FQ(int(api_secret)))
+    signature = ','.join(str(_) for _ in [signed.sig.R.x, signed.sig.R.y, signed.sig.s])
+    return signature
+
   def serialize_api_data(data):
       has_signature = False
       params = []
       for key, value in data.items():
           if key == 'signature':
               has_signature = True
-  		else:
+        else:
               params.append((key, value))
               # sort parameters by key
               params.sort(key=itemgetter(0))
-  
+
       if has_signature:
           params.append(('signature', data['signature']))
-  	return params
+    return params
   ```
 
 ### 需要签名的数据类型（订单ORDER）
@@ -149,9 +149,9 @@
           int(order["buy"]=="true"),
           int(order["label"])
       ]
-  
+
   def sign_order(order, api_secret)
-  	PoseidonHashParams = poseidon_params(SNARK_SCALAR_FIELD, 14, 6, 53, b'poseidon', 5, security_target=128)
+    PoseidonHashParams = poseidon_params(SNARK_SCALAR_FIELD, 14, 6, 53, b'poseidon', 5, security_target=128)
       serialized_order = serialize_api_data(order)
       msgHash = poseidon(serialized_order, PoseidonHashParams)
       signedMessage = PoseidonEdDSA.sign(msgHash, FQ(int(api_secret)))
