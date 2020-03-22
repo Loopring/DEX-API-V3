@@ -71,9 +71,12 @@ def create_html_type(field):
             cleanRef = ''
             if (field.get('$ref') is not None):
                 cleanRef = field['$ref']
-                return 'list< <a href="#%s">%s</a> >'%(cleanRef, cleanRef)
+                return 'List[' * field['count'] + \
+                    '<a href="#%s">%s</a>'%(cleanRef, cleanRef) + \
+                    ']' * field['count']
             else:
-                return 'list< %s >'%(field['itemType'])
+                return 'List[' * field['count'] + '%s'%(field['itemType']) + \
+                    ']' * field['count']
         elif (field.get('$ref') is not None):
             cleanRef = field['$ref']
             return '<a href="#%s">%s</a>'%(cleanRef, cleanRef)
@@ -189,6 +192,16 @@ def modifyStr(content, segSize):
     words = content.split(' ')
     return ' '.join([seg_str(word, segSize) for word in words])
 
+def parse_array(items):
+    if (items.get('$ref') is not None or items.get('type') != 'array'):
+        ref = items.get('$ref', None)
+        if ref is not None:
+            ref = ref.replace('#/definitions/', '')
+        return (1, ref, items.get('type', None))
+    else:
+        (c, r, t) = parse_array(items['items'])
+        return (c + 1, r, t)
+
 def parse_model(name):
     modelInfo = VARS['definitions'][name]
     model = {}
@@ -228,13 +241,15 @@ def parse_model(name):
                 LOGGER.error('The type of %s in %s may wrong.'%(prop, name))
             if (property_.get('type') is not None and
                 property_['type'] == 'array'):
-                set_field(propjson[prop]['items'], property_, '$ref')
-                if (propjson[prop]['items'].get('type') is not None):
-                    property_['itemType'] = propjson[prop]['items']['type']
-                    if (property_.get('example') is None):
-                        LOGGER.error('%s of %s has no example.'%(prop, name))
-                if (property_.get('$ref') is None
-                    and property_.get('itemType') is None):
+                (count, ref, itemType) = parse_array(propjson[prop]['items'])
+                property_['count'] = count
+                if ref is not None:
+                    property_['$ref'] = ref
+                if itemType is not None:
+                    property_['itemType'] = itemType
+                if (itemType is not None and property_.get('example') is None):
+                    LOGGER.error('%s of %s has no example.'%(prop, name))
+                if (ref is None and itemType is None):
                     LOGGER.error('%s of %s miss $ref or itemType'%(prop, name))
 
             properties.append(property_)
@@ -250,6 +265,8 @@ def parse_params(parameters):
         set_field(parameter, p, 'description', showMsgIfMiss = True)
         set_field(parameter, p, 'required', showMsgIfMiss = True)
         set_field(parameter, p, 'type')
+        if p.get('type', '') == 'array':
+            LOGGER.error('Didn\'t support array param: %s.'%(parameter))
         set_field(parameter, p, 'default')
         set_field(parameter, p, 'enum')
         set_field(parameter, p, 'x-example', 'example')
@@ -365,7 +382,7 @@ def prop_to_json(prop, spaceNum):
                     prop['$ref'],
                     spaceNum).lstrip()
             elif (prop['type'] == 'array'):
-                valStr = '[\n'
+                valStr = '[' * prop['count'] + '\n'
                 if (prop.get('$ref') is not None):
                     valStr += model_to_json(
                         prop['$ref'],
@@ -373,7 +390,7 @@ def prop_to_json(prop, spaceNum):
                 else:
                     valStr += ' ' * (spaceNum + INDENT) + \
                             prop['itemType'] + '\n'
-                valStr += ' ' * spaceNum + ']'
+                valStr += ' ' * spaceNum + ']' * prop['count']
             else:
                 valStr = prop['type']
     return ' ' * spaceNum + '"%s"'%(prop['name']) + ' : ' + str(valStr)
@@ -525,10 +542,6 @@ def generate_api_doc(operationId, path, filename):
         './', PURGE_DIR, VARS['currentLang'], path, filename + '.md'))
 
     return os.path.join(path, filename + '.md')
-
-def func_replace(matched):
-    value = matched.group('func')
-    return eval(value)
 
 def output_file(content, fullpath):
     dirpath = os.path.dirname(os.path.realpath(fullpath))
