@@ -21,6 +21,24 @@
 ### {{ l.apidoc.desc }}
 ----
 
+#### {{ l.apidoc.header }}
+
+{% set headers = g_request_headers(api.operationId) %}
+{% if headers|length == 0 %}
+{{l.apidoc.none}}
+{% else %}
+| {{ l.apidoc.field }} |  {{ l.apidoc.ftype }} | {{ l.apidoc.frequire }} | {{ l.apidoc.fdesc }} | {{ l.apidoc.fsample }} |
+| ---- | ---- | ---- |   ----   |  --- |
+{%- for header in headers %}
+{%- if header == 'X-API-KEY' %}
+| X-API-KEY | string | {{ l.apidoc.yes }} | {{ l.apidoc.keydesc }} | "sra1aavfa" |
+{%- endif -%}
+{%- if header == 'X-API-SIG' %}
+| X-API-SIG | string | {{ l.apidoc.yes }} | {{ l.apidoc.sigdesc }} | "dkkfinfasdf" |
+{%- endif -%}
+{% endfor %}
+{% endif %}
+
 #### {{ l.apidoc.reqparam }}
 
 {% set fields = g_request_params(api.params, api.method) %}
@@ -35,7 +53,14 @@
 {%- else -%}
 {{l.apidoc.no}}
 {%- endif -%}
-| {{field.description}} | {{ g_example(field['example']) }} |
+| {{field.description}}
+{%- if field.default -%}
+<br/>{{l.apidoc.default}} : {{ field.default }}
+{%- endif -%}
+{%- if field.enum -%}
+<br/>{{l.apidoc.allow}} : {{ field.enum }}
+{%- endif -%}
+| {{ g_example(field['example']) }} |
 {%- endfor %}
 {% else %}
 {{l.apidoc.none}}
@@ -43,9 +68,17 @@
 
 #### {{ l.apidoc.reqexpl }}
 
-``` bash
-{{c_request_example(api)}}
-```
+{% raw %}
+{% codetabs name="HTTP", type="http" -%}
+{% endraw %}
+{{c_request_http_example(api)}}
+{% raw %}
+{%- language name="CURL", type="bash" -%}
+{% endraw %}
+{{c_request_curl_example(api)}}
+{% raw %}
+{%- endcodetabs %}
+{% endraw %}
 
 #### {{ l.apidoc.resfield }}
 
@@ -58,7 +91,14 @@
 {%- else -%}
 {{l.apidoc.no}}
 {%- endif -%}
-| {{field.description}} | {{ g_example(field['example']) }} |
+| {{field.description}}
+{%- if field.default -%}
+<br/>{{l.apidoc.default}} : {{ field.default }}
+{%- endif -%}
+{%- if field.enum -%}
+<br/>{{l.apidoc.allow}} : {{ field.enum }}
+{%- endif -%}
+| {{ g_example(field['example']) }} |
 {%- endfor %}
 
 #### {{ l.apidoc.resexpl }}
@@ -96,7 +136,14 @@
 {%- else -%}
 {{l.apidoc.no}}
 {%- endif -%}
-| {{field.description}} | {{ g_example(field['example']) }} |
+| {{field.description}}
+{%- if field.default -%}
+<br/>{{l.apidoc.default}} : {{ field.default }}
+{%- endif -%}
+{%- if field.enum -%}
+<br/>{{l.apidoc.allow}} : {{ field.enum }}
+{%- endif -%}
+| {{ g_example(field['example']) }} |
 {%- endfor %}
 
 {% endfor %}

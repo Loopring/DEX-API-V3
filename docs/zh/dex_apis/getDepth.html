@@ -21,6 +21,10 @@
                 
             
                 
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-codetabs/codetabs.css">
+                
+            
+                
                 <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -142,14 +146,14 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" >
+        <li class="chapter " data-level="2.1.1" data-path="../dex_integrations/trader.html">
             
-                <span>
+                <a href="../dex_integrations/trader.html">
             
                     
                     做市
             
-                </span>
+                </a>
             
 
             
@@ -219,7 +223,7 @@
                 <a href="applyApiKey.html">
             
                     
-                    申请用户ApiKey
+                    更新用户ApiKey
             
                 </a>
             
@@ -657,13 +661,34 @@
 <p>&#x83B7;&#x53D6;&#x67D0;&#x4E2A;&#x5E02;&#x573A;&#x5BF9;&#x7684;&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;</p>
 <h3 id="api-&#x63CF;&#x8FF0;">API &#x63CF;&#x8FF0;</h3>
 <hr>
+<h4 id="&#x8BF7;&#x6C42;&#x5934;">&#x8BF7;&#x6C42;&#x5934;</h4>
+<table>
+<thead>
+<tr>
+<th>&#x5B57;&#x6BB5;</th>
+<th>&#x7C7B;&#x578B;</th>
+<th>&#x5FC5;&#x987B;</th>
+<th>&#x8BF4;&#x660E;</th>
+<th>&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>X-API-KEY</td>
+<td>string</td>
+<td>&#x662F;</td>
+<td>API Key</td>
+<td>&quot;sra1aavfa&quot;</td>
+</tr>
+</tbody>
+</table>
 <h4 id="&#x8BF7;&#x6C42;&#x53C2;&#x6570;">&#x8BF7;&#x6C42;&#x53C2;&#x6570;</h4>
 <table>
 <thead>
 <tr>
 <th>&#x5B57;&#x6BB5;</th>
 <th>&#x7C7B;&#x578B;</th>
-<th>&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
+<th>&#x5FC5;&#x987B;</th>
 <th>&#x8BF4;&#x660E;</th>
 <th>&#x4E3E;&#x4F8B;</th>
 </tr>
@@ -687,21 +712,26 @@
 <td>limit</td>
 <td>integer</td>
 <td>&#x5426;</td>
-<td>&#x8FD4;&#x56DE;&#x6761;&#x6570;&#x9650;&#x5236;</td>
+<td>&#x8FD4;&#x56DE;&#x6761;&#x6570;&#x9650;&#x5236;<br>&#x9ED8;&#x8BA4;&#x503C; : 50</td>
 <td>50</td>
 </tr>
 </tbody>
 </table>
 <h4 id="&#x8BF7;&#x6C42;&#x793A;&#x4F8B;">&#x8BF7;&#x6C42;&#x793A;&#x4F8B;</h4>
-<pre><code class="lang-bash">curl https://api.loopring.io/api/v2/depth\?market\=LRC-ETH\&amp;level\=2\&amp;<span class="hljs-built_in">limit</span>\=50
-</code></pre>
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">GET</span> <span class="hljs-string">https://api.loopring.io/api/v2/depth?market=LRC-ETH&amp;level=2&amp;limit=50</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: api.loopring.io
+<span class="hljs-attribute">Connection</span>: keep-alive
+<span class="hljs-attribute">Accept</span>: */*
+<span class="hljs-attribute">Accept-Encoding</span>: gzip, deflate, br
+<span class="hljs-attribute">Accept-Language</span>: zh,en;q=0.9
+<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa</code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> https://api.loopring.io/api/v2/depth\?market\=LRC-ETH\&amp;level\=2\&amp;<span class="hljs-built_in">limit</span>\=50</code></pre></div></div></div></p>
 <h4 id="&#x54CD;&#x5E94;&#x5B57;&#x6BB5;">&#x54CD;&#x5E94;&#x5B57;&#x6BB5;</h4>
 <table>
 <thead>
 <tr>
 <th>&#x5B57;&#x6BB5;</th>
 <th>&#x7C7B;&#x578B;</th>
-<th>&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
+<th>&#x5FC5;&#x987B;</th>
 <th>&#x8BF4;&#x660E;</th>
 <th>&#x4E3E;&#x4F8B;</th>
 </tr>
@@ -732,22 +762,8 @@
     <span class="hljs-string">&quot;data&quot;</span> : {
         <span class="hljs-string">&quot;version&quot;</span> : <span class="hljs-number">147</span>,
         <span class="hljs-string">&quot;timestamp&quot;</span> : <span class="hljs-number">432312312</span>,
-        <span class="hljs-string">&quot;bids&quot;</span> : [
-            {
-                <span class="hljs-string">&quot;price&quot;</span> : <span class="hljs-string">&quot;0.002&quot;</span>,
-                <span class="hljs-string">&quot;size&quot;</span> : <span class="hljs-string">&quot;21000&quot;</span>,
-                <span class="hljs-string">&quot;volume&quot;</span> : <span class="hljs-string">&quot;33220000&quot;</span>,
-                <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">4</span>
-            }
-        ],
-        <span class="hljs-string">&quot;asks&quot;</span> : [
-            {
-                <span class="hljs-string">&quot;price&quot;</span> : <span class="hljs-string">&quot;0.002&quot;</span>,
-                <span class="hljs-string">&quot;size&quot;</span> : <span class="hljs-string">&quot;21000&quot;</span>,
-                <span class="hljs-string">&quot;volume&quot;</span> : <span class="hljs-string">&quot;33220000&quot;</span>,
-                <span class="hljs-string">&quot;count&quot;</span> : <span class="hljs-number">4</span>
-            }
-        ]
+        <span class="hljs-string">&quot;bids&quot;</span> : [[<span class="hljs-string">&quot;0.002&quot;</span>,<span class="hljs-string">&quot;21000&quot;</span>,<span class="hljs-string">&quot;33220000&quot;</span>,<span class="hljs-string">&quot;4&quot;</span>]],
+        <span class="hljs-string">&quot;asks&quot;</span> : []
     }
 }
 </code></pre>
@@ -783,7 +799,7 @@
 <tr>
 <th>&#x5B57;&#x6BB5;</th>
 <th>&#x7C7B;&#x578B;</th>
-<th>&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
+<th>&#x5FC5;&#x987B;</th>
 <th>&#x8BF4;&#x660E;</th>
 <th>&#x4E3E;&#x4F8B;</th>
 </tr>
@@ -812,7 +828,7 @@
 <tr>
 <th>&#x5B57;&#x6BB5;</th>
 <th>&#x7C7B;&#x578B;</th>
-<th>&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
+<th>&#x5FC5;&#x987B;</th>
 <th>&#x8BF4;&#x660E;</th>
 <th>&#x4E3E;&#x4F8B;</th>
 </tr>
@@ -834,60 +850,17 @@
 </tr>
 <tr>
 <td>bids</td>
-<td>list&lt; <a href="#Slot">Slot</a> &gt;</td>
+<td>list&lt; array &gt;</td>
 <td>&#x662F;</td>
-<td>&#x4E70;&#x5355;&#x6DF1;&#x5EA6;</td>
-<td>/</td>
+<td>&#x4E70;&#x5355;&#x6DF1;&#x5EA6;,&#x6BCF;&#x4E00;&#x6761;&#x6DF1;&#x5EA6;&#x5305;&#x542B;&#x56DB;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5206;&#x522B;&#x662F;&#x4EF7;&#x683C;&#xFF0C;&#x6302;&#x5355;&#x91CF;&#xFF0C;&#x6302;&#x5355;&#x603B;&#x91CF;&#xFF0C;&#x548C;&#x6302;&#x5355;&#x6570;</td>
+<td>[[&quot;0.002&quot;,&quot;21000&quot;,&quot;3<br>3220000&quot;,&quot;4&quot;]]</td>
 </tr>
 <tr>
 <td>asks</td>
-<td>list&lt; <a href="#Slot">Slot</a> &gt;</td>
+<td>list&lt; array &gt;</td>
 <td>&#x662F;</td>
-<td>&#x5356;&#x5355;&#x6DF1;&#x5EA6;</td>
-<td>/</td>
-</tr>
-</tbody>
-</table>
-<h4 id="slot">Slot</h4>
-<p><span id="Slot"></span>&#x6BCF;&#x4E00;&#x6761;&#x6DF1;&#x5EA6;&#x6570;&#x636E;</p>
-<table>
-<thead>
-<tr>
-<th>&#x5B57;&#x6BB5;</th>
-<th>&#x7C7B;&#x578B;</th>
-<th>&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
-<th>&#x8BF4;&#x660E;</th>
-<th>&#x4E3E;&#x4F8B;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>price</td>
-<td>string</td>
-<td>&#x662F;</td>
-<td>&#x4EF7;&#x683C;</td>
-<td>0.002</td>
-</tr>
-<tr>
-<td>size</td>
-<td>string</td>
-<td>&#x662F;</td>
-<td>&#x6302;&#x5355;&#x91CF;</td>
-<td>21000</td>
-</tr>
-<tr>
-<td>volume</td>
-<td>string</td>
-<td>&#x662F;</td>
-<td>&#x6302;&#x5355;&#x603B;&#x91CF;</td>
-<td>33220000</td>
-</tr>
-<tr>
-<td>count</td>
-<td>integer</td>
-<td>&#x662F;</td>
-<td>&#x805A;&#x5408;&#x7684;&#x8BA2;&#x5355;&#x6570;&#x76EE;</td>
-<td>4</td>
+<td>&#x5356;&#x5355;&#x6DF1;&#x5EA6;,&#x6BCF;&#x4E00;&#x6761;&#x6DF1;&#x5EA6;&#x5305;&#x542B;&#x56DB;&#x4E2A;&#x5143;&#x7D20;&#xFF0C;&#x5206;&#x522B;&#x662F;&#x4EF7;&#x683C;&#xFF0C;&#x6302;&#x5355;&#x91CF;&#xFF0C;&#x6302;&#x5355;&#x603B;&#x91CF;&#xFF0C;&#x548C;&#x6302;&#x5355;&#x6570;</td>
+<td>[]</td>
 </tr>
 </tbody>
 </table>
@@ -934,7 +907,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"获取市场深度信息","level":"2.2.1.16","depth":3,"next":{"title":"查询交易所Ticker","level":"2.2.1.17","depth":3,"path":"dex_apis/getTicker.md","ref":"dex_apis/getTicker.md","articles":[]},"previous":{"title":"查询交易所的基本必要信息","level":"2.2.1.15","depth":3,"path":"dex_apis/getExchangeInfo.md","ref":"dex_apis/getExchangeInfo.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","custom-favicon"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./gitbook/images/favicon.ico","custom-favicon":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh","gitbook":"*"},"file":{"path":"dex_apis/getDepth.md","mtime":"2020-03-20T13:06:45.519Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-20T13:06:47.055Z"},"basePath":"..","book":{"language":"zh"}});
+            gitbook.page.hasChanged({"page":{"title":"获取市场深度信息","level":"2.2.1.16","depth":3,"next":{"title":"查询交易所Ticker","level":"2.2.1.17","depth":3,"path":"dex_apis/getTicker.md","ref":"dex_apis/getTicker.md","articles":[]},"previous":{"title":"查询交易所的基本必要信息","level":"2.2.1.15","depth":3,"path":"dex_apis/getExchangeInfo.md","ref":"dex_apis/getExchangeInfo.md","articles":[]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","custom-favicon","mathjax","codetabs"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./gitbook/images/favicon.ico","custom-favicon":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh","gitbook":"*"},"file":{"path":"dex_apis/getDepth.md","mtime":"2020-03-21T23:05:37.532Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-21T23:05:38.626Z"},"basePath":"..","book":{"language":"zh"}});
         });
     </script>
 </div>
@@ -945,6 +918,18 @@
     
         
         <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-codetabs/codetabs.js"></script>
         
     
         

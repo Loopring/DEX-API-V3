@@ -21,6 +21,10 @@
                 
             
                 
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-codetabs/codetabs.css">
+                
+            
+                
                 <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
                 
             
@@ -142,14 +146,14 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="2.1.1" >
+        <li class="chapter " data-level="2.1.1" data-path="dex_integrations/trader.html">
             
-                <span>
+                <a href="dex_integrations/trader.html">
             
                     
                     做市
             
-                </span>
+                </a>
             
 
             
@@ -219,7 +223,7 @@
                 <a href="dex_apis/applyApiKey.html">
             
                     
-                    申请用户ApiKey
+                    更新用户ApiKey
             
                 </a>
             
@@ -649,8 +653,21 @@
                                 <h1 id="restful-api-&#x6982;&#x8FF0;">Restful API &#x6982;&#x8FF0;</h1>
 <p>&#x672C;&#x90E8;&#x5206;&#x4E3B;&#x8981;&#x8BA8;&#x8BBA;&#x8DEF;&#x5370;DEX Restful API&#x7684;&#x5171;&#x6027;&#x90E8;&#x5206;&#x3002;</p>
 <h2 id="http-header">Http header</h2>
-<p>API&#x8BF7;&#x6C42;&#x8981;&#x6C42;&#x5728;Header&#x4E2D;&#x4F20;&#x5165;X-API-KEY &#x6216;/&#x548C;X-API-SIG&#x3002;&#x5927;&#x591A;&#x6570;&#x8BF7;&#x6C42;&#x90FD;&#x9700;&#x8981;X-API-KEY&#x624D;&#x80FD;&#x8BBF;&#x95EE;&#xFF1B;&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x8BF7;&#x6C42;&#x9700;&#x8981;EDDSA&#x7B7E;&#x540D;&#x4FE1;&#x606F;&#xFF1A;X-API-SIG&#x3002;
-&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x8BF7;&#x6C42;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7279;&#x6B8A;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8FDB;&#x884C;EDDSA&#x7B7E;&#x540D;&#x3002;&#x4E0B;&#x9762;&#x8BE6;&#x7EC6;&#x8BF4;&#x660E;&#x3002;</p>
+<p>API&#x8BF7;&#x6C42;&#x8981;&#x6C42;&#x5728;Header&#x4E2D;&#x4F20;&#x5165;X-API-KEY &#x6216;/&#x548C;X-API-SIG&#x3002;&#x8BF7;&#x6C42;&#x90FD;&#x9700;&#x8981;X-API-KEY&#x624D;&#x80FD;&#x8BBF;&#x95EE;&#xFF1B;&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x8BF7;&#x6C42;&#x9700;&#x8981;EDDSA&#x7B7E;&#x540D;&#x4FE1;&#x606F;&#xFF1A;X-API-SIG&#x3002;
+&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x8BF7;&#x6C42;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7279;&#x6B8A;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8FDB;&#x884C;EDDSA&#x7B7E;&#x540D;&#x3002;</p>
+<p>&#x9700;&#x8981;X-API-KEY&#x7684;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<ul>
+<li>&#x9664;<a href="dex_apis/getApiKey.html">getApiKey</a>&#x4EE5;&#x5916;&#x7684;&#x6240;&#x6709;&#x8BF7;&#x6C42;</li>
+</ul>
+<p>&#x9700;&#x8981;X-API-SIG&#x7684;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<ul>
+<li><a href="dex_apis/getApiKey.html">getApiKey</a></li>
+<li><a href="dex_apis/cancelOrder.md">cancelOrder</a></li>
+</ul>
+<p>&#x9700;&#x8981;&#x7279;&#x6B8A;&#x7B7E;&#x540D;&#x7684;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<ul>
+<li><a href="dex_apis/submitOrder.html">submitOrder</a></li>
+</ul>
 <h3 id="&#x83B7;&#x53D6;api-key">&#x83B7;&#x53D6;API key</h3>
 <p><strong>[&#x524D;&#x7AEF;&#x83B7;&#x53D6;]</strong></p>
 <p>&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5728;&#x4EA4;&#x6613;&#x6240;( <a href="https://www.loopring.io" target="_blank">https://www.loopring.io</a> )&#x7684;&#x201C;&#x5BFC;&#x51FA;&#x8D26;&#x6237;&#x201D;&#x4E2D;&#x770B;&#x5230;&#x81EA;&#x5DF1;&#x7684;&#x201C;apiKey&#x201D;&#xFF0C;&#x5E76;&#x5728;&#x8C03;&#x7528;API&#x65F6;&#xFF0C;&#x8BBE;&#x7F6E;&#x5230;http header&#x7684;X-API-KEY&#x4E2D;&#x3002;</p>
@@ -659,9 +676,18 @@
 <p>&#x8FD8;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;applyApiKey&#x6765;&#x66F4;&#x6362;API key&#xFF0C;&#x7EC6;&#x8282;&#x53C2;&#x8003;&#x63A5;&#x53E3;&#x8BF4;&#x660E;&#x3002;</p>
 <p>&#x9700;&#x8981;&#x6CE8;&#x610F;&#xFF0C;&#x8FD9;&#x4E24;&#x4E2A;&#x63A5;&#x53E3;&#x7684;&#x8C03;&#x7528;&#x90FD;&#x662F;&#x9700;&#x8981;&#x7B7E;&#x540D;&#x4FE1;&#x606F;&#x7684;&#x3002;&#x7B7E;&#x540D;&#x65B9;&#x6CD5;&#x4F1A;&#x5728;&#x4E0B;&#x9762;&#x63CF;&#x8FF0;&#x3002;</p>
 <h3 id="&#x8BF7;&#x6C42;&#x7B7E;&#x540D;">&#x8BF7;&#x6C42;&#x7B7E;&#x540D;</h3>
+<p><strong>&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x662F;&#x5927;&#x5C0F;&#x5199;&#x4E0D;&#x654F;&#x611F;&#x7684;</strong></p>
 <p>&#x5982;&#x4E0A;&#x6240;&#x8FF0;&#xFF0C;&#x8DEF;&#x5370;DEX&#x7684;&#x4E00;&#x90E8;&#x5206;&#x94FE;&#x4E0B;&#x8BF7;&#x6C42;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7B7E;&#x540D;&#xFF0C;&#x8FD9;&#x5176;&#x4E2D;&#x53C8;&#x6709;&#x4E24;&#x7C7B;&#x7B7E;&#x540D;&#x65B9;&#x5F0F;&#x3002;</p>
 <p>&#x4E00;&#x79CD;&#x662F;&#x7535;&#x8DEF;&#x4E0D;&#x611F;&#x77E5;&#x7684;&#xFF0C;&#x4F7F;&#x7528;SHA256&#x6765;&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#xFF1A;</p>
 <p><strong>[X-API-SIG]</strong></p>
+<p>&#x5F53;&#x7528;&#x6237;&#x8BF7;&#x6C42;&#x83B7;&#x53D6;API-KEY&#x6216;&#x53D6;&#x6D88;&#x8BA2;&#x5355;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5728;header&#x91CC;&#x6DFB;&#x52A0;X-API-SIG&#xFF0C;&#x751F;&#x6210;&#x89C4;&#x5219;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li>&#x5C06;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x6309;key&#x5B57;&#x5178;&#x987A;&#x5E8F;&#x6392;&#x5E8F;&#x540E;&#x751F;&#x6210;Json String</li>
+<li>&#x4F7F;&#x7528;SHA-256&#x8BA1;&#x7B97;json&#x5B57;&#x7B26;&#x4E32;&#x7684;hash</li>
+<li>&#x4F7F;&#x7528;&#x521B;&#x5EFA;&#x8D26;&#x6237;&#x65F6;&#x7684;EdDSA&#x79C1;&#x94A5;&#xFF0C;&#x5BF9;hash&#x7B7E;&#x540D;&#xFF0C;&#x5C06;&#x7B7E;&#x540D;&#x7ED3;&#x679C;<code>Rx,Ry,S</code>&#x4E09;&#x90E8;&#x5206;&#x6309;&quot;<code>,</code>&quot;&#x5206;&#x9694;&#x5E76;&#x4EE5;&#x4E0A;&#x8FF0;&#x987A;&#x5E8F;&#x62FC;&#x6210;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4F5C;&#x4E3A;X-API-SIG&#x7684;&#x503C;&#x653E;&#x5165;&#x8BF7;&#x6C42;&#x7684;header&#x91CC;&#x3002;&#x7B7E;&#x540D;&#x4F7F;&#x7528;&#x7684;<code>EDDSA</code>&#x53C2;&#x8003;<code>ethsnarks</code>&#xFF0C;&#x5176;&#x5185;&#x90E8;&#x4F7F;&#x7528;<code>Poseidon HASH</code>&#x7B97;&#x6CD5;&#xFF0C;&#x53C2;&#x6570;&#x5982;&#x4E0B;&#xFF1A;<pre><code class="lang-py">poseidon_params(SNARK_SCALAR_FIELD, <span class="hljs-number">6</span>, <span class="hljs-number">6</span>, <span class="hljs-number">52</span>, <span class="hljs-string">b&apos;poseidon&apos;</span>, <span class="hljs-number">5</span>, security_target=<span class="hljs-number">128</span>)
+</code></pre>
+</li>
+</ol>
 <p>&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x662F;&#x7535;&#x8DEF;&#x611F;&#x77E5;&#x7684;&#xFF0C;&#x4F7F;&#x7528;EDDSA&#x8FDB;&#x884C;&#x7684;&#x7B7E;&#x540D;&#xFF1A;</p>
 <p><strong>[&#x7535;&#x8DEF;&#x7B7E;&#x540D;]</strong></p>
 <h2 id="&#x8FD4;&#x56DE;&#x7ED3;&#x679C;">&#x8FD4;&#x56DE;&#x7ED3;&#x679C;</h2>
@@ -679,7 +705,7 @@
 <tr>
 <th>&#x5B57;&#x6BB5;</th>
 <th>&#x7C7B;&#x578B;</th>
-<th>&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
+<th>&#x5FC5;&#x987B;</th>
 <th>&#x8BF4;&#x660E;</th>
 <th>&#x4E3E;&#x4F8B;</th>
 </tr>
@@ -689,14 +715,14 @@
 <td>X-API-KEY</td>
 <td>string</td>
 <td>&#x5426;</td>
-<td>API Key. &#x5199;&#x64CD;&#x4F5C;&#x63A5;&#x53E3;&#x9700;&#x8981;</td>
+<td>API Key</td>
 <td>&quot;sra1aavfa&quot;</td>
 </tr>
 <tr>
 <td>X-API-SIG</td>
 <td>string</td>
 <td>&#x5426;</td>
-<td>&#x7B7E;&#x540D;&#x4FE1;&#x606F;. getapikey, cancelorder &#x63A5;&#x53E3;&#x9700;&#x8981;</td>
+<td>&#x7B7E;&#x540D;&#x4FE1;&#x606F;</td>
 <td>&quot;dkkfinfasdf&quot;</td>
 </tr>
 </tbody>
@@ -707,7 +733,7 @@
 <tr>
 <th>&#x5B57;&#x6BB5;</th>
 <th>&#x7C7B;&#x578B;</th>
-<th>&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
+<th>&#x5FC5;&#x987B;</th>
 <th>&#x8BF4;&#x660E;</th>
 <th>&#x4E3E;&#x4F8B;</th>
 </tr>
@@ -769,7 +795,7 @@
 <tr>
 <th>&#x5B57;&#x6BB5;</th>
 <th>&#x7C7B;&#x578B;</th>
-<th>&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
+<th>&#x5FC5;&#x987B;</th>
 <th>&#x8BF4;&#x660E;</th>
 <th>&#x4E3E;&#x4F8B;</th>
 </tr>
@@ -834,7 +860,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Restful API","level":"2.2.1","depth":2,"next":{"title":"查询服务器当前时间","level":"2.2.1.1","depth":3,"path":"dex_apis/getTimestamp.md","ref":"dex_apis/getTimestamp.md","articles":[]},"previous":{"title":"DEX API","level":"2.2","depth":1,"path":"dex_api_overview.md","ref":"dex_api_overview.md","articles":[{"title":"Restful API","level":"2.2.1","depth":2,"path":"restful_api_overview.md","ref":"restful_api_overview.md","articles":[{"title":"查询服务器当前时间","level":"2.2.1.1","depth":3,"path":"dex_apis/getTimestamp.md","ref":"dex_apis/getTimestamp.md","articles":[]},{"title":"查询用户ApiKey","level":"2.2.1.2","depth":3,"path":"dex_apis/getApiKey.md","ref":"dex_apis/getApiKey.md","articles":[]},{"title":"申请用户ApiKey","level":"2.2.1.3","depth":3,"path":"dex_apis/applyApiKey.md","ref":"dex_apis/applyApiKey.md","articles":[]},{"title":"获取下一个有效OrderId","level":"2.2.1.4","depth":3,"path":"dex_apis/getNextOrderId.md","ref":"dex_apis/getNextOrderId.md","articles":[]},{"title":"获取订单详情","level":"2.2.1.5","depth":3,"path":"dex_apis/getOrderDetail.md","ref":"dex_apis/getOrderDetail.md","articles":[]},{"title":"提交订单","level":"2.2.1.6","depth":3,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},{"title":"获取用户订单列表","level":"2.2.1.7","depth":3,"path":"dex_apis/getOrders.md","ref":"dex_apis/getOrders.md","articles":[]},{"title":"取消订单","level":"2.2.1.8","depth":3,"path":"dex_apis/cancelOrders.md","ref":"dex_apis/cancelOrders.md","articles":[]},{"title":"发送以太坊交易","level":"2.2.1.9","depth":3,"path":"dex_apis/sendTransaction.md","ref":"dex_apis/sendTransaction.md","articles":[]},{"title":"查询nonce","level":"2.2.1.10","depth":3,"path":"dex_apis/getEthNonce.md","ref":"dex_apis/getEthNonce.md","articles":[]},{"title":"查询ETH余额","level":"2.2.1.11","depth":3,"path":"dex_apis/getEthBalance.md","ref":"dex_apis/getEthBalance.md","articles":[]},{"title":"获取推荐gas","level":"2.2.1.12","depth":3,"path":"dex_apis/getRecommendedGasPrice.md","ref":"dex_apis/getRecommendedGasPrice.md","articles":[]},{"title":"查询市场配置","level":"2.2.1.13","depth":3,"path":"dex_apis/getMarkets.md","ref":"dex_apis/getMarkets.md","articles":[]},{"title":"查询交易所支持的通证信息","level":"2.2.1.14","depth":3,"path":"dex_apis/getTokens.md","ref":"dex_apis/getTokens.md","articles":[]},{"title":"查询交易所的基本必要信息","level":"2.2.1.15","depth":3,"path":"dex_apis/getExchangeInfo.md","ref":"dex_apis/getExchangeInfo.md","articles":[]},{"title":"获取市场深度信息","level":"2.2.1.16","depth":3,"path":"dex_apis/getDepth.md","ref":"dex_apis/getDepth.md","articles":[]},{"title":"查询交易所Ticker","level":"2.2.1.17","depth":3,"path":"dex_apis/getTicker.md","ref":"dex_apis/getTicker.md","articles":[]},{"title":"查询K线数据","level":"2.2.1.18","depth":3,"path":"dex_apis/getCandlestick.md","ref":"dex_apis/getCandlestick.md","articles":[]},{"title":"查询token法币价","level":"2.2.1.19","depth":3,"path":"dex_apis/getPrice.md","ref":"dex_apis/getPrice.md","articles":[]},{"title":"查询市场交易","level":"2.2.1.20","depth":3,"path":"dex_apis/getMarketTrade.md","ref":"dex_apis/getMarketTrade.md","articles":[]},{"title":"查询授权","level":"2.2.1.21","depth":3,"path":"dex_apis/getAllowance.md","ref":"dex_apis/getAllowance.md","articles":[]},{"title":"查询Token余额","level":"2.2.1.22","depth":3,"path":"dex_apis/getTokenBalance.md","ref":"dex_apis/getTokenBalance.md","articles":[]},{"title":"查询用户信息","level":"2.2.1.23","depth":3,"path":"dex_apis/getAccount.md","ref":"dex_apis/getAccount.md","articles":[]},{"title":"获取用户开户记录","level":"2.2.1.24","depth":3,"path":"dex_apis/getUserCreate.md","ref":"dex_apis/getUserCreate.md","articles":[]},{"title":"获取用户更新记录","level":"2.2.1.25","depth":3,"path":"dex_apis/getUserUpdate.md","ref":"dex_apis/getUserUpdate.md","articles":[]},{"title":"查询用户交易所余额","level":"2.2.1.26","depth":3,"path":"dex_apis/getUserBalances.md","ref":"dex_apis/getUserBalances.md","articles":[]},{"title":"获取用户充值记录","level":"2.2.1.27","depth":3,"path":"dex_apis/getUserDeposits.md","ref":"dex_apis/getUserDeposits.md","articles":[]},{"title":"获取用户提现记录","level":"2.2.1.28","depth":3,"path":"dex_apis/getUserWithdrawals.md","ref":"dex_apis/getUserWithdrawals.md","articles":[]},{"title":"获取用户转账记录","level":"2.2.1.29","depth":3,"path":"dex_apis/getUserTransfers.md","ref":"dex_apis/getUserTransfers.md","articles":[]},{"title":"获取用户交易记录","level":"2.2.1.30","depth":3,"path":"dex_apis/getUserTrades.md","ref":"dex_apis/getUserTrades.md","articles":[]}]},{"title":"Websocket API","level":"2.2.2","depth":2,"path":"websocket_overview.md","ref":"websocket_overview.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","custom-favicon"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./gitbook/images/favicon.ico","custom-favicon":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh","gitbook":"*"},"file":{"path":"restful_api_overview.md","mtime":"2020-03-20T13:06:45.779Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-20T13:06:47.055Z"},"basePath":".","book":{"language":"zh"}});
+            gitbook.page.hasChanged({"page":{"title":"Restful API","level":"2.2.1","depth":2,"next":{"title":"查询服务器当前时间","level":"2.2.1.1","depth":3,"path":"dex_apis/getTimestamp.md","ref":"dex_apis/getTimestamp.md","articles":[]},"previous":{"title":"DEX API","level":"2.2","depth":1,"path":"dex_api_overview.md","ref":"dex_api_overview.md","articles":[{"title":"Restful API","level":"2.2.1","depth":2,"path":"restful_api_overview.md","ref":"restful_api_overview.md","articles":[{"title":"查询服务器当前时间","level":"2.2.1.1","depth":3,"path":"dex_apis/getTimestamp.md","ref":"dex_apis/getTimestamp.md","articles":[]},{"title":"查询用户ApiKey","level":"2.2.1.2","depth":3,"path":"dex_apis/getApiKey.md","ref":"dex_apis/getApiKey.md","articles":[]},{"title":"更新用户ApiKey","level":"2.2.1.3","depth":3,"path":"dex_apis/applyApiKey.md","ref":"dex_apis/applyApiKey.md","articles":[]},{"title":"获取下一个有效OrderId","level":"2.2.1.4","depth":3,"path":"dex_apis/getNextOrderId.md","ref":"dex_apis/getNextOrderId.md","articles":[]},{"title":"获取订单详情","level":"2.2.1.5","depth":3,"path":"dex_apis/getOrderDetail.md","ref":"dex_apis/getOrderDetail.md","articles":[]},{"title":"提交订单","level":"2.2.1.6","depth":3,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},{"title":"获取用户订单列表","level":"2.2.1.7","depth":3,"path":"dex_apis/getOrders.md","ref":"dex_apis/getOrders.md","articles":[]},{"title":"取消订单","level":"2.2.1.8","depth":3,"path":"dex_apis/cancelOrders.md","ref":"dex_apis/cancelOrders.md","articles":[]},{"title":"发送以太坊交易","level":"2.2.1.9","depth":3,"path":"dex_apis/sendTransaction.md","ref":"dex_apis/sendTransaction.md","articles":[]},{"title":"查询nonce","level":"2.2.1.10","depth":3,"path":"dex_apis/getEthNonce.md","ref":"dex_apis/getEthNonce.md","articles":[]},{"title":"查询ETH余额","level":"2.2.1.11","depth":3,"path":"dex_apis/getEthBalance.md","ref":"dex_apis/getEthBalance.md","articles":[]},{"title":"获取推荐gas","level":"2.2.1.12","depth":3,"path":"dex_apis/getRecommendedGasPrice.md","ref":"dex_apis/getRecommendedGasPrice.md","articles":[]},{"title":"查询市场配置","level":"2.2.1.13","depth":3,"path":"dex_apis/getMarkets.md","ref":"dex_apis/getMarkets.md","articles":[]},{"title":"查询交易所支持的通证信息","level":"2.2.1.14","depth":3,"path":"dex_apis/getTokens.md","ref":"dex_apis/getTokens.md","articles":[]},{"title":"查询交易所的基本必要信息","level":"2.2.1.15","depth":3,"path":"dex_apis/getExchangeInfo.md","ref":"dex_apis/getExchangeInfo.md","articles":[]},{"title":"获取市场深度信息","level":"2.2.1.16","depth":3,"path":"dex_apis/getDepth.md","ref":"dex_apis/getDepth.md","articles":[]},{"title":"查询交易所Ticker","level":"2.2.1.17","depth":3,"path":"dex_apis/getTicker.md","ref":"dex_apis/getTicker.md","articles":[]},{"title":"查询K线数据","level":"2.2.1.18","depth":3,"path":"dex_apis/getCandlestick.md","ref":"dex_apis/getCandlestick.md","articles":[]},{"title":"查询token法币价","level":"2.2.1.19","depth":3,"path":"dex_apis/getPrice.md","ref":"dex_apis/getPrice.md","articles":[]},{"title":"查询市场交易","level":"2.2.1.20","depth":3,"path":"dex_apis/getMarketTrade.md","ref":"dex_apis/getMarketTrade.md","articles":[]},{"title":"查询授权","level":"2.2.1.21","depth":3,"path":"dex_apis/getAllowance.md","ref":"dex_apis/getAllowance.md","articles":[]},{"title":"查询Token余额","level":"2.2.1.22","depth":3,"path":"dex_apis/getTokenBalance.md","ref":"dex_apis/getTokenBalance.md","articles":[]},{"title":"查询用户信息","level":"2.2.1.23","depth":3,"path":"dex_apis/getAccount.md","ref":"dex_apis/getAccount.md","articles":[]},{"title":"获取用户开户记录","level":"2.2.1.24","depth":3,"path":"dex_apis/getUserCreate.md","ref":"dex_apis/getUserCreate.md","articles":[]},{"title":"获取用户更新记录","level":"2.2.1.25","depth":3,"path":"dex_apis/getUserUpdate.md","ref":"dex_apis/getUserUpdate.md","articles":[]},{"title":"查询用户交易所余额","level":"2.2.1.26","depth":3,"path":"dex_apis/getUserBalances.md","ref":"dex_apis/getUserBalances.md","articles":[]},{"title":"获取用户充值记录","level":"2.2.1.27","depth":3,"path":"dex_apis/getUserDeposits.md","ref":"dex_apis/getUserDeposits.md","articles":[]},{"title":"获取用户提现记录","level":"2.2.1.28","depth":3,"path":"dex_apis/getUserWithdrawals.md","ref":"dex_apis/getUserWithdrawals.md","articles":[]},{"title":"获取用户转账记录","level":"2.2.1.29","depth":3,"path":"dex_apis/getUserTransfers.md","ref":"dex_apis/getUserTransfers.md","articles":[]},{"title":"获取用户交易记录","level":"2.2.1.30","depth":3,"path":"dex_apis/getUserTrades.md","ref":"dex_apis/getUserTrades.md","articles":[]}]},{"title":"Websocket API","level":"2.2.2","depth":2,"path":"websocket_overview.md","ref":"websocket_overview.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["expandable-chapters","custom-favicon","mathjax","codetabs"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search":{},"codetabs":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./gitbook/images/favicon.ico","custom-favicon":{},"mathjax":{"forceSVG":false,"version":"2.6-latest"},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"language":"zh","gitbook":"*"},"file":{"path":"restful_api_overview.md","mtime":"2020-03-21T23:05:37.641Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-21T23:05:38.626Z"},"basePath":".","book":{"language":"zh"}});
         });
     </script>
 </div>
@@ -845,6 +871,18 @@
     
         
         <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="https://cdn.mathjax.org/mathjax/2.6-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-mathjax/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-codetabs/codetabs.js"></script>
         
     
         

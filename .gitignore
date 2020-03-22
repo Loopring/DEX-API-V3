@@ -7,3 +7,4 @@ models
 **.DS_Store
 error
 .idea
+**/swagger*
