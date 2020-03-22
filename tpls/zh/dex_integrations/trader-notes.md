@@ -5,7 +5,7 @@
 - 服务器收到订单时会判断订单中的`ValidSince`时间戳，注意不是订单发送的时间，而是订单开始生效的时间，因此推荐订单的`ValidSince`在当前时间上提前15分钟，即：
 
   ```python
-  order.validSince = int(time.time() - 900)
+  order["validSince"] = int(time.time() - 900)
   ```
 
 ### 订单OrderID
@@ -23,13 +23,13 @@
 - 订单`OrderID`由用户售出的代币品种，在`LRC-ETH`市场上，如果用户提交一个买单，即售出`ETH`，买入`LRC`，则`OrderID`值为：
 
   ```python
-  order.orderId = token_orderid_mapping['ETH']
+  order["orderId"] = token_orderid_mapping['ETH']
   ```
 
   反之如果是卖单，即售出LRC，买入ETH，则OrderID为：
 
   ```python
-  order.orderId = token_orderid_mapping['LRC']
+  order["orderId"] = token_orderid_mapping['LRC']
   ```
 
 - 当前`LoopringDEX`每一个币种的最大订单`OrderID`为$$ 2^{20} $$，如果当前账户某个币种的`OrderID`超过该值，则下单失败。后续版本的`LoopringDEX`将会更新此限制。
@@ -60,13 +60,11 @@
 
 ### 需要签名的API接口
 
-- 和账户信息有关的都需要签名，详见[Restful API 概述](../restful_api_overview.md)，这里以[取消订单](../dex_apis/cancelOrders.md)为例。
+- 除了需要`API-KEY`外，和账户信息有关的还需要签名，详见[Restful API 概述](../restful_api_overview.md)，这里仅以[取消订单](../dex_apis/cancelOrders.md)为例。
 
 - 调用取消订单接口时，除了接口本身所需的参数外，还需传递`signature`即参数签名。
 
-- `LoopringDEX`对API签名使用`EDDSA SHA256`算法，首先将API参数序列化，然后作为` SHA256`的操作对象，得到`SHA256Hash`值，再用`EDDSA`算法对该`SHA256Hash`进行签名，私钥为用户的`API-Secret`，最终的输出有三个整数：Rx/Ry/S，将这三个序列化成字符串并用`,`连接起来即为签名，可参考`sign_api_data`代码示例。
-
-- API-Secret可以从`loopringDEX`网页导出。
+- `LoopringDEX`对API签名使用`EDDSA SHA256`算法，首先将API参数序列化成型如`[(参数1名, 参数1值), (参数2名, 参数2值), ..., (参数N名, 参数N值)]`的字符串二元组数组，其中参数名按照字典序排序，从而保证服务器验证顺序一致。然后整体转为`JSON`字符串作为` SHA256`的操作对象，得到`SHA256Hash`值，再用`EDDSA`算法对该`SHA256Hash`进行签名，私钥即`privateKey`，最终的签名包含三个整数：`Rx, Ry, S`，将这三个序列化成字符串并用`,`连接起来即为API签名，流程请参考`sign_api_data`代码示例。
 
 - 对API接口的签名使用的`EDDSA`使用`ethsnarks`工程代码，其内部使用`Poseidon HASH`算法，`LoopringDEX`的签名参数如下:
 
@@ -100,18 +98,18 @@
           PoseidonHashParams = poseidon_params(SNARK_SCALAR_FIELD, 6, 6, 52, b'poseidon', 5, security_target=128)
           inputMsg = list(as_scalar(*args))
           return poseidon(inputMsg, PoseidonHashParams)
-
+  
   #对数据签名并返回签名
   def sign_api_data(api_request_params，api_secret):
       data = serialize_api_data(api_request_params)
-    hasher = hashlib.sha256()
-    msgBuf = ujson.dumps(data).encode('utf-8')
+      hasher = hashlib.sha256()
+      msgBuf = ujson.dumps(data).encode('utf-8')
       hasher.update(msgBuf)
-    msgHash = int(hasher.hexdigest(), 16) % SNARK_SCALAR_FIELD
-    signed = PoseidonEdDSA.sign(msgHash, FQ(int(api_secret)))
-    signature = ','.join(str(_) for _ in [signed.sig.R.x, signed.sig.R.y, signed.sig.s])
-    return signature
-
+      msgHash = int(hasher.hexdigest(), 16) % SNARK_SCALAR_FIELD
+      signed = PoseidonEdDSA.sign(msgHash, FQ(int(api_secret)))
+      signature = ','.join(str(_) for _ in [signed.sig.R.x, signed.sig.R.y, signed.sig.s])
+      return signature
+  
   def serialize_api_data(data):
       has_signature = False
       params = []
@@ -120,9 +118,8 @@
               has_signature = True
         else:
               params.append((key, value))
-              # sort parameters by key
-              params.sort(key=itemgetter(0))
-
+  	# sort parameters by key, in alphabet order
+      params.sort(key=itemgetter(0))
       if has_signature:
           params.append(('signature', data['signature']))
     return params
@@ -130,7 +127,7 @@
 
 ### 需要签名的数据类型（订单ORDER）
 
-- 在访问`api/v2/order`发送订单之前，和其他需要API参数签名不同的是，这里要对订单本身进行签名，签名结果放在订单参数里面，同样地，订单参数也需要序列化再进行`PoseidonHash`运算，这里为了配合`PoseidonHash`，所以序列化成整数数组，如下：
+- 在访问`api/v2/order`发送订单之前，和其他需要API参数签名不同的是，这里要对订单本身进行签名，签名结果放在订单参数里面，同样地，订单参数也需要序列化再进行`PoseidonHash`运算，这里为了配合`PoseidonHash`，所以序列化成整数数组，请注意这里序列化数组的顺序和服务器必须保持一致，如示例代码所示：
 
   ```python
   def serialize_api_data(order):
@@ -149,7 +146,7 @@
           int(order["buy"]=="true"),
           int(order["label"])
       ]
-
+  
   def sign_order(order, api_secret)
     PoseidonHashParams = poseidon_params(SNARK_SCALAR_FIELD, 14, 6, 53, b'poseidon', 5, security_target=128)
       serialized_order = serialize_api_data(order)
@@ -163,7 +160,7 @@
       })
   ```
 
-- `LoopringDEX`使用`EDDSA PoseidonHASH`算法对订单参数签名，同样的，`EDDSA PoseidonHASH`算法代码可以参考`ethsnarks`，对订单参数计算HASH的`PoseidonHash`的参数如下：
+- `LoopringDEX`使用`EDDSA PoseidonHASH`算法对订单参数签名，`EDDSA PoseidonHASH`算法代码可以参考`ethsnarks`，对订单参数计算`PoseidonHash`的参数如下：
 
   ```python
   poseidon_params(SNARK_SCALAR_FIELD, 14, 6, 53, b'poseidon', 5, security_target=128)

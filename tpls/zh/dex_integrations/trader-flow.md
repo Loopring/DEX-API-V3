@@ -1,12 +1,12 @@
 ## 注册账户
 
-   路印DEX通过发送ETH交易调用智能合约来完成账户的创建，充值，提现等操作（此类请求成为链上请求）。
+- 路印DEX通过发送ETH交易调用智能合约来完成账户的创建，充值，提现等操作（此类请求成为链上请求）
 
-   对于做市商用户，我们推荐在[路印DEX网站](https://www.loopring.io)完成此类操作，从而省去对接ETH的工作。
+- 对于做市商用户，我们推荐在[路印DEX网站](https://www.loopring.io)完成此类操作，从而省去对接ETH的工作。
 
 ## 获取API key
 
-   创建好账户之后，您可以使用官网的'导出账号'功能导出API key及EDDSA公私钥（publicKeyX, publicKeyY, privateKey），路印DEX链下请求需要这些信息。
+- 创建好账户之后，您可以使用官网的'导出账号'功能导出`API-Key`及`EDDSA`公私钥`publicKeyX`,` publicKeyY`和`privateKey`，路印DEX链下请求需要这些信息。
 
 ## 提交订单
 
