@@ -1,5 +1,5 @@
 {
-    "langs": ["zh"],
+    "langs": ["zh", "en"],
     "# langs": ["zh"],
     "not_ready": [
         "/api/v2/dexNonce",
