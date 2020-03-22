@@ -3,7 +3,7 @@
     "plugins": [
         "expandable-chapters",
         "custom-favicon",
-        "mathjax",
+        "katex",
         "codetabs"
     ],
     "pluginsConfig" : {
