@@ -6,3 +6,4 @@ generated
 models
 **.DS_Store
 error
+**/swagger*
