@@ -17,8 +17,8 @@
     "pluginsConfig" : {
         "favicon": "./gitbook/images/favicon.ico",
         "insert-logo": {
-            "url": "../gitbook/images/logo.png",
-            "style": "background: none; max-height: 40px; min-height: 40px"
+            "url": "https://loopring.org/images/logo.svg",
+            "style": "background: none; max-height: 28px; min-height: 28px"
         },
         "sharing": {
             "google": true,
