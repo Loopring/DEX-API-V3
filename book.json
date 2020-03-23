@@ -1,12 +1,40 @@
 {
     "gitbook": ">=3.2.3",
+    "title" : "Loopring API",
     "plugins": [
+        "-lunr",
+        "-search",
+        "-sharing",
         "expandable-chapters",
         "custom-favicon",
         "katex",
-        "codetabs"
+        "codetabs",
+        "search-pro",
+        "insert-logo",
+        "sharing-plus",
+        "flexible-alerts"
     ],
     "pluginsConfig" : {
-        "favicon": "./gitbook/images/favicon.ico"
+        "favicon": "./gitbook/images/favicon.ico",
+        "insert-logo": {
+            "url": "/gitbook/images/logo.svg",
+            "style": "background: none; max-height: 40px; min-height: 40px"
+        },
+        "sharing": {
+            "facebook": true,
+            "google": true,
+            "twitter": true,
+            "weibo": true,
+            "qq": true,
+            "douban": true,
+            "all": [
+                "instapaper",
+                "linkedin",
+                "messenger",
+                "qzone",
+                "viber",
+                "whatsapp"
+            ]
+        }
     }
 }
