@@ -593,6 +593,9 @@ def build_doc():
     sync_out()
 
 def fetch_and_save_swagger_json(lang):
+    fetchLang = lang
+    if (lang == 'zh-hans'):
+        fetchLang = 'zh'
     conn = None
 
     if VARS['v']['fetchurl'].startswith('https://'):
@@ -603,7 +606,7 @@ def fetch_and_save_swagger_json(lang):
         conn = http.client.HTTPConnection(host)
 
     LOGGER.info('Fetching swagger.json with lang %s...'%(lang))
-    conn.request("GET", SWAGGER_JSON_PATH + '?hl=%s'%(lang))
+    conn.request("GET", SWAGGER_JSON_PATH + '?hl=%s'%(fetchLang))
     swagger = json.dumps(json.loads(conn.getresponse().read()))
 
     LOGGER.info('Writing swagger.json with lang %s...'%(lang))
