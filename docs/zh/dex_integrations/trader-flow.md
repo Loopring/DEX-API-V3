@@ -8,6 +8,10 @@
 
    创建好账户之后，您可以使用官网的'导出账号'功能导出API key及EDDSA公私钥（publicKeyX, publicKeyY, privateKey），路印DEX链下请求需要这些信息。
 
+   > [!DANGER]
+   >
+   > 请妥善保管API key 和 EDDSA私钥，如泄漏，可能会发生信息泄漏，甚至资产损失。
+
 ## 提交订单
 
 - 准备发送订单的参数举例，API参数细节详见[提交订单](../dex_apis/submitOrder.md)。
