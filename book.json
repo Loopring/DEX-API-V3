@@ -17,7 +17,7 @@
     "pluginsConfig" : {
         "favicon": "./gitbook/images/favicon.ico",
         "insert-logo": {
-            "url": "../../gitbook/images/logo.png",
+            "url": "../gitbook/images/logo.png",
             "style": "background: none; max-height: 40px; min-height: 40px"
         },
         "sharing": {
