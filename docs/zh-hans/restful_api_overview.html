@@ -1,0 +1,1015 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Restful API · Loopring API</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-codetabs/codetabs.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="dex_apis/getTimestamp.html" />
+    
+    
+    <link rel="prev" href="dex_api_overview.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">路印</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    介绍
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="GLOSSORY.html">
+            
+                <a href="GLOSSORY.html">
+            
+                    
+                    术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">去中心化交易所</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="dex_integration_overview.html">
+            
+                <a href="dex_integration_overview.html">
+            
+                    
+                    DEX 集成文档
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.1.1" data-path="dex_integrations/trader.html">
+            
+                <a href="dex_integrations/trader.html">
+            
+                    
+                    做市
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="dex_api_overview.html">
+            
+                <a href="dex_api_overview.html">
+            
+                    
+                    DEX API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="2.2.1" data-path="restful_api_overview.html">
+            
+                <a href="restful_api_overview.html">
+            
+                    
+                    Restful API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.1.1" data-path="dex_apis/getTimestamp.html">
+            
+                <a href="dex_apis/getTimestamp.html">
+            
+                    
+                    查询服务器当前时间
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.2" data-path="dex_apis/getApiKey.html">
+            
+                <a href="dex_apis/getApiKey.html">
+            
+                    
+                    查询用户ApiKey
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.3" data-path="dex_apis/applyApiKey.html">
+            
+                <a href="dex_apis/applyApiKey.html">
+            
+                    
+                    更新用户ApiKey
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.4" data-path="dex_apis/getNextOrderId.html">
+            
+                <a href="dex_apis/getNextOrderId.html">
+            
+                    
+                    获取下一个有效OrderId
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.5" data-path="dex_apis/getOrderDetail.html">
+            
+                <a href="dex_apis/getOrderDetail.html">
+            
+                    
+                    获取订单详情
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.6" data-path="dex_apis/submitOrder.html">
+            
+                <a href="dex_apis/submitOrder.html">
+            
+                    
+                    提交订单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.7" data-path="dex_apis/getOrders.html">
+            
+                <a href="dex_apis/getOrders.html">
+            
+                    
+                    获取用户订单列表
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.8" data-path="dex_apis/cancelOrders.html">
+            
+                <a href="dex_apis/cancelOrders.html">
+            
+                    
+                    取消订单
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.9" data-path="dex_apis/sendTransaction.html">
+            
+                <a href="dex_apis/sendTransaction.html">
+            
+                    
+                    发送以太坊交易
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.10" data-path="dex_apis/getEthNonce.html">
+            
+                <a href="dex_apis/getEthNonce.html">
+            
+                    
+                    查询nonce
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.11" data-path="dex_apis/getEthBalance.html">
+            
+                <a href="dex_apis/getEthBalance.html">
+            
+                    
+                    查询ETH余额
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.12" data-path="dex_apis/getRecommendedGasPrice.html">
+            
+                <a href="dex_apis/getRecommendedGasPrice.html">
+            
+                    
+                    获取推荐gas
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.13" data-path="dex_apis/getMarkets.html">
+            
+                <a href="dex_apis/getMarkets.html">
+            
+                    
+                    查询市场配置
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.14" data-path="dex_apis/getTokens.html">
+            
+                <a href="dex_apis/getTokens.html">
+            
+                    
+                    查询交易所支持的通证信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.15" data-path="dex_apis/getExchangeInfo.html">
+            
+                <a href="dex_apis/getExchangeInfo.html">
+            
+                    
+                    查询交易所的基本必要信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.16" data-path="dex_apis/getDepth.html">
+            
+                <a href="dex_apis/getDepth.html">
+            
+                    
+                    获取市场深度信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.17" data-path="dex_apis/getTicker.html">
+            
+                <a href="dex_apis/getTicker.html">
+            
+                    
+                    查询交易所Ticker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.18" data-path="dex_apis/getCandlestick.html">
+            
+                <a href="dex_apis/getCandlestick.html">
+            
+                    
+                    查询K线数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.19" data-path="dex_apis/getPrice.html">
+            
+                <a href="dex_apis/getPrice.html">
+            
+                    
+                    查询token法币价
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.20" data-path="dex_apis/getMarketTrade.html">
+            
+                <a href="dex_apis/getMarketTrade.html">
+            
+                    
+                    查询市场交易
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.21" data-path="dex_apis/getAllowance.html">
+            
+                <a href="dex_apis/getAllowance.html">
+            
+                    
+                    查询授权
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.22" data-path="dex_apis/getTokenBalance.html">
+            
+                <a href="dex_apis/getTokenBalance.html">
+            
+                    
+                    查询Token余额
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.23" data-path="dex_apis/getAccount.html">
+            
+                <a href="dex_apis/getAccount.html">
+            
+                    
+                    查询用户信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.24" data-path="dex_apis/getUserCreate.html">
+            
+                <a href="dex_apis/getUserCreate.html">
+            
+                    
+                    获取用户开户记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.25" data-path="dex_apis/getUserUpdate.html">
+            
+                <a href="dex_apis/getUserUpdate.html">
+            
+                    
+                    获取用户更新记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.26" data-path="dex_apis/getUserBalances.html">
+            
+                <a href="dex_apis/getUserBalances.html">
+            
+                    
+                    查询用户交易所余额
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.27" data-path="dex_apis/getUserDeposits.html">
+            
+                <a href="dex_apis/getUserDeposits.html">
+            
+                    
+                    获取用户充值记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.28" data-path="dex_apis/getUserWithdrawals.html">
+            
+                <a href="dex_apis/getUserWithdrawals.html">
+            
+                    
+                    获取用户提现记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.29" data-path="dex_apis/getUserTransfers.html">
+            
+                <a href="dex_apis/getUserTransfers.html">
+            
+                    
+                    获取用户转账记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.1.30" data-path="dex_apis/getUserTrades.html">
+            
+                <a href="dex_apis/getUserTrades.html">
+            
+                    
+                    获取用户交易记录
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2" data-path="websocket/overview.html">
+            
+                <a href="websocket/overview.html">
+            
+                    
+                    Websocket API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="2.2.2.1" data-path="websocket/depth.html">
+            
+                <a href="websocket/depth.html">
+            
+                    
+                    订阅订单簿更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.2" data-path="websocket/depth10.html">
+            
+                <a href="websocket/depth10.html">
+            
+                    
+                    订阅订单簿买卖前10的全量推送
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.3" data-path="websocket/trade.html">
+            
+                <a href="websocket/trade.html">
+            
+                    
+                    订阅市场交易的更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.4" data-path="websocket/ticker.html">
+            
+                <a href="websocket/ticker.html">
+            
+                    
+                    订阅市场Ticker的更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.5" data-path="websocket/candleStick.html">
+            
+                <a href="websocket/candleStick.html">
+            
+                    
+                    订阅市场CandleStick更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.6" data-path="websocket/account.html">
+            
+                <a href="websocket/account.html">
+            
+                    
+                    订阅用户余额更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2.2.7" data-path="websocket/order.html">
+            
+                <a href="websocket/order.html">
+            
+                    
+                    订阅用户订单更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="." >Restful API</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="restful-api-&#x6982;&#x8FF0;">Restful API &#x6982;&#x8FF0;</h1>
+<p>&#x672C;&#x90E8;&#x5206;&#x4E3B;&#x8981;&#x8BA8;&#x8BBA;&#x8DEF;&#x5370;DEX Restful API&#x7684;&#x5171;&#x6027;&#x90E8;&#x5206;&#x3002;</p>
+<h2 id="http-&#x8BF7;&#x6C42;&#x5934;">Http &#x8BF7;&#x6C42;&#x5934;</h2>
+<p>API&#x8BF7;&#x6C42;&#x8981;&#x6C42;&#x5728;Header&#x4E2D;&#x4F20;&#x5165;X-API-KEY &#x6216;/&#x548C;X-API-SIG&#x3002;&#x8BF7;&#x6C42;&#x90FD;&#x9700;&#x8981;X-API-KEY&#x624D;&#x80FD;&#x8BBF;&#x95EE;&#xFF1B;&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x8BF7;&#x6C42;&#x9700;&#x8981;EDDSA&#x7B7E;&#x540D;&#x4FE1;&#x606F;&#xFF1A;X-API-SIG&#x3002;
+&#x8FD8;&#x6709;&#x4E00;&#x4E9B;&#x8BF7;&#x6C42;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7279;&#x6B8A;&#x7684;&#x65B9;&#x5F0F;&#x6765;&#x8FDB;&#x884C;EDDSA&#x7B7E;&#x540D;&#x3002;</p>
+<p>&#x9700;&#x8981;X-API-KEY&#x7684;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<ul>
+<li>&#x9664;<a href="dex_apis/getApiKey.html">&#x67E5;&#x8BE2;&#x7528;&#x6237;ApiKey</a>&#x4EE5;&#x5916;&#x7684;&#x6240;&#x6709;&#x8BF7;&#x6C42;</li>
+</ul>
+<p>&#x9700;&#x8981;X-API-SIG&#x7684;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<ul>
+<li><a href="dex_apis/getApiKey.html">&#x67E5;&#x8BE2;&#x7528;&#x6237;ApiKey</a></li>
+<li><a href="dex_apis/cancelOrder.md">&#x53D6;&#x6D88;&#x8BA2;&#x5355;</a></li>
+</ul>
+<p>&#x9700;&#x8981;&#x7279;&#x6B8A;&#x7B7E;&#x540D;&#x7684;&#x8BF7;&#x6C42;&#xFF1A;</p>
+<ul>
+<li><a href="dex_apis/submitOrder.html">&#x63D0;&#x4EA4;&#x8BA2;&#x5355;</a></li>
+</ul>
+<h3 id="&#x83B7;&#x53D6;api-key">&#x83B7;&#x53D6;API key</h3>
+<p><strong>[&#x524D;&#x7AEF;&#x83B7;&#x53D6;]</strong></p>
+<p>&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x5728;&#x4EA4;&#x6613;&#x6240;( <a href="https://www.loopring.io" target="_blank">https://www.loopring.io</a> )&#x7684;&#x201C;&#x5BFC;&#x51FA;&#x8D26;&#x6237;&#x201D;&#x4E2D;&#x770B;&#x5230;&#x81EA;&#x5DF1;&#x7684;&#x201C;apiKey&#x201D;&#xFF0C;&#x5E76;&#x5728;&#x8C03;&#x7528;API&#x65F6;&#xFF0C;&#x8BBE;&#x7F6E;&#x5230;http header&#x7684;X-API-KEY&#x4E2D;&#x3002;</p>
+<p><strong>[API&#x83B7;&#x53D6;]</strong></p>
+<p>&#x7528;&#x6237;&#x6CE8;&#x518C;&#x7684;&#x65F6;&#x5019;&#x7CFB;&#x7EDF;&#x4F1A;&#x4EA7;&#x751F;&#x5BF9;&#x5E94;&#x7684;API key&#xFF0C;&#x7528;&#x6237;&#x901A;&#x8FC7;<a href="dex_apis/getApiKey.html">&#x67E5;&#x8BE2;&#x7528;&#x6237;ApiKey</a>&#x62FF;&#x5230;&#x8FD9;&#x4E2A;key&#xFF0C;&#x6B64;&#x65F6;&#x9700;&#x8981;&#x5BF9;&#x8BF7;&#x6C42;&#x7B7E;&#x540D;&#x4EE5;&#x4FDD;&#x8BC1;&#x522B;&#x7684;&#x7528;&#x6237;&#x65E0;&#x6CD5;&#x83B7;&#x53D6;API key&#x3002;&#x4EE5;&#x540E;&#x6BCF;&#x6B21;&#x8C03;&#x7528;&#x6B64;API&#x90FD;&#x8FD4;&#x56DE;&#x540C;&#x6837;&#x7684;key&#x3002;</p>
+<p>&#x5982;&#x679C;&#x7528;&#x6237;&#x60F3;&#x8981;&#x66F4;&#x6362;API key&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x7528;<a href="dex_apis/applyApiKey.html">&#x66F4;&#x65B0;&#x7528;&#x6237;ApiKey</a>&#x63A5;&#x53E3;&#xFF08;&#x8BF7;&#x6C42;&#x5934;&#x9700;&#x4F20;&#x5165;&#x8001;&#x7684;API key&#xFF09;&#xFF0C;&#x8FD9;&#x6837;&#x4F1A;&#x66F4;&#x6362;&#x4E00;&#x4E2A;&#x65B0;&#x7684;API key&#xFF0C;&#x7136;&#x540E;&#x6BCF;&#x6B21;&#x8C03;&#x7528;<a href="dex_apis/getApiKey.html">&#x67E5;&#x8BE2;&#x7528;&#x6237;ApiKey</a>&#x90FD;&#x4F1A;&#x8FD4;&#x56DE;&#x65B0;&#x7684;key&#x3002;</p>
+<h3 id="&#x8BF7;&#x6C42;&#x7B7E;&#x540D;">&#x8BF7;&#x6C42;&#x7B7E;&#x540D;</h3>
+<p><strong>&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x662F;&#x5927;&#x5C0F;&#x5199;&#x4E0D;&#x654F;&#x611F;&#x7684;</strong></p>
+<p>&#x5982;&#x4E0A;&#x6240;&#x8FF0;&#xFF0C;&#x8DEF;&#x5370;DEX&#x7684;&#x4E00;&#x90E8;&#x5206;&#x94FE;&#x4E0B;&#x8BF7;&#x6C42;&#x9700;&#x8981;&#x4F7F;&#x7528;&#x7B7E;&#x540D;&#xFF0C;&#x7528;&#x6237;&#x5728;&#x521B;&#x5EFA;&#x8D26;&#x53F7;&#x7684;&#x540C;&#x65F6;&#xFF0C;&#x4F1A;&#x521B;&#x5EFA;&#x4E00;&#x5BF9;&#x516C;&#x79C1;&#x94A5;&#x7528;&#x4E8E;EDDSA&#x7B7E;&#x540D;&#x3002;&#x6709;&#x4E24;&#x7C7B;&#x4F7F;&#x7528;&#x6B64;&#x516C;&#x79C1;&#x94A5;&#x7B7E;&#x540D;&#x7684;&#x65B9;&#x5F0F;&#x3002;</p>
+<p>&#x4E00;&#x79CD;&#x662F;&#x7535;&#x8DEF;&#x4E0D;&#x611F;&#x77E5;&#x7684;&#x7B7E;&#x540D;&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x4E8E;&#x7F51;&#x5173;&#x8FDB;&#x884C;&#x6743;&#x9650;&#x6821;&#x9A8C;&#xFF1A;</p>
+<p><strong>[X-API-SIG]</strong></p>
+<p>&#x5F53;&#x7528;&#x6237;&#x8BF7;&#x6C42;&#x83B7;&#x53D6;API-KEY&#x6216;&#x53D6;&#x6D88;&#x8BA2;&#x5355;&#x65F6;&#xFF0C;&#x9700;&#x8981;&#x5728;header&#x91CC;&#x6DFB;&#x52A0;X-API-SIG&#xFF0C;&#x751F;&#x6210;&#x89C4;&#x5219;&#x5982;&#x4E0B;&#xFF1A;</p>
+<ol>
+<li>&#x5C06;&#x8BF7;&#x6C42;&#x53C2;&#x6570;&#x6309;key&#x5B57;&#x5178;&#x987A;&#x5E8F;&#x6392;&#x5E8F;&#x540E;&#x751F;&#x6210;Json String</li>
+<li>&#x4F7F;&#x7528;SHA-256&#x8BA1;&#x7B97;json&#x5B57;&#x7B26;&#x4E32;&#x7684;hash</li>
+<li>&#x4F7F;&#x7528;&#x521B;&#x5EFA;&#x8D26;&#x6237;&#x65F6;&#x7684;EDDSA&#x79C1;&#x94A5;&#xFF0C;&#x5BF9;hash&#x7B7E;&#x540D;&#xFF0C;&#x5C06;&#x7B7E;&#x540D;&#x7ED3;&#x679C;<code>Rx,Ry,S</code>&#x4E09;&#x90E8;&#x5206;&#x6309;&quot;<code>,</code>&quot;&#x5206;&#x9694;&#x5E76;&#x4EE5;&#x4E0A;&#x8FF0;&#x987A;&#x5E8F;&#x62FC;&#x6210;&#x4E00;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#xFF0C;&#x4F5C;&#x4E3A;X-API-SIG&#x7684;&#x503C;&#x653E;&#x5165;&#x8BF7;&#x6C42;&#x7684;header&#x91CC;&#x3002;&#x7B7E;&#x540D;&#x4F7F;&#x7528;&#x7684;<code>EDDSA</code>&#x53C2;&#x8003;<code>ethsnarks</code>&#xFF0C;&#x5176;&#x5185;&#x90E8;&#x4F7F;&#x7528;<code>Poseidon HASH</code>&#x7B97;&#x6CD5;&#xFF0C;&#x53C2;&#x6570;&#x5982;&#x4E0B;&#xFF1A;<pre><code class="lang-py">poseidon_params(SNARK_SCALAR_FIELD, <span class="hljs-number">6</span>, <span class="hljs-number">6</span>, <span class="hljs-number">52</span>, <span class="hljs-string">b&apos;poseidon&apos;</span>, <span class="hljs-number">5</span>, security_target=<span class="hljs-number">128</span>)
+</code></pre>
+</li>
+</ol>
+<p>&#x53E6;&#x5916;&#x4E00;&#x79CD;&#x662F;&#x5728;&#x7535;&#x8DEF;&#x5904;&#x9A8C;&#x7B7E;&#x7684;&#x7B7E;&#x540D;&#xFF0C;&#x8FD9;&#x79CD;&#x8BF7;&#x6C42;&#x5229;&#x7528;&#x96F6;&#x77E5;&#x8BC6;&#x8BC1;&#x660E;&#x6280;&#x672F;&#x4FDD;&#x8BC1;&#x5373;&#x4F7F;&#x662F;&#x8DEF;&#x5370;&#x7684;Relayer&#x4E5F;&#x65E0;&#x6CD5;&#x66F4;&#x6539;&#x7528;&#x6237;&#x7684;&#x610F;&#x56FE;&#xFF1A;</p>
+<p><strong> <a href="dex_integrations/trader.html#OrderSig">&#x7535;&#x8DEF;&#x7B7E;&#x540D;</a> </strong></p>
+<h2 id="&#x8FD4;&#x56DE;&#x7ED3;&#x679C;">&#x8FD4;&#x56DE;&#x7ED3;&#x679C;</h2>
+<p>&#x9664;&#x4E86;&#x7F51;&#x7EDC;&#x9519;&#x8BEF;&#xFF0C;&#x6240;&#x6709;API&#x90FD;&#x4F1A;&#x8FD4;&#x56DE;200&#x72B6;&#x6001;&#x7801;&#xFF0C;&#x4EE5;&#x53CA;json&#x4FE1;&#x606F;&#x3002;</p>
+<p>json&#x8FD4;&#x56DE;&#x4FE1;&#x606F;&#x4E2D;&#x90FD;&#x4F1A;&#x5305;&#x542B;resultInfo&#x5B57;&#x6BB5;&#xFF0C;&#x544A;&#x77E5;&#x672C;&#x6B21;&#x8C03;&#x7528;&#x7684;&#x60C5;&#x51B5;&#xFF1A;&#x662F;&#x5426;&#x6210;&#x529F;&#xFF1B;&#x82E5;&#x5931;&#x8D25;&#xFF0C;&#x53D1;&#x751F;&#x4E86;&#x4EC0;&#x4E48;&#x6837;&#x7684;&#x9519;&#x8BEF;&#x3002;</p>
+<p>&#x5982;&#x679C;&#x8BF7;&#x6C42;&#x6B63;&#x5E38;&#x8FD4;&#x56DE;&#xFF0C;&#x5219;&#x8FD8;&#x4F1A;&#x8FD4;&#x56DE;data&#x5B57;&#x6BB5;&#xFF08;&#x4E5F;&#x662F;json&#x4E32;&#xFF09;&#xFF0C;&#x8BE5;&#x5B57;&#x6BB5;&#x9488;&#x5BF9;&#x4E0D;&#x540C;API&#x4EE3;&#x8868;&#x4E0D;&#x540C;&#x7684;&#x7ED3;&#x6784;&#xFF0C;&#x53EF;&#x4EE5;&#x53C2;&#x8003;&#x5177;&#x4F53;&#x7684;API&#x8BF4;&#x660E;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x662F;&#x516C;&#x5171;&#x4FE1;&#x606F;&#x7684;&#x7EC6;&#x8282;&#x63CF;&#x8FF0;&#x3002;</p>
+<h3 id="&#x516C;&#x5171;&#x4FE1;&#x606F;">&#x516C;&#x5171;&#x4FE1;&#x606F;</h3>
+<hr>
+<h4 id="&#x8BBF;&#x95EE;&#x5730;&#x5740;">&#x8BBF;&#x95EE;&#x5730;&#x5740;</h4>
+<p><strong><a href="https://api.loopring.io" target="_blank">https://api.loopring.io</a></strong></p>
+<h4 id="&#x8BF7;&#x6C42;&#x5934;">&#x8BF7;&#x6C42;&#x5934;</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x5B57;&#x6BB5;</th>
+<th style="text-align:center">&#x7C7B;&#x578B;</th>
+<th style="text-align:center">&#x5FC5;&#x987B;</th>
+<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">X-API-KEY</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">API Key</td>
+<td style="text-align:center">&quot;sra1aavfa&quot;</td>
+</tr>
+<tr>
+<td style="text-align:center">X-API-SIG</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x7B7E;&#x540D;&#x4FE1;&#x606F;</td>
+<td style="text-align:center">&quot;dkkfinfasdf&quot;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x54CD;&#x5E94;">&#x54CD;&#x5E94;</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x5B57;&#x6BB5;</th>
+<th style="text-align:center">&#x7C7B;&#x578B;</th>
+<th style="text-align:center">&#x5FC5;&#x987B;</th>
+<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">resultInfo</td>
+<td style="text-align:center"><a href="#ResultInfo">ResultInfo</a></td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x8C03;&#x7528;&#x7ED3;&#x679C;</td>
+<td style="text-align:center">/</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x8FD4;&#x56DE;&#x7801;">&#x8FD4;&#x56DE;&#x7801;</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x8FD4;&#x56DE;&#x7801;</th>
+<th style="text-align:center">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">0</td>
+<td style="text-align:center">&#x6210;&#x529F;</td>
+</tr>
+<tr>
+<td style="text-align:center">100000</td>
+<td style="text-align:center">&#x5185;&#x90E8;&#x672A;&#x77E5;&#x9519;&#x8BEF;</td>
+</tr>
+<tr>
+<td style="text-align:center">100001</td>
+<td style="text-align:center">&#x53C2;&#x6570;&#x975E;&#x6CD5;</td>
+</tr>
+<tr>
+<td style="text-align:center">100002</td>
+<td style="text-align:center">&#x8BF7;&#x6C42;&#x8D85;&#x65F6;</td>
+</tr>
+<tr>
+<td style="text-align:center">100202</td>
+<td style="text-align:center">&#x66F4;&#x65B0;&#x5931;&#x8D25;</td>
+</tr>
+<tr>
+<td style="text-align:center">100203</td>
+<td style="text-align:center">&#x5185;&#x90E8;&#x5B58;&#x50A8;&#x9519;&#x8BEF;</td>
+</tr>
+<tr>
+<td style="text-align:center">100204</td>
+<td style="text-align:center">&#x91CD;&#x590D;&#x63D0;&#x4EA4;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x6A21;&#x578B;">&#x6A21;&#x578B;</h4>
+<h5 id="resultinfo">ResultInfo</h5>
+<p><span id="ResultInfo"></span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x5B57;&#x6BB5;</th>
+<th style="text-align:center">&#x7C7B;&#x578B;</th>
+<th style="text-align:center">&#x5FC5;&#x987B;</th>
+<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">code</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x8FD4;&#x56DE;&#x7801;</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">message</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x8FD4;&#x56DE;&#x6D88;&#x606F;.  &#x8BE5;&#x8FD4;&#x56DE;&#x6D88;&#x606F;&#x66F4;&#x591A;&#x7528;&#x6765;&#x8C03;&#x8BD5;&#xFF0C;&#x4E0D;&#x8981;&#x76F4;&#x63A5;&#x5728;&#x524D;&#x7AEF;&#x663E;&#x793A;</td>
+<td style="text-align:center">&quot;SUCCESS&quot;</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="dex_api_overview.html" class="navigation navigation-prev " aria-label="Previous page: DEX API">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="dex_apis/getTimestamp.html" class="navigation navigation-next " aria-label="Next page: 查询服务器当前时间">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Restful API","level":"2.2.1","depth":2,"next":{"title":"查询服务器当前时间","level":"2.2.1.1","depth":3,"path":"dex_apis/getTimestamp.md","ref":"dex_apis/getTimestamp.md","articles":[]},"previous":{"title":"DEX API","level":"2.2","depth":1,"path":"dex_api_overview.md","ref":"dex_api_overview.md","articles":[{"title":"Restful API","level":"2.2.1","depth":2,"path":"restful_api_overview.md","ref":"restful_api_overview.md","articles":[{"title":"查询服务器当前时间","level":"2.2.1.1","depth":3,"path":"dex_apis/getTimestamp.md","ref":"dex_apis/getTimestamp.md","articles":[]},{"title":"查询用户ApiKey","level":"2.2.1.2","depth":3,"path":"dex_apis/getApiKey.md","ref":"dex_apis/getApiKey.md","articles":[]},{"title":"更新用户ApiKey","level":"2.2.1.3","depth":3,"path":"dex_apis/applyApiKey.md","ref":"dex_apis/applyApiKey.md","articles":[]},{"title":"获取下一个有效OrderId","level":"2.2.1.4","depth":3,"path":"dex_apis/getNextOrderId.md","ref":"dex_apis/getNextOrderId.md","articles":[]},{"title":"获取订单详情","level":"2.2.1.5","depth":3,"path":"dex_apis/getOrderDetail.md","ref":"dex_apis/getOrderDetail.md","articles":[]},{"title":"提交订单","level":"2.2.1.6","depth":3,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},{"title":"获取用户订单列表","level":"2.2.1.7","depth":3,"path":"dex_apis/getOrders.md","ref":"dex_apis/getOrders.md","articles":[]},{"title":"取消订单","level":"2.2.1.8","depth":3,"path":"dex_apis/cancelOrders.md","ref":"dex_apis/cancelOrders.md","articles":[]},{"title":"发送以太坊交易","level":"2.2.1.9","depth":3,"path":"dex_apis/sendTransaction.md","ref":"dex_apis/sendTransaction.md","articles":[]},{"title":"查询nonce","level":"2.2.1.10","depth":3,"path":"dex_apis/getEthNonce.md","ref":"dex_apis/getEthNonce.md","articles":[]},{"title":"查询ETH余额","level":"2.2.1.11","depth":3,"path":"dex_apis/getEthBalance.md","ref":"dex_apis/getEthBalance.md","articles":[]},{"title":"获取推荐gas","level":"2.2.1.12","depth":3,"path":"dex_apis/getRecommendedGasPrice.md","ref":"dex_apis/getRecommendedGasPrice.md","articles":[]},{"title":"查询市场配置","level":"2.2.1.13","depth":3,"path":"dex_apis/getMarkets.md","ref":"dex_apis/getMarkets.md","articles":[]},{"title":"查询交易所支持的通证信息","level":"2.2.1.14","depth":3,"path":"dex_apis/getTokens.md","ref":"dex_apis/getTokens.md","articles":[]},{"title":"查询交易所的基本必要信息","level":"2.2.1.15","depth":3,"path":"dex_apis/getExchangeInfo.md","ref":"dex_apis/getExchangeInfo.md","articles":[]},{"title":"获取市场深度信息","level":"2.2.1.16","depth":3,"path":"dex_apis/getDepth.md","ref":"dex_apis/getDepth.md","articles":[]},{"title":"查询交易所Ticker","level":"2.2.1.17","depth":3,"path":"dex_apis/getTicker.md","ref":"dex_apis/getTicker.md","articles":[]},{"title":"查询K线数据","level":"2.2.1.18","depth":3,"path":"dex_apis/getCandlestick.md","ref":"dex_apis/getCandlestick.md","articles":[]},{"title":"查询token法币价","level":"2.2.1.19","depth":3,"path":"dex_apis/getPrice.md","ref":"dex_apis/getPrice.md","articles":[]},{"title":"查询市场交易","level":"2.2.1.20","depth":3,"path":"dex_apis/getMarketTrade.md","ref":"dex_apis/getMarketTrade.md","articles":[]},{"title":"查询授权","level":"2.2.1.21","depth":3,"path":"dex_apis/getAllowance.md","ref":"dex_apis/getAllowance.md","articles":[]},{"title":"查询Token余额","level":"2.2.1.22","depth":3,"path":"dex_apis/getTokenBalance.md","ref":"dex_apis/getTokenBalance.md","articles":[]},{"title":"查询用户信息","level":"2.2.1.23","depth":3,"path":"dex_apis/getAccount.md","ref":"dex_apis/getAccount.md","articles":[]},{"title":"获取用户开户记录","level":"2.2.1.24","depth":3,"path":"dex_apis/getUserCreate.md","ref":"dex_apis/getUserCreate.md","articles":[]},{"title":"获取用户更新记录","level":"2.2.1.25","depth":3,"path":"dex_apis/getUserUpdate.md","ref":"dex_apis/getUserUpdate.md","articles":[]},{"title":"查询用户交易所余额","level":"2.2.1.26","depth":3,"path":"dex_apis/getUserBalances.md","ref":"dex_apis/getUserBalances.md","articles":[]},{"title":"获取用户充值记录","level":"2.2.1.27","depth":3,"path":"dex_apis/getUserDeposits.md","ref":"dex_apis/getUserDeposits.md","articles":[]},{"title":"获取用户提现记录","level":"2.2.1.28","depth":3,"path":"dex_apis/getUserWithdrawals.md","ref":"dex_apis/getUserWithdrawals.md","articles":[]},{"title":"获取用户转账记录","level":"2.2.1.29","depth":3,"path":"dex_apis/getUserTransfers.md","ref":"dex_apis/getUserTransfers.md","articles":[]},{"title":"获取用户交易记录","level":"2.2.1.30","depth":3,"path":"dex_apis/getUserTrades.md","ref":"dex_apis/getUserTrades.md","articles":[]}]},{"title":"Websocket API","level":"2.2.2","depth":2,"path":"websocket/overview.md","ref":"websocket/overview.md","articles":[{"title":"订阅订单簿更新","level":"2.2.2.1","depth":3,"path":"websocket/depth.md","ref":"websocket/depth.md","articles":[]},{"title":"订阅订单簿买卖前10的全量推送","level":"2.2.2.2","depth":3,"path":"websocket/depth10.md","ref":"websocket/depth10.md","articles":[]},{"title":"订阅市场交易的更新","level":"2.2.2.3","depth":3,"path":"websocket/trade.md","ref":"websocket/trade.md","articles":[]},{"title":"订阅市场Ticker的更新","level":"2.2.2.4","depth":3,"path":"websocket/ticker.md","ref":"websocket/ticker.md","articles":[]},{"title":"订阅市场CandleStick更新","level":"2.2.2.5","depth":3,"path":"websocket/candleStick.md","ref":"websocket/candleStick.md","articles":[]},{"title":"订阅用户余额更新","level":"2.2.2.6","depth":3,"path":"websocket/account.md","ref":"websocket/account.md","articles":[]},{"title":"订阅用户订单更新","level":"2.2.2.7","depth":3,"path":"websocket/order.md","ref":"websocket/order.md","articles":[]}]}]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./gitbook/images/favicon.ico","custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.org/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"restful_api_overview.md","mtime":"2020-03-23T05:14:45.006Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-23T05:14:46.795Z"},"basePath":".","book":{"language":"zh-hans"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-codetabs/codetabs.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
