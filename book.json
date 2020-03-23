@@ -21,17 +21,8 @@
             "style": "background: none; max-height: 28px; min-height: 28px"
         },
         "sharing": {
-            "google": true,
-            "twitter": true,
             "weibo": true,
-            "qq": true,
-            "all": [
-                "facebook",
-                "linkedin",
-                "whatsapp",
-                "qzone",
-                "douban"
-            ]
+            "facebook": true
         }
     }
 }
