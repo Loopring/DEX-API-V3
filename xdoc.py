@@ -43,6 +43,9 @@ EXAM_HEADERS = {
     'X-API-SIG' : 'dkkfinfasdf'
 }
 
+TPS_CONFIG = 'tps_config'
+DEFAULT_KEY_TPS = {'count': 1, 'interval': 1}
+
 
 def get_request_parames(params, method):
     if method == 'GET':
@@ -522,6 +525,10 @@ def get_request_headers(operationId):
         ret.append('X-API-SIG')
     return ret
 
+def get_tps(api):
+    return VARS['tps'].get(
+        (api['path'], api['method'].lower()), VARS['tps']['default'])
+
 def generate_api_doc(operationId, path, filename):
     apiTpl = ENV.get_template('api_doc.tpl')
     apidoc = apiTpl.render(
@@ -536,7 +543,8 @@ def generate_api_doc(operationId, path, filename):
         g_ref_models = get_ref_models,
         g_desc = get_description,
         g_example = get_example,
-        g_request_headers = get_request_headers)
+        g_request_headers = get_request_headers,
+        g_tps = get_tps)
 
     output_file(apidoc, os.path.join(
         './', PURGE_DIR, VARS['currentLang'], path, filename + '.md'))
@@ -579,14 +587,40 @@ def generate_structs():
     recursive_generate(
         './tpls', PURGE_DIR, get_first_layer_nodes('./tpls', PURGE_IGNORE))
 
+def parse_tps(config):
+    default = {}
+    if (config.get('default') is None
+        or config['default'].get('keyRate') is None):
+        default = DEFAULT_KEY_TPS
+    else:
+        default = config['default']['keyRate']
+    tps = {}
+    tps['default'] = default
+    for apitps in config.get('apis', []):
+        name = apitps.get('api')
+        keyRate = apitps.get('keyRate', DEFAULT_KEY_TPS)
+        if (apitps.get('method') is None):
+            tps[(name, 'get')] = keyRate
+            tps[(name, 'post')] = keyRate
+        else:
+            tps[(name, apitps['method'].lower())] = keyRate
+    return tps
+
 def load_info():
     global VARS
     inf = open('./meta/vars.json')
     VARS['v'] = json.loads(inf.read())
     inf.close()
 
+def load_tps_config():
+    global VARS
+    inf = open('./%s/gatewayconf/limit_rate.json'%(TPS_CONFIG))
+    VARS['tps'] = parse_tps(json.loads(inf.read()))
+    inf.close()
+
 def build_doc():
     load_info()
+    load_tps_config()
     LOGGER.info('Creating gitbook files...')
     generate_structs()
     LOGGER.info('Syncing gitbook files...')
@@ -612,10 +646,18 @@ def fetch_and_save_swagger_json(lang):
     LOGGER.info('Writing swagger.json with lang %s...'%(lang))
     output_file(swagger, './meta/swagger_%s.json'%(lang))
 
+def fetch_tps_config():
+    if os.path.exists(TPS_CONFIG):
+        run_command_with_return_info('rm -rf %s'%(TPS_CONFIG))
+    run_command_with_return_info(
+        'git clone %s %s'%(VARS['v']['tpsConfig'], TPS_CONFIG))
+
+
 def refresh_swagger():
     load_info()
     for lang in VARS['v']['langs']:
         fetch_and_save_swagger_json(lang)
+    fetch_tps_config()
 
 def main():
     """Main for xdoc"""

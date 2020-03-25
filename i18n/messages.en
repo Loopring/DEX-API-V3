@@ -60,6 +60,7 @@
         "none" : "None",
         "default" : "Default",
         "allow" : "Allowable",
+        "throttle" : "Traffic limit(#Request/seconds)",
         "code0" : "Success",
         "code1000000" : "Internal unknown error",
         "code1000001" : "Illegality parameter",

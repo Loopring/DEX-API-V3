@@ -1,6 +1,8 @@
 [//]: # ({{ l.comment.claim }})
 
 ## {{api.summary}}
+{% set tps = g_tps(api) %}
+{{l.apidoc.throttle}}: {{tps.count}} / {{tps.interval}}
 
 ### {{ l.apidoc.overview }}
 ----

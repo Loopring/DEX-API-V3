@@ -44,5 +44,6 @@
     "cir_sig": ["submitOrder"],
     "hosturl" : "https://api.loopring.io",
     "fetchurl" : "http://161.189.106.255:31610",
-    "# fetchurl" : "http://localhost:31610"
+    "# fetchurl" : "http://localhost:31610",
+    "tpsConfig" : "git@github.com:Loopring/loopring-prod-config.git"
 }
