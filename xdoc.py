@@ -425,7 +425,8 @@ def create_request_http_example(apiObj):
         param = ''
         for p in apiObj['params']:
             param += p['name'] + '=' + str(p['example']) + '&'
-        url += '?' + param[0 : -1]
+        if (param != ''):
+            url += '?' + param[0 : -1]
     apiObj['pathWithParams'] = url
     apiObj['headers'] = headers
     httpTpl = ENV.get_template('http.tpl')
