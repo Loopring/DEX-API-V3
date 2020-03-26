@@ -1,12 +1,16 @@
 ## 注册账户
 
-   路印DEX通过发送ETH交易调用智能合约来完成账户的创建，充值，提现等操作（此类请求成为链上请求）。
+- 路印DEX通过发送ETH交易调用智能合约来完成账户的创建，充值，提现等操作（此类请求成为链上请求）
 
-   对于做市商用户，我们推荐在[路印DEX网站](https://www.loopring.io)完成此类操作，从而省去对接ETH的工作。
+- 对于做市商用户，我们推荐在[路印DEX网站](https://www.loopring.io)完成此类操作，从而省去对接ETH的工作。
 
 ## 获取API key
 
-   创建好账户之后，您可以使用官网的'导出账号'功能导出API key及EDDSA公私钥（publicKeyX, publicKeyY, privateKey），路印DEX链下请求需要这些信息。
+- 创建好账户之后，您可以使用官网的'导出账号'功能导出`API-Key`及`EDDSA`公私钥`publicKeyX`,` publicKeyY`和`privateKey`，路印DEX链下请求需要这些信息。
+
+   > [!DANGER]
+   >
+   > 请妥善保管API key 和 EDDSA私钥，如泄漏，可能会发生信息泄漏，甚至资产损失。
 
 ## 提交订单
 
@@ -36,7 +40,7 @@
   ```
 
 
-- 首先选择合适价格和交易量，填写对应的`tokenID`和`amount`，比如在`LRC-USDT`市场上以`0.03U`的价格卖出500个`LRC`，则订单数据如下。需要注意的是这里的计数单位参数，如`ETH`,`LRC`以及大部分`ERC20代币`为$$10^{18}$$，而`USDT`则是$$10^{6}$$，用户需要提前访问`/api/v2/exchange/token`得到各个不同的代币的参数，主要是`tokenId`和`decimals`，该API详见[查询交易所支持的通证信息](../dex_apis/getTokens.md)。
+- 首先选择合适价格和交易量，填写对应的`tokenID`和`amount`，比如在`LRC-USDT`市场上以`0.03U`的价格卖出500个`LRC`，即售出500个`LRC`，买入15个`USDT`($$500*0.03 = 15$$)，则订单数据如下。需要注意的是订单买卖参数的计数单位为该品种的最小单位，`ETH`,`LRC`以及大部分`ERC20代币`为$$10^{18}$$，而`USDT`则是$$10^{6}$$，用户需要提前访问`/api/v2/exchange/token`得到各个代币的参数，最重要的是`tokenId`和`decimals`，该API详见[查询交易所支持的通证信息](../dex_apis/getTokens.md)。
 
   ```python
   order = {
