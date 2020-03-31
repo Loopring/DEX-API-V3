@@ -80,7 +80,7 @@ order.update({"orderId": 2})
 ```
 
 
-- 对订单做**PoseidonHASH**哈希计算并对哈希做**EDDSA**签名，之后将hash和签名添加到订单JSON中。签名过程详见[注意事项](./trader-notes.md)签名部分，算法细节请查询参考文献[3]和[4]。
+然后您需要对订单做**Poseidon**哈希计算并对哈希做**EDDSA**签名，再将hash和签名添加到订单JSON中。签名过程详见[注意事项](./trader-notes.md)签名部分，算法细节请查询参考文献[3]和[4]。
 <span id="OrderSig"></span>
 下面是使用Python对订单做签名的示例：
 
@@ -93,18 +93,23 @@ PoseidonHashParams = poseidon_params(
     14, 6, 53, b'poseidon', 5,
     security_target=128
 )
-msgHash = poseidon(msg_parts, PoseidonHashParams)
-signedMessage = PoseidonEdDSA.sign(msgHash, FQ(int(api_secret)))
+orderHash = poseidon(msg_parts, PoseidonHashParams)
+signedMessage = PoseidonEdDSA.sign(orderHash, FQ(int(api_secret)))
 order.update({
-    "hash": str(msgHash),
+    "hash": str(orderHash),
     "signatureRx": str(signedMessage.sig.R.x),
     "signatureRy": str(signedMessage.sig.R.y),
     "signatureS": str(signedMessage.sig.s),
 })
 ```
 
-- 访问`/api/v2/order`发送订单到服务器，详见[提交订单](../dex_apis/submitOrder.md)，一般来说刚开始主要的错误来自于签名部分，请仔细检查所使用的`API-Secret`以及签名算法流程。
+最后您需要通过`/api/v2/order`发送订单到服务器，详见[提交订单](../dex_apis/submitOrder.md)。
 
-- 访问`/api/v2/orders`查看订单状态，详见[获取订单详情](../dex_apis/getOrderDetail.md)。或者通过订阅Websocket更新来跟踪订单状态，关于WebSocket订阅部分，请参考[Websocket介绍](./websocket_overview.md)。
+## 查看订单
 
-- 取消订单通过`/api/v2/orders`，参数见[取消订单](../dex_apis/cancelOrders.html)，访问取消订单接口需要签名，和订单数据的签名略有不同，请参考[注意事项](./trader-notes.md)需要签名的API接口一节。
+您可以访问`/api/v2/orders`查看订单状态，详见[获取订单详情](../dex_apis/getOrderDetail.md)。或者通过订阅WebSocket更新来跟踪订单状态。关于WebSocket订阅部分，请参考[Websocket介绍](./websocket_overview.md)。
+
+## 取消订单
+你可以通过`/api/v2/orders`取消订单，详见[取消订单](../dex_apis/cancelOrders.html)。取消订单接口需要签名，和订单数据的签名略有不同，请参考[注意事项](./trader-notes.md)需要签名的API接口一节。
+
+另一种取消订单的方式是通过和交易所的合约交互，改变交易密码和EDDSA秘钥。和中心化交易所不同，改变交易密码后，您的全部订单都会被取消。
