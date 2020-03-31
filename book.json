@@ -13,8 +13,10 @@
     "search-pro",
     "insert-logo",
     "sharing-plus",
+    "styles-sass",
     "flexible-alerts",
-    "hints"
+    "hints",
+    "anchors"
   ],
   "pluginsConfig": {
     "favicon": "./gitbook/images/favicon.ico",
