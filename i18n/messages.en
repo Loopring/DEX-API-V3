@@ -17,9 +17,9 @@
                 "sub2" : "Market Making"
             },
             "session2" : {
-                "title" : "DEX API",
-                "sub1" : "Restful API",
-                "sub2" : "Websocket API"
+                "title" : "API Specification (v2.0)",
+                "sub1" : "REST APIs",
+                "sub2" : "WebSocket APIs"
             }
         },
         "chapter3" : {

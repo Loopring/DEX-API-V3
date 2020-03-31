@@ -17,9 +17,9 @@
                 "sub2" : "做市商集成"
             },
             "session2" : {
-                "title" : "DEX API",
-                "sub1" : "Restful API",
-                "sub2" : "Websocket API"
+                "title" : "API规范（v2.0）",
+                "sub1" : "REST APIs",
+                "sub2" : "WebSocket APIs"
             }
         },
         "chapter3" : {
