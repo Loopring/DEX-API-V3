@@ -1,83 +1,83 @@
 {
-    "summary" : {
-            "Introduction" : "Introduction",
-            "Glossory" : "Glossory",
-           
-        "chapter2" : {
-            "session1" : {
-                "title" : "Tutorials",
-                "sub1" : {
-                    "title" : "Product Integration",
-                    "subsub1": "Account",
-                    "subsub2": "Deposit"
-                },
-                "sub2" : "Market Making"
-            },
-            "session2" : {
-                "title" : "API Specification (v2.0)",
-                "sub1" : "REST APIs",
-                "sub2" : "WebSocket APIs"
-            }
+  "summary": {
+    "Introduction": "Introduction",
+    "Glossory": "Glossory",
+    "Tutorials": {
+      "label": "Tutorials",
+      "MarketMaking": "Market Making"
+    },
+    "chapter2": {
+      "session1": {
+        "title": "Tutorials",
+        "sub1": {
+          "title": "Product Integration",
+          "subsub1": "Account",
+          "subsub2": "Deposit"
         },
-        "chapter3" : {
-            "title" : "Loopring Smart Wallet",
-            "session1" : "dApp Integration",
-            "session2" : "Smart Wallet APIs"
-        }
+        "sub2": "Market Making"
+      },
+      "session2": {
+        "title": "API Specification (v2.0)",
+        "sub1": "REST APIs",
+        "sub2": "WebSocket APIs"
+      }
     },
-
-    "apidoc" : {
-        "overview" : "API Overview",
-        "function" : "Function",
-        "method" : "HTTP method",
-        "path" : "Visit path",
-        "desc" : "API description",
-        "reqparam" : "Request parameters",
-        "reqexpl" : "Request example",
-        "resfield" : "Response fields",
-        "resexpl" : "Response example",
-        "retcode" : "Return code",
-        "retmsg" : "Return message.  This is used for debug only. Do not show to users",
-        "model" : "Model",
-        "common" : "Common info",
-        "hosturl" : "API host",
-        "header" : "Header",
-        "field" : "Field",
-        "fdesc" : "Description",
-        "ftype" : "Type",
-        "frequire" : "Required",
-        "fsample" : "Example",
-        "resp" : "Response",
-        "yes" : "Y",
-        "no" : "N",
-        "keydesc" : "API Key",
-        "sigdesc" : "Signature",
-        "resdesc" : "Result of API invocation",
-        "codedesc" : "Description",
-        "none" : "None",
-        "default" : "Default",
-        "allow" : "Allowable",
-        "throttle" : "Traffic limit (#Request/seconds)",
-        "code0" : "Success",
-        "code1000000" : "Unknown internal error",
-        "code1000001" : "Invalid parameter",
-        "code1000002" : "Request timeout",
-        "code1000202" : "Update fail",
-        "code1000203" : "Internal persistence error",
-        "code1000204" : "Duplicate request"
-    },
-
-    "comment" : {
-        "claim" : "This file is generated automatically. Please do not modify."
-    },
-
-    "websocket":{
-        "depth":"订阅订单簿更新",
-        "depth10":"订阅订单簿买卖前10的全量推送",
-        "trade":"订阅市场交易的更新",
-        "ticker":"订阅市场Ticker的更新",
-        "candleStick":"订阅市场CandleStick更新",
-        "account":"订阅用户余额更新",
-        "order":"订阅用户订单更新"
+    "chapter3": {
+      "title": "Loopring Smart Wallet",
+      "session1": "dApp Integration",
+      "session2": "Smart Wallet APIs"
     }
+  },
+  "apidoc": {
+    "overview": "API Overview",
+    "function": "Function",
+    "method": "HTTP method",
+    "path": "Visit path",
+    "desc": "API description",
+    "reqparam": "Request parameters",
+    "reqexpl": "Request example",
+    "resfield": "Response fields",
+    "resexpl": "Response example",
+    "retcode": "Return code",
+    "retmsg": "Return message.  This is used for debug only. Do not show to users",
+    "model": "Model",
+    "common": "Common info",
+    "hosturl": "API host",
+    "header": "Header",
+    "field": "Field",
+    "fdesc": "Description",
+    "ftype": "Type",
+    "frequire": "Required",
+    "fsample": "Example",
+    "resp": "Response",
+    "yes": "Y",
+    "no": "N",
+    "keydesc": "API Key",
+    "sigdesc": "Signature",
+    "resdesc": "Result of API invocation",
+    "codedesc": "Description",
+    "none": "None",
+    "default": "Default",
+    "allow": "Allowable",
+    "throttle": "Traffic limit (#Request/seconds)",
+    "code0": "Success",
+    "code1000000": "Unknown internal error",
+    "code1000001": "Invalid parameter",
+    "code1000002": "Request timeout",
+    "code1000202": "Update fail",
+    "code1000203": "Internal persistence error",
+    "code1000204": "Duplicate request"
+  },
+  "comment": {
+    "claim": "This file is generated automatically. Please do not modify."
+  },
+  "websocket": {
+    "depth": "订阅订单簿更新",
+    "depth10": "订阅订单簿买卖前10的全量推送",
+    "trade": "订阅市场交易的更新",
+    "ticker": "订阅市场Ticker的更新",
+    "candleStick": "订阅市场CandleStick更新",
+    "account": "订阅用户余额更新",
+    "order": "订阅用户订单更新"
+  }
 }

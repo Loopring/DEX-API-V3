@@ -1,82 +1,83 @@
 {
-    "summary" : {
-        "Introduction" : "介绍",
-        "Glossary" : "术语",
-        "chapter2" : {
-            "session1" : {
-                "title" : "集成教程",
-                "sub1" : {
-                    "title" : "产品集成",
-                    "subsub1": "注册账号",
-                    "subsub2": "充值"
-                },
-                "sub2" : "做市商集成"
-            },
-            "session2" : {
-                "title" : "API规范（v2.0）",
-                "sub1" : "REST APIs",
-                "sub2" : "WebSocket APIs"
-            }
+  "summary": {
+    "Introduction": "介绍",
+    "Glossary": "术语",
+    "Tutorials": {
+        "label":"集成教程",
+        "MarketMaking": "做市商集成"
+    },
+    "chapter2": {
+      "session1": {
+        "title": "集成教程",
+        "sub1": {
+          "title": "产品集成",
+          "subsub1": "注册账号",
+          "subsub2": "充值"
         },
-        "chapter3" : {
-            "title" : "路印智能钱包",
-            "session1" : "集成文档",
-            "session2" : "钱包API"
-        }
+        "sub2": "做市商集成"
+      },
+      "session2": {
+        "title": "API规范（v2.0）",
+        "sub1": "REST APIs",
+        "sub2": "WebSocket APIs"
+      }
     },
-
-    "apidoc" : {
-        "overview" : "摘要",
-        "function" : "功能",
-        "method" : "HTTP 方法",
-        "path" : "访问路径",
-        "desc" : "API 描述",
-        "reqparam" : "请求参数",
-        "reqexpl" : "请求示例",
-        "resfield" : "响应字段",
-        "resexpl" : "响应示例",
-        "retcode" : "返回码",
-        "retmsg" : "返回消息.  该返回消息更多用来调试，不要直接在前端显示",
-        "model" : "模型",
-        "common" : "公共信息",
-        "hosturl" : "访问地址",
-        "header" : "请求头",
-        "field" : "字段",
-        "fdesc" : "说明",
-        "ftype" : "类型",
-        "frequire" : "必须",
-        "fsample" : "举例",
-        "resp" : "返回值",
-        "yes" : "是",
-        "no" : "否",
-        "keydesc" : "API Key",
-        "sigdesc" : "签名信息",
-        "resdesc" : "调用结果",
-        "codedesc" : "描述",
-        "none" : "无",
-        "default" : "默认值",
-        "allow" : "取值范围",
-        "throttle" : "流量控制（请求数/秒数）",
-        "code0" : "成功",
-        "code1000000" : "内部未知错误",
-        "code1000001" : "参数非法",
-        "code1000002" : "请求超时",
-        "code1000202" : "更新失败",
-        "code1000203" : "内部存储错误",
-        "code1000204" : "重复提交"
-    },
-
-    "comment" : {
-        "claim" : "本文件由代码自动生成，请勿直接修改。"
-    },
-
-    "websocket":{
-        "depth":"订阅订单簿更新",
-        "depth10":"订阅订单簿买卖前10的全量推送",
-        "trade":"订阅市场交易的更新",
-        "ticker":"订阅市场Ticker的更新",
-        "candleStick":"订阅市场CandleStick更新",
-        "account":"订阅用户余额更新",
-        "order":"订阅用户订单更新"
+    "chapter3": {
+      "title": "路印智能钱包",
+      "session1": "集成文档",
+      "session2": "钱包API"
     }
+  },
+  "apidoc": {
+    "overview": "摘要",
+    "function": "功能",
+    "method": "HTTP 方法",
+    "path": "访问路径",
+    "desc": "API 描述",
+    "reqparam": "请求参数",
+    "reqexpl": "请求示例",
+    "resfield": "响应字段",
+    "resexpl": "响应示例",
+    "retcode": "返回码",
+    "retmsg": "返回消息.  该返回消息更多用来调试，不要直接在前端显示",
+    "model": "模型",
+    "common": "公共信息",
+    "hosturl": "访问地址",
+    "header": "请求头",
+    "field": "字段",
+    "fdesc": "说明",
+    "ftype": "类型",
+    "frequire": "必须",
+    "fsample": "举例",
+    "resp": "返回值",
+    "yes": "是",
+    "no": "否",
+    "keydesc": "API Key",
+    "sigdesc": "签名信息",
+    "resdesc": "调用结果",
+    "codedesc": "描述",
+    "none": "无",
+    "default": "默认值",
+    "allow": "取值范围",
+    "throttle": "流量控制（请求数/秒数）",
+    "code0": "成功",
+    "code1000000": "内部未知错误",
+    "code1000001": "参数非法",
+    "code1000002": "请求超时",
+    "code1000202": "更新失败",
+    "code1000203": "内部存储错误",
+    "code1000204": "重复提交"
+  },
+  "comment": {
+    "claim": "本文件由代码自动生成，请勿直接修改。"
+  },
+  "websocket": {
+    "depth": "订阅订单簿更新",
+    "depth10": "订阅订单簿买卖前10的全量推送",
+    "trade": "订阅市场交易的更新",
+    "ticker": "订阅市场Ticker的更新",
+    "candleStick": "订阅市场CandleStick更新",
+    "account": "订阅用户余额更新",
+    "order": "订阅用户订单更新"
+  }
 }
