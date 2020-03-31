@@ -1,11 +1,12 @@
-# Restful API 概述
+# REST API
 
 本部分主要讨论路印DEX Restful API的共性部分。
 > [!DANGER]
 >
+> 
 > 每个API请求会有流量限制的说明，超过此流量限制的请求会被拒绝（返回429）。如果调用端长期超过流量限制调用请求，有可能进入黑名单，从而无法调用路印DEX的API。
 
-## Http 请求头
+## HTTP Request Header
 
 API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。请求都需要X-API-KEY才能访问；一些关键请求需要EDDSA签名信息：X-API-SIG。
 还有一些请求需要使用特殊的方式来进行EDDSA签名。

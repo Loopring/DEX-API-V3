@@ -2,8 +2,11 @@
 Loopring 文档。
 
 ## 准备
+
 ### 安装 node.js
+
 https://nodejs.org/en/
+
 ### 安装 gitbook
 
 ```
@@ -11,11 +14,19 @@ npm install gitbook-cli -g
 gitbook fetch
 ```
 
+### 安装Jinja2
+
+```
+pip install Jinja2
+```
+
 ### gitbook 手册
+
 https://chrisniael.gitbooks.io/gitbook-documentation/content/
 https://docs.gitbook.com/
 
 ## 本地写文档
+
 如果是第一次使用，需要运行下面命令：
 
 ```
