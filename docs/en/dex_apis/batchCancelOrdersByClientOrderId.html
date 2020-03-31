@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>api.timestamp.value · Loopring API</title>
+        <title>api.batchCancelOrdersByClientOrderId.value · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="getApiKey.html" />
+    <link rel="next" href="sendTransaction.html" />
     
     
-    <link rel="prev" href="../restful_api_overview.html" />
+    <link rel="prev" href="batchCancelOrdersByOrderHash.html" />
     
 
     </head>
@@ -204,7 +204,7 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="2.2.1.1" data-path="getTimestamp.html">
+        <li class="chapter " data-level="2.2.1.1" data-path="getTimestamp.html">
             
                 <a href="getTimestamp.html">
             
@@ -334,7 +334,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.1.11" data-path="batchCancelOrdersByClientOrderId.html">
+        <li class="chapter active" data-level="2.2.1.11" data-path="batchCancelOrdersByClientOrderId.html">
             
                 <a href="batchCancelOrdersByClientOrderId.html">
             
@@ -783,7 +783,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >api.timestamp.value</a>
+        <a href=".." >api.batchCancelOrdersByClientOrderId.value</a>
     </h1>
 </div>
 
@@ -798,16 +798,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="apitimestampvalue">api.timestamp.value</h2>
-<p>Traffic limit(#Request/seconds): 1 / 1</p>
+                                <h2 id="apibatchcancelordersbyclientorderidvalue">api.batchCancelOrdersByClientOrderId.value</h2>
+<p>Traffic limit(#Request/seconds): 5 / 1</p>
 <h3 id="api-overview">API Overview</h3>
 <hr>
 <h4 id="http-method">HTTP method</h4>
-<p><strong>GET</strong></p>
+<p><strong>DELETE</strong></p>
 <h4 id="visit-path">Visit path</h4>
-<p><strong>/api/v2/timestamp</strong></p>
+<p><strong>/api/v2/orders/byClientOrderId</strong></p>
 <h4 id="function">Function</h4>
-<p>api.timestamp.notes</p>
+<p>api.batchCancelOrdersByClientOrderId.notes</p>
 <h3 id="api-description">API description</h3>
 <hr>
 <h4 id="header">Header</h4>
@@ -832,15 +832,41 @@
 </tbody>
 </table>
 <h4 id="request-parameters">Request parameters</h4>
-<p>None</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Field</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Required</th>
+<th style="text-align:center">Description</th>
+<th style="text-align:center">Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">accountId</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">request.cancelOrders.accountId</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">clientOrderId</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">request.batchCancelOrders.clientOrderId</td>
+<td style="text-align:center">20200318000000001010<br>,2020031800000000101<br>1</td>
+</tr>
+</tbody>
+</table>
 <h4 id="request-sample">Request sample</h4>
-<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">GET</span> <span class="hljs-string">https://api.loopring.io/api/v2/timestamp</span> HTTP/1.1
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">DELETE</span> <span class="hljs-string">https://api.loopring.io/api/v2/orders/byClientOrderId?accountId=1&amp;clientOrderId=20200318000000001010,20200318000000001011</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: api.loopring.io
 <span class="hljs-attribute">Connection</span>: keep-alive
 <span class="hljs-attribute">Accept</span>: */*
 <span class="hljs-attribute">Accept-Encoding</span>: gzip, deflate, br
 <span class="hljs-attribute">Accept-Language</span>: zh,en;q=0.9
-<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa</code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> https://api.loopring.io/api/v2/timestamp</code></pre></div></div></div></p>
+<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa</code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -X DELETE -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> https://api.loopring.io/api/v2/orders/byClientOrderId\?accountId\=1\&amp;clientOrderId\=20200318000000001010,20200318000000001011</code></pre></div></div></div></p>
 <h4 id="response-fields">Response fields</h4>
 <table>
 <thead>
@@ -862,10 +888,10 @@
 </tr>
 <tr>
 <td style="text-align:center">data</td>
-<td style="text-align:center">integer</td>
-<td style="text-align:center">N</td>
-<td style="text-align:center">field.getTimestampV2Response.data</td>
-<td style="text-align:center">1584683483382</td>
+<td style="text-align:center">List[<a href="#CancelOrderResult">CancelOrderResult</a>]</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">field.BatchCancelOrderResponse.data</td>
+<td style="text-align:center">/</td>
 </tr>
 </tbody>
 </table>
@@ -875,7 +901,16 @@
         <span class="hljs-string">&quot;code&quot;</span> : <span class="hljs-number">0</span>,
         <span class="hljs-string">&quot;message&quot;</span> : <span class="hljs-string">&quot;SUCCESS&quot;</span>
     },
-    <span class="hljs-string">&quot;data&quot;</span> : <span class="hljs-number">1584683483382</span>
+    <span class="hljs-string">&quot;data&quot;</span> : [
+        {
+            <span class="hljs-string">&quot;id&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
+            <span class="hljs-string">&quot;result&quot;</span> : <span class="hljs-literal">true</span>,
+            <span class="hljs-string">&quot;error&quot;</span> : {
+                <span class="hljs-string">&quot;code&quot;</span> : <span class="hljs-number">0</span>,
+                <span class="hljs-string">&quot;message&quot;</span> : <span class="hljs-string">&quot;SUCCESS&quot;</span>
+            }
+        }
+    ]
 }
 </code></pre>
 <h4 id="return-code">Return code</h4>
@@ -891,10 +926,83 @@
 <td style="text-align:center">100000</td>
 <td style="text-align:center">code.100000</td>
 </tr>
+<tr>
+<td style="text-align:center">100001</td>
+<td style="text-align:center">code.100001</td>
+</tr>
+<tr>
+<td style="text-align:center">104209</td>
+<td style="text-align:center">code.104209</td>
+</tr>
 </tbody>
 </table>
 <h3 id="model">Model</h3>
 <hr>
+<h4 id="resultinfo">ResultInfo</h4>
+<p><span id="ResultInfo"></span>model.resultInfo.description</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Field</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Required</th>
+<th style="text-align:center">Description</th>
+<th style="text-align:center">Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">code</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">field.resultInfo.code</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">message</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">field.resultInfo.message</td>
+<td style="text-align:center">SUCCESS</td>
+</tr>
+</tbody>
+</table>
+<h4 id="cancelorderresult">CancelOrderResult</h4>
+<p><span id="CancelOrderResult"></span>model.CancelOrderResult.description</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">Field</th>
+<th style="text-align:center">Type</th>
+<th style="text-align:center">Required</th>
+<th style="text-align:center">Description</th>
+<th style="text-align:center">Sample</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">id</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">model.CancelOrderResult.id.description</td>
+<td style="text-align:center">13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859</td>
+</tr>
+<tr>
+<td style="text-align:center">result</td>
+<td style="text-align:center">boolean</td>
+<td style="text-align:center">Y</td>
+<td style="text-align:center">model.CancelOrderResult.result.description</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:center">error</td>
+<td style="text-align:center"><a href="#ResultInfo">ResultInfo</a></td>
+<td style="text-align:center">N</td>
+<td style="text-align:center">model.CancelOrderResult.error.description</td>
+<td style="text-align:center">/</td>
+</tr>
+</tbody>
+</table>
 <h4 id="resultinfo">ResultInfo</h4>
 <p><span id="ResultInfo"></span>model.resultInfo.description</p>
 <table>
@@ -951,12 +1059,12 @@
 
             
                 
-                <a href="../restful_api_overview.html" class="navigation navigation-prev " aria-label="Previous page: Restful API">
+                <a href="batchCancelOrdersByOrderHash.html" class="navigation navigation-prev " aria-label="Previous page: api.batchCancelOrdersByOrderHash.value">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="getApiKey.html" class="navigation navigation-next " aria-label="Next page: api.getApiKey.value">
+                <a href="sendTransaction.html" class="navigation navigation-next " aria-label="Next page: api.sendTx.value">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -967,7 +1075,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"api.timestamp.value","level":"2.2.1.1","depth":3,"next":{"title":"api.getApiKey.value","level":"2.2.1.2","depth":3,"path":"dex_apis/getApiKey.md","ref":"dex_apis/getApiKey.md","articles":[]},"previous":{"title":"Restful API","level":"2.2.1","depth":2,"path":"restful_api_overview.md","ref":"restful_api_overview.md","articles":[{"title":"api.timestamp.value","level":"2.2.1.1","depth":3,"path":"dex_apis/getTimestamp.md","ref":"dex_apis/getTimestamp.md","articles":[]},{"title":"api.getApiKey.value","level":"2.2.1.2","depth":3,"path":"dex_apis/getApiKey.md","ref":"dex_apis/getApiKey.md","articles":[]},{"title":"api.applyApiKey.value","level":"2.2.1.3","depth":3,"path":"dex_apis/applyApiKey.md","ref":"dex_apis/applyApiKey.md","articles":[]},{"title":"api.GetNextOrderIdRequest.value","level":"2.2.1.4","depth":3,"path":"dex_apis/getNextOrderId.md","ref":"dex_apis/getNextOrderId.md","articles":[]},{"title":"api.getOrderDetail.value","level":"2.2.1.5","depth":3,"path":"dex_apis/getOrderDetail.md","ref":"dex_apis/getOrderDetail.md","articles":[]},{"title":"api.submitOrder.value","level":"2.2.1.6","depth":3,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},{"title":"api.batchSubmitOrder.value","level":"2.2.1.7","depth":3,"path":"dex_apis/batchSubmitOrder.md","ref":"dex_apis/batchSubmitOrder.md","articles":[]},{"title":"api.getOrders.value","level":"2.2.1.8","depth":3,"path":"dex_apis/getOrders.md","ref":"dex_apis/getOrders.md","articles":[]},{"title":"api.CancelOrders.value","level":"2.2.1.9","depth":3,"path":"dex_apis/cancelOrders.md","ref":"dex_apis/cancelOrders.md","articles":[]},{"title":"api.batchCancelOrdersByOrderHash.value","level":"2.2.1.10","depth":3,"path":"dex_apis/batchCancelOrdersByOrderHash.md","ref":"dex_apis/batchCancelOrdersByOrderHash.md","articles":[]},{"title":"api.batchCancelOrdersByClientOrderId.value","level":"2.2.1.11","depth":3,"path":"dex_apis/batchCancelOrdersByClientOrderId.md","ref":"dex_apis/batchCancelOrdersByClientOrderId.md","articles":[]},{"title":"api.sendTx.value","level":"2.2.1.12","depth":3,"path":"dex_apis/sendTransaction.md","ref":"dex_apis/sendTransaction.md","articles":[]},{"title":"api.getEthNonce.value","level":"2.2.1.13","depth":3,"path":"dex_apis/getEthNonce.md","ref":"dex_apis/getEthNonce.md","articles":[]},{"title":"api.getEthBalance.value","level":"2.2.1.14","depth":3,"path":"dex_apis/getEthBalance.md","ref":"dex_apis/getEthBalance.md","articles":[]},{"title":"api.getRecommendedGasPrice.value","level":"2.2.1.15","depth":3,"path":"dex_apis/getRecommendedGasPrice.md","ref":"dex_apis/getRecommendedGasPrice.md","articles":[]},{"title":"api.getMarkets.value","level":"2.2.1.16","depth":3,"path":"dex_apis/getMarkets.md","ref":"dex_apis/getMarkets.md","articles":[]},{"title":"api.getTokens.value","level":"2.2.1.17","depth":3,"path":"dex_apis/getTokens.md","ref":"dex_apis/getTokens.md","articles":[]},{"title":"api.getExchangeInfo.value","level":"2.2.1.18","depth":3,"path":"dex_apis/getExchangeInfo.md","ref":"dex_apis/getExchangeInfo.md","articles":[]},{"title":"api.getDepth.value","level":"2.2.1.19","depth":3,"path":"dex_apis/getDepth.md","ref":"dex_apis/getDepth.md","articles":[]},{"title":"api.getTicker.value","level":"2.2.1.20","depth":3,"path":"dex_apis/getTicker.md","ref":"dex_apis/getTicker.md","articles":[]},{"title":"api.getCandlestick.value","level":"2.2.1.21","depth":3,"path":"dex_apis/getCandlestick.md","ref":"dex_apis/getCandlestick.md","articles":[]},{"title":"api.getPrice.value","level":"2.2.1.22","depth":3,"path":"dex_apis/getPrice.md","ref":"dex_apis/getPrice.md","articles":[]},{"title":"api.getMarketTrade.value","level":"2.2.1.23","depth":3,"path":"dex_apis/getMarketTrade.md","ref":"dex_apis/getMarketTrade.md","articles":[]},{"title":"api.getAllowance.value","level":"2.2.1.24","depth":3,"path":"dex_apis/getAllowance.md","ref":"dex_apis/getAllowance.md","articles":[]},{"title":"api.getTokenBalance.value","level":"2.2.1.25","depth":3,"path":"dex_apis/getTokenBalance.md","ref":"dex_apis/getTokenBalance.md","articles":[]},{"title":"api.getAccount.value","level":"2.2.1.26","depth":3,"path":"dex_apis/getAccount.md","ref":"dex_apis/getAccount.md","articles":[]},{"title":"api.getUserCreate.value","level":"2.2.1.27","depth":3,"path":"dex_apis/getUserCreate.md","ref":"dex_apis/getUserCreate.md","articles":[]},{"title":"api.getUserUpdate.value","level":"2.2.1.28","depth":3,"path":"dex_apis/getUserUpdate.md","ref":"dex_apis/getUserUpdate.md","articles":[]},{"title":"api.getUserBalances.value","level":"2.2.1.29","depth":3,"path":"dex_apis/getUserBalances.md","ref":"dex_apis/getUserBalances.md","articles":[]},{"title":"api.getUserDeposits.value","level":"2.2.1.30","depth":3,"path":"dex_apis/getUserDeposits.md","ref":"dex_apis/getUserDeposits.md","articles":[]},{"title":"api.getUserWithdrawals.value","level":"2.2.1.31","depth":3,"path":"dex_apis/getUserWithdrawals.md","ref":"dex_apis/getUserWithdrawals.md","articles":[]},{"title":"api.getUserTransfers.value","level":"2.2.1.32","depth":3,"path":"dex_apis/getUserTransfers.md","ref":"dex_apis/getUserTransfers.md","articles":[]},{"title":"api.getUserTrades.value","level":"2.2.1.33","depth":3,"path":"dex_apis/getUserTrades.md","ref":"dex_apis/getUserTrades.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./gitbook/images/favicon.ico","custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.org/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getTimestamp.md","mtime":"2020-03-31T08:05:38.226Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-31T08:05:39.525Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"api.batchCancelOrdersByClientOrderId.value","level":"2.2.1.11","depth":3,"next":{"title":"api.sendTx.value","level":"2.2.1.12","depth":3,"path":"dex_apis/sendTransaction.md","ref":"dex_apis/sendTransaction.md","articles":[]},"previous":{"title":"api.batchCancelOrdersByOrderHash.value","level":"2.2.1.10","depth":3,"path":"dex_apis/batchCancelOrdersByOrderHash.md","ref":"dex_apis/batchCancelOrdersByOrderHash.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./gitbook/images/favicon.ico","custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.org/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/batchCancelOrdersByClientOrderId.md","mtime":"2020-03-31T08:05:38.142Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-31T08:05:39.525Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
