@@ -1,4 +1,4 @@
-# REST API
+# REST APIs
 
 本部分主要讨论路印DEX Restful API的共性部分。
 > [!DANGER]
@@ -24,7 +24,7 @@ API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。请求都需要X-A
 
 - [提交订单](./dex_apis/submitOrder.md)
 
-### 获取API key
+### 获取API Key
 
 **[前端获取]**
 

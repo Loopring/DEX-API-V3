@@ -1,16 +1,16 @@
 {
   "summary": {
     "About": {
-      "label": "关于",
-      "Loopring": "路印协议",
+      "About": "关于",
+      "Loopring": "路印",
       "Glossary": "术语"
     },
     "Tutorials": {
-      "label": "教程",
+      "Tutorials": "教程",
       "MarketMaking": "做市商集成"
     },
     "APISpec": {
-      "label": "API规范（v2.0）",
+      "APISpec": "API规范（2.0）",
       "RESTAPIs": "REST APIs",
       "WebSocketAPIs": "WebSocket APIs"
     }

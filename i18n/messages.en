@@ -1,16 +1,16 @@
 {
   "summary": {
     "About": {
-      "label": "About",
+      "About": "About",
       "Loopring": "Loopring",
-      "Glossory": "Glossory"
+      "Glossary": "Glossary"
     },
     "Tutorials": {
-      "label": "Tutorials",
+      "Tutorials": "Tutorials",
       "MarketMaking": "Market Making"
     },
     "APISpec": {
-      "label": "API Specification (v2.0)",
+      "APISpec": "API Specification (2.0)",
       "RESTAPIs": "REST APIs",
       "WebSocketAPIs": "WebSocket APIs"
     }
