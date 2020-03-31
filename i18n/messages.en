@@ -6,26 +6,10 @@
       "label": "Tutorials",
       "MarketMaking": "Market Making"
     },
-    "chapter2": {
-      "session1": {
-        "title": "Tutorials",
-        "sub1": {
-          "title": "Product Integration",
-          "subsub1": "Account",
-          "subsub2": "Deposit"
-        },
-        "sub2": "Market Making"
-      },
-      "session2": {
-        "title": "API Specification (v2.0)",
-        "sub1": "REST APIs",
-        "sub2": "WebSocket APIs"
-      }
-    },
-    "chapter3": {
-      "title": "Loopring Smart Wallet",
-      "session1": "dApp Integration",
-      "session2": "Smart Wallet APIs"
+    "APISpec": {
+      "label": "API Specification (v2.0)",
+      "RESTAPIs": "REST APIs",
+      "WebSocketAPIs": "WebSocket APIs"
     }
   },
   "apidoc": {

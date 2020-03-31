@@ -3,29 +3,13 @@
     "Introduction": "介绍",
     "Glossary": "术语",
     "Tutorials": {
-        "label":"集成教程",
+        "label":"教程",
         "MarketMaking": "做市商集成"
     },
-    "chapter2": {
-      "session1": {
-        "title": "集成教程",
-        "sub1": {
-          "title": "产品集成",
-          "subsub1": "注册账号",
-          "subsub2": "充值"
-        },
-        "sub2": "做市商集成"
-      },
-      "session2": {
-        "title": "API规范（v2.0）",
-        "sub1": "REST APIs",
-        "sub2": "WebSocket APIs"
-      }
-    },
-    "chapter3": {
-      "title": "路印智能钱包",
-      "session1": "集成文档",
-      "session2": "钱包API"
+    "APISpec":{
+        "label":"API规范（v2.0）",
+        "RESTAPIs":"REST APIs",
+        "WebSocketAPIs":"WebSocket APIs"
     }
   },
   "apidoc": {
