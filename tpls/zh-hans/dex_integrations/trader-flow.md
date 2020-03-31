@@ -8,9 +8,11 @@
 
 创建好账户之后，您可以使用[Loopring.io](https://loopring.io)的*导出账号*功能导出`API-Key`、EdDSA公私钥`publicKeyX`、` publicKeyY`，和`privateKey`。使用路印交易所的API需要上述信息。
 
-> [!DANGER]
->
-> 请妥善保管API Key和EdDSA私钥。如果这些信息不慎泄漏，会导致您资产的损失。在任何情况下，路印交易所和其API均不会向您询问EdDSA私钥。
+
+{% hint style='danger' %}
+请妥善保管API Key和EdDSA私钥。如果这些信息不慎泄漏，会导致您资产的损失。在任何情况下，路印交易所和其API均不会向您询问EdDSA私钥。
+{% endhint %}
+
 
 ## 提交订单
 
@@ -39,7 +41,7 @@ newOrder = {
 }
 ```
 
-假设您想在`LRC-USDT`市场上以`$0.03`的价格卖出500个`LRC`，即售出500个`LRC`，买入15个`USDT`(500*0.03 = 15)。
+假设您想在`LRC-USDT`市场上以`$0.03`的价格卖出500个`LRC`，即售出500个`LRC`，买入15个`USDT` (500 * 0.03 = 15)。
 
 首先您需要通过`/api/v2/exchange/token`这个API获取LRC和USDT这两个币种在路印交易所的相关配置信息--注意：同一个币种，在基于路印协议的两个不同的交易所的配置信息是不相同的。在Loopring.io，LRC和USDT对应的TokenID分别是2和3，他们ERC20合约的`decimal`分别是18和6。其它代币配置信息可以详见[查询交易所支持的通证信息](../dex_apis/getTokens.md)。
 

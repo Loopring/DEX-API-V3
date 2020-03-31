@@ -11,9 +11,10 @@ To use Loopring's APIs, you must obtain your `API-Key`, and your EdDSA public/pr
 
 The forementioned information can be exported from your account by using [Loopring.io](https://loopring.io)'s *Export Account* menu.
 
-> [!DANGER]
->
+
+{% hint style='danger' %}
 > Please do not disclose your API Key and EdDSA private key. If this information is accidentally leaked, you may suffer loss of your assets. Under no circumstances will Loopring Exchange and its API ask you for your EdDSA private key.
+{% endhint %}
 
 ## Submit orders
 
