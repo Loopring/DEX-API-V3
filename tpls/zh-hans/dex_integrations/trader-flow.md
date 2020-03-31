@@ -14,7 +14,7 @@
 
 ## 提交订单
 
-- 我们可以通过下面的JSON来表达一个路印的限价订单。具体参数细节详见[提交订单](../dex_apis/submitOrder.md)。
+- 我们可以通过下面的JSON来表达一个路印的限价订单（目前路印不支持市价订单）。具体参数细节详见[提交订单](../dex_apis/submitOrder.md)。
 
 ```python
 newOrder = {

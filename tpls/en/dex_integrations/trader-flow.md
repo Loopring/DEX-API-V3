@@ -15,10 +15,10 @@ The forementioned information can be exported from your account by using [Loopri
 >
 > Please do not disclose your API Key and EDDSA private key. If this information is accidentally leaked, you may suffer loss of your assets. Under no circumstances will Loopring Exchange and its API ask you for your EDDSA private key.
 
-## Place orders
+## Submit orders
 
 
-- 我们可以通过下面的JSON来表达一个路印的限价订单。具体参数细节详见[提交订单](../dex_apis/submitOrder.md)。
+- We can express a Loopring limit-price order using the following JSON. See [Submit Orders](../dex_apis/submitOrder.md) for details regarding each field。
 
 ```python
 newOrder = {
