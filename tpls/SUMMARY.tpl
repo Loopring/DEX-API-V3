@@ -1,11 +1,7 @@
 # Summary
 
-## {{ l.summary.chapter1.title }}
-
-* [{{ l.summary.chapter1.session1 }}](README.md)
-* [{{ l.summary.chapter1.session2 }}](GLOSSORY.md)
-
-## {{ l.summary.chapter2.title }}
+* [{{ l.summary.Introduction }}](README.md)
+* [{{ l.summary.Glossary }}](GLOSSORY.md)
 
 * [{{ l.summary.chapter2.session1.title }}](dex_integration_overview.md)
     {** [{{ l.summary.chapter2.session1.sub1.title }}]()*}

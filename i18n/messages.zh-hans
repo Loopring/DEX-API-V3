@@ -1,12 +1,8 @@
 {
     "summary" : {
-        "chapter1" : {
-            "title" : "路印协议",
-            "session1" : "介绍",
-            "session2" : "术语"
-        },
+        "Introduction" : "介绍",
+        "Glossary" : "术语",
         "chapter2" : {
-            "title" : "路印交易所",
             "session1" : {
                 "title" : "集成教程",
                 "sub1" : {
@@ -30,7 +26,7 @@
     },
 
     "apidoc" : {
-        "overview" : "API 摘要",
+        "overview" : "摘要",
         "function" : "功能",
         "method" : "HTTP 方法",
         "path" : "访问路径",
@@ -50,7 +46,7 @@
         "ftype" : "类型",
         "frequire" : "必须",
         "fsample" : "举例",
-        "resp" : "响应",
+        "resp" : "返回值",
         "yes" : "是",
         "no" : "否",
         "keydesc" : "API Key",

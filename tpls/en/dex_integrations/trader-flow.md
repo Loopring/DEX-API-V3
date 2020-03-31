@@ -7,13 +7,13 @@ We recommend using Loopring Exchange's web UI, [Loopring.io](https://loopring.io
 
 ## Obtain the API key
 
-To use Loopring's APIs, you must obtain your `API-Key`, and your EDDSA public/private key-pair, namely `publicKeyX`, `publicKeyY`, and `privateKey`.
+To use Loopring's APIs, you must obtain your `API-Key`, and your EdDSA public/private key-pair, namely `publicKeyX`, `publicKeyY`, and `privateKey`.
 
 The forementioned information can be exported from your account by using [Loopring.io](https://loopring.io)'s *Export Account* menu.
 
 > [!DANGER]
 >
-> Please do not disclose your API Key and EDDSA private key. If this information is accidentally leaked, you may suffer loss of your assets. Under no circumstances will Loopring Exchange and its API ask you for your EDDSA private key.
+> Please do not disclose your API Key and EdDSA private key. If this information is accidentally leaked, you may suffer loss of your assets. Under no circumstances will Loopring Exchange and its API ask you for your EdDSA private key.
 
 ## Submit orders
 
@@ -84,7 +84,7 @@ order.update({"orderId": 2})
 ```
 
 
-然后您需要对订单做**Poseidon**哈希计算并对哈希做**EDDSA**签名，再将hash和签名添加到订单JSON中。签名过程详见[注意事项](./trader-notes.html)签名部分，算法细节请查询参考文献[3]和[4]。
+然后您需要对订单做**Poseidon**哈希计算并对哈希做**EdDSA**签名，再将hash和签名添加到订单JSON中。签名过程详见[注意事项](./trader-notes.html)签名部分，算法细节请查询参考文献[3]和[4]。
 <span id="OrderSig"></span>
 下面是使用Python对订单做签名的示例：
 
@@ -116,4 +116,4 @@ order.update({
 ## 取消订单
 你可以通过[`/api/v2/orders`取消订单](../dex_apis/cancelOrders.html)。取消订单接口需要签名，和订单数据的签名略有不同，请参考[注意事项](./trader-notes.html)需要签名的API接口一节。
 
-另一种取消订单的方式是通过和交易所的合约交互，改变交易密码和EDDSA秘钥。和中心化交易所不同，改变交易密码后，您的全部订单都会被取消。
+另一种取消订单的方式是通过和交易所的合约交互，改变交易密码和EdDSA秘钥。和中心化交易所不同，改变交易密码后，您的全部订单都会被取消。

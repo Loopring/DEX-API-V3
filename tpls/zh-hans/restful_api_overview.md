@@ -7,8 +7,8 @@
 
 ## Http 请求头
 
-API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。请求都需要X-API-KEY才能访问；一些关键请求需要EDDSA签名信息：X-API-SIG。
-还有一些请求需要使用特殊的方式来进行EDDSA签名。
+API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。请求都需要X-API-KEY才能访问；一些关键请求需要EdDSA签名信息：X-API-SIG。
+还有一些请求需要使用特殊的方式来进行EdDSA签名。
 
 需要X-API-KEY的请求：
 
@@ -39,7 +39,7 @@ API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。请求都需要X-A
 
 **请求参数是大小写不敏感的**
 
-如上所述，路印DEX的一部分链下请求需要使用签名，用户在创建账号的同时，会创建一对公私钥用于EDDSA签名。有两类使用此公私钥签名的方式。
+如上所述，路印DEX的一部分链下请求需要使用签名，用户在创建账号的同时，会创建一对公私钥用于EdDSA签名。有两类使用此公私钥签名的方式。
 
 一种是电路不感知的签名，主要用于网关进行权限校验：
 
@@ -48,7 +48,7 @@ API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。请求都需要X-A
 当用户请求获取API-KEY或取消订单时，需要在header里添加X-API-SIG，生成规则如下：
 1. 将请求参数按key字典顺序排序后生成Json String
 2. 使用SHA-256计算json字符串的hash
-3. 使用创建账户时的EDDSA私钥，对hash签名，将签名结果`Rx,Ry,S`三部分按"`,`"分隔并以上述顺序拼成一个字符串，作为X-API-SIG的值放入请求的header里。签名使用的`EDDSA`参考`ethsnarks`，其内部使用`Poseidon HASH`算法，参数如下：
+3. 使用创建账户时的EdDSA私钥，对hash签名，将签名结果`Rx,Ry,S`三部分按"`,`"分隔并以上述顺序拼成一个字符串，作为X-API-SIG的值放入请求的header里。签名使用的`EdDSA`参考`ethsnarks`，其内部使用`Poseidon HASH`算法，参数如下：
 ```py
 poseidon_params(SNARK_SCALAR_FIELD, 6, 6, 52, b'poseidon', 5, security_target=128)
 ```

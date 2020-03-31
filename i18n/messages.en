@@ -1,17 +1,14 @@
 {
     "summary" : {
-        "chapter1" : {
-            "title" : "Loopring Protocol",
-            "session1" : "Introduction",
-            "session2" : "Glossory"
-        },
+            "Introduction" : "Introduction",
+            "Glossory" : "Glossory",
+           
         "chapter2" : {
-            "title" : "Loopring Exchange",
             "session1" : {
                 "title" : "Tutorials",
                 "sub1" : {
                     "title" : "Product Integration",
-                    "subsub1": "Register account",
+                    "subsub1": "Account",
                     "subsub2": "Deposit"
                 },
                 "sub2" : "Market Making"
@@ -25,7 +22,7 @@
         "chapter3" : {
             "title" : "Loopring Smart Wallet",
             "session1" : "dApp Integration",
-            "session2" : "Smart Wallet API"
+            "session2" : "Smart Wallet APIs"
         }
     },
 
@@ -36,9 +33,9 @@
         "path" : "Visit path",
         "desc" : "API description",
         "reqparam" : "Request parameters",
-        "reqexpl" : "Request sample",
+        "reqexpl" : "Request example",
         "resfield" : "Response fields",
-        "resexpl" : "Response sample",
+        "resexpl" : "Response example",
         "retcode" : "Return code",
         "retmsg" : "Return message.  This is used for debug only. Do not show to users",
         "model" : "Model",
@@ -49,25 +46,25 @@
         "fdesc" : "Description",
         "ftype" : "Type",
         "frequire" : "Required",
-        "fsample" : "Sample",
+        "fsample" : "Example",
         "resp" : "Response",
         "yes" : "Y",
         "no" : "N",
         "keydesc" : "API Key",
-        "sigdesc" : "Signature info",
-        "resdesc" : "Result of api invoking",
+        "sigdesc" : "Signature",
+        "resdesc" : "Result of API invocation",
         "codedesc" : "Description",
         "none" : "None",
         "default" : "Default",
         "allow" : "Allowable",
-        "throttle" : "Traffic limit(#Request/seconds)",
+        "throttle" : "Traffic limit (#Request/seconds)",
         "code0" : "Success",
-        "code1000000" : "Internal unknown error",
-        "code1000001" : "Illegality parameter",
+        "code1000000" : "Unknown internal error",
+        "code1000001" : "Invalid parameter",
         "code1000002" : "Request timeout",
         "code1000202" : "Update fail",
         "code1000203" : "Internal persistence error",
-        "code1000204" : "Submit duplicated"
+        "code1000204" : "Duplicate request"
     },
 
     "comment" : {
