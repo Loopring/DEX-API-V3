@@ -1,7 +1,10 @@
 {
   "summary": {
-    "Introduction": "Introduction",
-    "Glossory": "Glossory",
+    "About": {
+      "label": "About",
+      "Loopring": "Loopring",
+      "Glossory": "Glossory"
+    },
     "Tutorials": {
       "label": "Tutorials",
       "MarketMaking": "Market Making"

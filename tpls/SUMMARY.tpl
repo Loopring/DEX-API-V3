@@ -1,7 +1,8 @@
 # Summary
 
-* [{{ l.summary.Introduction }}](README.md)
-* [{{ l.summary.Glossary }}](GLOSSORY.md)
+## {{ l.summary.About.label }}
+* [{{ l.summary.About.Loopring }}](README.md)
+* [{{ l.summary.About.Glossary }}](GLOSSORY.md)
 
 ## {{ l.summary.Tutorials.label }}
 * [{{ l.summary.Tutorials.MarketMaking }}](dex_integrations/trader.md)
