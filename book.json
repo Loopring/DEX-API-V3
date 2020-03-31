@@ -16,7 +16,8 @@
     "styles-sass",
     "flexible-alerts",
     "hints",
-    "anchors"
+    "back-to-top-button",
+    "code"
   ],
   "pluginsConfig": {
     "favicon": "./gitbook/images/favicon.ico",
