@@ -1,20 +1,20 @@
 {
     "summary" : {
         "chapter1" : {
-            "title" : "Loopring",
+            "title" : "Loopring Protocol",
             "session1" : "Introduction",
             "session2" : "Glossory"
         },
         "chapter2" : {
-            "title" : "DEX",
+            "title" : "Loopring Exchange",
             "session1" : {
-                "title" : "DEX integration doc",
+                "title" : "Tutorials",
                 "sub1" : {
-                    "title" : "Frontend integration",
+                    "title" : "Product Integration",
                     "subsub1": "Register account",
                     "subsub2": "Deposit"
                 },
-                "sub2" : "Market making"
+                "sub2" : "Market Making"
             },
             "session2" : {
                 "title" : "DEX API",
@@ -23,9 +23,9 @@
             }
         },
         "chapter3" : {
-            "title" : "Smart wallet",
-            "session1" : "Wallet integration doc",
-            "session2" : "Wallet API"
+            "title" : "Loopring Smart Wallet",
+            "session1" : "dApp Integration",
+            "session2" : "Smart Wallet API"
         }
     },
 

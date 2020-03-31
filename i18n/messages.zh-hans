@@ -1,20 +1,20 @@
 {
     "summary" : {
         "chapter1" : {
-            "title" : "路印",
+            "title" : "路印协议",
             "session1" : "介绍",
             "session2" : "术语"
         },
         "chapter2" : {
-            "title" : "去中心化交易所",
+            "title" : "路印交易所",
             "session1" : {
-                "title" : "DEX 集成文档",
+                "title" : "集成教程",
                 "sub1" : {
-                    "title" : "前端",
+                    "title" : "产品集成",
                     "subsub1": "注册账号",
                     "subsub2": "充值"
                 },
-                "sub2" : "做市"
+                "sub2" : "做市商集成"
             },
             "session2" : {
                 "title" : "DEX API",
@@ -23,8 +23,8 @@
             }
         },
         "chapter3" : {
-            "title" : "钱包",
-            "session1" : "钱包集成文档",
+            "title" : "路印智能钱包",
+            "session1" : "集成文档",
             "session2" : "钱包API"
         }
     },
