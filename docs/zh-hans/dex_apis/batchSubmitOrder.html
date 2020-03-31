@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>获取用户订单列表 · Loopring API</title>
+        <title>批量提交订单 · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -77,10 +77,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="cancelOrders.html" />
+    <link rel="next" href="getOrders.html" />
     
     
-    <link rel="prev" href="batchSubmitOrder.html" />
+    <link rel="prev" href="submitOrder.html" />
     
 
     </head>
@@ -282,7 +282,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2.1.7" data-path="batchSubmitOrder.html">
+        <li class="chapter active" data-level="2.2.1.7" data-path="batchSubmitOrder.html">
             
                 <a href="batchSubmitOrder.html">
             
@@ -295,7 +295,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2.1.8" data-path="getOrders.html">
+        <li class="chapter " data-level="2.2.1.8" data-path="getOrders.html">
             
                 <a href="getOrders.html">
             
@@ -783,7 +783,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >获取用户订单列表</a>
+        <a href=".." >批量提交订单</a>
     </h1>
 </div>
 
@@ -798,16 +798,16 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x83B7;&#x53D6;&#x7528;&#x6237;&#x8BA2;&#x5355;&#x5217;&#x8868;">&#x83B7;&#x53D6;&#x7528;&#x6237;&#x8BA2;&#x5355;&#x5217;&#x8868;</h2>
-<p>&#x6D41;&#x91CF;&#x63A7;&#x5236;&#xFF08;&#x8BF7;&#x6C42;&#x6570;/&#x79D2;&#x6570;&#xFF09;: 1 / 1</p>
+                                <h2 id="&#x6279;&#x91CF;&#x63D0;&#x4EA4;&#x8BA2;&#x5355;">&#x6279;&#x91CF;&#x63D0;&#x4EA4;&#x8BA2;&#x5355;</h2>
+<p>&#x6D41;&#x91CF;&#x63A7;&#x5236;&#xFF08;&#x8BF7;&#x6C42;&#x6570;/&#x79D2;&#x6570;&#xFF09;: 5 / 1</p>
 <h3 id="api-&#x6458;&#x8981;">API &#x6458;&#x8981;</h3>
 <hr>
 <h4 id="http-&#x65B9;&#x6CD5;">HTTP &#x65B9;&#x6CD5;</h4>
-<p><strong>GET</strong></p>
+<p><strong>POST</strong></p>
 <h4 id="&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;">&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;</h4>
-<p><strong>/api/v2/orders</strong></p>
+<p><strong>/api/v2/batchOrders</strong></p>
 <h4 id="&#x529F;&#x80FD;">&#x529F;&#x80FD;</h4>
-<p>&#x83B7;&#x53D6;&#x6307;&#x5B9A;&#x7528;&#x6237;&#x7684;&#x8BA2;&#x5355;&#x5217;&#x8868;&#xFF0C;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x5E02;&#x573A;&#x5BF9;&#x3001;&#x8D77;&#x59CB;&#x65F6;&#x95F4;&#x7B49;&#x6761;&#x4EF6;&#x8FC7;&#x6EE4;</p>
+<p>&#x6279;&#x91CF;&#x63D0;&#x4EA4;&#x8BA2;&#x5355;&#xFF0C;&#x6700;&#x591A;&#x4E00;&#x6B21;&#x53EF;&#x4EE5;&#x63D0;&#x4EA4;10&#x4E2A;&#x8BA2;&#x5355;</p>
 <h3 id="api-&#x63CF;&#x8FF0;">API &#x63CF;&#x8FF0;</h3>
 <hr>
 <h4 id="&#x8BF7;&#x6C42;&#x5934;">&#x8BF7;&#x6C42;&#x5934;</h4>
@@ -844,78 +844,72 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">accountId</td>
-<td style="text-align:center">integer</td>
+<td style="text-align:center">orders</td>
+<td style="text-align:center">List[<a href="#SubmitOrderRequest">SubmitOrderRequest</a>]</td>
 <td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x7528;&#x6237;ID</td>
-<td style="text-align:center">1</td>
-</tr>
-<tr>
-<td style="text-align:center">market</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&#x5426;</td>
-<td style="text-align:center">&#x5E02;&#x573A;&#x5BF9;</td>
-<td style="text-align:center">LRC-ETH</td>
-</tr>
-<tr>
-<td style="text-align:center">start</td>
-<td style="text-align:center">integer</td>
-<td style="text-align:center">&#x5426;</td>
-<td style="text-align:center">&#x8D77;&#x59CB;&#x65F6;&#x95F4;,&#x5355;&#x4F4D;ms</td>
-<td style="text-align:center">1567053142000</td>
-</tr>
-<tr>
-<td style="text-align:center">end</td>
-<td style="text-align:center">integer</td>
-<td style="text-align:center">&#x5426;</td>
-<td style="text-align:center">&#x7ED3;&#x675F;&#x65F6;&#x95F4;,&#x5355;&#x4F4D;ms</td>
-<td style="text-align:center">1567053242000</td>
-</tr>
-<tr>
-<td style="text-align:center">fromHash</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&#x5426;</td>
-<td style="text-align:center">&#x951A;&#x5B9A;hash&#xFF08;&#x4F1A;&#x8FD4;&#x56DE;&#x8BE5;hash&#x4EE5;&#x540E;&#x7684;&#x6570;&#x636E;&#xFF09;</td>
-<td style="text-align:center">26001051253364689664<br>17510367500403435128<br>94150245200567415610<br>3328855968837178</td>
-</tr>
-<tr>
-<td style="text-align:center">side</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&#x5426;</td>
-<td style="text-align:center">&#x4E70;&#x5356;&#x65B9;&#x5411;<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;BUY&apos;, &apos;SELL&apos;]</td>
-<td style="text-align:center">BUY</td>
-</tr>
-<tr>
-<td style="text-align:center">status</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&#x5426;</td>
-<td style="text-align:center">&#x8BA2;&#x5355;&#x72B6;&#x6001;&#x5217;&#x8868;<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;waiting&apos;, &apos;processing&apos;, &apos;processed&apos;, &apos;failed&apos;, &apos;cancelled&apos;, &apos;expired&apos;]</td>
-<td style="text-align:center">processing,processed</td>
-</tr>
-<tr>
-<td style="text-align:center">limit</td>
-<td style="text-align:center">integer</td>
-<td style="text-align:center">&#x5426;</td>
-<td style="text-align:center">&#x9650;&#x5B9A;&#x6570;&#x636E;&#x6761;&#x6570;&#xFF08;&#x9ED8;&#x8BA4;50&#x6761;&#xFF09;</td>
-<td style="text-align:center">50</td>
-</tr>
-<tr>
-<td style="text-align:center">offset</td>
-<td style="text-align:center">integer</td>
-<td style="text-align:center">&#x5426;</td>
-<td style="text-align:center">&#x504F;&#x79FB;&#x91CF;&#xFF08;&#x9ED8;&#x8BA4;0&#xFF09;<br>&#x9ED8;&#x8BA4;&#x503C; : 0L</td>
-<td style="text-align:center">0</td>
+<td style="text-align:center">&#x8981;&#x63D0;&#x4EA4;&#x7684;&#x8BA2;&#x5355;</td>
+<td style="text-align:center">/</td>
 </tr>
 </tbody>
 </table>
 <h4 id="&#x8BF7;&#x6C42;&#x793A;&#x4F8B;">&#x8BF7;&#x6C42;&#x793A;&#x4F8B;</h4>
-<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">GET</span> <span class="hljs-string">https://api.loopring.io/api/v2/orders?accountId=1&amp;market=LRC-ETH&amp;start=1567053142000&amp;end=1567053242000&amp;fromHash=2600105125336468966417510367500403435128941502452005674156103328855968837178&amp;side=BUY&amp;status=processing,processed&amp;limit=50&amp;offset=0</span> HTTP/1.1
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">POST</span> <span class="hljs-string">https://api.loopring.io/api/v2/batchOrders</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: api.loopring.io
 <span class="hljs-attribute">Connection</span>: keep-alive
 <span class="hljs-attribute">Accept</span>: */*
 <span class="hljs-attribute">Accept-Encoding</span>: gzip, deflate, br
 <span class="hljs-attribute">Accept-Language</span>: zh,en;q=0.9
-<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa</code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> https://api.loopring.io/api/v2/orders\?accountId\=1\&amp;market\=LRC-ETH\&amp;start\=1567053142000\&amp;end\=1567053242000\&amp;fromHash\=2600105125336468966417510367500403435128941502452005674156103328855968837178\&amp;side\=BUY\&amp;status\=processing,processed\&amp;<span class="hljs-built_in">limit</span>\=50\&amp;offset\=0</code></pre></div></div></div></p>
+<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa
+<span class="hljs-attribute">Content-Type</span>: application/json
+
+<span class="json">{
+    <span class="hljs-attr">&quot;orders&quot;</span> : [
+        {
+            <span class="hljs-attr">&quot;exchangeId&quot;</span> : <span class="hljs-number">1</span>,
+            <span class="hljs-attr">&quot;orderId&quot;</span> : <span class="hljs-number">1</span>,
+            <span class="hljs-attr">&quot;accountId&quot;</span> : <span class="hljs-number">1</span>,
+            <span class="hljs-attr">&quot;tokenSId&quot;</span> : <span class="hljs-number">0</span>,
+            <span class="hljs-attr">&quot;tokenBId&quot;</span> : <span class="hljs-number">2</span>,
+            <span class="hljs-attr">&quot;amountS&quot;</span> : <span class="hljs-string">&quot;1000000000000000000&quot;</span>,
+            <span class="hljs-attr">&quot;amountB&quot;</span> : <span class="hljs-string">&quot;1000000000000000000&quot;</span>,
+            <span class="hljs-attr">&quot;allOrNone&quot;</span> : <span class="hljs-string">&quot;false&quot;</span>,
+            <span class="hljs-attr">&quot;buy&quot;</span> : <span class="hljs-string">&quot;true&quot;</span>,
+            <span class="hljs-attr">&quot;validSince&quot;</span> : <span class="hljs-number">1567053142</span>,
+            <span class="hljs-attr">&quot;validUntil&quot;</span> : <span class="hljs-number">1567053142</span>,
+            <span class="hljs-attr">&quot;maxFeeBips&quot;</span> : <span class="hljs-number">20</span>,
+            <span class="hljs-attr">&quot;label&quot;</span> : <span class="hljs-number">20</span>,
+            <span class="hljs-attr">&quot;signatureRx&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
+            <span class="hljs-attr">&quot;signatureRy&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
+            <span class="hljs-attr">&quot;signatureS&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
+            <span class="hljs-attr">&quot;clientOrderId&quot;</span> : <span class="hljs-string">&quot;1&quot;</span>,
+            <span class="hljs-attr">&quot;channelId&quot;</span> : <span class="hljs-string">&quot;1&quot;</span>
+        }
+    ]
+}</span></code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -X POST -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> -H <span class="hljs-string">&quot;Content-Type:application/json&quot;</span> https://api.loopring.io/api/v2/batchOrders <span class="hljs-_">-d</span> \
+<span class="hljs-string">&apos;{
+    &quot;orders&quot; : [
+        {
+            &quot;exchangeId&quot; : 1,
+            &quot;orderId&quot; : 1,
+            &quot;accountId&quot; : 1,
+            &quot;tokenSId&quot; : 0,
+            &quot;tokenBId&quot; : 2,
+            &quot;amountS&quot; : &quot;1000000000000000000&quot;,
+            &quot;amountB&quot; : &quot;1000000000000000000&quot;,
+            &quot;allOrNone&quot; : &quot;false&quot;,
+            &quot;buy&quot; : &quot;true&quot;,
+            &quot;validSince&quot; : 1567053142,
+            &quot;validUntil&quot; : 1567053142,
+            &quot;maxFeeBips&quot; : 20,
+            &quot;label&quot; : 20,
+            &quot;signatureRx&quot; : &quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;,
+            &quot;signatureRy&quot; : &quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;,
+            &quot;signatureS&quot; : &quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;,
+            &quot;clientOrderId&quot; : &quot;1&quot;,
+            &quot;channelId&quot; : &quot;1&quot;
+        }
+    ]
+}&apos;</span></code></pre></div></div></div></p>
 <h4 id="&#x54CD;&#x5E94;&#x5B57;&#x6BB5;">&#x54CD;&#x5E94;&#x5B57;&#x6BB5;</h4>
 <table>
 <thead>
@@ -937,9 +931,9 @@
 </tr>
 <tr>
 <td style="text-align:center">data</td>
-<td style="text-align:center"><a href="#OrdersDetail">OrdersDetail</a></td>
-<td style="text-align:center">&#x5426;</td>
-<td style="text-align:center">&#x8BA2;&#x5355;&#x5217;&#x8868;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;</td>
+<td style="text-align:center">List[<a href="#SubmitOrderResult">SubmitOrderResult</a>]</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x6279;&#x91CF;&#x63D0;&#x4EA4;&#x8BA2;&#x5355;&#x7684;&#x8BE6;&#x7EC6;&#x7ED3;&#x679C;</td>
 <td style="text-align:center">/</td>
 </tr>
 </tbody>
@@ -950,27 +944,15 @@
         <span class="hljs-string">&quot;code&quot;</span> : <span class="hljs-number">0</span>,
         <span class="hljs-string">&quot;message&quot;</span> : <span class="hljs-string">&quot;SUCCESS&quot;</span>
     },
-    <span class="hljs-string">&quot;data&quot;</span> : {
-        <span class="hljs-string">&quot;totalNum&quot;</span> : <span class="hljs-number">10</span>,
-        <span class="hljs-string">&quot;orders&quot;</span> : [
-            {
-                <span class="hljs-string">&quot;hash&quot;</span> : <span class="hljs-string">&quot;0xfb5e711c2f044e94322ed262229cd8f0d0da00c22e1a00a0f5d881e45a38e1cf&quot;</span>,
-                <span class="hljs-string">&quot;clientOrderId&quot;</span> : <span class="hljs-string">&quot;200310143135081332&quot;</span>,
-                <span class="hljs-string">&quot;size&quot;</span> : <span class="hljs-string">&quot;8210000000000001024&quot;</span>,
-                <span class="hljs-string">&quot;volume&quot;</span> : <span class="hljs-string">&quot;163182534700000032&quot;</span>,
-                <span class="hljs-string">&quot;price&quot;</span> : <span class="hljs-string">&quot;0.01987608&quot;</span>,
-                <span class="hljs-string">&quot;filledSize&quot;</span> : <span class="hljs-string">&quot;0&quot;</span>,
-                <span class="hljs-string">&quot;filledVolume&quot;</span> : <span class="hljs-string">&quot;0&quot;</span>,
-                <span class="hljs-string">&quot;filledFee&quot;</span> : <span class="hljs-string">&quot;0&quot;</span>,
-                <span class="hljs-string">&quot;status&quot;</span> : <span class="hljs-string">&quot;processing&quot;</span>,
-                <span class="hljs-string">&quot;validSince&quot;</span> : <span class="hljs-number">1583929591</span>,
-                <span class="hljs-string">&quot;validUntil&quot;</span> : <span class="hljs-number">1586521591</span>,
-                <span class="hljs-string">&quot;createdAt&quot;</span> : <span class="hljs-number">1583933191494</span>,
-                <span class="hljs-string">&quot;side&quot;</span> : <span class="hljs-string">&quot;SELL&quot;</span>,
-                <span class="hljs-string">&quot;market&quot;</span> : <span class="hljs-string">&quot;LRC-ETH&quot;</span>
+    <span class="hljs-string">&quot;data&quot;</span> : [
+        {
+            <span class="hljs-string">&quot;hash&quot;</span> : <span class="hljs-string">&quot;0xfb5e711c2f044e94322ed262229cd8f0d0da00c22e1a00a0f5d881e45a38e1cf&quot;</span>,
+            <span class="hljs-string">&quot;error&quot;</span> : {
+                <span class="hljs-string">&quot;code&quot;</span> : <span class="hljs-number">0</span>,
+                <span class="hljs-string">&quot;message&quot;</span> : <span class="hljs-string">&quot;SUCCESS&quot;</span>
             }
-        ]
-    }
+        }
+    ]
 }
 </code></pre>
 <h4 id="&#x8FD4;&#x56DE;&#x7801;">&#x8FD4;&#x56DE;&#x7801;</h4>
@@ -987,25 +969,158 @@
 <td style="text-align:center">&#x672A;&#x77E5;&#x9519;&#x8BEF;</td>
 </tr>
 <tr>
-<td style="text-align:center">107001</td>
-<td style="text-align:center">&#x7528;&#x6237;ID&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+<td style="text-align:center">100001</td>
+<td style="text-align:center">&#x53C2;&#x6570;&#x975E;&#x6CD5;</td>
 </tr>
 <tr>
-<td style="text-align:center">104001</td>
-<td style="text-align:center">APIKEY&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
-</tr>
-<tr>
-<td style="text-align:center">104002</td>
-<td style="text-align:center">APIKEY&#x9A8C;&#x8BC1;&#x5931;&#x8D25;</td>
-</tr>
-<tr>
-<td style="text-align:center">104003</td>
-<td style="text-align:center">&#x7528;&#x6237;&#x4E0D;&#x5B58;&#x5728;</td>
+<td style="text-align:center">104209</td>
+<td style="text-align:center">&#x6279;&#x91CF;&#x64CD;&#x4F5C;&#x90E8;&#x5206;&#x5931;&#x8D25;</td>
 </tr>
 </tbody>
 </table>
 <h3 id="&#x6A21;&#x578B;">&#x6A21;&#x578B;</h3>
 <hr>
+<h4 id="submitorderrequest">SubmitOrderRequest</h4>
+<p><span id="SubmitOrderRequest"></span>&#x63D0;&#x4EA4;&#x8BA2;&#x5355;&#x53C2;&#x6570;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:center">&#x5B57;&#x6BB5;</th>
+<th style="text-align:center">&#x7C7B;&#x578B;</th>
+<th style="text-align:center">&#x5FC5;&#x987B;</th>
+<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">exchangeId</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x4EA4;&#x6613;&#x6240;ID</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">orderId</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x8BA2;&#x5355;ID</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">accountId</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x8D26;&#x6237;ID</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">tokenSId</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x9700;&#x8981;&#x5356;&#x51FA;&#x7684;Token ID</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:center">tokenBId</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x9700;&#x8981;&#x4E70;&#x5165;&#x7684;Token ID</td>
+<td style="text-align:center">2</td>
+</tr>
+<tr>
+<td style="text-align:center">amountS</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x9700;&#x8981;&#x5356;&#x51FA;&#x7684;Token&#x6570;&#x91CF;</td>
+<td style="text-align:center">1000000000000000000</td>
+</tr>
+<tr>
+<td style="text-align:center">amountB</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x9700;&#x8981;&#x4E70;&#x5165;&#x7684;Token&#x6570;&#x91CF;</td>
+<td style="text-align:center">1000000000000000000</td>
+</tr>
+<tr>
+<td style="text-align:center">allOrNone</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x8BA2;&#x5355;&#x662F;&#x5426;&#x53EA;&#x80FD;&#x5B8C;&#x5168;&#x6210;&#x4EA4;&#x6216;&#x8005;0&#x6210;&#x4EA4;, &#x76EE;&#x524D;&#x53EA;&#x652F;&#x6301;false</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:center">buy</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x4E70;&#x5230;&#x4E3A;&#x6B62;&#x6216;&#x8005;&#x5356;&#x51FA;&#x4E3A;&#x6B62;</td>
+<td style="text-align:center">true</td>
+</tr>
+<tr>
+<td style="text-align:center">validSince</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x8BA2;&#x5355;&#x751F;&#x6548;&#x65F6;&#x95F4;, &#x7CBE;&#x786E;&#x5230;&#x79D2;</td>
+<td style="text-align:center">1567053142</td>
+</tr>
+<tr>
+<td style="text-align:center">validUntil</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x8BA2;&#x5355;&#x5931;&#x6548;&#x65F6;&#x95F4;, &#x7CBE;&#x786E;&#x5230;&#x79D2;</td>
+<td style="text-align:center">1567053142</td>
+</tr>
+<tr>
+<td style="text-align:center">maxFeeBips</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x63A5;&#x53D7;&#x7684;&#x6700;&#x5927;&#x8BA2;&#x5355;&#x8D39;&#x7528;, &#x53D6;&#x503C;&#x8303;&#x56F4;(&#x4E07;&#x5206;&#x4E4B;)1~63</td>
+<td style="text-align:center">20</td>
+</tr>
+<tr>
+<td style="text-align:center">label</td>
+<td style="text-align:center">integer</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x8BA2;&#x5355;&#x6765;&#x6E90;&#x6807;&#x7B7E;</td>
+<td style="text-align:center">20</td>
+</tr>
+<tr>
+<td style="text-align:center">signatureRx</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x8BA2;&#x5355;&#x7B7E;&#x540D;&#x7ED3;&#x679C;x&#x90E8;&#x5206;</td>
+<td style="text-align:center">13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859</td>
+</tr>
+<tr>
+<td style="text-align:center">signatureRy</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x8BA2;&#x5355;&#x7B7E;&#x540D;&#x7ED3;&#x679C;y&#x90E8;&#x5206;</td>
+<td style="text-align:center">13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859</td>
+</tr>
+<tr>
+<td style="text-align:center">signatureS</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">&#x662F;</td>
+<td style="text-align:center">&#x8BA2;&#x5355;&#x7B7E;&#x540D;&#x7ED3;&#x679C;s&#x90E8;&#x5206;</td>
+<td style="text-align:center">13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859</td>
+</tr>
+<tr>
+<td style="text-align:center">clientOrderId</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x5BA2;&#x6237;&#x7AEF;&#x6807;&#x8BC6;&#x7684;&#x8BA2;&#x5355;&#x552F;&#x4E00;ID</td>
+<td style="text-align:center">1</td>
+</tr>
+<tr>
+<td style="text-align:center">channelId</td>
+<td style="text-align:center">string</td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x8BA2;&#x5355;&#x6E20;&#x9053;&#x53F7;</td>
+<td style="text-align:center">1</td>
+</tr>
+</tbody>
+</table>
 <h4 id="resultinfo">ResultInfo</h4>
 <p><span id="ResultInfo"></span>API&#x8FD4;&#x56DE;&#x4FE1;&#x606F;</p>
 <table>
@@ -1035,37 +1150,8 @@
 </tr>
 </tbody>
 </table>
-<h4 id="ordersdetail">OrdersDetail</h4>
-<p><span id="OrdersDetail"></span>&#x8BA2;&#x5355;&#x5217;&#x8868;&#x8FD4;&#x56DE;&#x7ED3;&#x679C;</p>
-<table>
-<thead>
-<tr>
-<th style="text-align:center">&#x5B57;&#x6BB5;</th>
-<th style="text-align:center">&#x7C7B;&#x578B;</th>
-<th style="text-align:center">&#x5FC5;&#x987B;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
-<th style="text-align:center">&#x4E3E;&#x4F8B;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:center">totalNum</td>
-<td style="text-align:center">integer</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x6EE1;&#x8DB3;&#x6761;&#x4EF6;&#x7684;&#x8BA2;&#x5355;&#x603B;&#x6761;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x5206;&#x9875;</td>
-<td style="text-align:center">10</td>
-</tr>
-<tr>
-<td style="text-align:center">orders</td>
-<td style="text-align:center">List[<a href="#OrderDetail">OrderDetail</a>]</td>
-<td style="text-align:center">&#x5426;</td>
-<td style="text-align:center">&#x8BA2;&#x5355;&#x5217;&#x8868;</td>
-<td style="text-align:center">/</td>
-</tr>
-</tbody>
-</table>
-<h4 id="orderdetail">OrderDetail</h4>
-<p><span id="OrderDetail"></span>&#x8BA2;&#x5355;&#x8BE6;&#x60C5;&#x4FE1;&#x606F;</p>
+<h4 id="submitorderresult">SubmitOrderResult</h4>
+<p><span id="SubmitOrderResult"></span>&#x5355;&#x4E2A;&#x8BA2;&#x5355;&#x7684;&#x63D0;&#x4EA4;&#x7ED3;&#x679C;</p>
 <table>
 <thead>
 <tr>
@@ -1081,99 +1167,44 @@
 <td style="text-align:center">hash</td>
 <td style="text-align:center">string</td>
 <td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x8BA2;&#x5355;HASH</td>
+<td style="text-align:center">&#x63D0;&#x4EA4;&#x7684;&#x8BA2;&#x5355;&#x7684;HASH</td>
 <td style="text-align:center">0xfb5e711c2f044e9432<br>2ed262229cd8f0d0da00<br>c22e1a00a0f5d881e45a<br>38e1cf</td>
 </tr>
 <tr>
-<td style="text-align:center">clientOrderId</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x5BA2;&#x6237;&#x7AEF;&#x8BA2;&#x5355;&#x552F;&#x4E00;ID</td>
-<td style="text-align:center">200310143135081332</td>
+<td style="text-align:center">error</td>
+<td style="text-align:center"><a href="#ResultInfo">ResultInfo</a></td>
+<td style="text-align:center">&#x5426;</td>
+<td style="text-align:center">&#x63D0;&#x4EA4;&#x8BA2;&#x5355;&#x7684;&#x5931;&#x8D25;&#x9519;&#x8BEF;&#x4FE1;&#x606F;</td>
+<td style="text-align:center">/</td>
 </tr>
+</tbody>
+</table>
+<h4 id="resultinfo">ResultInfo</h4>
+<p><span id="ResultInfo"></span>API&#x8FD4;&#x56DE;&#x4FE1;&#x606F;</p>
+<table>
+<thead>
 <tr>
-<td style="text-align:center">size</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x4E0B;&#x5355;&#x91CF;</td>
-<td style="text-align:center">8210000000000001024</td>
+<th style="text-align:center">&#x5B57;&#x6BB5;</th>
+<th style="text-align:center">&#x7C7B;&#x578B;</th>
+<th style="text-align:center">&#x5FC5;&#x987B;</th>
+<th style="text-align:center">&#x8BF4;&#x660E;</th>
+<th style="text-align:center">&#x4E3E;&#x4F8B;</th>
 </tr>
+</thead>
+<tbody>
 <tr>
-<td style="text-align:center">volume</td>
-<td style="text-align:center">string</td>
+<td style="text-align:center">code</td>
+<td style="text-align:center">integer</td>
 <td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x4E0B;&#x5355;&#x989D;</td>
-<td style="text-align:center">163182534700000032</td>
-</tr>
-<tr>
-<td style="text-align:center">price</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x6210;&#x4EA4;&#x4EF7;&#x683C;</td>
-<td style="text-align:center">0.01987608</td>
-</tr>
-<tr>
-<td style="text-align:center">filledSize</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x6210;&#x4EA4;&#x91CF;</td>
+<td style="text-align:center">&#x8FD4;&#x56DE;&#x7801;</td>
 <td style="text-align:center">0</td>
 </tr>
 <tr>
-<td style="text-align:center">filledVolume</td>
+<td style="text-align:center">message</td>
 <td style="text-align:center">string</td>
 <td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x6210;&#x4EA4;&#x989D;</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td style="text-align:center">filledFee</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x5DF2;&#x751F;&#x6210;&#x624B;&#x7EED;&#x8D39;</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td style="text-align:center">status</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x8BA2;&#x5355;&#x72B6;&#x6001;<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;processing&apos;, &apos;processed&apos;, &apos;cancelling&apos;, &apos;cancelled&apos;, &apos;expired&apos;, &apos;waiting&apos;]</td>
-<td style="text-align:center">processing</td>
-</tr>
-<tr>
-<td style="text-align:center">validSince</td>
-<td style="text-align:center">integer</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x751F;&#x6548;&#x8D77;&#x59CB;&#x65F6;&#x95F4;</td>
-<td style="text-align:center">1583929591</td>
-</tr>
-<tr>
-<td style="text-align:center">validUntil</td>
-<td style="text-align:center">integer</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x751F;&#x6548;&#x622A;&#x6B62;&#x65F6;&#x95F4;</td>
-<td style="text-align:center">1586521591</td>
-</tr>
-<tr>
-<td style="text-align:center">createdAt</td>
-<td style="text-align:center">integer</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x8BA2;&#x5355;&#x521B;&#x5EFA;&#x65F6;&#x95F4;</td>
-<td style="text-align:center">1583933191494</td>
-</tr>
-<tr>
-<td style="text-align:center">side</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x4E70;&#x5356;&#x65B9;&#x5411;<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;SELL&apos;, &apos;BUY&apos;]</td>
-<td style="text-align:center">SELL</td>
-</tr>
-<tr>
-<td style="text-align:center">market</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x5E02;&#x573A;&#x5BF9;</td>
-<td style="text-align:center">LRC-ETH</td>
+<td style="text-align:center">&#x8FD4;&#x56DE;&#x4FE1;&#x606F;</td>
+<td style="text-align:center">SUCCESS</td>
 </tr>
 </tbody>
 </table>
@@ -1204,12 +1235,12 @@
 
             
                 
-                <a href="batchSubmitOrder.html" class="navigation navigation-prev " aria-label="Previous page: 批量提交订单">
+                <a href="submitOrder.html" class="navigation navigation-prev " aria-label="Previous page: 提交订单">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="cancelOrders.html" class="navigation navigation-next " aria-label="Next page: 取消订单">
+                <a href="getOrders.html" class="navigation navigation-next " aria-label="Next page: 获取用户订单列表">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1220,7 +1251,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"获取用户订单列表","level":"2.2.1.8","depth":3,"next":{"title":"取消订单","level":"2.2.1.9","depth":3,"path":"dex_apis/cancelOrders.md","ref":"dex_apis/cancelOrders.md","articles":[]},"previous":{"title":"批量提交订单","level":"2.2.1.7","depth":3,"path":"dex_apis/batchSubmitOrder.md","ref":"dex_apis/batchSubmitOrder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./gitbook/images/favicon.ico","custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.org/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/getOrders.md","mtime":"2020-03-31T08:27:40.839Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-31T08:27:42.148Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"批量提交订单","level":"2.2.1.7","depth":3,"next":{"title":"获取用户订单列表","level":"2.2.1.8","depth":3,"path":"dex_apis/getOrders.md","ref":"dex_apis/getOrders.md","articles":[]},"previous":{"title":"提交订单","level":"2.2.1.6","depth":3,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":2},"highlight":{},"favicon":"./gitbook/images/favicon.ico","custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.org/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/batchSubmitOrder.md","mtime":"2020-03-31T08:27:40.740Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-03-31T08:27:42.148Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>

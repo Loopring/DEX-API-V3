@@ -13,7 +13,10 @@
 
         "/api/v2/orderId",
         "/api/v2/order",
+        "/api/v2/batchOrders",
         "/api/v2/orders",
+        "/api/v2/orders/byHash",
+        "/api/v2/orders/byClientOrderId",
         "/api/v2/sendEthTx",
         "/api/v2/ethNonce",
         "/api/v2/ethBalances",
