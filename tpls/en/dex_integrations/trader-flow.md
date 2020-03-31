@@ -18,7 +18,7 @@ The forementioned information can be exported from your account by using [Loopri
 ## Submit orders
 
 
-- We can express a Loopring limit-price order using the following JSON. See [Submit Orders](../dex_apis/submitOrder.md) for details regarding each field。
+- You can express a Loopring limit-price order using the following JSON. See [Submit Orders](../dex_apis/submitOrder.md) for details regarding each field。
 
 ```python
 newOrder = {
