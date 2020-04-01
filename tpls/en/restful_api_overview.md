@@ -34,7 +34,7 @@ API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。请求都需要X-A
 
 用户注册的时候系统会产生对应的API key，用户通过[查询用户ApiKey](./dex_apis/getApiKey.md)拿到这个key，此时需要对请求签名以保证别的用户无法获取API key。以后每次调用此API都返回同样的key。
 
-如果用户想要更换API key，可以调用[更新用户ApiKey](./dex_apis/applyApiKey.md)接口（请求头需传入老的API key），这样会更换一个新的API key，然后每次调用[查询用户ApiKey](./dex_apis/getApiKey.md)都会返回新的key。
+如果用户想要更换API key，可以调用[更新用户ApiKey](./dex_apis/applyApiKey.md)接口（HTTP头需传入老的API key），这样会更换一个新的API key，然后每次调用[查询用户ApiKey](./dex_apis/getApiKey.md)都会返回新的key。
 
 ### 请求签名
 

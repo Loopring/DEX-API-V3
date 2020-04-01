@@ -29,7 +29,7 @@
     "retmsg": "Return message.  This is used for debug only. Do not show to users",
     "model": "Model",
     "common": "Common info",
-    "hosturl": "API host",
+    "hosturl": "URL",
     "header": "Header",
     "field": "Field",
     "fdesc": "Description",
