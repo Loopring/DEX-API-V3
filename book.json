@@ -1,28 +1,37 @@
 {
-    "gitbook": ">=3.2.3",
-    "title" : "Loopring API",
-    "plugins": [
-        "-lunr",
-        "-search",
-        "-sharing",
-        "expandable-chapters",
-        "custom-favicon",
-        "katex",
-        "codetabs",
-        "search-pro",
-        "insert-logo",
-        "sharing-plus",
-        "flexible-alerts"
-    ],
-    "pluginsConfig" : {
-        "favicon": "./gitbook/images/favicon.ico",
-        "insert-logo": {
-            "url": "https://loopring.org/images/logo.svg",
-            "style": "background: none; max-height: 28px; min-height: 28px"
-        },
-        "sharing": {
-            "weibo": true,
-            "facebook": true
-        }
+  "gitbook": ">=3.2.3",
+  "title": "Loopring API",
+  "plugins": [
+    "-lunr",
+    "-search",
+    "-sharing",
+    "-fontsettings",
+    "expandable-chapters",
+    "custom-favicon",
+    "katex",
+    "codetabs",
+    "search-pro",
+    "insert-logo",
+    "sharing-plus",
+    "flexible-alerts",
+    "hints",
+    "back-to-top-button",
+    "code"
+  ],
+  "pluginsConfig": {
+    "favicon": "./gitbook/images/favicon.ico",
+    "insert-logo": {
+      "url": "https://loopring.org/images/logo.svg",
+      "style": "background: none; max-height: 28px; min-height: 28px"
+    },
+    "sharing": {
+      "weibo": true,
+      "facebook": true
+    },
+    "fontsettings": {
+      "theme": "white",
+      "family": "sans",
+      "size": 1
     }
+  }
 }

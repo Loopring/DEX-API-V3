@@ -6,11 +6,11 @@
 
 ## 获取API key
 
-- 创建好账户之后，您可以使用官网的'导出账号'功能导出`API-Key`及`EDDSA`公私钥`publicKeyX`,` publicKeyY`和`privateKey`，路印DEX链下请求需要这些信息。
+- 创建好账户之后，您可以使用官网的'导出账号'功能导出`API-Key`及`EdDSA`公私钥`publicKeyX`,` publicKeyY`和`privateKey`，路印DEX链下请求需要这些信息。
 
    > [!DANGER]
    >
-   > 请妥善保管API key 和 EDDSA私钥，如泄漏，可能会发生信息泄漏，甚至资产损失。
+   > 请妥善保管API key 和 EdDSA私钥，如泄漏，可能会发生信息泄漏，甚至资产损失。
 
 ## 提交订单
 
@@ -68,7 +68,7 @@
                 "clientOrderId": "TEST01"})
   ```
 
-- 对订单签名，签名使用`EDDSA PoseidonHASH`算法，并更新订单数据。签名过程详见[注意事项](./trader-notes.md)签名部分，算法细节请查询参考文献[3]和[4]。
+- 对订单签名，签名使用`EdDSA PoseidonHASH`算法，并更新订单数据。签名过程详见[注意事项](./trader-notes.md)签名部分，算法细节请查询参考文献[3]和[4]。
 <span id="OrderSig"></span>
 
   ```python

@@ -52,7 +52,7 @@
 
 - API密钥可以从`loopringDEX`网页导出或通过API获取。
 
-- 所有接口（除[查询用户ApiKey](./dex_apis/getApiKey.md)）都需要传入API-KEY，API信息请查询[Restful API 概述](../restful_api_overview.md)。
+- 所有接口（除[查询用户ApiKey](./dex_apis/getApiKey.md)）都需要传入API-KEY，API信息请查询[Restful API 概述](../rest_api_overview.md)。
 
 - API密钥数据放在`http request header`里的`X-API-KEY`中。
 
@@ -66,19 +66,19 @@
 
 ### 需要签名的API接口
 
-- 除了需要`API-KEY`外，和账户信息有关的还需要签名，详见[Restful API 概述](../restful_api_overview.md)，这里仅以[取消订单](../dex_apis/cancelOrders.md)为例。
+- 除了需要`API-KEY`外，和账户信息有关的还需要签名，详见[Restful API 概述](../rest_api_overview.md)，这里仅以[取消订单](../dex_apis/cancelOrders.md)为例。
 
 - 调用取消订单接口时，除了接口本身所需的参数外，还需传递`signature`即参数签名。
 
-- `LoopringDEX`对API签名使用`EDDSA SHA256`算法，首先将API参数序列化成型如`[(参数1名, 参数1值), (参数2名, 参数2值), ..., (参数N名, 参数N值)]`的字符串二元组数组，其中参数名按照字典序排序，从而保证服务器验证顺序一致。然后整体转为`JSON`字符串作为` SHA256`的操作对象，得到`SHA256Hash`值，再用`EDDSA`算法对该`SHA256Hash`进行签名，私钥即`privateKey`，最终的签名包含三个整数：`Rx, Ry, S`，将这三个序列化成字符串并用`,`连接起来即为API签名，流程请参考`sign_api_data`代码示例。
+- `LoopringDEX`对API签名使用`EdDSA SHA256`算法，首先将API参数序列化成型如`[(参数1名, 参数1值), (参数2名, 参数2值), ..., (参数N名, 参数N值)]`的字符串二元组数组，其中参数名按照字典序排序，从而保证服务器验证顺序一致。然后整体转为`JSON`字符串作为` SHA256`的操作对象，得到`SHA256Hash`值，再用`EdDSA`算法对该`SHA256Hash`进行签名，私钥即`privateKey`，最终的签名包含三个整数：`Rx, Ry, S`，将这三个序列化成字符串并用`,`连接起来即为API签名，流程请参考`sign_api_data`代码示例。
 
-- 对API接口的签名使用的`EDDSA`使用`ethsnarks`工程代码，其内部使用`Poseidon HASH`算法，`LoopringDEX`的签名参数如下:
+- 对API接口的签名使用的`EdDSA`使用`ethsnarks`工程代码，其内部使用`Poseidon HASH`算法，`LoopringDEX`的签名参数如下:
 
   ```python
   poseidon_params(SNARK_SCALAR_FIELD, 6, 6, 52, b'poseidon', 5, security_target=128)
   ```
 
-- `EDDSA`和`Poseidon Hash`算法细节见参考文献[3]，[4]。
+- `EdDSA`和`Poseidon Hash`算法细节见参考文献[3]，[4]。
 
 - 可以重载`ethsnarks`的`_SignatureScheme`实现该固定参数的签名类，如下面python代码所示。
 
@@ -166,18 +166,18 @@
       })
   ```
 
-- `LoopringDEX`使用`EDDSA PoseidonHASH`算法对订单参数签名，`EDDSA PoseidonHASH`算法代码可以参考`ethsnarks`，对订单参数计算`PoseidonHash`的参数如下：
+- `LoopringDEX`使用`EdDSA PoseidonHASH`算法对订单参数签名，`EdDSA PoseidonHASH`算法代码可以参考`ethsnarks`，对订单参数计算`PoseidonHash`的参数如下：
 
   ```python
   poseidon_params(SNARK_SCALAR_FIELD, 14, 6, 53, b'poseidon', 5, security_target=128)
   ```
 
-- 订单参数签名和API接口参数签名的区别在于：API接口参数是用`SHA256`计算`HASH`值，再经过`EDDSA`签名，而订单内容是用`PoseidonHASH`计算`HASH`值，然后经过`EDDSA`签名，而`EDDSA`签名算法是相同的。
+- 订单参数签名和API接口参数签名的区别在于：API接口参数是用`SHA256`计算`HASH`值，再经过`EdDSA`签名，而订单内容是用`PoseidonHASH`计算`HASH`值，然后经过`EdDSA`签名，而`EdDSA`签名算法是相同的。
 
 ## 参考文献及代码库
 
 1. `ethsnarks`代码仓库：https://github.com/HarryR/ethsnarks.git
 2. `SHA256 Hash`算法：<https://en.wikipedia.org/wiki/SHA-2>
-3. `EDDSA`算法：<https://en.wikipedia.org/wiki/EdDSA>
+3. `EdDSA`算法：<https://en.wikipedia.org/wiki/EdDSA>
 4. `Poseidon Hash`算法：<https://www.poseidon-hash.info/>
 
