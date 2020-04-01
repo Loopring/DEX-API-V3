@@ -1,44 +1,49 @@
-# REST APIs
 
-本部分主要讨论路印DEX Restful API的共性部分。
 
-{% hint style='tip' %}
-每个API请求会有流量限制的说明，超过此流量限制的请求会被拒绝（返回429）。如果调用端长期超过流量限制调用请求，有可能进入黑名单，从而无法调用路印DEX的API。
+# REST API 概述
+
+本文主要描述路印交易所REST API的共性部分。
+
+{% hint style='info' %}
+每个API请求都有流量限制，超额的调用请求会被拒绝（返回429）。如果您长期超额调用API，您的账户就会被列入黑名单，从而无法继续使用API。
 {% endhint %}
 
-## HTTP Request Header
 
-API请求要求在Header中传入X-API-KEY 或/和X-API-SIG。请求都需要X-API-KEY才能访问；一些关键请求需要EdDSA签名信息：X-API-SIG。
-还有一些请求需要使用特殊的方式来进行EdDSA签名。
+## HTTP头
 
-需要X-API-KEY的请求：
+所有API都需要指定`X-API-KEY`HTTP头；有一些API还需要指定`X-API-SIG`HTTP头来提供EdDSA签名信息。
 
-- 除[查询用户ApiKey](./dex_apis/getApiKey.md)以外的所有请求
+需要`X-API-KEY`HTTP头的API：
 
-需要X-API-SIG的请求：
+- 除[查询用户ApiKey](./dex_apis/getApiKey.md)外的所有API。
+
+需要`X-API-SIG`HTTP头的API：
 
 - [查询用户ApiKey](./dex_apis/getApiKey.md)
 - [取消订单](./dex_apis/cancelOrder.md)
 
-需要特殊签名的请求：
+需要特殊`X-API-SIG`HTTP头签名的请求：
 
 - [提交订单](./dex_apis/submitOrder.md)
 
-### 获取API Key
+## 获取API Key
 
-**[前端获取]**
+### 通过路印交易所UI获取
 
-用户可以在交易所( https://www.loopring.io )的“导出账户”中看到自己的“apiKey”，并在调用API时，设置到http header的X-API-KEY中。
+您可以通过路印交易所的UI（[Loopring.io](https://loopring.io)），在登陆账号后，通过『导出账户』功能获取自己账号的API Key和EdDSA私钥。
 
-**[API获取]**
+### 通过API获取
 
-用户注册的时候系统会产生对应的API key，用户通过[查询用户ApiKey](./dex_apis/getApiKey.md)拿到这个key，此时需要对请求签名以保证别的用户无法获取API key。以后每次调用此API都返回同样的key。
+您也通过[查询用户ApiKey](./dex_apis/getApiKey.md)获取自己账号的API Key。此时您需要对请求做签名，以保证别的用户无法获取您的API key。
 
-如果用户想要更换API key，可以调用[更新用户ApiKey](./dex_apis/applyApiKey.md)接口（HTTP头需传入老的API key），这样会更换一个新的API key，然后每次调用[查询用户ApiKey](./dex_apis/getApiKey.md)都会返回新的key。
 
-### 请求签名
+## 更改API Key
 
-**请求参数是大小写不敏感的**
+如果您想更改API Key，可以调用[更新用户ApiKey](./dex_apis/applyApiKey.md)接口，并提供入老的API Key。
+
+## 请求签名
+
+### 请求参数是大小写不敏感
 
 如上所述，路印DEX的一部分链下请求需要使用签名，用户在创建账号的同时，会创建一对公私钥用于EdDSA签名。有两类使用此公私钥签名的方式。
 
@@ -58,14 +63,8 @@ poseidon_params(SNARK_SCALAR_FIELD, 6, 6, 52, b'poseidon', 5, security_target=12
 
 ** [电路签名](./dex_integrations/trader.md#OrderSig) **
 
-## 返回结果
+## API返回结果
 
-除了网络错误，所有API都会返回200状态码，以及json信息。
-
-json返回信息中都会包含resultInfo字段，告知本次调用的情况：是否成功；若失败，发生了什么样的错误。
-
-如果请求正常返回，则还会返回data字段（也是json串），该字段针对不同API代表不同的结构，可以参考具体的API说明。
-
-下面是公共信息的细节描述。
+除了网络错误，所有API都会返回200状态码和代表API结果的JSON数据。JSON返回信息中都包含一个resultInfo字段，用以反馈API调用的通用状态，特别是出错时候的状态码。如果请求正常返回，则还会返回一个data字段，该字段的值也是一个JSON结构，针对不同API代表不同的业务数据，可以参考每个API说明。
 
 {% include "./common.md" %}
