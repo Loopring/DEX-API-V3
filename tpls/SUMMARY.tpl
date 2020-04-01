@@ -11,7 +11,7 @@
 
 ## [{{l.summary.APISpec.APISpec}}](dex_api_overview.md)
 
-* [{{l.summary.APISpec.RESTAPIs}}](restful_api_overview.md)
+* [{{l.summary.APISpec.RESTAPIs}}](rest_api_overview.md)
     {% for api in apis %}
     * [{{api.summary}}]({{g_api_doc(api.operationId, "dex_apis", api.operationId)}})
     {% endfor %}

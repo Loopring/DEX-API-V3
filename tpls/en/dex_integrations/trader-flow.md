@@ -112,7 +112,7 @@ order.update({
 
 ## 查询订单
 
-您可以访问[`/api/v2/orders`查看订单状态](../dex_apis/getOrderDetail.html)。或者通过订阅WebSocket更新来跟踪订单状态。关于WebSocket订阅部分，请参考[Websocket介绍](./websocket_overview.md)。
+您可以访问[`/api/v2/orders`查看订单状态](../dex_apis/getOrderDetail.html)。或者通过订阅WebSocket更新来跟踪订单状态。关于WebSocket订阅部分，请参考[WebSocket介绍](./websocket_overview.md)。
 
 ## 取消订单
 你可以通过[`/api/v2/orders`取消订单](../dex_apis/cancelOrders.html)。取消订单接口需要签名，和订单数据的签名略有不同，请参考[注意事项](./trader-notes.html)需要签名的API接口一节。
