@@ -2,11 +2,11 @@
 
 要使用**路印（去中心化）交易所**，您必须先通过向交易所的智能合约发送特殊的以太坊交易来注册帐户。 创建帐户后，您可以通过链上和链下请求与交易所进行交互。
 
-我们建议使用路印交易所的网页界面（[Loopring.io](https://loopring.io)）进行帐户注册。 但是，您也可以使用Etherescan和MyEtherWallet等工具直接与智能合约进行交互。
+我们建议使用路印交易所的网页界面（[Loopring.io](https://loopring.io)）进行帐户注册。 但是，您也可以使用Etherescan和MyEtherWallet等工具直接与智能合约交互。
 
 ## 获取API Key
 
-创建好账户之后，您可以使用[Loopring.io](https://loopring.io)的*导出账号*功能导出`API-Key`、EdDSA公私钥`publicKeyX`、` publicKeyY`，和`privateKey`。使用路印交易所的API需要上述信息。
+创建好账户之后，您可以使用[Loopring.io](https://loopring.io)的*『导出账号』*功能导出`API-Key`、EdDSA公私钥`publicKeyX`、` publicKeyY`，和`privateKey`。使用路印交易所的API需要上述信息。
 
 
 {% hint style='danger' %}
@@ -41,11 +41,11 @@ newOrder = {
 }
 ```
 
-假设您想在`LRC-USDT`市场上以`$0.03`的价格卖出500个`LRC`，即售出500个`LRC`，买入15个`USDT` (500 * 0.03 = 15)。
+假设您想在`LRC-USDT`市场上以`$0.03`的价格卖出500个`LRC`，即售出500个`LRC`，买入至少15个`USDT` (500 * 0.03 = 15)。
 
-首先您需要通过`/api/v2/exchange/token`这个API获取LRC和USDT这两个币种在路印交易所的相关配置信息--注意：同一个币种，在基于路印协议的两个不同的交易所的配置信息是不相同的。在Loopring.io，LRC和USDT对应的TokenID分别是2和3，他们ERC20合约的`decimal`分别是18和6。其它代币配置信息可以详见[查询交易所支持的通证信息](../dex_apis/getTokens.md)。
+首先您需要通过`/api/v2/exchange/token`这个API获取LRC和USDT这两个币种在路印交易所的相关配置信息 - 注意：同一个币种，在基于路印协议的两个不同的交易所的配置信息是不相同的。在Loopring.io，LRC和USDT对应的TokenID分别是2和3；它们ERC20合约的`decimals`分别是18和6。其它代币配置信息可以详见[查询交易所支持的通证信息](../dex_apis/getTokens.md)。
 
-通过上面的代币信息，就可以将订单准备好了：
+通过查询获得的代币信息，可以将订单中的部分数据准备好：
 
 ```python
 newOrder = {
@@ -70,12 +70,12 @@ newOrder = {
 -  `accountId`是您注册后获得的账号ID。
 - `tokenS`, `amountS`中的*S*代表Sell，代表这两个值和卖出的代币相关； `tokenB`, `amountB`中的*B*代表Buy，代表这两个值和买入的代币相关。路印订单采用的是单向表达，买卖单的数据格式完全一致。
 - `amountS`的值是 `500`跟着18个`0`；amountB的值是`15`跟着6个`0`。
-- `buy`的值决定订单的完全成交条件。如果`buy`是`'true'`，那么只要买到了amountB的tokenB，该订单就算完全成交了，可能实际卖出的tokenS少于amountS。如果`buy`是`'false'`，那么只要卖出了amountS的tokenS，该订单就算完全成交了，可能实际买到的tokenB多于amountB。
+- `buy`的值决定订单的完全成交条件。如果`buy`是`'true'`，那么只要买到了15 USDT，该订单就算完全成交，这时候也许订单中的500个LRC并没被全部卖掉。如果`buy`是`'false'`，那么只要卖出了500个LRC，该订单就算完全成交了，可能实际买到的USDT多于15。
 - `validSince`和`validUntil`代表该订单的生效时间和过期时间。通过这两个时间戳，您可以不必对每个订单做主动取消的动作。我们强烈建议您在现阶段，将`validSince`设置为比当前时间早15分钟。
 - `maxFeeBips`是此订单愿意支付的最大费率，单位是万分之一。如果`maxFeeBips = 10`，代表该订单愿意支付实际买入的tokenB数量的0.1%给交易所。但实际交易所收取的交易手续费可以小于`maxFeeBips`，比如交易所愿意为VIP用户的交易费打折。在实际使用时，我们建议您使用63作为该项的值。如果该值太小，服务器会拒绝撮合您的订单。
 
 
-接下来您需要为新订单指定一个`OrderId`。您可以通过访问[`/api/v2/orderId`获取下一个有效OrderId](../dex_apis/getNextOrderId.md)。注意`OrderId`由用户出售的代币（tokenS）决定，然后根据返回值更新订单数据结构。订单`OrderId`是路印交易所一个比较特殊的不同之处，详见[注意事项](./trader-notes.md)一节关于`OrderId`的说明。
+接下来您需要为新订单指定一个`OrderId`。订单`OrderId`是路印交易所一个比较特殊的地方，详见[注意事项](./trader-notes.md)一节关于`OrderId`的说明。您可以通过访问[`/api/v2/orderId`](../dex_apis/getNextOrderId.md)获取下一个有效OrderId。注意`OrderId`由用户出售的代币（tokenS）决定，然后根据返回值更新订单数据结构。
 
 ```python
 order.update({"orderId": 2})
@@ -105,13 +105,13 @@ order.update({
 })
 ```
 
-最后您需要通过[`/api/v2/order`发送订单](../dex_apis/submitOrder.md)到服务器。
+最后您需要通过[`/api/v2/order`](../dex_apis/submitOrder.md)发送订单到服务器。
 
 ## 查询订单
 
-您可以访问[`/api/v2/orders`查看订单状态](../dex_apis/getOrderDetail.md)。或者通过订阅WebSocket更新来跟踪订单状态。关于WebSocket订阅部分，请参考[WebSocket介绍](./websocket_overview.md)。
+您可以通过[`/api/v2/orders`](../dex_apis/getOrderDetail.md)查看订单状态。或者通过订阅WebSocket更新来跟踪订单状态。关于WebSocket订阅部分，请参考[WebSocket介绍](./websocket_overview.md)。
 
 ## 取消订单
-你可以通过[`/api/v2/orders`取消订单](../dex_apis/cancelOrders.html)。取消订单接口需要签名，和订单数据的签名略有不同，请参考[注意事项](./trader-notes.md)需要签名的API接口一节。
+你可以通过[`/api/v2/orders`](../dex_apis/cancelOrders.html)取消订单。取消订单接口需要签名，和订单数据的签名略有不同，请参考[注意事项](./trader-notes.md)需要签名的API接口一节。
 
 另一种取消订单的方式是通过和交易所的合约交互，改变交易密码和EdDSA秘钥。和中心化交易所不同，改变交易密码后，您的全部订单都会被取消。
