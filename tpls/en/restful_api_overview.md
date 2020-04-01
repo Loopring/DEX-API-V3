@@ -4,7 +4,7 @@
 
 本文主要描述路印交易所REST API的共性部分。
 
-{% hint style='info' %}
+{% hint style='danger' %}
 每个API请求都有流量限制，超额的调用请求会被拒绝（返回429）。如果您长期超额调用API，您的账户就会被列入黑名单，从而无法继续使用API。
 {% endhint %}
 
