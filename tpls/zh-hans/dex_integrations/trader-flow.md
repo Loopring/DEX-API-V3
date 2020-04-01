@@ -6,13 +6,24 @@
 
 ## 获取API Key
 
-创建好账户之后，您可以使用[Loopring.io](https://loopring.io)的*导出账号*功能导出`API-Key`、EdDSA公私钥`publicKeyX`、` publicKeyY`，和`privateKey`。使用路印交易所的API需要上述信息。
+创建好账户之后，您可以使用[Loopring.io](https://loopring.io)的*导出账号*功能导出`API-Key`、EdDSA公私钥`publicKeyX`、` publicKeyY`，和`privateKey`。使用路印交易所的API需要上述信息。导出示例如下：
 
-
+   ```json
+   {
+     "exchangeName": "LoopringDEX: Beta 1",
+     "exchangeAddress": "0x944644Ea989Ec64c2Ab9eF341D383cEf586A5777",
+     "exchangeId": 2,
+     "accountAddress": "0xe9577b420d96adfc97ff1e9e0557f8c73d7247fe",
+     "accountId": 123456,
+     "apiKey": "qXJpfTKrF0O5jIDPYIu7YkVgLFbvm5uIgPKBmHP2kBpcdKZjgfFKhIlE8evo9lKa",
+     "publicKeyX": "20230748339558541226323870947000799026059173889124399831342481595010628000129",
+     "publicKeyY": "4980637490279511620100245514492532318691849019959343538108355525575855311214",
+     "privateKey": "1242957328515765470505753610060337585626176314364086438653683782645761561015"
+   }
+   ```
 {% hint style='danger' %}
 请妥善保管API Key和EdDSA私钥。如果这些信息不慎泄漏，会导致您资产的损失。在任何情况下，路印交易所和其API均不会向您询问EdDSA私钥。
 {% endhint %}
-
 
 ## 提交订单
 
@@ -22,7 +33,7 @@
 newOrder = {
     "exchangeId": 2,
     "orderId": 5,
-    "accountId": 1234,
+    "accountId": 123456,
     "tokenSId": 2,
     "tokenBId": 3,
     "amountS": "5000000000000000000",
@@ -81,8 +92,7 @@ newOrder = {
 order.update({"orderId": 2})
 ```
 
-
-然后您需要对订单做**Poseidon**哈希计算并对哈希做**EdDSA**签名，再将hash和签名添加到订单JSON中。签名过程详见[注意事项](./trader.md#TraderNotes)签名部分，算法细节请查询参考文献[3]和[4]。
+然后您需要对订单做**Poseidon**哈希计算并对哈希做**EdDSA**签名，再将hash和签名添加到订单JSON中。签名过程详见[注意事项](./trader.md#TraderNotes)签名部分。注意订单签名和普通网络请求的签名算法不同，不同请求的签名请参考对应[`Restful API`请求文档](../restful_api_overview.html)以及[注意事项](./trader-notes.md)签名部分，算法细节请查询参考文献[3]和[4]。
 <span id="OrderSig"></span>
 下面是使用Python对订单做签名的示例：
 
@@ -96,7 +106,7 @@ PoseidonHashParams = poseidon_params(
     security_target=128
 )
 orderHash = poseidon(msg_parts, PoseidonHashParams)
-signedMessage = PoseidonEdDSA.sign(orderHash, FQ(int(api_secret)))
+signedMessage = PoseidonEdDSA.sign(orderHash, FQ(int(privateKey)))
 order.update({
     "hash": str(orderHash),
     "signatureRx": str(signedMessage.sig.R.x),
