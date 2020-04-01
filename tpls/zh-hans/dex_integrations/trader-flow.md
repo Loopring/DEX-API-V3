@@ -94,19 +94,33 @@ order.update({"orderId": 2})
 
 然后您需要对订单做**Poseidon**哈希计算并对哈希做**EdDSA**签名，再将hash和签名添加到订单JSON中。签名过程详见[注意事项](./trader.md#TraderNotes)签名部分。注意订单签名和普通网络请求的签名算法不同，不同请求的签名请参考对应[`Restful API`请求文档](../restful_api_overview.md)以及[注意事项](./trader-notes.md)签名部分，算法细节请查询参考文献[3]和[4]。
 <span id="OrderSig"></span>
-下面是使用Python对订单做签名的示例：
+下面是使用Python对订单做签名的示例代码，详情请参考[注意事项](./trader-notes.md)签名部分关键代码实现一节：
 
 ```python
 from ethsnarks.poseidon import poseidon_params, poseidon
-
 # 对订单数据签名
 PoseidonHashParams = poseidon_params(
     SNARK_SCALAR_FIELD,
     14, 6, 53, b'poseidon', 5,
     security_target=128
 )
-orderHash = poseidon(msg_parts, PoseidonHashParams)
-signedMessage = PoseidonEdDSA.sign(orderHash, FQ(int(privateKey)))
+serialized_order = [
+    int(order["exchangeId"]),
+    int(order["orderId"]),
+    int(order["accountId"]),
+    int(order["tokenSId"]),
+    int(order["tokenBId"]),
+    int(order["amountS"]),
+    int(order["amountB"]),
+    int(order["allOrNone"]=="true"),
+    int(order["validSince"]),
+    int(order["validUntil"]),
+    int(order["maxFeeBips"]),
+    int(order["buy"]=="true"),
+    int(order["label"])
+]
+orderHash = poseidon(serialized_order, PoseidonHashParams)
+signedMessage = PoseidonEdDSA.sign(serialized_order, FQ(int(privateKey)))
 order.update({
     "hash": str(orderHash),
     "signatureRx": str(signedMessage.sig.R.x),
