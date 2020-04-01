@@ -92,9 +92,9 @@ newOrder = {
 order.update({"orderId": 2})
 ```
 
-然后您需要对订单做**Poseidon**哈希计算并对哈希做**EdDSA**签名，再将hash和签名添加到订单JSON中。签名过程详见[注意事项](./trader.md#TraderNotes)签名部分。注意订单签名和普通网络请求的签名算法不同，不同请求的签名请参考对应[`Restful API`请求文档](../restful_api_overview.md)以及[注意事项](./trader-notes.md)签名部分，算法细节请查询参考文献[3]和[4]。
+然后您需要对订单做**Poseidon**哈希计算并对哈希做**EdDSA**签名，再将hash和签名添加到订单JSON中。签名过程详见[注意事项](./trader.md#TraderNotes)签名部分。注意订单签名和普通网络请求的签名算法不同，不同请求的签名请参考对应[`Restful API`请求文档](../restful_api_overview.md)以及[注意事项](./trader.md#TraderNotes)签名部分，算法细节请查询参考文献[3]和[4]。
 <span id="OrderSig"></span>
-下面是使用Python对订单做签名的示例代码，详情请参考[注意事项](./trader-notes.md)签名部分关键代码实现一节：
+下面是使用Python对订单做签名的示例代码，详情请参考[注意事项](./trader.md#TraderNotes)签名部分关键代码实现一节：
 
 ```python
 from ethsnarks.poseidon import poseidon_params, poseidon
