@@ -20,24 +20,24 @@
 
 ```python
 newOrder = {
-    "exchangeId": 2,
-    "orderId": 5,
-    "accountId": 1234,
-    "tokenSId": 2,
-    "tokenBId": 3,
-    "amountS": "5000000000000000000",
-    "amountB": "15000000",
-    "allOrNone": "false",
-    "buy": "false",
-    "validSince": 1582094327,
-    "validUntil": 1587278341,
-    "maxFeeBips": 50,
-    "label": 211,
-    "hash": "14504358714580556901944011952143357684927684879578923674101657902115012783290",
-    "signatureRx": "15179969700843231746888635151106024191752286977677731880613780154804077177446",
-    "signatureRy": "8103765835373541952843207933665617916816772340145691265012430975846006955894",
-    "signatureS" : "4462707474665244243174020779004308974607763640730341744048308145656189589982",
-    "clientOrderId": "Test01"
+	"exchangeId": 2,
+	"orderId": 5,
+	"accountId": 1234,
+	"tokenSId": 2,
+	"tokenBId": 3,
+	"amountS": "5000000000000000000",
+	"amountB": "15000000",
+	"allOrNone": "false",
+	"buy": "false",
+	"validSince": 1582094327,
+	"validUntil": 1587278341,
+	"maxFeeBips": 50,
+	"label": 211,
+	"hash": "14504358714580556901944011952143357684927684879578923674101657902115012783290",
+	"signatureRx": "15179969700843231746888635151106024191752286977677731880613780154804077177446",
+	"signatureRy": "8103765835373541952843207933665617916816772340145691265012430975846006955894",
+	"signatureS" : "4462707474665244243174020779004308974607763640730341744048308145656189589982",
+	"clientOrderId": "Test01"
 }
 ```
 
@@ -49,18 +49,18 @@ newOrder = {
 
 ```python
 newOrder = {
-    'exchangeId': 2,
-    'accountId': 1234,
-    'tokenSId': 2,  #LRC
-    'tokenBId': 3,  #USDT
-    'amountS': '500000000000000000000', # 500 * 10**18
-    'amountB': '15000000',              #  15 * 10**6
-    'allOrNone': 'false',
-    'buy': 'false',                     # 卖出
-    'validSince': 1582094327,           # 生效时间，比下单时间提前15分钟，见注意事项
-    'validUntil': 1587278341,           # 失效时间
-    'maxFeeBips': 63,                   # 最大费率，实际费率由服务器计算
-    'label': 'hebao::subchannel::0001'
+	'exchangeId': 2,
+	'accountId': 1234,
+	'tokenSId': 2,  #LRC
+	'tokenBId': 3,  #USDT
+	'amountS': '500000000000000000000', # 500 * 10**18
+	'amountB': '15000000',              #  15 * 10**6
+	'allOrNone': 'false',
+	'buy': 'false',                     # 卖出
+	'validSince': 1582094327,           # 生效时间，比下单时间提前15分钟，见注意事项
+	'validUntil': 1587278341,           # 失效时间
+	'maxFeeBips': 63,                   # 最大费率，实际费率由服务器计算
+	'label': 'hebao::subchannel::0001'
 }
 ```
 
@@ -91,17 +91,17 @@ from ethsnarks.poseidon import poseidon_params, poseidon
 
 # 对订单数据签名
 PoseidonHashParams = poseidon_params(
-    SNARK_SCALAR_FIELD,
-    14, 6, 53, b'poseidon', 5,
-    security_target=128
+	SNARK_SCALAR_FIELD,
+	14, 6, 53, b'poseidon', 5,
+	security_target=128
 )
 orderHash = poseidon(msg_parts, PoseidonHashParams)
 signedMessage = PoseidonEdDSA.sign(orderHash, FQ(int(api_secret)))
 order.update({
-    "hash": str(orderHash),
-    "signatureRx": str(signedMessage.sig.R.x),
-    "signatureRy": str(signedMessage.sig.R.y),
-    "signatureS": str(signedMessage.sig.s),
+	"hash": str(orderHash),
+	"signatureRx": str(signedMessage.sig.R.x),
+	"signatureRy": str(signedMessage.sig.R.y),
+	"signatureS": str(signedMessage.sig.s),
 })
 ```
 
