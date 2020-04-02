@@ -9,7 +9,7 @@
 
 * [{{l.summary.Tutorials.ManageAPIKey}}](tutorials/key_management.md)
 * [{{l.summary.Tutorials.HashAndSigning}}](tutorials/signing.md)
-* [{{l.summary.Tutorials.MarketMaking}}](tutorials/trading.md)
+* [{{l.summary.Tutorials.Orders}}](tutorials/orders.md)
 
 ## [{{l.summary.APISpec.APISpec}}](dex_api_overview.md)
 

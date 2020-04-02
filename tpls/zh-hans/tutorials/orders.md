@@ -1,14 +1,6 @@
-# 做市商集成
+# 订单模型
 
 
-我们希望通过本教程，可以让您了解到如何通过路印交易所的API来实现自动化交易和做市商程序。在您继续本教程前，请务必先了解如何获取API Key并理解路印对链下请求如何做EdDSA签名。
-
-> 除非有另外说明，本教程中的代码示例均使用Python语言。
-
-
-## 提交订单
-
-#### 订单格式
 您可以通过下面的JSON来表达一个路印的限价单（目前路印不支持市价单）。具体参数细节详见[提交订单](../dex_apis/submitOrder.md)。
 
 ```python
@@ -34,7 +26,7 @@ newOrder = {
 }
 ```
 
-#### 价格与数量
+## 价格与数量
 
 假设您想在`LRC-USDT`市场上以`$0.03`的价格卖出500个`LRC`，即售出500个`LRC`，买入至少15个`USDT` (500 * 0.03 = 15)。
 
@@ -70,7 +62,7 @@ newOrder = {
 - `maxFeeBips`是此订单愿意支付的最大费率，单位是万分之一。如果`maxFeeBips = 10`，代表该订单愿意支付实际买入的tokenB数量的0.1%给交易所。但实际交易所收取的交易手续费可以小于`maxFeeBips`，比如交易所愿意为VIP用户的交易费打折。在实际使用时，我们建议您使用63作为该项的值。如果该值太小，服务器会拒绝撮合您的订单。
 
 
-#### 订单号
+## 订单号
 
 接下来您需要为新订单指定一个`OrderId`。订单`OrderId`是路印交易所一个比较特殊的地方，详见[注意事项](./trader-notes.md)一节关于`OrderId`的说明。您可以通过访问[`/api/v2/orderId`](../dex_apis/getNextOrderId.md)获取下一个有效OrderId。注意`OrderId`由用户出售的代币（tokenS）决定，然后根据返回值更新订单数据结构。
 
@@ -116,50 +108,12 @@ order["orderId"] = token_orderid_mapping['LRC']
 order.update({"orderId": 2})
 ```
 
-#### 时间戳
+## 时间戳
 
 服务器收到订单时会判断订单中的`ValidSince`时间戳，注意不是订单发送的时间，而是订单开始生效的时间，因此推荐订单的`ValidSince`在当前时间上提前15分钟，即：
 
 ```python
 order["validSince"] = int(time.time() - 900)
-```
-
-#### 签名
-然后您需要对订单做**Poseidon**哈希计算并对哈希做**EdDSA**签名，再将hash和签名添加到订单JSON中。签名过程详见[注意事项](./trader.md#TraderNotes)签名部分。注意订单签名和普通网络请求的签名算法不同，不同请求的签名请参考对应[`Restful API`请求文档](../restful_api_overview.md)以及[注意事项](./trader.md#TraderNotes)签名部分，算法细节请查询参考文献[3]和[4]。
-<span id="OrderSig"></span>
-下面是使用Python对订单做签名的示例代码，详情请参考[注意事项](./trader.md#TraderNotes)签名部分关键代码实现一节：
-
-```python
-from ethsnarks.poseidon import poseidon_params, poseidon
-# 对订单数据签名
-PoseidonHashParams = poseidon_params(
-	SNARK_SCALAR_FIELD,
-	14, 6, 53, b'poseidon', 5,
-	security_target=128
-)
-serialized_order = [
-    int(order["exchangeId"]),
-    int(order["orderId"]),
-    int(order["accountId"]),
-    int(order["tokenSId"]),
-    int(order["tokenBId"]),
-    int(order["amountS"]),
-    int(order["amountB"]),
-    int(order["allOrNone"]=="true"),
-    int(order["validSince"]),
-    int(order["validUntil"]),
-    int(order["maxFeeBips"]),
-    int(order["buy"]=="true"),
-    int(order["label"])
-]
-orderHash = poseidon(serialized_order, PoseidonHashParams)
-signedMessage = PoseidonEdDSA.sign(serialized_order, FQ(int(privateKey)))
-order.update({
-	"hash": str(orderHash),
-	"signatureRx": str(signedMessage.sig.R.x),
-	"signatureRy": str(signedMessage.sig.R.y),
-	"signatureS": str(signedMessage.sig.s),
-})
 ```
 
 
@@ -203,23 +157,6 @@ poseidon_params(SNARK_SCALAR_FIELD, 14, 6, 53, b'poseidon', 5, security_target=1
 ```
 
 - 订单参数签名和API接口参数签名的区别在于：API接口参数是用`SHA256`计算`HASH`值，再经过`EdDSA`签名，而订单内容是用`PoseidonHASH`计算`HASH`值，然后经过`EdDSA`签名，而`EdDSA`签名算法是相同的。
-
-#### 订单提交
-
-最后您需要通过[`/api/v2/order`](../dex_apis/submitOrder.md)发送订单到服务器。
-
-## 查询订单
-
-您可以通过[`/api/v2/orders`](../dex_apis/getOrderDetail.md)查看订单状态。或者通过订阅WebSocket更新来跟踪订单状态。关于WebSocket订阅部分，请参考[WebSocket介绍](./websocket_overview.md)。
-
-
-## 取消订单
-
-你可以通过[`/api/v2/orders`](../dex_apis/cancelOrders.html)取消订单。取消订单接口需要签名，和订单数据的签名略有不同，请参考[注意事项](./trader-notes.md)需要签名的API接口一节。
-
-
-另一种取消订单的方式是通过和交易所的合约交互，改变交易密码和EdDSA秘钥。和中心化交易所不同，改变交易密码后，您的全部订单都会被取消。
-
 
 
 ## 参考文献及代码库

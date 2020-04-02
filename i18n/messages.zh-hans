@@ -9,7 +9,7 @@
       "Tutorials": "教程",
       "ManageAPIKey": "秘钥管理",
       "HashAndSigning": "请求签名",
-      "MarketMaking": "做市商集成"
+      "Orders": "订单模型"
     },
     "APISpec": {
       "APISpec": "API规范（2.0）",

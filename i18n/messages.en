@@ -9,7 +9,7 @@
       "Tutorials": "Tutorials",
       "ManageAPIKey": "Key Management",
       "HashAndSigning": "Request Signing",
-      "MarketMaking": "Market Making"
+      "Orders": "Orders"
     },
     "APISpec": {
       "APISpec": "API Specification (2.0)",
