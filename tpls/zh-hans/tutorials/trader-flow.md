@@ -6,13 +6,25 @@
 
 ## 获取API Key
 
-创建好账户之后，您可以使用[Loopring.io](https://loopring.io)的*『导出账号』*功能导出`API-Key`、EdDSA公私钥`publicKeyX`、` publicKeyY`，和`privateKey`。使用路印交易所的API需要上述信息。
+创建好账户之后，您可以使用[Loopring.io](https://loopring.io)的*『导出账号』*功能导出`API-Key`、EdDSA公私钥`publicKeyX`、` publicKeyY`，和`privateKey`。使用路印交易所的API需要上述信息。您到处的信息应该类似于下面的例子：
 
+```json
+{
+    "exchangeName": "LoopringDEX: Beta 1",
+    "exchangeAddress": "0x944644Ea989Ec64c2Ab9eF341D383cEf586A5777",
+    "exchangeId": 2,
+    "accountAddress": "0xe9577b420d96adfc97ff1e9e0557f8c73d7247fe",
+    "accountId": 123456,
+    "apiKey": "qXJpfTKrF0O5jIDPYIu7YkVgLFbvm5uIgPKBmHP2kBpcdKZjgfFKhIlE8evo9lKa",
+    "publicKeyX": "20230748339558541226323870947000799026059173889124399831342481595010628000129",
+    "publicKeyY": "4980637490279511620100245514492532318691849019959343538108355525575855311214",
+    "privateKey": "1242957328515765470505753610060337585626176314364086438653683782645761561015"
+}
+```
 
 {% hint style='danger' %}
 请妥善保管API Key和EdDSA私钥。如果这些信息不慎泄漏，会导致您资产的损失。在任何情况下，路印交易所和其API均不会向您询问EdDSA私钥。
 {% endhint %}
-
 
 ## 提交订单
 
@@ -77,26 +89,40 @@ newOrder = {
 
 接下来您需要为新订单指定一个`OrderId`。订单`OrderId`是路印交易所一个比较特殊的地方，详见[注意事项](./trader-notes.md)一节关于`OrderId`的说明。您可以通过访问[`/api/v2/orderId`](../dex_apis/getNextOrderId.md)获取下一个有效OrderId。注意`OrderId`由用户出售的代币（tokenS）决定，然后根据返回值更新订单数据结构。
 
+
 ```python
 order.update({"orderId": 2})
 ```
 
-
-然后您需要对订单做**Poseidon**哈希计算并对哈希做**EdDSA**签名，再将hash和签名添加到订单JSON中。签名过程详见[注意事项](./trader-notes.md)签名部分，算法细节请查询参考文献[3]和[4]。
+然后您需要对订单做**Poseidon**哈希计算并对哈希做**EdDSA**签名，再将hash和签名添加到订单JSON中。签名过程详见[注意事项](./trader.md#TraderNotes)签名部分。注意订单签名和普通网络请求的签名算法不同，不同请求的签名请参考对应[`Restful API`请求文档](../restful_api_overview.md)以及[注意事项](./trader.md#TraderNotes)签名部分，算法细节请查询参考文献[3]和[4]。
 <span id="OrderSig"></span>
-下面是使用Python对订单做签名的示例：
+下面是使用Python对订单做签名的示例代码，详情请参考[注意事项](./trader.md#TraderNotes)签名部分关键代码实现一节：
 
 ```python
 from ethsnarks.poseidon import poseidon_params, poseidon
-
 # 对订单数据签名
 PoseidonHashParams = poseidon_params(
 	SNARK_SCALAR_FIELD,
 	14, 6, 53, b'poseidon', 5,
 	security_target=128
 )
-orderHash = poseidon(msg_parts, PoseidonHashParams)
-signedMessage = PoseidonEdDSA.sign(orderHash, FQ(int(api_secret)))
+serialized_order = [
+    int(order["exchangeId"]),
+    int(order["orderId"]),
+    int(order["accountId"]),
+    int(order["tokenSId"]),
+    int(order["tokenBId"]),
+    int(order["amountS"]),
+    int(order["amountB"]),
+    int(order["allOrNone"]=="true"),
+    int(order["validSince"]),
+    int(order["validUntil"]),
+    int(order["maxFeeBips"]),
+    int(order["buy"]=="true"),
+    int(order["label"])
+]
+orderHash = poseidon(serialized_order, PoseidonHashParams)
+signedMessage = PoseidonEdDSA.sign(serialized_order, FQ(int(privateKey)))
 order.update({
 	"hash": str(orderHash),
 	"signatureRx": str(signedMessage.sig.R.x),
@@ -111,7 +137,10 @@ order.update({
 
 您可以通过[`/api/v2/orders`](../dex_apis/getOrderDetail.md)查看订单状态。或者通过订阅WebSocket更新来跟踪订单状态。关于WebSocket订阅部分，请参考[WebSocket介绍](./websocket_overview.md)。
 
+
 ## 取消订单
+
 你可以通过[`/api/v2/orders`](../dex_apis/cancelOrders.html)取消订单。取消订单接口需要签名，和订单数据的签名略有不同，请参考[注意事项](./trader-notes.md)需要签名的API接口一节。
+
 
 另一种取消订单的方式是通过和交易所的合约交互，改变交易密码和EdDSA秘钥。和中心化交易所不同，改变交易密码后，您的全部订单都会被取消。

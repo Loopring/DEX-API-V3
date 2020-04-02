@@ -1,40 +1,40 @@
-### Common info
-----
+---
 
-#### API host
+## Common info
+
+### URL
 
 **https://api.loopring.io**
 
-#### Header
+### Header
 
-| Field |  Type | Required | Description | Sample |
-| :----: | :----: | :----: |   :----:   |  :---: |
+| Field |  Type | Required | Description | Example |
+| :---- | :---- | :---- |   :----   |  :--- |
 | X-API-KEY | string | N | API Key | "sra1aavfa" |
-| X-API-SIG | string | N | Signature info | "dkkfinfasdf" |
+| X-API-SIG | string | N | Signature | "dkkfinfasdf" |
 
-#### Response
+### Response
 
-| Field |  Type | Required | Description | Sample |
-| :----: | :----: | :----: | :----: | :----: |
-| resultInfo | <a href="#ResultInfo">ResultInfo</a> | Y | Result of api invoking | / |
+| Field |  Type | Required | Description | Example |
+| :---- | :---- | :---- | :---- | :---- |
+| resultInfo | <a href="#ResultInfo">ResultInfo</a> | Y | Result of API invocation | - |
 
-#### Return code
+#### ResultInfo
+<span id="ResultInfo"></span>
+
+| Field |  Type | Required | Description | Example |
+| :---- | :---- | :---- |   :----   |  :--- |
+| code | integer | Y | Return code | 0 |
+| message | string | Y | Return message.  This is used for debug only. Do not show to users | "SUCCESS" |
+
+
+### Return code
 | Return code | Description |
-| :----: | :----: |
+| :---- | :---- |
 | 0 | Success |
-| 100000 | Internal unknown error |
-| 100001 | Illegality parameter |
+| 100000 | Unknown internal error |
+| 100001 | Invalid parameter |
 | 100002 | Request timeout |
 | 100202 | Update fail |
 | 100203 | Internal persistence error |
-| 100204 | Submit duplicated |
-
-#### 模型
-
-##### ResultInfo
-<span id="ResultInfo"></span>
-
-| Field |  Type | Required | Description | Sample |
-| :----: | :----: | :----: |   :----:   |  :---: |
-| code | integer | Y | Return code | 0 |
-| message | string | Y | Return message.  This is used for debug only. Do not show to users | "SUCCESS" |
+| 100204 | Duplicate request |

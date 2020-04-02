@@ -1,4 +1,5 @@
 ## 注意事项
+<span id="TraderNotes"></span>
 
 ### 订单生效时间
 
@@ -52,7 +53,7 @@
 
 - API密钥可以从`loopringDEX`网页导出或通过API获取。
 
-- 所有接口（除[查询用户ApiKey](./dex_apis/getApiKey.md)）都需要传入API-KEY，API信息请查询[Restful API 概述](../restful_api_overview.md)。
+- 所有接口（除[查询用户ApiKey](./dex_apis/getApiKey.md)）都需要传入API-KEY，API信息请查询[Restful API 概述](../rest_api_overview.md)。
 
 - API密钥数据放在`http request header`里的`X-API-KEY`中。
 
@@ -66,7 +67,7 @@
 
 ### 需要签名的API接口
 
-- 除了需要`API-KEY`外，和账户信息有关的还需要签名，详见[Restful API 概述](../restful_api_overview.md)，这里仅以[取消订单](../dex_apis/cancelOrders.md)为例。
+- 除了需要`API-KEY`外，和账户信息有关的还需要签名，详见[Restful API 概述](../rest_api_overview.md)，这里仅以[取消订单](../dex_apis/cancelOrders.md)为例。
 
 - 调用取消订单接口时，除了接口本身所需的参数外，还需传递`signature`即参数签名。
 
