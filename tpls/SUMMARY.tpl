@@ -7,7 +7,9 @@
 
 ## {{l.summary.Tutorials.Tutorials}}
 
-* [{{l.summary.Tutorials.MarketMaking}}](tutorials/trader.md)
+* [{{l.summary.Tutorials.ManageAPIKey}}](tutorials/api_key.md)
+* [{{l.summary.Tutorials.HashAndSigning}}](tutorials/signing.md)
+* [{{l.summary.Tutorials.MarketMaking}}](tutorials/trading.md)
 
 ## [{{l.summary.APISpec.APISpec}}](dex_api_overview.md)
 
