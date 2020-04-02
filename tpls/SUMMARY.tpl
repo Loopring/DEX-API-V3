@@ -11,6 +11,7 @@
 * [{{l.summary.Basics.ManageAPIKey}}](basics/key_mgmt.md)
 * [{{l.summary.Basics.HashAndSigning}}](basics/signing.md)
 * [{{l.summary.Basics.ExampleCode}}](basics/examples.md)
+* [{{l.summary.Basics.DEXContracts}}](basics/contracts.md)
 
 ## [{{l.summary.APISpec.APISpec}}](dex_api_overview.md)
 

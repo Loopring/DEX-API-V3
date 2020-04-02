@@ -5,7 +5,7 @@
 
 **路印协议**是第一个基于zkRollup技术的去中心化交易协议。使用路印协议，您可以搭建一个不托管用户交易资产，基于订单撮合，高性能的去中心化交易所。由于采用了zkRollup这种Layer-2扩容技术，路印协议在以太坊不扩容的前提下，也可以每秒清算超过2000笔交易。 如果您想了解路印协议的设计和技术细节，请访问路印协议官网：[https://loopring.org](https://loopring.org)。
 
-**路印交易所**是第一个使用路印协议搭建的去中心化交易平台。其网页应用的地址是：[Loopring.io](https://loopring.io)。路印交易所目前的版本是beta1，采用了路印协议3.0版本。其以太坊主网合约的地址为：[`0x944644Ea989Ec64c2Ab9eF341D383cEf586A5777`](https://etherscan.io/address/beta1.loopringio.eth)。该地址对应的永久ENS为：[`beta1.loopringio.eth`](https://etherscan.io/address/beta1.loopringio.eth)。
+**路印交易所**是第一个使用路印协议搭建的去中心化交易平台。其网页应用的地址是：[Loopring.io](https://loopring.io)。路印交易所目前的版本是beta1，采用了路印协议3.1.1版本。其以太坊主网合约的地址为：[`0x944644Ea989Ec64c2Ab9eF341D383cEf586A5777`](https://etherscan.io/address/beta1.loopringio.eth)。该地址对应的永久ENS为：[`beta1.loopringio.eth`](https://etherscan.io/address/beta1.loopringio.eth)。
 
 路印交易所并不是路印协议上唯一的交易所，WeDEX.io也是建立在路印协议的基础上。在您使用不同的路印去中心化交易所前，您需要明确知道您是在和哪个交易所打交道。路印协议本身的智能合约并不与用户直接交互，只为各个交易所合约提供包括用户注册，充值提现，交易清算在内的业务逻辑。
 

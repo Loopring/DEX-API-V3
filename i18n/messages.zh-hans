@@ -10,7 +10,8 @@
       "ManageAPIKey": "秘钥管理",
       "HashAndSigning": "请求签名",
       "Orders": "订单模型",
-       "ExampleCode":"示范代码"
+       "ExampleCode":"示范代码",
+       "DEXContracts": "智能合约"
     },
     "APISpec": {
       "APISpec": "API规范（2.0）",

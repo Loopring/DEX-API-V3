@@ -10,7 +10,8 @@
       "ManageAPIKey": "Key Management",
       "HashAndSigning": "Request Signing",
       "Orders": "Orders",
-      "ExampleCode":"Example Code"
+      "ExampleCode": "Example Code",
+      "DEXContracts": "DEX Contracts"
     },
     "APISpec": {
       "APISpec": "API Specification (2.0)",
