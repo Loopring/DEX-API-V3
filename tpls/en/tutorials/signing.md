@@ -1,6 +1,4 @@
-# 请求签名
-
-与以太坊交易使用的ECDSA签名不同，路印协议的链下请求使用EdDSA签名算法（EdDSA对零知识证明更加高效）。
+# Poseidon哈希与EdDSA签名
 
 ## Poseidon哈希
 
@@ -24,14 +22,13 @@ poseidon_params(SNARK_SCALAR_FIELD, 6, 6, 52, b'poseidon', 5, security_target=12
 - 签名数据放在`http request header`里的`X-API-SIG`中。
 
 ```python
-apiKey = ...
-session = init_request_session(apiKey)
+session = init_request_session(user_api_key)
 ...
 #初始化API数据 api_request_params
 ...
 #对API数据签名
-sig = sign_api_data(api_request_params，user_api_secret)
-session.headers.update({'X-API-SIG': sig})
+x_api_sign = sign_api_data(api_request_params，user_api_secret)
+session.headers.update({'X-API-SIG': x_api_sign})
   ```
 
 - API接口签名代码部分关键函数示例：

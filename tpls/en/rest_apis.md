@@ -7,14 +7,14 @@
 
 ## 获取和更新API Key
 
-您可以通过路印交易所的UI（[Loopring.io](https://loopring.io)），在登陆账号后，通过『导出账户』功能获取自己账号的API Key和EdDSA私钥。您也通过[查询用户ApiKey](./dex_apis/getApiKey.md)获取自己账号的API Key。此时您需要对请求做签名，以保证别的用户无法获取您的API key。
+您可以通过路印交易所的UI（[Loopring.io](https://loopring.io)），在登陆账号后，通过『导出账号』功能获取自己账号的API Key和EdDSA私钥。您也通过[查询用户ApiKey](./dex_apis/getApiKey.md)获取自己账号的API Key。此时您需要对请求做签名，以保证别的用户无法获取您的API key。
 
 如果您想更改API Key，可以调用[更新用户ApiKey](./dex_apis/applyApiKey.md)接口，并提供入老的API Key。或者您也可以通过路印交易所的UI（[Loopring.io](https://loopring.io)）手动更新API Key.
 
 
 ## API限流
 
-每个API请求都有流量限制，超额的调用请求会被拒绝（返回429）。如果您长期超额调用API，您的账户就会被列入黑名单，从而无法继续使用API。
+每个API请求都有流量限制，超额的调用请求会被拒绝（返回429）。如果您长期超额调用API，您的账号就会被列入黑名单，从而无法继续使用API。
 
 ## HTTP头
 
@@ -40,7 +40,7 @@
 一种是与电路无关的签名，主要用于网关进行权限校验。生成规则如下：
 1. 将请求参数按key字典顺序升序排序后生成JSON字符串，并统一转换为小写。
 2. 使用SHA256计算JSON字符串的哈希。
-3. 使用创建账户时的EdDSA私钥，对哈希签名。然后将签名结果`Rx,Ry,S`三部分按"`,`"分隔并以该顺序拼成一个字符串。
+3. 使用创建账号时的EdDSA私钥，对哈希签名。然后将签名结果`Rx,Ry,S`三部分按"`,`"分隔并以该顺序拼成一个字符串。
 
 另一种是与电路有关的签名，详情请见[**电路签名**](./tutorials/trader.md#OrderSig)。
 

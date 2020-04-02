@@ -33,7 +33,7 @@
   order["orderId"] = token_orderid_mapping['LRC']
   ```
 
-- 当前`LoopringDEX`每一个币种的最大订单`OrderID`为$$ 2^{20} $$，如果当前账户某个币种的`OrderID`超过该值，则下单失败。后续版本的`LoopringDEX`将会更新此限制。
+- 当前`LoopringDEX`每一个币种的最大订单`OrderID`为$$ 2^{20} $$，如果当前账号某个币种的`OrderID`超过该值，则下单失败。后续版本的`LoopringDEX`将会更新此限制。
 
 > [!TIP]
 >
@@ -67,7 +67,7 @@
 
 ### 需要签名的API接口
 
-- 除了需要`API-KEY`外，和账户信息有关的还需要签名，详见[Restful API 概述](../rest_api_overview.md)，这里仅以[取消订单](../dex_apis/cancelOrders.md)为例。
+- 除了需要`API-KEY`外，和账号信息有关的还需要签名，详见[Restful API 概述](../rest_api_overview.md)，这里仅以[取消订单](../dex_apis/cancelOrders.md)为例。
 
 - 调用取消订单接口时，除了接口本身所需的参数外，还需传递`signature`即参数签名。
 
