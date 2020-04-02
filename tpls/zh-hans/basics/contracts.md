@@ -1,10 +1,10 @@
 # 智能合约
 
+下面是路印协议和路印交易所在以太坊主网的合约列表。
 
-##通证ERC20合约
+## LRC合约
 
 - LRCAddress: [0xBBbbCA6A901c926F240b89EacB641d8Aec7AEafD](https://etherscan.io/address/0xbbbbca6a901c926f240b89eacb641d8aec7aeafd)（[lrctoken.eth](https://etherscan.io/address/lrctoken.eth)）
-- WETHAddress: [0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2](https://etherscan.io/address/0xC02aaA39b223FE8D0A0e5C4F27eAD9083C756Cc2)
 
 ## 路印协议（3.1.1）
 
