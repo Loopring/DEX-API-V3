@@ -1,6 +1,6 @@
 
 
-# REST APIs
+# REST API 概述
 
 本文主要描述路印交易所REST API的共性部分。
 
@@ -42,7 +42,7 @@
 2. 使用SHA256计算JSON字符串的哈希。
 3. 使用创建账户时的EdDSA私钥，对哈希签名。然后将签名结果`Rx,Ry,S`三部分按"`,`"分隔并以该顺序拼成一个字符串。
 
-另一种是与电路有关的签名，详情请见[**电路签名**](./tutorials/trader.md#OrderSig)。
+另一种是与电路有关的签名，详情请见[**电路签名**](./dex_integrations/trader.md#OrderSig)。
 
 ## API返回
 
