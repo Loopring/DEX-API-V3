@@ -7,11 +7,13 @@
 
 ## {{l.summary.Tutorials.Tutorials}}
 
-* [{{l.summary.Tutorials.MarketMaking}}](dex_integrations/trader.md)
+* [{{l.summary.Tutorials.ManageAPIKey}}](tutorials/api_key.md)
+* [{{l.summary.Tutorials.HashAndSigning}}](tutorials/signing.md)
+* [{{l.summary.Tutorials.MarketMaking}}](tutorials/trading.md)
 
 ## [{{l.summary.APISpec.APISpec}}](dex_api_overview.md)
 
-* [{{l.summary.APISpec.RESTAPIs}}](rest_api_overview.md)
+* [{{l.summary.APISpec.RESTAPIs}}](REST_APIS.md)
     {% for api in apis %}
     * [{{api.summary}}]({{g_api_doc(api.operationId, "dex_apis", api.operationId)}})
     {% endfor %}
