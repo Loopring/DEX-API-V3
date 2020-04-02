@@ -30,7 +30,7 @@
 {{l.apidoc.none}}
 {% else %}
 | {{ l.apidoc.field }} |  {{ l.apidoc.ftype }} | {{ l.apidoc.frequire }} | {{ l.apidoc.fdesc }} | {{ l.apidoc.fsample }} |
-| :----: | :----: | :----: |   :----:   |  :---: |
+| :---- | :---- | :---- |   :----   |  :--- |
 {%- for header in headers %}
 {%- if header == 'X-API-KEY' %}
 | X-API-KEY | string | {{ l.apidoc.yes }} | {{ l.apidoc.keydesc }} | "sra1aavfa" |
@@ -47,7 +47,7 @@
 {% if fields|length > 0 %}
 
 | {{ l.apidoc.field }} |  {{ l.apidoc.ftype }} | {{ l.apidoc.frequire }} | {{ l.apidoc.fdesc }} | {{ l.apidoc.fsample }} |
-| :----: | :----: | :----: | :----: | :---: |
+| :---- | :---- | :---- | :---- | :--- |
 {%- for field in fields %}
 | {{field.name}} | {{c_type(field)}} |
 {%- if field.required -%}
@@ -85,7 +85,7 @@
 #### {{ l.apidoc.resfield }}
 
 | {{ l.apidoc.field }} |  {{ l.apidoc.ftype }} | {{ l.apidoc.frequire }} | {{ l.apidoc.fdesc }} | {{ l.apidoc.fsample }} |
-| :----: | :----: | :----: | :----: | :---: |
+| :---- | :---- | :---- | :---- | :--- |
 {%- for field in g_response_fields(api.responses.ret) %}
 | {{field.name}} | {{c_type(field)}} |
 {%- if field.required -%}
@@ -112,7 +112,7 @@
 #### {{ l.apidoc.retcode }}
 
 | {{ l.apidoc.retcode }} | {{ l.apidoc.codedesc }} |
-| :----: | :----: |
+| :---- | :---- |
 {%- for code in api.responses.codes %}
 |{{code.ec}}|{{code.description}}|
 {%- endfor %}
@@ -130,7 +130,7 @@
 {%- endif %}
 
 | {{ l.apidoc.field }} |  {{ l.apidoc.ftype }} | {{ l.apidoc.frequire }} | {{ l.apidoc.fdesc }} | {{ l.apidoc.fsample }} |
-| :----: | :----: | :----: | :----: | :---: |
+| :---- | :---- | :---- | :---- | :--- |
 {%- for field in model.properties %}
 | {{field.name}} | {{c_type(field)}} |
 {%- if field.required -%}

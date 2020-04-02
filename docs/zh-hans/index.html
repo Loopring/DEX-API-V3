@@ -150,9 +150,35 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="dex_integrations/trader.html">
+        <li class="chapter " data-level="2.1" data-path="tutorials/api_key.html">
             
-                <a href="dex_integrations/trader.html">
+                <a href="tutorials/api_key.html">
+            
+                    
+                    管理API Key
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="tutorials/signing.html">
+            
+                <a href="tutorials/signing.html">
+            
+                    
+                    链下请求签名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="tutorials/trading.html">
+            
+                <a href="tutorials/trading.html">
             
                     
                     做市商集成
@@ -170,9 +196,9 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="rest_api_overview.html">
+        <li class="chapter " data-level="3.1" data-path="REST_APIS.html">
             
-                <a href="rest_api_overview.html">
+                <a href="REST_APIS.html">
             
                     
                     REST APIs
@@ -781,11 +807,23 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x5173;&#x4E8E;&#x8DEF;&#x5370;">&#x5173;&#x4E8E;&#x8DEF;&#x5370;</h1>
-<p>&#x8DEF;&#x5370;&#x76EE;&#x524D;&#x7684;&#x4E3B;&#x8981;&#x4EA7;&#x54C1;&#x662F;&#x53BB;<a href="https://www.loopring.io" target="_blank">&#x4E2D;&#x5FC3;&#x5316;&#x4EA4;&#x6613;&#x6240;&#xFF08;DEX&#xFF09;</a>&#x53CA;&#x94B1;&#x5305;&#x3002;</p>
-<p>DEX&#x57FA;&#x4E8E;&#x8DEF;&#x5370;&#x534F;&#x8BAE;3.0&#xFF0C;&#x5177;&#x6709;&#x9AD8;&#x541E;&#x5410;&#x91CF;&#x3001;&#x4F4E;&#x6210;&#x672C;&#x3001;&#x975E;&#x6258;&#x7BA1;&#x7B49;&#x7279;&#x70B9;&#x3002;&#x7528;&#x6237;&#x8D44;&#x4EA7;&#x7EDD;&#x5BF9;&#x5B89;&#x5168;&#x3002;&#x66F4;&#x591A;&#x4FE1;&#x606F;&#x8BF7;&#x53C2;&#x8003;<a href="https://loopring.org/" target="_blank">&#x8DEF;&#x5370;&#x5B98;&#x7F51;</a>&#x3002;</p>
-<p>&#x8DEF;&#x5370;DEX&#x7684;&#x6574;&#x4F53;&#x67B6;&#x6784;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;
-<img src="images/loopring_overview.png" alt="&#x8DEF;&#x5370;DEX&#x67B6;&#x6784;" title="&#x8DEF;&#x5370;DEX&#x67B6;&#x6784;">
-&#x672C;&#x6587;&#x4E3B;&#x8981;&#x63CF;&#x8FF0;Realyer&#x90E8;&#x5206;&#x7684;API&#x4EA7;&#x54C1;&#x7684;&#x4F7F;&#x7528;&#x3002;&#x5176;&#x4E2D;&#x5305;&#x62EC;DEX&#x4E0E;&#x94B1;&#x5305;&#x4E24;&#x90E8;&#x5206;&#x3002;&#x5F53;&#x524D;&#x53D1;&#x5E03;&#x7248;&#x672C;&#x53EA;&#x5305;&#x542B;DEX API&#x4EE5;&#x53CA;&#x505A;&#x5E02;&#x5546;&#x5BF9;&#x63A5;&#x96C6;&#x6210;&#x90E8;&#x5206;&#x3002;&#x5176;&#x4F59;&#x529F;&#x80FD;&#x4F1A;&#x9646;&#x7EED;&#x5F00;&#x653E;&#x3002;&#x656C;&#x8BF7;&#x671F;&#x5F85;&#x3002;</p>
+<h2 id="&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#x548C;&#x8DEF;&#x5370;&#x4EA4;&#x6613;&#x6240;">&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#x548C;&#x8DEF;&#x5370;&#x4EA4;&#x6613;&#x6240;</h2>
+<p><strong>&#x8DEF;&#x5370;&#x534F;&#x8BAE;</strong>&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x57FA;&#x4E8E;zkRollup&#x6280;&#x672F;&#x7684;&#x53BB;&#x4E2D;&#x5FC3;&#x5316;&#x4EA4;&#x6613;&#x534F;&#x8BAE;&#x3002;&#x4F7F;&#x7528;&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x642D;&#x5EFA;&#x4E00;&#x4E2A;&#x4E0D;&#x6258;&#x7BA1;&#x7528;&#x6237;&#x4EA4;&#x6613;&#x8D44;&#x4EA7;&#xFF0C;&#x57FA;&#x4E8E;&#x8BA2;&#x5355;&#x64AE;&#x5408;&#xFF0C;&#x9AD8;&#x6027;&#x80FD;&#x7684;&#x53BB;&#x4E2D;&#x5FC3;&#x5316;&#x4EA4;&#x6613;&#x6240;&#x3002;&#x7531;&#x4E8E;&#x91C7;&#x7528;&#x4E86;zkRollup&#x8FD9;&#x79CD;Layer-2&#x6269;&#x5BB9;&#x6280;&#x672F;&#xFF0C;&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#x5728;&#x4EE5;&#x592A;&#x574A;&#x4E0D;&#x6269;&#x5BB9;&#x7684;&#x524D;&#x63D0;&#x4E0B;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x6BCF;&#x79D2;&#x6E05;&#x7B97;&#x8D85;&#x8FC7;2000&#x7B14;&#x4EA4;&#x6613;&#x3002; &#x5982;&#x679C;&#x60A8;&#x60F3;&#x4E86;&#x89E3;&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#x7684;&#x8BBE;&#x8BA1;&#x548C;&#x6280;&#x672F;&#x7EC6;&#x8282;&#xFF0C;&#x8BF7;&#x8BBF;&#x95EE;&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#x5B98;&#x7F51;&#xFF1A;<a href="https://loopring.org" target="_blank">https://loopring.org</a>&#x3002;</p>
+<p><strong>&#x8DEF;&#x5370;&#x4EA4;&#x6613;&#x6240;</strong>&#x662F;&#x7B2C;&#x4E00;&#x4E2A;&#x4F7F;&#x7528;&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#x642D;&#x5EFA;&#x7684;&#x53BB;&#x4E2D;&#x5FC3;&#x5316;&#x4EA4;&#x6613;&#x5E73;&#x53F0;&#x3002;&#x5176;&#x7F51;&#x9875;&#x5E94;&#x7528;&#x7684;&#x5730;&#x5740;&#x662F;&#xFF1A;<a href="https://loopring.io" target="_blank">Loopring.io</a>&#x3002;&#x8DEF;&#x5370;&#x4EA4;&#x6613;&#x6240;&#x76EE;&#x524D;&#x7684;&#x7248;&#x672C;&#x662F;beta1&#xFF0C;&#x91C7;&#x7528;&#x4E86;&#x8DEF;&#x5370;&#x534F;&#x8BAE;3.0&#x7248;&#x672C;&#x3002;&#x5176;&#x4EE5;&#x592A;&#x574A;&#x4E3B;&#x7F51;&#x5408;&#x7EA6;&#x7684;&#x5730;&#x5740;&#x4E3A;&#xFF1A;<a href="https://etherscan.io/address/beta1.loopringio.eth" target="_blank"><code>0x944644Ea989Ec64c2Ab9eF341D383cEf586A5777</code></a>&#x3002;&#x8BE5;&#x5730;&#x5740;&#x5BF9;&#x5E94;&#x7684;&#x6C38;&#x4E45;ENS&#x4E3A;&#xFF1A;<a href="https://etherscan.io/address/beta1.loopringio.eth" target="_blank"><code>beta1.loopringio.eth</code></a>&#x3002;</p>
+<p>&#x8DEF;&#x5370;&#x4EA4;&#x6613;&#x6240;&#x5E76;&#x4E0D;&#x662F;&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#x4E0A;&#x552F;&#x4E00;&#x7684;&#x4EA4;&#x6613;&#x6240;&#xFF0C;WeDEX.io&#x4E5F;&#x662F;&#x5EFA;&#x7ACB;&#x5728;&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#x7684;&#x57FA;&#x7840;&#x4E0A;&#x3002;&#x5728;&#x60A8;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x8DEF;&#x5370;&#x53BB;&#x4E2D;&#x5FC3;&#x5316;&#x4EA4;&#x6613;&#x6240;&#x524D;&#xFF0C;&#x60A8;&#x9700;&#x8981;&#x660E;&#x786E;&#x77E5;&#x9053;&#x60A8;&#x662F;&#x5728;&#x548C;&#x54EA;&#x4E2A;&#x4EA4;&#x6613;&#x6240;&#x6253;&#x4EA4;&#x9053;&#x3002;&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#x672C;&#x8EAB;&#x7684;&#x667A;&#x80FD;&#x5408;&#x7EA6;&#x5E76;&#x4E0D;&#x4E0E;&#x7528;&#x6237;&#x76F4;&#x63A5;&#x4EA4;&#x4E92;&#xFF0C;&#x53EA;&#x4E3A;&#x5404;&#x4E2A;&#x4EA4;&#x6613;&#x6240;&#x5408;&#x7EA6;&#x63D0;&#x4F9B;&#x5305;&#x62EC;&#x7528;&#x6237;&#x6CE8;&#x518C;&#xFF0C;&#x5145;&#x503C;&#x63D0;&#x73B0;&#xFF0C;&#x4EA4;&#x6613;&#x6E05;&#x7B97;&#x5728;&#x5185;&#x7684;&#x4E1A;&#x52A1;&#x903B;&#x8F91;&#x3002;</p>
+<h2 id="&#x4F18;&#x52BF;">&#x4F18;&#x52BF;</h2>
+<p>&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#x4FDD;&#x969C;&#x4E86;&#x7528;&#x6237;&#x5145;&#x503C;&#x5230;&#x4EA4;&#x6613;&#x6240;&#x7684;&#x8D44;&#x4EA7;&#x4E0D;&#x4F1A;&#x88AB;&#x4EFB;&#x4F55;&#x4EBA;&#x632A;&#x7528;&#x3002;&#x5373;&#x4F7F;&#x4EA4;&#x6613;&#x6240;&#x7F51;&#x7AD9;&#x5173;&#x95ED;&#x6216;&#x8005;&#x8FD0;&#x8425;&#x8005;&#x5931;&#x8054;&#xFF0C;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4F7F;&#x7528;&#x9ED8;&#x514B;&#x5C14;&#x8BC1;&#x660E;&#xFF0C;&#x5728;&#x9501;&#x5B9A;&#x671F;&#x8FC7;&#x540E;&#x5C06;&#x5168;&#x90E8;&#x8D44;&#x4EA7;&#x63D0;&#x73B0;&#x51FA;&#x6765;&#x3002;</p>
+<p>&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#x4E0D;&#x4FDD;&#x969C;&#x64AE;&#x5408;&#x7684;&#x6548;&#x7387;&#x548C;&#x516C;&#x5E73;&#x6027;&#x3002;&#x64AE;&#x5408;&#x662F;&#x7531;&#x8DEF;&#x5370;&#x4EA4;&#x6613;&#x6240;&#x7684;&#x4E2D;&#x7EE7;&#x7CFB;&#x7EDF;&#x5B8C;&#x6210;&#x7684;&#xFF0C;&#x800C;&#x4E2D;&#x7EE7;&#x662F;&#x6574;&#x4E2A;&#x89E3;&#x51B3;&#x65B9;&#x6848;&#x91CC;&#x9762;&#x5F88;&#x4E2D;&#x5FC3;&#x5316;&#x7684;&#x90E8;&#x5206;&#x3002;&#x57FA;&#x4E8E;&#x540C;&#x6837;&#x7248;&#x672C;&#x534F;&#x8BAE;&#x7684;&#x4E0D;&#x540C;&#x4EA4;&#x6613;&#x6240;&#xFF0C;&#x53EF;&#x4EE5;&#x91C7;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x4E2D;&#x7EE7;&#x67B6;&#x6784;&#xFF0C;&#x56E0;&#x6B64;&#x7528;&#x6237;&#x53EF;&#x4EE5;&#x6839;&#x636E;&#x4E0D;&#x540C;&#x4EA4;&#x6613;&#x6240;&#x4E2D;&#x7EE7;&#x7684;&#x6548;&#x7387;&#x548C;&#x516C;&#x5E73;&#x6027;&#xFF0C;&#x9009;&#x62E9;&#x4F7F;&#x7528;&#x4E0D;&#x540C;&#x7684;&#x4EA4;&#x6613;&#x6240;&#x3002;&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#x4FDD;&#x969C;&#x4E2D;&#x7EE7;&#x64AE;&#x5408;&#x8FC7;&#x7A0B;&#x5FC5;&#x987B;&#x9075;&#x5B88;&#x4E00;&#x5B9A;&#x7684;&#x89C4;&#x5219;&#xFF0C;&#x4F46;&#x5BF9;&#x4E2D;&#x7EE7;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x670D;&#x52A1;&#x8D28;&#x91CF;&#x7684;&#x8981;&#x6C42;&#x3002;</p>
+<p>&#x8DEF;&#x5370;&#x4EA4;&#x6613;&#x6240;&#x4E2D;&#x7EE7;&#x662F;&#x95ED;&#x6E90;&#x5F00;&#x53D1;&#x7684;&#xFF0C;&#x76EE;&#x524D;&#x541E;&#x5410;&#x91CF;&#x5927;&#x7EA6;&#x662F;&#x6BCF;&#x7B14;200&#x7B14;&#x4EA4;&#x6613;&#x3002;</p>
+<h2 id="&#x67B6;&#x6784;">&#x67B6;&#x6784;</h2>
+<p>&#x8DEF;&#x5370;&#x4EA4;&#x6613;&#x6240;&#x7684;&#x6574;&#x4F53;&#x67B6;&#x6784;&#x5982;&#x4E0B;&#x56FE;&#x6240;&#x793A;&#xFF1A;
+<img src="images/loopring_overview.png" alt="&#x8DEF;&#x5370;DEX&#x67B6;&#x6784;" title="&#x8DEF;&#x5370;&#x4EA4;&#x6613;&#x6240;&#x67B6;&#x6784;"></p>
+<p>&#x60A8;&#x9700;&#x8981;&#x4E86;&#x89E3;&#x7684;&#x4E00;&#x4E9B;&#x5173;&#x952E;&#x70B9;&#x5305;&#x62EC;&#xFF1A;</p>
+<ul>
+<li>&#x8DEF;&#x5370;&#x7684;API&#x9664;&#x4E86;&#x63D0;&#x4F9B;&#x8BFB;&#x53D6;&#x4E2D;&#x7EE7;&#x6570;&#x636E;&#x529F;&#x80FD;&#xFF0C;&#x4E3B;&#x8981;&#x7528;&#x6765;&#x5904;&#x7406;&#x7528;&#x6237;&#x548C;&#x5BA2;&#x6237;&#x7AEF;&#x7684;&#x94FE;&#x4E0B;&#x8BF7;&#x6C42;&#xFF08;offchain requests&#xFF09;&#xFF0C;&#x5305;&#x62EC;&#x63D0;&#x4EA4;&#x8BA2;&#x5355;&#xFF0C;&#x53D6;&#x6D88;&#x8BA2;&#x5355;&#xFF0C;&#x548C;&#x63D0;&#x73B0;&#x3002;</li>
+<li>&#x7528;&#x6237;&#x8D26;&#x53F7;&#x6CE8;&#x518C;&#xFF0C;&#x4FEE;&#x6539;&#x5BC6;&#x7801;&#xFF0C;&#x5145;&#x503C;&#x5FC5;&#x987B;&#x901A;&#x8FC7;&#x4EE5;&#x592A;&#x574A;&#x4EA4;&#x6613;&#x6765;&#x53D1;&#x8D77;&#x8BF7;&#x6C42;&#xFF08;onchain requests&#xFF09;&#x3002;&#x7528;&#x6237;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x4EE5;&#x592A;&#x574A;&#x4EA4;&#x6613;&#xFF0C;&#x63D0;&#x4EA4;&#x63D0;&#x73B0;&#x8BF7;&#x6C42;&#x3002;&#x8DEF;&#x5370;&#x534F;&#x8BAE;&#x8981;&#x6C42;&#x4EA4;&#x6613;&#x6240;&#x5FC5;&#x987B;&#x65E0;&#x6761;&#x4EF6;&#x6309;&#x987A;&#x5E8F;&#x5904;&#x7406;&#x6240;&#x6709;&#x94FE;&#x4E0A;&#x8BF7;&#x6C42;&#x3002;</li>
+<li>&#x8DEF;&#x5370;&#x5177;&#x6709;&#x4E0E;&#x4E2D;&#x5FC3;&#x5316;&#x4EA4;&#x6613;&#x6240;&#x76F8;&#x4F3C;&#x7684;&#x9AD8;&#x6027;&#x80FD;&#x4EA4;&#x6613;&#x4F53;&#x9A8C;&#xFF0C;&#x8FD9;&#x4E3B;&#x8981;&#x5F97;&#x76CA;&#x4E8E;&#x4E2D;&#x7EE7;&#x7684;&#x6279;&#x5904;&#x7406;&#x80FD;&#x529B;&#x3002;&#x8DEF;&#x5370;&#x4EC5;&#x628A;&#x4EE5;&#x592A;&#x574A;&#x4F5C;&#x4E3A;&#x6570;&#x636E;&#x5B58;&#x50A8;&#x5C42;&#x548C;&#x96F6;&#x77E5;&#x8BC6;&#x8BC1;&#x660E;&#x7684;&#x9A8C;&#x8BC1;&#x5C42;&#xFF0C;&#x4E0D;&#x7528;&#x505A;&#x4E0E;&#x4EA4;&#x6613;&#x6E05;&#x7ED3;&#x7B97;&#x76F8;&#x5173;&#x7684;&#x4EFB;&#x4F55;&#x8BA1;&#x7B97;&#x3002;</li>
+</ul>
 
                                 
                                 </section>
@@ -825,7 +863,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"路印","level":"1.1","depth":1,"next":{"title":"术语","level":"1.2","depth":1,"path":"GLOSSARY.md","ref":"GLOSSARY.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.org/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"README.md","mtime":"2020-04-01T06:18:32.956Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-01T06:18:34.673Z"},"basePath":".","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"路印","level":"1.1","depth":1,"next":{"title":"术语","level":"1.2","depth":1,"path":"GLOSSARY.md","ref":"GLOSSARY.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.org/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"README.md","mtime":"2020-04-02T05:36:24.071Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-02T05:36:24.858Z"},"basePath":".","book":{"language":"zh-hans"}});
         });
     </script>
 </div>

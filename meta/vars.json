@@ -1,6 +1,6 @@
 {
-    "langs": ["zh-hans", "en"],
-    "# langs": ["zh"],
+    "# langs": ["zh-hans", "en"],
+    "langs": ["zh-hans"],
     "not_ready": [
         "/api/v2/dexNonce",
         "/api/v2/offchainWithdrawal",
