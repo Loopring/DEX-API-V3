@@ -21,7 +21,7 @@
   }
   ```
 
-- 订单`OrderID`由用户售出的代币品种，在`LRC-ETH`市场上，如果用户提交一个买单，即售出`ETH`，买入`LRC`，则`OrderID`值为：
+- 订单`OrderID`由用户售出的通证品种，在`LRC-ETH`市场上，如果用户提交一个买单，即售出`ETH`，买入`LRC`，则`OrderID`值为：
 
   ```python
   order["orderId"] = token_orderid_mapping['ETH']

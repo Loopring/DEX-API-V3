@@ -1,7 +1,7 @@
 # 订单模型
 
 
-##简化模型
+##单向订单模型
 与许多中心化交易所的订单数据模型不同，路印采用的是单向订单模型（Uni-Directional Order Model，UDOM）。也就是说，无论买单还是卖单，都用一种数据结构表示 - 目前路印不支持市价单。我们先通过一个简化的模型举几个例子。
 
 假设我们在LRC-ETH交易对，那么用0.03价格卖出500个LRC的**卖单**这样表示：
@@ -25,6 +25,8 @@
 
 > 其中的字母S代表Sell，B代表Buy。
 
+单向订单模型中不显性表达交易对和价格。
+
 不过这种表达有个问题：对*完全成交*的判断没有做说明。或者说，一个订单完全成交，是按照`amountS`的实际交易额达到了指定的值做标准，还是按照`amountB`的实际交易额达到了指定的值做标准。因此我们引入了另一个参数`buy`来做说明 - 如果`buy==true`，就按照`amountB`的实际交易判断是否完全成交；否者按照`amountS`的实际交易额判断。因此这上面的卖单和买单就需要这样描述：
 
 ```JSON
@@ -43,33 +45,33 @@
     "tokenB": "LRC",
     "amountS": 15, // = 500 * 0.03
     "amountB": 500,
-    "buy":     true    // 完全成交用amountB实际交易额判断
+    "buy":     true // 完全成交用amountB实际交易额判断
 }
 ```
 注意：上面的卖单如果完全成交，实际上获得的ETH可能大于15ETH；而上面的买单如果完全成交，实际上支付的ETH可能少于15ETH。这就是`buy`这个参数决定的。
 
 将上面两个订单的`buy`值反转，会有什么效果呢？答案很简单：LRC-ETH交易对的卖单就变成了ETH-LRC交易对的买单；而LRC-ETH交易对的买单就变成了ETH-LRC交易对的卖单。也就是说，路印协议的一个交易对，实际上等同于LRC-ETH和ETH-LRC两个交易对，并且可以表达这个两个交易对各自的买卖单，并将其一起撮合。
 
-- **TODO**: 马超，实际撮合引擎是否允许上面的4中组合？
+- **TODO**: 马超，实际撮合引擎是否允许上面的4种组合？
 
 ## 订单数据
 路印实际的订单格式要更加复杂一些。您可以通过下面的JSON来表达一个路印的限价单。具体参数细节详见[提交订单](../dex_apis/submitOrder.md)。
 
 ```python
 newOrder = {
-    "exchangeId": 2,
-    "orderId": 5,
-    "accountId": 1234,
-    "tokenSId": 2,
-    "tokenBId": 3,
-    "amountS": "5000000000000000000",
-    "amountB": "15000000",
-    "allOrNone": "false",
+    "tokenSId": 2,  // LRC
+    "tokenBId": 0,  // ETH
+    "amountS": "500000000000000000000",
+    "amountB": "15000000000000000000",
     "buy": "false",
-    "validSince": 1582094327,
-    "validUntil": 1587278341,
+    "exchangeId": 2,
+    "accountId": 1234,
+    "allOrNone": "false",
     "maxFeeBips": 50,
     "label": 211,
+    "validSince": 1582094327,
+    "validUntil": 1587278341,
+    "orderId": 5,
     "hash": "14504358714580556901944011952143357684927684879578923674101657902115012783290",
     "signatureRx": "15179969700843231746888635151106024191752286977677731880613780154804077177446",
     "signatureRy": "8103765835373541952843207933665617916816772340145691265012430975846006955894",
@@ -78,149 +80,44 @@ newOrder = {
 }
 ```
 
+接下来我们对其中的某些数据项做进一步说明。
 
-----------------
+#### 通证和数量
+与简化模型不同，实际订单中通证不用字符串或者其ERC20地址表达，而是使用该通证在路印交易所的合约中注册的序号（Token ID）表达。上面的例子中，我们假设LRC和ETH的ID分别是2和0。
 
+交易的数量使用通证的最小单元，通过字符串类型表达。以LRC为例，LRC的ERC20合约中decimals为18，因此1个LRC应该表示为`"1000000000000000000"`(1后面跟18个0)。每个通证的decimals不同。
 
+实际通证配置信息可以通过[交易所支持的通证信息](../dex_apis/getTokens.md)查询。
 
+请注意：实际数据模型中`buy`的值是字符串而不是布尔型。
 
-## 价格与数量
-
-假设您想在`LRC-USDT`市场上以`$0.03`的价格卖出500个`LRC`，即售出500个`LRC`，买入至少15个`USDT` (500 * 0.03 = 15)。
-
-首先您需要通过`/api/v2/exchange/token`这个API获取LRC和USDT这两个币种在路印交易所的相关配置信息 - 注意：同一个币种，在基于路印协议的两个不同的交易所的配置信息是不相同的。在Loopring.io，LRC和USDT对应的TokenID分别是2和3；它们ERC20合约的`decimals`分别是18和6。其它代币配置信息可以详见[查询交易所支持的通证信息](../dex_apis/getTokens.md)。
-
-通过查询获得的代币信息，可以将订单中的部分数据准备好：
-
-```python
-newOrder = {
-	'exchangeId': 2,
-	'accountId': 1234,
-	'tokenSId': 2,  #LRC
-	'tokenBId': 3,  #USDT
-	'amountS': '500000000000000000000', # 500 * 10**18
-	'amountB': '15000000',              #  15 * 10**6
-	'allOrNone': 'false',
-	'buy': 'false',                     # 卖出
-	'validSince': 1582094327,           # 生效时间，比下单时间提前15分钟，见注意事项
-	'validUntil': 1587278341,           # 失效时间
-	'maxFeeBips': 63,                   # 最大费率，实际费率由服务器计算
-	'label': 'hebao::subchannel::0001'
-}
-```
-
-几点说明：
-
-- `exchangeId`是Loopring.io现在运行的beta1版本的交易所ID，后续路印交易所升级智能合约后，这个`exchangeId`就会更新。beta1对应的`exchangeId`就是2，这是个常量。
--  `accountId`是您注册后获得的账号ID。
-- `tokenS`, `amountS`中的*S*代表Sell，代表这两个值和卖出的代币相关； `tokenB`, `amountB`中的*B*代表Buy，代表这两个值和买入的代币相关。路印订单采用的是单向表达，买卖单的数据格式完全一致。
-- `amountS`的值是 `500`跟着18个`0`；amountB的值是`15`跟着6个`0`。
-- `buy`的值决定订单的完全成交条件。如果`buy`是`'true'`，那么只要买到了15 USDT，该订单就算完全成交，这时候也许订单中的500个LRC并没被全部卖掉。如果`buy`是`'false'`，那么只要卖出了500个LRC，该订单就算完全成交了，可能实际买到的USDT多于15。
-- `validSince`和`validUntil`代表该订单的生效时间和过期时间。通过这两个时间戳，您可以不必对每个订单做主动取消的动作。我们强烈建议您在现阶段，将`validSince`设置为比当前时间早15分钟。
-- `maxFeeBips`是此订单愿意支付的最大费率，单位是万分之一。如果`maxFeeBips = 10`，代表该订单愿意支付实际买入的tokenB数量的0.1%给交易所。但实际交易所收取的交易手续费可以小于`maxFeeBips`，比如交易所愿意为VIP用户的交易费打折。在实际使用时，我们建议您使用63作为该项的值。如果该值太小，服务器会拒绝撮合您的订单。
+- **TODO**: 马超，buy、allOrNone改为bool是不是更好些？
 
 
-## 订单号
+#### 交易手续费
+`maxFeeBips=50`代表该笔订单愿意支付给交易所的**最高手续费比例**是0.5%（`maxFeeBips`的单位是0.01%）。路印的交易手续费都是用成交获得的tokenB支付的。假设上面订单某次成交买入了`"10000000000000000000"`ETH（10ETH)，那么实际支付的手续费**不会超过0.05ETH**（="10000000000000000000" * 0.5%）。
 
-接下来您需要为新订单指定一个`OrderId`。订单`OrderId`是路印交易所一个比较特殊的地方，详见[注意事项](./trader-notes.md)一节关于`OrderId`的说明。您可以通过访问[`/api/v2/orderId`](../dex_apis/getNextOrderId.md)获取下一个有效OrderId。注意`OrderId`由用户出售的代币（tokenS）决定，然后根据返回值更新订单数据结构。
+实际支付的手续费比例是有路印中继决定的。中继会根据不同的VIP等级，给不同的用户相应的交易手续费折扣。路印协议不允许实际手续费比例大于用户订单中指定的最高手续费比例。
 
+- **TODO**: 马超，交易手续费哪个API查询？
 
+#### 生效和过期时间
 
-访问`/api/v2/orderid`得到当前币种的`OrderID`，API参数细节参考[获取下一个有效OrderId](../dex_apis/getNextOrderId.md)，建议提前访问API建立并维护一个币种和`OrderID`的对应关系，类似：
+`validSince`代表订单生效时间，`validUntil`代表订单过期时间，其单位均为秒。
+
+中继服务器收到订单时会验证订单中的这两个时间戳；路印协议的零知识证明电路代码在清算时候也需要判断这两个时间戳。由于zkRollup批处理的设计，以及以太坊上时间与服务器时间可能存在偏差，我们强烈建议`validSince`设置得比当前时间至少早15分钟，即：
 
 ```python
-token_orderid_mapping = {
-    'ETH' : 3,
-    'LRC' : 5，
-    'DAI' : 2
-}
+order["validSince"] = int(time.time() + 15 * 60)
 ```
 
-订单`OrderID`由用户售出的代币品种，在`LRC-ETH`市场上，如果用户提交一个买单，即售出`ETH`，买入`LRC`，则`OrderID`值为：
+我们同样建议`validSince`和`validUntil`之间的时间窗口不小于1小时，否则您的订单可能不会被撮合。
 
-```python
-order["orderId"] = token_orderid_mapping['ETH']
-```
-
-反之如果是卖单，即售出LRC，买入ETH，则OrderID为：
-
-```python
-order["orderId"] = token_orderid_mapping['LRC']
-```
-订单号的限制是基于卖出的token共享的，比如LRC-USDT和ETH-USDT两个市场会共享$$ 2^{20} $$个订单号，用完就不能再下单。因此针对不同的市场，建议注册不同账号做市。
-
-当前路印交易所每一个币种的最大订单`OrderID`为$$ 2^{20} $$，如果当前账号某个币种的`OrderID`超过该值，则下单失败。后续版本的路印交易所将会更新此限制。
+{% hint style='tip' %}
+请可以通过使用`validUntil`时间戳来让订单自动过期，而无需主动取消订单。
+{% endhint %}
 
 
+#### 订单号和交易历史
 
-对于任何一个卖出币种，同时存活有效的订单数量为$$ 2^{14} $$即16384。您可以想象有16384个槽位，如果两个订单的`OrderID`对16384同余即：
-  $$
-  OrderA.OrderID\ \%\ 2^{14} \equiv OrderB.OrderID\ \%\ 2^{14}
-  $$
-
-那么必须先取消掉先下的那个订单，且保证后下的订单的`OrderID`要大于前一个订单的`OrderID`，否则服务器会拒绝新的订单。普通用户一般不会遇到这个问题。
-
-
-
-```python
-order.update({"orderId": 2})
-```
-
-## 时间戳
-
-服务器收到订单时会判断订单中的`ValidSince`时间戳，注意不是订单发送的时间，而是订单开始生效的时间，因此推荐订单的`ValidSince`在当前时间上提前15分钟，即：
-
-```python
-order["validSince"] = int(time.time() - 900)
-```
-
-
-- 在访问`api/v2/order`发送订单之前，和其他需要API参数签名不同的是，这里要对订单本身进行签名，签名结果放在订单参数里面，同样地，订单参数也需要序列化再进行`PoseidonHash`运算，这里为了配合`PoseidonHash`，所以序列化成整数数组，请注意这里序列化数组的顺序和服务器必须保持一致，如示例代码所示：
-
-```python
-def serialize_api_data(order):
-    return [
-        int(order["exchangeId"]),
-        int(order["orderId"]),
-        int(order["accountId"]),
-        int(order["tokenSId"]),
-        int(order["tokenBId"]),
-        int(order["amountS"]),
-        int(order["amountB"]),
-        int(order["allOrNone"]=="true"),
-        int(order["validSince"]),
-        int(order["validUntil"]),
-        int(order["maxFeeBips"]),
-        int(order["buy"]=="true"),
-        int(order["label"])
-    ]
-
-def sign_order(order, api_secret):
-    PoseidonHashParams = poseidon_params(SNARK_SCALAR_FIELD, 14, 6, 53, b'poseidon', 5, security_target=128)
-    serialized_order = serialize_api_data(order)
-    msgHash = poseidon(serialized_order, PoseidonHashParams)
-    signedMessage = PoseidonEdDSA.sign(msgHash, FQ(int(api_secret)))
-    order.update({
-        "hash": str(msgHash),
-        "signatureRx": str(signedMessage.sig.R.x),
-        "signatureRy": str(signedMessage.sig.R.y),
-        "signatureS": str(signedMessage.sig.s),
-    })
-```
-
-- 路印交易所使用`EdDSA PoseidonHASH`算法对订单参数签名，`EdDSA PoseidonHASH`算法代码可以参考`ethsnarks`，对订单参数计算`PoseidonHash`的参数如下：
-
-```python
-poseidon_params(SNARK_SCALAR_FIELD, 14, 6, 53, b'poseidon', 5, security_target=128)
-```
-
-- 订单参数签名和API接口参数签名的区别在于：API接口参数是用`SHA256`计算`HASH`值，再经过`EdDSA`签名，而订单内容是用`PoseidonHASH`计算`HASH`值，然后经过`EdDSA`签名，而`EdDSA`签名算法是相同的。
-
-
-## 参考文献及代码库
-
-1. `ethsnarks`代码仓库：https://github.com/HarryR/ethsnarks.git
-2. `SHA256 Hash`算法：<https://en.wikipedia.org/wiki/SHA-2>
-3. `EdDSA`算法：<https://en.wikipedia.org/wiki/EdDSA>
-4. `Poseidon Hash`算法：<https://www.poseidon-hash.info/>
 
