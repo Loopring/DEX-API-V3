@@ -46,43 +46,96 @@
 
 如果您调用的API即支持URL参数，又支持payload，那么您需要将两个Key/Value对象数组合并后在排序，然后生成一个`s`字符串并对其进行签名。
 
-**TODO: 这个字符串s会自动去掉`"z":["bar1", {"k": 1}]]`中间的空格吗？**
+**TODO（马超）: 这个字符串s会自动去掉`"z":["bar1", {"k": 1}]]`中间的空格吗？**
 
-**TODO: 如果URL总有个参数叫`a`, payload JSON里面也有个一样的field，谁会被覆盖？**
+**TODO（马超）: 如果URL总有个参数叫`a`, payload JSON里面也有个一样的field，谁会被覆盖？**
 
 
 ## 路印协议链下请求的签名
 
-路印协议3.0支持“订单”，“订单取消”，和“链下提现”三种**链下请求**。由于这三种链下请求都会造成对交易所默克尔树的修改，通过中继API提交这是三种数据时，必须附带特殊的签名。
+路印协议3.0支持“订单”，和“链下提现”两种**链下请求**。由于这两种链下请求都会造成对交易所默克尔树的修改，通过中继API提交这是两种数据时，必须附带特殊的签名。
+
+
+{% hint style='info' %}
+路印协议3.0还支持**取消订单**这个链下请求，但会在后续的3.5版本中去掉。因此路印交易所没有计划支持链下取消订单。
+{% endhint %}
 
 链下请求签名包括以下步骤：
 
 1. 对请求`r`进行规整，使其变成一个字符串`s`。
 2. 计算`s`的**Poseidon**哈希值`h`（见下面章节）。
 3. 对`h`用账号的私钥`privateKey`做签名，得到三个值：`Rx`,`Ry`, 和`s`（见下面章节）。
-4。将`Rx`,`Ry`, 和`S`组装成一个对象，赋值给`signature`,并将`signature`合并到`r`当中。
+4。将`h`, `Rx`,`Ry`, 和`S`合并到`r`当中。
 
 ```json
-"signature": {
-    "Rx": "16367919966553849834214288740952929086694704883595501207054796240908626703398",
-    "Ry": "5706650945525714138019517276433581394702490352313697178959212750249847059862",
-    "S": "410675649229327911665390972834008845981102813589085982164606483611508480748"
-}
+"hash": ...,
+"signatureRx": "16367919966553849834214288740952929086694704883595501207054796240908626703398",
+"signatureRy": "5706650945525714138019517276433581394702490352313697178959212750249847059862",
+"signatureS": "410675649229327911665390972834008845981102813589085982164606483611508480748"
 ```
 
-**TODO: S大小写都可以吗？**
+#### 对订单做签名
 
-#### 订单签名
+订单中一些数据项需要按照特定序列化成一个整数数组，对这个数组计算Poseidon哈希，然后对该哈希做EdDSA签名。
 
-**TODO:**
+{% hint style='info' %}
+订单的序列化规则，哈希，签名方式必须严格遵循[路印协议规范](https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/DESIGN.md)。
+{% endhint %}
 
-#### 订单取消签名
+下面我们用Python代码做示范：
 
-**TODO:**
+```python
+def serialize_order(order):
+    return [
+        int(order["exchangeId"]),
+        int(order["orderId"]),
+        int(order["accountId"]),
+        int(order["tokenSId"]),
+        int(order["tokenBId"]),
+        int(order["amountS"]),
+        int(order["amountB"]),
+        int(order["allOrNone"]=="true"),
+        int(order["validSince"]),
+        int(order["validUntil"]),
+        int(order["maxFeeBips"]),
+        int(order["buy"]=="true"),
+        int(order["label"])
+    ]
 
-#### 链下提现签名
+def sign_int_array(privateKey, serialized):
+    PoseidonHashParams = poseidon_params(
+    	SNARK_SCALAR_FIELD,
+    	14,
+    	6,
+    	53,
+    	b'poseidon',
+    	5,
+    	security_target=128
+    )
+    
+    hash = poseidon(serialized, PoseidonHashParams)
+    signedMessage = PoseidonEdDSA.sign(hash, FQ(int(privateKey)))
+    return ({
+        "hash": str(hash),
+        "signatureRx": str(signedMessage.sig.R.x),
+        "signatureRy": str(signedMessage.sig.R.y),
+        "signatureS": str(signedMessage.sig.s),
+    })
 
-**TODO:**
+def sign_order(privateKey, order):
+	serialized = serialize_order(order)
+	signed = sign_int_array(serialized)
+    order.update(signed)
+```
+{% hint style='info' %}
+如果您不使用ethsnarks代码仓库计算poseidon哈希，请一定配置好poseidon的参数，保证其与路印协议使用的参数完全一致。否则验证签名会失败。
+{% endhint %}
+
+
+
+#### 对链下提现做签名
+
+- **TODO（亚东）:** 按照上面的例子书写
 
 
 ## Poseidon哈希和EdDSA签名
