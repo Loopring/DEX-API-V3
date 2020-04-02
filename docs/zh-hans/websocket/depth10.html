@@ -152,9 +152,35 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="../dex_integrations/trader.html">
+        <li class="chapter " data-level="2.1" data-path="../tutorials/api_key.html">
             
-                <a href="../dex_integrations/trader.html">
+                <a href="../tutorials/api_key.html">
+            
+                    
+                    管理API Key
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../tutorials/signing.html">
+            
+                <a href="../tutorials/signing.html">
+            
+                    
+                    链下请求签名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="../tutorials/trading.html">
+            
+                <a href="../tutorials/trading.html">
             
                     
                     做市商集成
@@ -172,9 +198,9 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="../rest_api_overview.html">
+        <li class="chapter " data-level="3.1" data-path="../REST_APIS.html">
             
-                <a href="../rest_api_overview.html">
+                <a href="../REST_APIS.html">
             
                     
                     REST APIs
@@ -785,7 +811,7 @@
                                 <h3 id="depth10-&#x4E3B;&#x9898;">depth10 &#x4E3B;&#x9898;</h3>
 <p>  &#x83B7;&#x53D6;&#x5B9A;&#x65F6;&#x63A8;&#x9001;&#x7684;&#x5F53;&#x524D;&#x6DF1;&#x5EA6;&#x4E2D;&#x5356;&#x5355;&#x548C;&#x4E70;&#x5355;&#x7684;&#x524D;10&#x6761;&#x6570;&#x636E;&#x3002;&#x8BE5;&#x8BA2;&#x9605;&#x4E0D;&#x9700;&#x8981;apikey&#xFF0C;&#x6709;&#x65E0;&#x6570;&#x636E;&#x90FD;&#x4F1A;&#x8FDB;&#x884C;&#x63A8;&#x9001;&#x3002;</p>
 <h4 id="&#x8BA2;&#x9605;&#x89C4;&#x5219;&#xFF1A;">&#x8BA2;&#x9605;&#x89C4;&#x5219;&#xFF1A;</h4>
-<p>&#x200B;    &#x4E3B;&#x9898;&amp;&#x5E02;&#x573A;&amp;&#x5F52;&#x5E76;&#x7B49;&#x7EA7;</p>
+<p>&#x200B; &#x4E3B;&#x9898;&amp;&#x5E02;&#x573A;&amp;&#x5F52;&#x5E76;&#x7B49;&#x7EA7;</p>
 <ul>
 <li>&#x652F;&#x6301;&#x7684;&#x5E02;&#x573A;&#x4EE5;&#x53CA;&#x5E02;&#x573A;&#x5BF9;&#x5E94;&#x652F;&#x6301;&#x7684;&#x5F52;&#x5E76;&#x7B49;&#x7EA7;&#xFF0C;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;api&#x63A5;&#x53E3;<a href="../dex_apis/getMarkets.html">api/v2/exchange/markets</a> &#x83B7;&#x53D6;</li>
 </ul>
@@ -793,14 +819,14 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x8FD4;&#x56DE;&#x7801;</th>
-<th style="text-align:center">&#x63CF;&#x8FF0;</th>
+<th style="text-align:left">&#x8FD4;&#x56DE;&#x7801;</th>
+<th style="text-align:left">&#x63CF;&#x8FF0;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">104108</td>
-<td style="text-align:center">depth10&#x4E3B;&#x9898;&#x7684;&#x8BA2;&#x9605;&#x6761;&#x4EF6;&#x4E0D;&#x5408;&#x6CD5;&#x6216;&#x8005;&#x4E0D;&#x652F;&#x6301;</td>
+<td style="text-align:left">104108</td>
+<td style="text-align:left">depth10&#x4E3B;&#x9898;&#x7684;&#x8BA2;&#x9605;&#x6761;&#x4EF6;&#x4E0D;&#x5408;&#x6CD5;&#x6216;&#x8005;&#x4E0D;&#x652F;&#x6301;</td>
 </tr>
 </tbody>
 </table>
@@ -833,34 +859,34 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x5B57;&#x6BB5;</th>
-<th style="text-align:center">&#x7C7B;&#x578B;</th>
-<th style="text-align:center">&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
-<th style="text-align:center">&#x8BF4;&#x660E;</th>
-<th style="text-align:center">&#x4E3E;&#x4F8B;</th>
+<th style="text-align:left">&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">topic</td>
-<td style="text-align:center">string</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x8BA2;&#x9605;&#x7684;&#x4E3B;&#x9898;&#x548C;&#x6761;&#x4EF6;</td>
-<td style="text-align:center">&quot;depth10&amp;LRC-ETH&amp;1&quot;</td>
+<td style="text-align:left">topic</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x8BA2;&#x9605;&#x7684;&#x4E3B;&#x9898;&#x548C;&#x6761;&#x4EF6;</td>
+<td style="text-align:left">&quot;depth10&amp;LRC-ETH&amp;1&quot;</td>
 </tr>
 <tr>
-<td style="text-align:center">ts</td>
-<td style="text-align:center">integer</td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x63A8;&#x9001;&#x65F6;&#x95F4;</td>
-<td style="text-align:center">1584717910000</td>
+<td style="text-align:left">ts</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x63A8;&#x9001;&#x65F6;&#x95F4;</td>
+<td style="text-align:left">1584717910000</td>
 </tr>
 <tr>
-<td style="text-align:center">data</td>
-<td style="text-align:center"><a href="#depth">Depth</a></td>
-<td style="text-align:center">&#x662F;</td>
-<td style="text-align:center">&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;</td>
-<td style="text-align:center">/</td>
+<td style="text-align:left">data</td>
+<td style="text-align:left"><a href="#depth">Depth</a></td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;</td>
+<td style="text-align:left">/</td>
 </tr>
 </tbody>
 </table>
@@ -868,27 +894,27 @@
 <table>
 <thead>
 <tr>
-<th>&#x5B57;&#x6BB5;</th>
-<th>&#x7C7B;&#x578B;</th>
-<th>&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
-<th>&#x8BF4;&#x660E;</th>
-<th>&#x4E3E;&#x4F8B;</th>
+<th style="text-align:left">&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>bids</td>
-<td><a href="#slot">List[List[string]]</a></td>
-<td>&#x662F;</td>
-<td>&#x4E70;&#x5355;&#x6DF1;&#x5EA6;</td>
-<td>/</td>
+<td style="text-align:left">bids</td>
+<td style="text-align:left"><a href="#slot">List[List[string]]</a></td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x4E70;&#x5355;&#x6DF1;&#x5EA6;</td>
+<td style="text-align:left">/</td>
 </tr>
 <tr>
-<td>asks</td>
-<td><a href="#slot">List[List[string]]</a></td>
-<td>&#x662F;</td>
-<td>&#x5356;&#x5355;&#x6DF1;&#x5EA6;</td>
-<td>/</td>
+<td style="text-align:left">asks</td>
+<td style="text-align:left"><a href="#slot">List[List[string]]</a></td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x5356;&#x5355;&#x6DF1;&#x5EA6;</td>
+<td style="text-align:left">/</td>
 </tr>
 </tbody>
 </table>
@@ -897,41 +923,41 @@
 <table>
 <thead>
 <tr>
-<th style="text-align:center">&#x5B57;&#x6BB5;&#x7F16;&#x53F7;</th>
-<th>&#x7C7B;&#x578B;</th>
-<th>&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
-<th>&#x8BF4;&#x660E;</th>
-<th>&#x4E3E;&#x4F8B;</th>
+<th style="text-align:left">&#x5B57;&#x6BB5;&#x7F16;&#x53F7;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x662F;&#x5426;&#x5FC5;&#x73B0;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:center">1</td>
-<td>string</td>
-<td>&#x662F;</td>
-<td>&#x4EF7;&#x683C;</td>
-<td>&quot;0.002&quot;</td>
+<td style="text-align:left">1</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x4EF7;&#x683C;</td>
+<td style="text-align:left">&quot;0.002&quot;</td>
 </tr>
 <tr>
-<td style="text-align:center">2</td>
-<td>string</td>
-<td>&#x662F;</td>
-<td>&#x6302;&#x5355;&#x91CF;</td>
-<td>&quot;21000&quot;</td>
+<td style="text-align:left">2</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x6302;&#x5355;&#x91CF;</td>
+<td style="text-align:left">&quot;21000&quot;</td>
 </tr>
 <tr>
-<td style="text-align:center">3</td>
-<td>string</td>
-<td>&#x662F;</td>
-<td>&#x6302;&#x5355;&#x603B;&#x91CF;</td>
-<td>&quot;33220000&quot;</td>
+<td style="text-align:left">3</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x6302;&#x5355;&#x603B;&#x91CF;</td>
+<td style="text-align:left">&quot;33220000&quot;</td>
 </tr>
 <tr>
-<td style="text-align:center">4</td>
-<td>string</td>
-<td>&#x662F;</td>
-<td>&#x805A;&#x5408;&#x7684;&#x8BA2;&#x5355;&#x6570;&#x76EE;</td>
-<td>&quot;4&quot;</td>
+<td style="text-align:left">4</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x805A;&#x5408;&#x7684;&#x8BA2;&#x5355;&#x6570;&#x76EE;</td>
+<td style="text-align:left">&quot;4&quot;</td>
 </tr>
 </tbody>
 </table>
@@ -978,7 +1004,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"订阅订单簿买卖前10的全量推送","level":"4.1.2","depth":2,"next":{"title":"订阅市场交易的更新","level":"4.1.3","depth":2,"path":"websocket/trade.md","ref":"websocket/trade.md","articles":[]},"previous":{"title":"订阅订单簿更新","level":"4.1.1","depth":2,"path":"websocket/depth.md","ref":"websocket/depth.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.org/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"websocket/depth10.md","mtime":"2020-04-01T06:18:32.669Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-01T06:18:34.673Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"订阅订单簿买卖前10的全量推送","level":"4.1.2","depth":2,"next":{"title":"订阅市场交易的更新","level":"4.1.3","depth":2,"path":"websocket/trade.md","ref":"websocket/trade.md","articles":[]},"previous":{"title":"订阅订单簿更新","level":"4.1.1","depth":2,"path":"websocket/depth.md","ref":"websocket/depth.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.org/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"websocket/depth10.md","mtime":"2020-04-02T01:31:08.027Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-02T01:31:09.824Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>
