@@ -5,11 +5,12 @@
       "Loopring": "路印",
       "Glossary": "术语"
     },
-    "Tutorials": {
-      "Tutorials": "教程",
+    "Basics": {
+      "Basics": "基础",
       "ManageAPIKey": "秘钥管理",
       "HashAndSigning": "请求签名",
-      "Orders": "订单模型"
+      "Orders": "订单模型",
+       "ExampleCode":"示范代码"
     },
     "APISpec": {
       "APISpec": "API规范（2.0）",

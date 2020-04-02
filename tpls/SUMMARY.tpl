@@ -5,11 +5,12 @@
 * [{{l.summary.About.Loopring}}](README.md)
 * [{{l.summary.About.Glossary}}](glossary.md)
 
-## {{l.summary.Tutorials.Tutorials}}
+## {{l.summary.Basics.Basics}}
 
-* [{{l.summary.Tutorials.ManageAPIKey}}](tutorials/key_management.md)
-* [{{l.summary.Tutorials.HashAndSigning}}](tutorials/signing.md)
-* [{{l.summary.Tutorials.Orders}}](tutorials/orders.md)
+* [{{l.summary.Basics.ManageAPIKey}}](basics/key_management.md)
+* [{{l.summary.Basics.HashAndSigning}}](basics/signing.md)
+* [{{l.summary.Basics.Orders}}](basics/orders.md)
+* [{{l.summary.Basics.ExampleCode}}](basics/examples.md)
 
 ## [{{l.summary.APISpec.APISpec}}](dex_api_overview.md)
 

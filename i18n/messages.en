@@ -5,11 +5,12 @@
       "Loopring": "Loopring",
       "Glossary": "Glossary"
     },
-    "Tutorials": {
-      "Tutorials": "Tutorials",
+    "Basics": {
+      "Basics": "Fundamental",
       "ManageAPIKey": "Key Management",
       "HashAndSigning": "Request Signing",
-      "Orders": "Orders"
+      "Orders": "Orders",
+      "ExampleCode":"Example Code"
     },
     "APISpec": {
       "APISpec": "API Specification (2.0)",
