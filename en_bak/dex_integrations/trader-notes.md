@@ -175,7 +175,7 @@
 
 - 订单参数签名和API接口参数签名的区别在于：API接口参数是用`SHA256`计算`HASH`值，再经过`EdDSA`签名，而订单内容是用`PoseidonHASH`计算`HASH`值，然后经过`EdDSA`签名，而`EdDSA`签名算法是相同的。
 
-## 参考文献及代码库
+## 参考文献及代码仓库
 
 1. `ethsnarks`代码仓库：https://github.com/HarryR/ethsnarks.git
 2. `SHA256 Hash`算法：<https://en.wikipedia.org/wiki/SHA-2>

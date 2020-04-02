@@ -86,7 +86,12 @@
 
 
 ## Poseidon哈希和EdDSA签名
+您可以通过下列文献和代码仓库了解更多关于Poseidon哈希和EdDSA签名的细节。
 
-我们开源了一个[hello_loopring](http://github.com/Loopring/hello_loopring)代码库。通过这个代码库，您可以了解如何使用Python和ethsnarks开源库，计算任意字符串的Poseidon哈希，并对其做EdDSA的签名和验签。
+1. `ethsnarks`代码仓库：https://github.com/HarryR/ethsnarks.git
+2. `SHA256 Hash`算法：<https://en.wikipedia.org/wiki/SHA-2>
+3. `EdDSA`算法：<https://en.wikipedia.org/wiki/EdDSA>
+4. `Poseidon Hash`算法：<https://www.poseidon-hash.info/>
 
-hello_loopring还包括简单的订单提交，查询，和取消代码。
+
+您也可以参考我们的[示范代码](./examples.md))了解更多应用细节。
