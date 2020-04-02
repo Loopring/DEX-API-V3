@@ -7,8 +7,8 @@
     },
     "Tutorials": {
       "Tutorials": "教程",
-      "ManageAPIKey": "管理API Key",
-      "HashAndSigning": "链下请求签名",
+      "ManageAPIKey": "秘钥管理",
+      "HashAndSigning": "请求签名",
       "MarketMaking": "做市商集成"
     },
     "APISpec": {

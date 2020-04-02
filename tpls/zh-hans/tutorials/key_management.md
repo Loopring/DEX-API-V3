@@ -53,11 +53,11 @@ API Key则可以通过路印的API接口更改。
 {% endhint %}
 
 
-派生算法如下所示（JavaScript）：
+派生算法如下所示：
 
-```javascript
-const seed = keccakHash('LOOPRING' + address.toLowerCase() + keccakHash(password)); 
-const (publicKeyX, publicKeyY, privateKey) = myEdDSAGenerator.generate(seed);
+```python
+seed = keccakHash('LOOPRING' + address.toLowerCase() + keccakHash(password))
+keyPair = myEdDSAGenerator.generate(seed)
 ```
 
 其中`keccakHash`返回kecca256运算后的16进制字符串。

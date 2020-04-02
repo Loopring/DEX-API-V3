@@ -7,8 +7,8 @@
     },
     "Tutorials": {
       "Tutorials": "Tutorials",
-      "ManageAPIKey": "Manage API Key",
-      "HashAndSigning": "Sining Offchain Requests",
+      "ManageAPIKey": "Key Management",
+      "HashAndSigning": "Request Signing",
       "MarketMaking": "Market Making"
     },
     "APISpec": {
