@@ -5,11 +5,13 @@
       "Loopring": "Loopring",
       "Glossary": "Glossary"
     },
-    "Tutorials": {
-      "Tutorials": "Tutorials",
-      "ManageAPIKey": "Manage API Key",
-      "HashAndSigning": "Sining Offchain Requests",
-      "MarketMaking": "Market Making"
+    "Basics": {
+      "Basics": "Fundamental",
+      "ManageAPIKey": "Key Management",
+      "HashAndSigning": "Request Signing",
+      "Orders": "Orders",
+      "ExampleCode": "Example Code",
+      "DEXContracts": "Smart Contracts"
     },
     "APISpec": {
       "APISpec": "API Specification (2.0)",

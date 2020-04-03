@@ -5,11 +5,13 @@
       "Loopring": "路印",
       "Glossary": "术语"
     },
-    "Tutorials": {
-      "Tutorials": "教程",
-      "ManageAPIKey": "管理API Key",
-      "HashAndSigning": "链下请求签名",
-      "MarketMaking": "做市商集成"
+    "Basics": {
+      "Basics": "基础",
+      "ManageAPIKey": "秘钥管理",
+      "HashAndSigning": "请求签名",
+      "Orders": "订单模型",
+       "ExampleCode":"示范代码",
+       "DEXContracts": "智能合约"
     },
     "APISpec": {
       "APISpec": "API规范（2.0）",

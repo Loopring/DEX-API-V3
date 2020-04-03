@@ -3,17 +3,19 @@
 ## {{l.summary.About.About}}
 
 * [{{l.summary.About.Loopring}}](README.md)
-* [{{l.summary.About.Glossary}}](GLOSSARY.md)
+* [{{l.summary.About.Glossary}}](glossary.md)
 
-## {{l.summary.Tutorials.Tutorials}}
+## {{l.summary.Basics.Basics}}
 
-* [{{l.summary.Tutorials.ManageAPIKey}}](tutorials/api_key.md)
-* [{{l.summary.Tutorials.HashAndSigning}}](tutorials/signing.md)
-* [{{l.summary.Tutorials.MarketMaking}}](tutorials/trading.md)
+* [{{l.summary.Basics.Orders}}](basics/orders.md)
+* [{{l.summary.Basics.ManageAPIKey}}](basics/key_mgmt.md)
+* [{{l.summary.Basics.HashAndSigning}}](basics/signing.md)
+* [{{l.summary.Basics.ExampleCode}}](basics/examples.md)
+* [{{l.summary.Basics.DEXContracts}}](basics/contracts.md)
 
 ## [{{l.summary.APISpec.APISpec}}](dex_api_overview.md)
 
-* [{{l.summary.APISpec.RESTAPIs}}](REST_APIS.md)
+* [{{l.summary.APISpec.RESTAPIs}}](rest_apis.md)
     {% for api in apis %}
     * [{{api.summary}}]({{g_api_doc(api.operationId, "dex_apis", api.operationId)}})
     {% endfor %}

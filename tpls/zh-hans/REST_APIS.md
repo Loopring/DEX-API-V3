@@ -4,11 +4,28 @@
 
 本文主要描述路印交易所REST API的共性部分。
 
+## 需要API-KEY的API接口
+
+- API密钥可以从`loopringDEX`网页导出或通过API获取。
+
+- 所有接口（除[查询用户ApiKey](./dex_apis/getApiKey.md)）都需要传入API-KEY，API信息请查询[Restful API 概述](../rest_api_overview.md)。
+
+- API密钥数据放在`http request header`里的`X-API-KEY`中。
+
+```python
+def init_request_session(user_api_key):
+    session = requests.session()
+    session.headers.update({'Accept': 'application/json',
+                            'X-API-KEY': user_api_key})
+    return session
+```
+
+
 
 
 ## API限流
 
-每个API请求都有流量限制，超额的调用请求会被拒绝（返回429）。如果您长期超额调用API，您的账户就会被列入黑名单，从而无法继续使用API。
+每个API请求都有流量限制，超额的调用请求会被拒绝（返回429）。如果您长期超额调用API，您的账号就会被列入黑名单，从而无法继续使用API。
 
 ## HTTP头
 
@@ -34,7 +51,7 @@
 一种是与电路无关的签名，主要用于网关进行权限校验。生成规则如下：
 1. 将请求参数按key字典顺序升序排序后生成JSON字符串，并统一转换为小写。
 2. 使用SHA256计算JSON字符串的哈希。
-3. 使用创建账户时的EdDSA私钥，对哈希签名。然后将签名结果`Rx,Ry,S`三部分按"`,`"分隔并以该顺序拼成一个字符串。
+3. 使用创建账号时的EdDSA私钥，对哈希签名。然后将签名结果`Rx,Ry,S`三部分按"`,`"分隔并以该顺序拼成一个字符串。
 
 另一种是与电路有关的签名，详情请见[**电路签名**](./tutorials/trader.md#OrderSig)。
 
