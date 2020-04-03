@@ -23,7 +23,9 @@
 }
 ```
 
-> 其中的字母S代表Sell，B代表Buy。
+{% hint style='info' %}
+订单数据项中的的字母S代表Sell，B代表Buy。
+{% endhint %}
 
 单向订单模型中不显性表达交易对和价格。
 

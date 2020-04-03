@@ -85,6 +85,26 @@
 下面我们用Python代码做示范：
 
 ```python
+def sign_int_array(privateKey, serialized, p):
+    PoseidonHashParams = poseidon_params(
+        SNARK_SCALAR_FIELD,
+        p,
+        6,
+        53,
+        b'poseidon',
+        5,
+        security_target=128
+    )
+    
+    hash = poseidon(serialized, PoseidonHashParams)
+    signedMessage = PoseidonEdDSA.sign(hash, FQ(int(privateKey)))
+    return ({
+        "hash": str(hash),
+        "signatureRx": str(signedMessage.sig.R.x),
+        "signatureRy": str(signedMessage.sig.R.y),
+        "signatureS": str(signedMessage.sig.s),
+    })
+
 def serialize_order(order):
     return [
         int(order["exchangeId"]),
@@ -102,29 +122,9 @@ def serialize_order(order):
         int(order["label"])
     ]
 
-def sign_int_array(privateKey, serialized):
-    PoseidonHashParams = poseidon_params(
-    	SNARK_SCALAR_FIELD,
-    	14,
-    	6,
-    	53,
-    	b'poseidon',
-    	5,
-    	security_target=128
-    )
-    
-    hash = poseidon(serialized, PoseidonHashParams)
-    signedMessage = PoseidonEdDSA.sign(hash, FQ(int(privateKey)))
-    return ({
-        "hash": str(hash),
-        "signatureRx": str(signedMessage.sig.R.x),
-        "signatureRy": str(signedMessage.sig.R.y),
-        "signatureS": str(signedMessage.sig.s),
-    })
-
 def sign_order(privateKey, order):
 	serialized = serialize_order(order)
-	signed = sign_int_array(serialized)
+	signed = sign_int_array(serialized, 14)
     order.update(signed)
 ```
 {% hint style='info' %}
@@ -134,9 +134,43 @@ def sign_order(privateKey, order):
 
 
 #### 对链下提现做签名
+{% hint style='danger' %}
+目前的中继API还不支持客户端提交链下提现请求。不过我们会很快增加这个API。
+{% endhint %}
 
-- **TODO（亚东）:** 按照上面的例子书写
+下面链下提现的一个例子：
+```json
+{
+    "exchangeId": 2,
+    "accountId":100,
+    "tokenId": 0,
+    "amount": 1000000000000000000,
+    "feeTokenId": "2",
+    "amountFee": 20000000000000000000,
+    "label": 0,
+    "nonce": 10
+}
+```
 
+用Python对其签名的代码：
+```python
+def serialize_offchain_withdrawal(withdrawal):
+    return [
+        int(withdrawal['exchangeId']),
+        int(withdrawal['accountId']),
+        int(withdrawal['tokenId']),
+        int(withdrawal['amount']),
+        int(withdrawal['feeTokenId']),
+        int(withdrawal['amountFee']),
+        int(withdrawal['label']),
+        int(withdrawal['nonce'])
+    ]
+
+def sign_offchain_withdrawal(privateKey, offchainWithdrawal):
+    serialized = serialize_offchain_withdrawal(offchainWithdrawal)
+    signed = sign_int_array(serialized, 9)
+    offchainWithdrawal.update(signed)
+```
 
 ## Poseidon哈希和EdDSA签名
 您可以通过下列文献和代码仓库了解更多关于Poseidon哈希和EdDSA签名的细节。
