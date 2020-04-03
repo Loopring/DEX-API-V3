@@ -172,7 +172,7 @@ def sign_offchain_withdrawal(privateKey, offchainWithdrawal):
     offchainWithdrawal.update(signed)
 ```
 
-## Poseidon哈希和EdDSA签名
+## 参考资料
 您可以通过下列文献和代码仓库了解更多关于Poseidon哈希和EdDSA签名的细节。
 
 1. `ethsnarks`代码仓库：https://github.com/HarryR/ethsnarks.git
