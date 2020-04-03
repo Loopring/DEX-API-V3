@@ -147,12 +147,11 @@ order["validSince"] = int(time.time() + 15 * 60)
 - `exchangeId`：Loopring.io现在运行的beta1版本的交易所ID，后续路印交易所升级智能合约后，这个`exchangeId`就会更新。beta1对应的`exchangeId`就是2，这是个常量。
 - `accountId`：用户的账号ID。
 - `allOrNone`：如果是`true`，要求订单要么不成交，要么完全成交。
-- `label`: ?????
-- `clientOrderId`: 客户单指定的订单ID。该项数据用来数据统计，不参与签名，独立于路印协议。
+- `label`: 用于对订单做的特殊标记。交易中不同的参与方可以通过该值来计算利益分配。默认可以赋值为`0`。
+- `clientOrderId`: 客户端指定的订单ID。该项数据用来数据统计，不参与签名，独立于路印协议。
 
 
 - **TODO（马超）**：中继allOrNone已经支持了？
-- **TODO（马超）**：中继label已经支持了？
 
 
 
