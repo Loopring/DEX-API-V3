@@ -22,6 +22,7 @@
 
 ## 路印交易所（beta1）
 
+- exchangeName: LoopringDEX: Beta 1
 - exchangeId: 2
 - exchangeAddress: [0x944644Ea989Ec64c2Ab9eF341D383cEf586A5777](https://etherscan.io/address/0x944644Ea989Ec64c2Ab9eF341D383cEf586A5777)
 - owner: [0x4374D3d032B3c96785094ec9f384f07077792768](https://etherscan.io/address/0x4374D3d032B3c96785094ec9f384f07077792768)
