@@ -124,7 +124,7 @@ def serialize_order(order):
 
 def sign_order(privateKey, order):
 	serialized = serialize_order(order)
-	signed = sign_int_array(serialized, 14)
+	signed = sign_int_array(serialized, 14 /* 注意这个值 */)
     order.update(signed)
 ```
 {% hint style='info' %}
@@ -168,7 +168,7 @@ def serialize_offchain_withdrawal(withdrawal):
 
 def sign_offchain_withdrawal(privateKey, offchainWithdrawal):
     serialized = serialize_offchain_withdrawal(offchainWithdrawal)
-    signed = sign_int_array(serialized, 9)
+    signed = sign_int_array(serialized, 9 /* 注意这个值 */)
     offchainWithdrawal.update(signed)
 ```
 
