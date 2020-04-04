@@ -21,7 +21,7 @@
   "pluginsConfig": {
     "favicon": "./gitbook/images/favicon.ico",
     "insert-logo": {
-      "url": "https://loopring.org/images/logo.svg",
+      "url": "https://loopring.io/assets/images/logo.svg",
       "style": "background: none; max-height: 28px; min-height: 28px"
     },
     "sharing": {

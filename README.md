@@ -55,9 +55,9 @@ http://localhost:4000/
 ```
 gitbook serve
 ```
-gitbook install 命令用来安装插件，一般来说运行一次即可。除非你配置了新的插件。
+gitbook install 命令用来安装插件，一般来说运行一次即可。除非您配置了新的插件。
 
-** 确保你的gitbook命令运行在 generated 目录下。 **
+** 确保您的gitbook命令运行在 generated 目录下。 **
 
 ### I18N
 

@@ -10,13 +10,13 @@
       "ManageAPIKey": "秘钥管理",
       "HashAndSigning": "请求签名",
       "Orders": "订单模型",
-       "ExampleCode":"示范代码",
-       "DEXContracts": "智能合约"
+      "ExampleCode": "示范代码",
+      "DEXContracts": "智能合约"
     },
     "APISpec": {
       "APISpec": "API规范（2.0）",
-      "RESTAPIs": "REST APIs",
-      "WebSocketAPIs": "WebSocket APIs"
+      "RESTAPIs": "REST API",
+      "WebSocketAPIs": "WebSocket API"
     }
   },
   "apidoc": {
@@ -29,21 +29,22 @@
     "reqexpl": "请求示例",
     "resfield": "响应字段",
     "resexpl": "响应示例",
-    "retcode": "返回码",
+    "retcode": "状态码",
     "retmsg": "返回说明。用来帮助调试，不应在前端显示或用于逻辑判断。",
     "model": "模型",
     "common": "公共信息",
-    "hosturl": "URL",
+    "hosturl": "接入URL",
     "header": "HTTP头",
     "field": "字段",
     "fdesc": "说明",
     "ftype": "类型",
     "frequire": "必须",
     "fsample": "举例",
-    "resp": "返回值",
+    "resp": "返回值结构",
+    "resultinfo": "ResultInfo结构",
     "yes": "是",
     "no": "否",
-    "keydesc": "API Key",
+    "keydesc": "ApiKey",
     "sigdesc": "签名信息",
     "resdesc": "调用结果",
     "codedesc": "描述",
