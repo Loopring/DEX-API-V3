@@ -1,27 +1,25 @@
-# 请求签名
+# Request Signing
 
-路印API涉及到两种不同类别的签名。一种是**通用API请求签名**，用来验证API调用被用户授权；另一种是**路印协议链下请求签名**，用来向路印协议证明链下请求被用户授权。我们分别对这两种类别做个说明。
+The Loopring API involves two different categories of signatures. One is the common **API request signature**, which is used to verify that the API invocations have been authenticated; the other is Loopring Protocol's **off-chain request signature**, which is used by Loopring to verify that off-chain requests have been authenticated. We will explain each of these two categories separately.
 
+## Common API Request Signatures
 
-## 通用API请求签名
+- **TODO**: wait for Yongfeng's final implementation
 
-- **TODO**: 等待永丰
+## Off-chain Request Signatures
 
-## 路印协议链下请求签名
-
-路印协议3.1.1支持“订单”，和“链下提现”两种**链下请求**。由于这两种链下请求都会造成对交易所默克尔树的修改，通过路印API提交这是两种数据时，必须附带路印协议要求的特殊的签名。
-
+Loopring 3.1.1 supports two types of off-chain requests: **orders** and **off-chain withdrawals**. Since these two off-chain requests will result in modifications to the exchange's state Merkel tree, when you submit these two types of requests using Loopring's API, you must provide special signatures required by the Loopring protocol.
 
 {% hint style='info' %}
-路印协议3.1.1还支持“取消订单”链下请求，但会在后续的3.5版本中将其去掉。因此路印中继不会支持该链下请求。
+Loopring 3.1.1 also supports a third type of off-chain requests: **order cancellation**, but it will be deprecated in the up-coming 3.5 version. Therefore, Loopring Exchange will not support this type of off-chain requests.
 {% endhint %}
 
-链下请求签名包括以下步骤：
+The off-chain request signature includes the following steps:
 
-1. 对请求`r`（JSON类型）进行规整，生成一个字符串`s`。
-1. 计算`s`的**Poseidon**哈希`h`（见下面章节）。
-1. 对`h`用账号的私钥`privateKey`做签名，得到三个值：`Rx`,`Ry`, 和`S`（见下面章节）。
-1. 将`h`、`Rx`、`Ry`、 和`S`转换成字符串后合并到`r`当中（请注意名字的改变）。
+1. Regularize the request `r` (JSON) to generate a string` s`.
+1. Calculate the **Poseidon** hash of `s` as `h`(see the following section).
+1. Sign `h` with the account's EdDSA private key` privateKey` and get three values: `Rx`,` Ry`, and `S` (see the following section).
+1. Convert `h`,` Rx`, `Ry`, and` S` into strings and merge them into `r` (please note the name change).
 
 ```json
 {
@@ -33,15 +31,16 @@
 }
 ```
 
-#### 订单签名
+#### Signing Orders
 
-订单中一些数据项需要按照特定序列化成一个整数数组，对这个数组计算Poseidon哈希，然后对该哈希做EdDSA签名。
+You need to seralized specific fields of an order into an integer array, then calculate the Poseidon hash of the array, and then sign the hash with your EdDSA private key.
+
 
 {% hint style='info' %}
-订单的序列化规则，哈希，签名方式必须严格遵循[路印协议规范](https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/DESIGN.md)。
+The rules for serialization of orders, hashing, and signature methods must strictly follow [Loopring's Specification](https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/DESIGN.md).
 {% endhint %}
 
-下面我们用Python代码做示范：
+Below we use Python code as a demo:
 
 ```python
 def sign_int_array(privateKey, serialized, t):
@@ -83,21 +82,21 @@ def serialize_order(order):
 
 def sign_order(privateKey, order):
 	serialized = serialize_order(order)
-	signed = sign_int_array(serialized, 14 /* 注意这个t值 */)
+	signed = sign_int_array(serialized, 14 /* Pay attention to this t value */)
     order.update(signed)
 ```
 {% hint style='info' %}
-如果您不使用ethsnarks代码仓库计算poseidon哈希，请一定注意poseidon参数的配置，保证其与路印协议使用的参数完全一致。否则验证签名会失败。
+If you don't use the *ethsnarks* library to calculate Poseidon hash, please pay attention to the values of the Poseidon parameters to ensure that they are entirely consistent with those used by Loopring. Otherwise, signature verification will fail.
 {% endhint %}
 
 
 
-#### 链下提现签名
+#### Signing Off-chain Withdrawals
 {% hint style='danger' %}
-目前的路印API还不支持客户端提交链下提现请求。不过我们会很快增加这个API。
+The current Loopring API does not yet support off-chain withdrawal requests. But we will add it soon.
 {% endhint %}
 
-下面是链下提现的一个例子：
+The following is an example of off-chain withdrawals:
 ```json
 {
     "exchangeId": 2,
@@ -111,9 +110,9 @@ def sign_order(privateKey, order):
 }
 ```
 
-其中的`nonce`值必须从0开始，不间断增加。
+where `nonce` must start from 0 and increment by 1.
 
-用Python对其签名的代码如下：
+The code for signing it in Python is as follows:
 ```python
 def serialize_offchain_withdrawal(withdrawal):
     return [
@@ -129,17 +128,17 @@ def serialize_offchain_withdrawal(withdrawal):
 
 def sign_offchain_withdrawal(privateKey, offchainWithdrawal):
     serialized = serialize_offchain_withdrawal(offchainWithdrawal)
-    signed = sign_int_array(serialized, 9 /* 注意这个t值 */)
+    signed = sign_int_array(serialized, 9 /* Pay attention to this t value */)
     offchainWithdrawal.update(signed)
 ```
 
-## 参考资料
-您可以通过下列文献和代码仓库了解更多关于Poseidon哈希和EdDSA签名的细节。
+## References
+You can learn more about the Poseidon hash and EdDSA signature through the following literature and github repositories.
 
-1. `ethsnarks`代码仓库：https://github.com/HarryR/ethsnarks.git
-2. `SHA256 Hash`算法：<https://en.wikipedia.org/wiki/SHA-2>
-3. `EdDSA`算法：<https://en.wikipedia.org/wiki/EdDSA>
-4. `Poseidon Hash`算法：<https://www.poseidon-hash.info/>
+1. **ethsnarks**: https://github.com/HarryR/ethsnarks.git
+2. **SHA256 Hash**: <https://en.wikipedia.org/wiki/SHA-2>
+3. **EdDSA**: <https://en.wikipedia.org/wiki/EdDSA>
+4. **Poseidon Hash**: <https://www.poseidon-hash.info/>
 
 
-您也可以参考我们的[示范代码](./examples.md)了解更多应用细节。
+You can also refer to our [example code](./examples.md) for more details.

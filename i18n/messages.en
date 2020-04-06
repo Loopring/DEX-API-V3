@@ -29,7 +29,7 @@
     "reqexpl": "Request example",
     "resfield": "Response fields",
     "resexpl": "Response example",
-    "retcode": "Return code",
+    "retcode": "Status code",
     "retmsg": "Return message.  This is used for debug only. Do not show to users",
     "model": "Model",
     "common": "Common info",

@@ -1,6 +1,6 @@
 ### candlestick 主题
 
-订阅candlestick，获取定时推送的candlestick数据的更新消息推送。订阅该主题不需要传ApiKey信息。
+订阅candlestick, 获取定时推送的candlestick数据的更新消息推送.订阅该主题不需要传ApiKey信息.
 
 #### 订阅格式
 
@@ -8,7 +8,7 @@
 
 - 支持的市场可以通过api接口[api/v2/exchange/markets](../dex_apis/getMarkets.md)获取
 
-- 支持的间隔（interval）为1min, 5min, 15min, 30min, 1hr, 2hr, 4hr, 12hr, 1d, 1w
+- 支持的间隔(interval)为1min, 5min, 15min, 30min, 1hr, 2hr, 4hr, 12hr, 1d, 1w
 
 | 间隔  |  说明  |
 | :--- | :---- |
@@ -55,7 +55,7 @@
 | 字段  |             类型              | 是否必现 |       说明       |           举例            |
 | :--- | :--------------------------- | :------ | :-------------- | :----------------------- |
 | topic |            string             |    是    | 订阅的主题和条件 | "candlestick&lrc-btc&1hr" |
-|  ts   |            integer            |    时    | 推送时间（毫秒） |       1584717910000       |
+|  ts   |            integer            |    时    | 推送时间(毫秒) |       1584717910000       |
 | data  | [List\[string]](#candlestick) |    是    | candlestick数据  |             /             |
 
 #####<span id= "candlestick"> CandleStick结构</span>

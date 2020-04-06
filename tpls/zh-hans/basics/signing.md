@@ -87,7 +87,7 @@ def sign_order(privateKey, order):
     order.update(signed)
 ```
 {% hint style='info' %}
-如果您不使用ethsnarks代码仓库计算poseidon哈希，请一定注意poseidon参数的配置，保证其与路印协议使用的参数完全一致。否则验证签名会失败。
+如果您不使用ethsnarks代码仓库计算Poseidon哈希，请一定注意Poseidon参数的配置，保证其与路印协议使用的参数完全一致。否则验证签名会失败。
 {% endhint %}
 
 
@@ -136,10 +136,10 @@ def sign_offchain_withdrawal(privateKey, offchainWithdrawal):
 ## 参考资料
 您可以通过下列文献和代码仓库了解更多关于Poseidon哈希和EdDSA签名的细节。
 
-1. `ethsnarks`代码仓库：https://github.com/HarryR/ethsnarks.git
-2. `SHA256 Hash`算法：<https://en.wikipedia.org/wiki/SHA-2>
-3. `EdDSA`算法：<https://en.wikipedia.org/wiki/EdDSA>
-4. `Poseidon Hash`算法：<https://www.poseidon-hash.info/>
+1. **ethsnarks**：https://github.com/HarryR/ethsnarks.git
+2. **SHA256 Hash**：<https://en.wikipedia.org/wiki/SHA-2>
+3. **EdDSA**：<https://en.wikipedia.org/wiki/EdDSA>
+4. **Poseidon Hash**：<https://www.poseidon-hash.info/>
 
 
 您也可以参考我们的[示范代码](./examples.md)了解更多应用细节。
