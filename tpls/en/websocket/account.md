@@ -1,41 +1,41 @@
-#### Account 主题
+# 订阅用户账号金额更新
 
-订阅用户的余额和冻结金额相关的信息
 
-#### 订阅规则
+通过订阅该主题，您可以获得用户余额和冻结金额更新的数据推送。
 
-主题即Account
+## 订阅规则
 
-订阅该主题必须传Apikey
+- `topic`需要设为`account`。
+- 订阅该主题**需要提供ApiKey**。
 
-#### 订阅推送示例
+## 推送示例
 
 ```json
- {
-  "topic": "account",
-  "ts":1584717910000,
-  "data": {
-    "accountId":1,
-    "totalAmount": "24439253519655",
-    "tokenId": 2,
-    "frezeeAmount": "0"
-  }
+{
+	"topic": "account",
+	"ts":1584717910000,
+	"data": {
+	    "accountId":1,
+	    "totalAmount": "24439253519655",
+	    "tokenId": 2,
+	    "frezeeAmount": "0"
+	}
 }
 ```
 
-#### 模型
+## 模型
 
-##### 订阅推送数据结构
+#### 推送数据结构
 
-| 字段  |        类型         | 是否必现 |       说明       |     举例      |
+| 字段  |        类型         | 必现 |       说明       |     举例      |
 | :--- | :----------------- | :------ | :-------------- | :----------- |
 | topic |       string        |    是    | 订阅的主题和条件 |   "account"   |
 |  ts   |       integer       |    是    |     推送时间     | 1584717910000 |
 | data  | [Balance](#balance) |    是    |     余额信息     |       /       |
 
-##### <span id= "balance">Balance</span> 数据结构
+#### <span id= "balance">Balance数据结构</span> 
 
-|     字段     |  类型   | 是否必现 |    说明    |       举例       |
+|     字段     |  类型   | 必现 |    说明    |       举例       |
 | :---------- | :----- | :------ | :-------- | :-------------- |
 |  accountId   | integer |    是    |   用户Id   |        1         |
 |   tokenId    | integer |    是    |   通证Id   |        2         |

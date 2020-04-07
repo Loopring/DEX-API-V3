@@ -65,11 +65,11 @@
   },
   "websocket": {
     "depth": "订阅订单簿更新",
-    "depth10": "订阅订单簿买卖前10的全量推送",
-    "trade": "订阅市场交易的更新",
-    "ticker": "订阅市场Ticker的更新",
-    "candleStick": "订阅市场CandleStick更新",
-    "account": "订阅用户余额更新",
+    "depth10": "订阅买卖前10全量推送",
+    "trade": "订阅最新成交",
+    "ticker": "订阅Ticker更新",
+    "candleStick": "订阅CandleStick更新",
+    "account": "订阅用户账号金额更新",
     "order": "订阅用户订单更新"
   }
 }
