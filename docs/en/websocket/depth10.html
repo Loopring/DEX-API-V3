@@ -1,10 +1,10 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-hans" >
+<html lang="en" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>链下请求签名 · Loopring API</title>
+        <title>订阅订单簿买卖前10的全量推送 · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -85,10 +85,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="trading.html" />
+    <link rel="next" href="trade.html" />
     
     
-    <link rel="prev" href="api_key.html" />
+    <link rel="prev" href="depth.html" />
     
 
     </head>
@@ -99,7 +99,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="输入并搜索" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -115,7 +115,7 @@
 
     
         
-        <li class="header">关于</li>
+        <li class="header">About</li>
         
         
     
@@ -124,7 +124,7 @@
                 <a href="../">
             
                     
-                    路印
+                    Loopring
             
                 </a>
             
@@ -132,12 +132,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="../GLOSSARY.html">
+        <li class="chapter " data-level="1.2" data-path="../glossary.html">
             
-                <a href="../GLOSSARY.html">
+                <a href="../glossary.html">
             
                     
-                    术语
+                    Glossary
             
                 </a>
             
@@ -148,16 +148,16 @@
 
     
         
-        <li class="header">教程</li>
+        <li class="header">Fundamental</li>
         
         
     
-        <li class="chapter " data-level="2.1" data-path="api_key.html">
+        <li class="chapter " data-level="2.1" data-path="../basics/orders.html">
             
-                <a href="api_key.html">
+                <a href="../basics/orders.html">
             
                     
-                    管理API Key
+                    Orders
             
                 </a>
             
@@ -165,12 +165,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="2.2" data-path="signing.html">
+        <li class="chapter " data-level="2.2" data-path="../basics/key_mgmt.html">
             
-                <a href="signing.html">
+                <a href="../basics/key_mgmt.html">
             
                     
-                    链下请求签名
+                    Key Management
             
                 </a>
             
@@ -178,12 +178,38 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="trading.html">
+        <li class="chapter " data-level="2.3" data-path="../basics/signing.html">
             
-                <a href="trading.html">
+                <a href="../basics/signing.html">
             
                     
-                    做市商集成
+                    Request Signing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../basics/examples.html">
+            
+                <a href="../basics/examples.html">
+            
+                    
+                    Example Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../basics/contracts.html">
+            
+                <a href="../basics/contracts.html">
+            
+                    
+                    Smart Contracts
             
                 </a>
             
@@ -194,13 +220,13 @@
 
     
         
-        <li class="header">API规范（2.0）</li>
+        <li class="header">API Specification (2.0)</li>
         
         
     
-        <li class="chapter " data-level="3.1" data-path="../REST_APIS.html">
+        <li class="chapter " data-level="3.1" data-path="../rest_apis.html">
             
-                <a href="../REST_APIS.html">
+                <a href="../rest_apis.html">
             
                     
                     REST APIs
@@ -217,7 +243,7 @@
                 <a href="../dex_apis/getTimestamp.html">
             
                     
-                    查询服务器当前时间
+                    Query the servers current time
             
                 </a>
             
@@ -230,7 +256,7 @@
                 <a href="../dex_apis/getApiKey.html">
             
                     
-                    查询用户ApiKey
+                    Query users ApiKey
             
                 </a>
             
@@ -243,7 +269,7 @@
                 <a href="../dex_apis/applyApiKey.html">
             
                     
-                    更新用户ApiKey
+                    Update users ApiKey
             
                 </a>
             
@@ -256,7 +282,7 @@
                 <a href="../dex_apis/getNextOrderId.html">
             
                     
-                    获取下一个有效OrderId
+                    Get the next valid OrderId
             
                 </a>
             
@@ -269,7 +295,7 @@
                 <a href="../dex_apis/getOrderDetail.html">
             
                     
-                    获取订单详情
+                    Get order details
             
                 </a>
             
@@ -282,7 +308,7 @@
                 <a href="../dex_apis/submitOrder.html">
             
                     
-                    提交订单
+                    Submit order
             
                 </a>
             
@@ -295,7 +321,7 @@
                 <a href="../dex_apis/batchSubmitOrder.html">
             
                     
-                    批量提交订单
+                    Batch submit order
             
                 </a>
             
@@ -308,7 +334,7 @@
                 <a href="../dex_apis/getOrders.html">
             
                     
-                    获取用户订单列表
+                    Get order list
             
                 </a>
             
@@ -321,7 +347,7 @@
                 <a href="../dex_apis/cancelOrders.html">
             
                     
-                    取消订单
+                    Cancel order
             
                 </a>
             
@@ -334,7 +360,7 @@
                 <a href="../dex_apis/batchCancelOrdersByOrderHash.html">
             
                     
-                    根据订单HASH批量取消订单
+                    Cancel multiple order by hashes.
             
                 </a>
             
@@ -347,7 +373,7 @@
                 <a href="../dex_apis/batchCancelOrdersByClientOrderId.html">
             
                     
-                    根据订单的客户端标识的订单ID批量取消订单
+                    Cancel multiple orders by clientOrderIds.
             
                 </a>
             
@@ -360,7 +386,7 @@
                 <a href="../dex_apis/sendTransaction.html">
             
                     
-                    发送以太坊交易
+                    Send raw transaction
             
                 </a>
             
@@ -373,7 +399,7 @@
                 <a href="../dex_apis/getEthNonce.html">
             
                     
-                    查询nonce
+                    Query the available nonce of the users Ethereum address
             
                 </a>
             
@@ -386,7 +412,7 @@
                 <a href="../dex_apis/getEthBalance.html">
             
                     
-                    查询ETH余额
+                    Query ETH balance
             
                 </a>
             
@@ -399,7 +425,7 @@
                 <a href="../dex_apis/getRecommendedGasPrice.html">
             
                     
-                    获取推荐gas
+                    Get current recommended gas price
             
                 </a>
             
@@ -412,7 +438,7 @@
                 <a href="../dex_apis/getMarkets.html">
             
                     
-                    查询市场配置
+                    Query the market configuration supported by the exchange
             
                 </a>
             
@@ -425,7 +451,7 @@
                 <a href="../dex_apis/getTokens.html">
             
                     
-                    查询交易所支持的通证信息
+                    Query the token information supported by the exchange
             
                 </a>
             
@@ -438,7 +464,7 @@
                 <a href="../dex_apis/getExchangeInfo.html">
             
                     
-                    查询交易所的基本必要信息
+                    Query exchange basic info.
             
                 </a>
             
@@ -451,7 +477,7 @@
                 <a href="../dex_apis/getDepth.html">
             
                     
-                    获取市场深度信息
+                    Get order book info
             
                 </a>
             
@@ -464,7 +490,7 @@
                 <a href="../dex_apis/getTicker.html">
             
                     
-                    查询交易所Ticker
+                    The response of querying the exchange ticker
             
                 </a>
             
@@ -477,7 +503,7 @@
                 <a href="../dex_apis/getCandlestick.html">
             
                     
-                    查询K线数据
+                    Query candlestick data
             
                 </a>
             
@@ -490,7 +516,7 @@
                 <a href="../dex_apis/getPrice.html">
             
                     
-                    查询token法币价
+                    Query token fiat price
             
                 </a>
             
@@ -503,7 +529,7 @@
                 <a href="../dex_apis/getMarketTrade.html">
             
                     
-                    查询市场交易
+                    Query market trades
             
                 </a>
             
@@ -516,7 +542,7 @@
                 <a href="../dex_apis/getAllowance.html">
             
                     
-                    查询授权
+                    Query allowance
             
                 </a>
             
@@ -529,7 +555,7 @@
                 <a href="../dex_apis/getTokenBalance.html">
             
                     
-                    查询Token余额
+                    Query token balance
             
                 </a>
             
@@ -542,7 +568,7 @@
                 <a href="../dex_apis/getAccount.html">
             
                     
-                    查询用户信息
+                    Query user information
             
                 </a>
             
@@ -555,7 +581,7 @@
                 <a href="../dex_apis/getUserCreate.html">
             
                     
-                    获取用户开户记录
+                    Get user creation list
             
                 </a>
             
@@ -568,7 +594,7 @@
                 <a href="../dex_apis/getUserUpdate.html">
             
                     
-                    获取用户更新记录
+                    Get user update list
             
                 </a>
             
@@ -581,7 +607,7 @@
                 <a href="../dex_apis/getUserBalances.html">
             
                     
-                    查询用户交易所余额
+                    Query the users balance in exchange
             
                 </a>
             
@@ -594,7 +620,7 @@
                 <a href="../dex_apis/getUserDeposits.html">
             
                     
-                    获取用户充值记录
+                    Get user deposit list
             
                 </a>
             
@@ -607,7 +633,7 @@
                 <a href="../dex_apis/getUserWithdrawals.html">
             
                     
-                    获取用户提现记录
+                    Get user withdrawal list
             
                 </a>
             
@@ -620,7 +646,7 @@
                 <a href="../dex_apis/getUserTransfers.html">
             
                     
-                    获取用户转账记录
+                    Get user transfer list
             
                 </a>
             
@@ -633,7 +659,7 @@
                 <a href="../dex_apis/getUserTrades.html">
             
                     
-                    获取用户交易记录
+                    Get user trading list
             
                 </a>
             
@@ -653,9 +679,9 @@
         
         
     
-        <li class="chapter " data-level="4.1" data-path="../websocket/overview.html">
+        <li class="chapter " data-level="4.1" data-path="overview.html">
             
-                <a href="../websocket/overview.html">
+                <a href="overview.html">
             
                     
                     WebSocket APIs
@@ -667,9 +693,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="4.1.1" data-path="../websocket/depth.html">
+        <li class="chapter " data-level="4.1.1" data-path="depth.html">
             
-                <a href="../websocket/depth.html">
+                <a href="depth.html">
             
                     
                     订阅订单簿更新
@@ -680,9 +706,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.2" data-path="../websocket/depth10.html">
+        <li class="chapter active" data-level="4.1.2" data-path="depth10.html">
             
-                <a href="../websocket/depth10.html">
+                <a href="depth10.html">
             
                     
                     订阅订单簿买卖前10的全量推送
@@ -693,9 +719,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.3" data-path="../websocket/trade.html">
+        <li class="chapter " data-level="4.1.3" data-path="trade.html">
             
-                <a href="../websocket/trade.html">
+                <a href="trade.html">
             
                     
                     订阅市场交易的更新
@@ -706,9 +732,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.4" data-path="../websocket/ticker.html">
+        <li class="chapter " data-level="4.1.4" data-path="ticker.html">
             
-                <a href="../websocket/ticker.html">
+                <a href="ticker.html">
             
                     
                     订阅市场Ticker的更新
@@ -719,9 +745,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.5" data-path="../websocket/candleStick.html">
+        <li class="chapter " data-level="4.1.5" data-path="candleStick.html">
             
-                <a href="../websocket/candleStick.html">
+                <a href="candleStick.html">
             
                     
                     订阅市场CandleStick更新
@@ -732,9 +758,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.6" data-path="../websocket/account.html">
+        <li class="chapter " data-level="4.1.6" data-path="account.html">
             
-                <a href="../websocket/account.html">
+                <a href="account.html">
             
                     
                     订阅用户余额更新
@@ -745,9 +771,9 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.7" data-path="../websocket/order.html">
+        <li class="chapter " data-level="4.1.7" data-path="order.html">
             
-                <a href="../websocket/order.html">
+                <a href="order.html">
             
                     
                     订阅用户订单更新
@@ -770,7 +796,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -793,7 +819,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >链下请求签名</a>
+        <a href=".." >订阅订单簿买卖前10的全量推送</a>
     </h1>
 </div>
 
@@ -808,73 +834,160 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="poseidon&#x54C8;&#x5E0C;&#x4E0E;eddsa&#x7B7E;&#x540D;">Poseidon&#x54C8;&#x5E0C;&#x4E0E;EdDSA&#x7B7E;&#x540D;</h1>
-<h2 id="poseidon&#x54C8;&#x5E0C;">Poseidon&#x54C8;&#x5E0C;</h2>
-<h2 id="eddsa&#x7B7E;&#x540D;">EdDSA&#x7B7E;&#x540D;</h2>
+                                <h1 id="&#x8BA2;&#x9605;&#x4E70;&#x5356;&#x524D;10&#x5168;&#x91CF;&#x63A8;&#x9001;">&#x8BA2;&#x9605;&#x4E70;&#x5356;&#x524D;10&#x5168;&#x91CF;&#x63A8;&#x9001;</h1>
+<p>&#x901A;&#x8FC7;&#x8BA2;&#x9605;&#x8BE5;&#x4E3B;&#x9898;&#xFF0C;&#x60A8;&#x53EF;&#x4EE5;&#x6BCF;1&#x79D2;&#x83B7;&#x5F97;&#x6307;&#x5B9A;&#x4EA4;&#x6613;&#x5BF9;&#x524D;10&#x6761;&#x5356;&#x5355;&#x548C;&#x4E70;&#x5355;&#x7684;<strong>&#x5168;&#x91CF;</strong>&#x6570;&#x636E;&#x63A8;&#x9001; - &#x5373;&#x4F7F;&#x6570;&#x636E;&#x6CA1;&#x6709;&#x4EFB;&#x4F55;&#x53D8;&#x5316;&#x3002;</p>
+<h2 id="&#x8BA2;&#x9605;&#x89C4;&#x5219;">&#x8BA2;&#x9605;&#x89C4;&#x5219;</h2>
 <ul>
-<li><p>&#x9664;&#x4E86;&#x9700;&#x8981;<code>API-KEY</code>&#x5916;&#xFF0C;&#x548C;&#x8D26;&#x6237;&#x4FE1;&#x606F;&#x6709;&#x5173;&#x7684;&#x8FD8;&#x9700;&#x8981;&#x7B7E;&#x540D;&#xFF0C;&#x8BE6;&#x89C1;<a href="../rest_api_overview.md">Restful API &#x6982;&#x8FF0;</a>&#xFF0C;&#x8FD9;&#x91CC;&#x4EC5;&#x4EE5;<a href="../dex_apis/cancelOrders.html">&#x53D6;&#x6D88;&#x8BA2;&#x5355;</a>&#x4E3A;&#x4F8B;&#x3002;</p>
-</li>
-<li><p>&#x8C03;&#x7528;&#x53D6;&#x6D88;&#x8BA2;&#x5355;&#x63A5;&#x53E3;&#x65F6;&#xFF0C;&#x9664;&#x4E86;&#x63A5;&#x53E3;&#x672C;&#x8EAB;&#x6240;&#x9700;&#x7684;&#x53C2;&#x6570;&#x5916;&#xFF0C;&#x8FD8;&#x9700;&#x4F20;&#x9012;<code>signature</code>&#x5373;&#x53C2;&#x6570;&#x7B7E;&#x540D;&#x3002;</p>
-</li>
-<li><p>&#x8DEF;&#x5370;&#x4EA4;&#x6613;&#x6240;&#x5BF9;API&#x7B7E;&#x540D;&#x4F7F;&#x7528;<code>EdDSA SHA256</code>&#x7B97;&#x6CD5;&#xFF0C;&#x9996;&#x5148;&#x5C06;API&#x53C2;&#x6570;&#x5E8F;&#x5217;&#x5316;&#x6210;&#x578B;&#x5982;<code>[(&#x53C2;&#x6570;1&#x540D;, &#x53C2;&#x6570;1&#x503C;), (&#x53C2;&#x6570;2&#x540D;, &#x53C2;&#x6570;2&#x503C;), ..., (&#x53C2;&#x6570;N&#x540D;, &#x53C2;&#x6570;N&#x503C;)]</code>&#x7684;&#x5B57;&#x7B26;&#x4E32;&#x4E8C;&#x5143;&#x7EC4;&#x6570;&#x7EC4;&#xFF0C;&#x5176;&#x4E2D;&#x53C2;&#x6570;&#x540D;&#x6309;&#x7167;&#x5B57;&#x5178;&#x5E8F;&#x6392;&#x5E8F;&#xFF0C;&#x4ECE;&#x800C;&#x4FDD;&#x8BC1;&#x670D;&#x52A1;&#x5668;&#x9A8C;&#x8BC1;&#x987A;&#x5E8F;&#x4E00;&#x81F4;&#x3002;&#x7136;&#x540E;&#x6574;&#x4F53;&#x8F6C;&#x4E3A;<code>JSON</code>&#x5B57;&#x7B26;&#x4E32;&#x4F5C;&#x4E3A;<code>SHA256</code>&#x7684;&#x64CD;&#x4F5C;&#x5BF9;&#x8C61;&#xFF0C;&#x5F97;&#x5230;<code>SHA256Hash</code>&#x503C;&#xFF0C;&#x518D;&#x7528;<code>EdDSA</code>&#x7B97;&#x6CD5;&#x5BF9;&#x8BE5;<code>SHA256Hash</code>&#x8FDB;&#x884C;&#x7B7E;&#x540D;&#xFF0C;&#x79C1;&#x94A5;&#x5373;<code>privateKey</code>&#xFF0C;&#x6700;&#x7EC8;&#x7684;&#x7B7E;&#x540D;&#x5305;&#x542B;&#x4E09;&#x4E2A;&#x6574;&#x6570;&#xFF1A;<code>Rx, Ry, S</code>&#xFF0C;&#x5C06;&#x8FD9;&#x4E09;&#x4E2A;&#x5E8F;&#x5217;&#x5316;&#x6210;&#x5B57;&#x7B26;&#x4E32;&#x5E76;&#x7528;<code>,</code>&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x5373;&#x4E3A;API&#x7B7E;&#x540D;&#xFF0C;&#x6D41;&#x7A0B;&#x8BF7;&#x53C2;&#x8003;<code>sign_api_data</code>&#x4EE3;&#x7801;&#x793A;&#x4F8B;&#x3002;</p>
-</li>
-<li><p>&#x5BF9;API&#x63A5;&#x53E3;&#x7684;&#x7B7E;&#x540D;&#x4F7F;&#x7528;&#x7684;<code>EdDSA</code>&#x4F7F;&#x7528;<code>ethsnarks</code>&#x5DE5;&#x7A0B;&#x4EE3;&#x7801;&#xFF0C;&#x5176;&#x5185;&#x90E8;&#x4F7F;&#x7528;<code>Poseidon HASH</code>&#x7B97;&#x6CD5;&#xFF0C;&#x8DEF;&#x5370;&#x4EA4;&#x6613;&#x6240;&#x7684;&#x7B7E;&#x540D;&#x53C2;&#x6570;&#x5982;&#x4E0B;:</p>
-</li>
+<li><code>topic</code>&#x9700;&#x8981;&#x6307;&#x5B9A;&#x4EA4;&#x6613;&#x5BF9;&#x548C;&#x6DF1;&#x5EA6;&#x805A;&#x5408;&#x7B49;&#x7EA7;&#x3002;&#x5982;&#x679C;&#x4EA4;&#x6613;&#x5BF9;&#x662F;<code>LRC-ETH</code>&#xFF0C;&#x6DF1;&#x5EA6;&#x805A;&#x5408;&#x7B49;&#x7EA7;&#x662F;<code>1</code>&#xFF0C;&#x90A3;&#x4E48;<code>topic</code>&#x5E94;&#x8BE5;&#x62FC;&#x5199;&#x4E3A;&#xFF1A;<code>depth10&amp;LRC-ETH&amp;1</code>&#x3002;</li>
+<li>&#x8BA2;&#x9605;&#x8BE5;&#x4E3B;&#x9898;&#x4E0D;&#x9700;&#x8981;&#x63D0;&#x4F9B;ApiKey&#x3002;</li>
+<li>&#x4EA4;&#x6613;&#x5BF9;&#x548C;&#x6DF1;&#x5EA6;&#x805A;&#x5408;&#x7B49;&#x7EA7;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;<a href="../dex_apis/getMarkets.html">api/v2/exchange/markets&#x63A5;&#x53E3;</a>&#x83B7;&#x53D6;&#x3002;</li>
 </ul>
-<pre><code class="lang-python">poseidon_params(SNARK_SCALAR_FIELD, <span class="hljs-number">6</span>, <span class="hljs-number">6</span>, <span class="hljs-number">52</span>, <span class="hljs-string">b&apos;poseidon&apos;</span>, <span class="hljs-number">5</span>, security_target=<span class="hljs-number">128</span>)
+<h2 id="&#x72B6;&#x6001;&#x7801;">&#x72B6;&#x6001;&#x7801;</h2>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x72B6;&#x6001;&#x7801;</th>
+<th style="text-align:left">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">104108</td>
+<td style="text-align:left"><code>topic</code>&#x7684;&#x503C;&#x6216;&#x5176;&#x53C2;&#x6570;&#x975E;&#x6CD5;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x63A8;&#x9001;&#x793A;&#x4F8B;">&#x63A8;&#x9001;&#x793A;&#x4F8B;</h2>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;topic&quot;</span>: <span class="hljs-string">&quot;depth10&amp;LRC-BTC&amp;1&quot;</span>,
+    <span class="hljs-string">&quot;ts&quot;</span>: <span class="hljs-number">1565844208</span>,
+    <span class="hljs-string">&quot;data&quot;</span>: {
+        <span class="hljs-string">&quot;bids&quot;</span>: [
+            [
+              <span class="hljs-string">&quot;295.97&quot;</span>,  <span class="hljs-comment">//price</span>
+              <span class="hljs-string">&quot;4567810000000000&quot;</span>,  <span class="hljs-comment">//size</span>
+              <span class="hljs-string">&quot;30150000000000&quot;</span>,  <span class="hljs-comment">//volume</span>
+              <span class="hljs-string">&quot;2&quot;</span>  <span class="hljs-comment">//count</span>
+            ]
+        ],
+        <span class="hljs-string">&quot;asks&quot;</span>: [
+            [
+              <span class="hljs-string">&quot;298.97&quot;</span>,
+              <span class="hljs-string">&quot;456781000000000000&quot;</span>,
+              <span class="hljs-string">&quot;301500000000000&quot;</span>,
+              <span class="hljs-string">&quot;2&quot;</span>
+            ]
+        ]
+    }
+}
 </code></pre>
-<ul>
-<li><p><code>EdDSA</code>&#x548C;<code>Poseidon Hash</code>&#x7B97;&#x6CD5;&#x7EC6;&#x8282;&#x89C1;&#x53C2;&#x8003;&#x6587;&#x732E;[3]&#xFF0C;[4]&#x3002;</p>
-</li>
-<li><p>&#x53EF;&#x4EE5;&#x91CD;&#x8F7D;<code>ethsnarks</code>&#x7684;<code>_SignatureScheme</code>&#x5B9E;&#x73B0;&#x8BE5;&#x56FA;&#x5B9A;&#x53C2;&#x6570;&#x7684;&#x7B7E;&#x540D;&#x7C7B;&#xFF0C;&#x5982;&#x4E0B;&#x9762;python&#x4EE3;&#x7801;&#x6240;&#x793A;&#x3002;</p>
-</li>
-<li><p>&#x7B7E;&#x540D;&#x6570;&#x636E;&#x653E;&#x5728;<code>http request header</code>&#x91CC;&#x7684;<code>X-API-SIG</code>&#x4E2D;&#x3002;</p>
-</li>
-</ul>
-<pre><code class="lang-python">session = init_request_session(user_api_key)
-...
-<span class="hljs-comment">#&#x521D;&#x59CB;&#x5316;API&#x6570;&#x636E; api_request_params</span>
-...
-<span class="hljs-comment">#&#x5BF9;API&#x6570;&#x636E;&#x7B7E;&#x540D;</span>
-x_api_sign = sign_api_data(api_request_params&#xFF0C;user_api_secret)
-session.headers.update({<span class="hljs-string">&apos;X-API-SIG&apos;</span>: x_api_sign})
-</code></pre>
-<ul>
-<li>API&#x63A5;&#x53E3;&#x7B7E;&#x540D;&#x4EE3;&#x7801;&#x90E8;&#x5206;&#x5173;&#x952E;&#x51FD;&#x6570;&#x793A;&#x4F8B;&#xFF1A;</li>
-</ul>
-<pre><code class="lang-python"><span class="hljs-comment">#&#x7EE7;&#x627F;ethsnarks.eddsa._SignatureScheme</span>
-<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">PoseidonEdDSA</span><span class="hljs-params">(_SignatureScheme)</span>:</span>
-<span class="hljs-meta">    @classmethod</span>
-    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hash_public</span><span class="hljs-params">(cls, *args)</span>:</span>
-        PoseidonHashParams = poseidon_params(SNARK_SCALAR_FIELD, <span class="hljs-number">6</span>, <span class="hljs-number">6</span>, <span class="hljs-number">52</span>, <span class="hljs-string">b&apos;poseidon&apos;</span>, <span class="hljs-number">5</span>, security_target=<span class="hljs-number">128</span>)
-        inputMsg = list(as_scalar(*args))
-        <span class="hljs-keyword">return</span> poseidon(inputMsg, PoseidonHashParams)
-
-<span class="hljs-comment">#&#x5BF9;&#x6570;&#x636E;&#x7B7E;&#x540D;&#x5E76;&#x8FD4;&#x56DE;&#x7B7E;&#x540D;</span>
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sign_api_data</span><span class="hljs-params">(api_request_params&#xFF0C;api_secret)</span>:</span>
-    data = serialize_api_data(api_request_params)
-    hasher = hashlib.sha256()
-    msgBuf = ujson.dumps(data).encode(<span class="hljs-string">&apos;utf-8&apos;</span>)
-    hasher.update(msgBuf)
-    msgHash = int(hasher.hexdigest(), <span class="hljs-number">16</span>) % SNARK_SCALAR_FIELD
-    signed = PoseidonEdDSA.sign(msgHash, FQ(int(api_secret)))
-    signature = <span class="hljs-string">&apos;,&apos;</span>.join(str(_) <span class="hljs-keyword">for</span> _ <span class="hljs-keyword">in</span> [signed.sig.R.x, signed.sig.R.y, signed.sig.s])
-    <span class="hljs-keyword">return</span> signature
-
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">serialize_api_data</span><span class="hljs-params">(data)</span>:</span>
-    has_signature = <span class="hljs-keyword">False</span>
-    params = []
-    <span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> data.items():
-        <span class="hljs-keyword">if</span> key == <span class="hljs-string">&apos;signature&apos;</span>:
-            has_signature = <span class="hljs-keyword">True</span>
-        <span class="hljs-keyword">else</span>:
-            params.append((key, value))
-    <span class="hljs-comment"># sort parameters by key, in alphabet order</span>
-    params.sort(key=itemgetter(<span class="hljs-number">0</span>))
-    <span class="hljs-keyword">if</span> has_signature:
-        params.append((<span class="hljs-string">&apos;signature&apos;</span>, data[<span class="hljs-string">&apos;signature&apos;</span>]))
-    <span class="hljs-keyword">return</span> params
-</code></pre>
+<h2 id="&#x6A21;&#x578B;">&#x6A21;&#x578B;</h2>
+<h4 id="&#x63A8;&#x9001;&#x6570;&#x636E;&#x7ED3;&#x6784;">&#x63A8;&#x9001;&#x6570;&#x636E;&#x7ED3;&#x6784;</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x5FC5;&#x73B0;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">topic</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x8BA2;&#x9605;&#x7684;&#x4E3B;&#x9898;&#x548C;&#x6761;&#x4EF6;</td>
+<td style="text-align:left">&quot;depth10&amp;LRC-ETH&amp;1&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">ts</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x63A8;&#x9001;&#x65F6;&#x95F4;</td>
+<td style="text-align:left">1584717910000</td>
+</tr>
+<tr>
+<td style="text-align:left">data</td>
+<td style="text-align:left"><a href="#depth">Depth</a></td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x6DF1;&#x5EA6;&#x4FE1;&#x606F;</td>
+<td style="text-align:left">/</td>
+</tr>
+</tbody>
+</table>
+<h4 id="depth&#x6570;&#x636E;&#x7ED3;&#x6784;"><span id="depth">Depth&#x6570;&#x636E;&#x7ED3;&#x6784;</span></h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x5FC5;&#x73B0;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">bids</td>
+<td style="text-align:left"><a href="#slot">List[List[string]]</a>  &#xFF08;&#x6DF1;&#x5EA6;&#x6761;&#x76EE;&#x5217;&#x8868;&#xFF09;</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x4E70;&#x5355;&#x6DF1;&#x5EA6;</td>
+<td style="text-align:left">/</td>
+</tr>
+<tr>
+<td style="text-align:left">asks</td>
+<td style="text-align:left"><a href="#slot">List[List[string]]</a>  &#xFF08;&#x6DF1;&#x5EA6;&#x6761;&#x76EE;&#x5217;&#x8868;&#xFF09;</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x5356;&#x5355;&#x6DF1;&#x5EA6;</td>
+<td style="text-align:left">/</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x6DF1;&#x5EA6;&#x6761;&#x76EE;"><span id="slot">&#x6DF1;&#x5EA6;&#x6761;&#x76EE;</span></h3>
+<p><code>asks</code>&#x548C;<code>bids</code>&#x6570;&#x7EC4;&#x4E2D;&#x7684;&#x6BCF;&#x4E2A;&#x5B50;&#x6570;&#x7EC4;&#x90FD;&#x662F;&#x5B9A;&#x957F;&#x6570;&#x7EC4;&#xFF0C;&#x6211;&#x4EEC;&#x79F0;&#x4E4B;&#x4E3A;<em>&#x6DF1;&#x5EA6;&#x6761;&#x76EE;</em>&#xFF0C;&#x5176;&#x89C4;&#x8303;&#x5982;&#x4E0B;&#xFF1A;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5E8F;&#x53F7;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x5FC5;&#x73B0;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">1</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x4EF7;&#x683C;</td>
+<td style="text-align:left">&quot;0.002&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">2</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x6302;&#x5355;&#x91CF;</td>
+<td style="text-align:left">&quot;21000&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">3</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x6302;&#x5355;&#x603B;&#x91CF;</td>
+<td style="text-align:left">&quot;33220000&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">4</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x805A;&#x5408;&#x7684;&#x8BA2;&#x5355;&#x6570;&#x76EE;</td>
+<td style="text-align:left">&quot;4&quot;</td>
+</tr>
+</tbody>
+</table>
 
                                 
                                 </section>
@@ -902,12 +1015,12 @@ session.headers.update({<span class="hljs-string">&apos;X-API-SIG&apos;</span>: 
 
             
                 
-                <a href="api_key.html" class="navigation navigation-prev " aria-label="Previous page: 管理API Key">
+                <a href="depth.html" class="navigation navigation-prev " aria-label="Previous page: 订阅订单簿更新">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="trading.html" class="navigation navigation-next " aria-label="Next page: 做市商集成">
+                <a href="trade.html" class="navigation navigation-next " aria-label="Next page: 订阅市场交易的更新">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -918,7 +1031,7 @@ session.headers.update({<span class="hljs-string">&apos;X-API-SIG&apos;</span>: 
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"链下请求签名","level":"2.2","depth":1,"next":{"title":"做市商集成","level":"2.3","depth":1,"path":"tutorials/trading.md","ref":"tutorials/trading.md","articles":[]},"previous":{"title":"管理API Key","level":"2.1","depth":1,"path":"tutorials/api_key.md","ref":"tutorials/api_key.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.org/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"tutorials/signing.md","mtime":"2020-04-03T01:50:56.966Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-03T01:50:58.241Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"订阅订单簿买卖前10的全量推送","level":"4.1.2","depth":2,"next":{"title":"订阅市场交易的更新","level":"4.1.3","depth":2,"path":"websocket/trade.md","ref":"websocket/trade.md","articles":[]},"previous":{"title":"订阅订单簿更新","level":"4.1.1","depth":2,"path":"websocket/depth.md","ref":"websocket/depth.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"websocket/depth10.md","mtime":"2020-04-08T00:40:12.531Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-08T00:40:14.047Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>

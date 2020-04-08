@@ -1,10 +1,10 @@
 
 <!DOCTYPE HTML>
-<html lang="zh-hans" >
+<html lang="en" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>管理API Key · Loopring API</title>
+        <title>Key Management · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -88,7 +88,7 @@
     <link rel="next" href="signing.html" />
     
     
-    <link rel="prev" href="../GLOSSARY.html" />
+    <link rel="prev" href="orders.html" />
     
 
     </head>
@@ -99,7 +99,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="输入并搜索" />
+    <input type="text" placeholder="Type to search" />
 </div>
 
             
@@ -115,7 +115,7 @@
 
     
         
-        <li class="header">关于</li>
+        <li class="header">About</li>
         
         
     
@@ -124,7 +124,7 @@
                 <a href="../">
             
                     
-                    路印
+                    Loopring
             
                 </a>
             
@@ -132,12 +132,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="../GLOSSARY.html">
+        <li class="chapter " data-level="1.2" data-path="../glossary.html">
             
-                <a href="../GLOSSARY.html">
+                <a href="../glossary.html">
             
                     
-                    术语
+                    Glossary
             
                 </a>
             
@@ -148,16 +148,16 @@
 
     
         
-        <li class="header">教程</li>
+        <li class="header">Fundamental</li>
         
         
     
-        <li class="chapter active" data-level="2.1" data-path="api_key.html">
+        <li class="chapter " data-level="2.1" data-path="orders.html">
             
-                <a href="api_key.html">
+                <a href="orders.html">
             
                     
-                    管理API Key
+                    Orders
             
                 </a>
             
@@ -165,12 +165,25 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="signing.html">
+        <li class="chapter active" data-level="2.2" data-path="key_mgmt.html">
+            
+                <a href="key_mgmt.html">
+            
+                    
+                    Key Management
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="signing.html">
             
                 <a href="signing.html">
             
                     
-                    链下请求签名
+                    Request Signing
             
                 </a>
             
@@ -178,12 +191,25 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="trading.html">
+        <li class="chapter " data-level="2.4" data-path="examples.html">
             
-                <a href="trading.html">
+                <a href="examples.html">
             
                     
-                    做市商集成
+                    Example Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="contracts.html">
+            
+                <a href="contracts.html">
+            
+                    
+                    Smart Contracts
             
                 </a>
             
@@ -194,13 +220,13 @@
 
     
         
-        <li class="header">API规范（2.0）</li>
+        <li class="header">API Specification (2.0)</li>
         
         
     
-        <li class="chapter " data-level="3.1" data-path="../REST_APIS.html">
+        <li class="chapter " data-level="3.1" data-path="../rest_apis.html">
             
-                <a href="../REST_APIS.html">
+                <a href="../rest_apis.html">
             
                     
                     REST APIs
@@ -217,7 +243,7 @@
                 <a href="../dex_apis/getTimestamp.html">
             
                     
-                    查询服务器当前时间
+                    Query the servers current time
             
                 </a>
             
@@ -230,7 +256,7 @@
                 <a href="../dex_apis/getApiKey.html">
             
                     
-                    查询用户ApiKey
+                    Query users ApiKey
             
                 </a>
             
@@ -243,7 +269,7 @@
                 <a href="../dex_apis/applyApiKey.html">
             
                     
-                    更新用户ApiKey
+                    Update users ApiKey
             
                 </a>
             
@@ -256,7 +282,7 @@
                 <a href="../dex_apis/getNextOrderId.html">
             
                     
-                    获取下一个有效OrderId
+                    Get the next valid OrderId
             
                 </a>
             
@@ -269,7 +295,7 @@
                 <a href="../dex_apis/getOrderDetail.html">
             
                     
-                    获取订单详情
+                    Get order details
             
                 </a>
             
@@ -282,7 +308,7 @@
                 <a href="../dex_apis/submitOrder.html">
             
                     
-                    提交订单
+                    Submit order
             
                 </a>
             
@@ -295,7 +321,7 @@
                 <a href="../dex_apis/batchSubmitOrder.html">
             
                     
-                    批量提交订单
+                    Batch submit order
             
                 </a>
             
@@ -308,7 +334,7 @@
                 <a href="../dex_apis/getOrders.html">
             
                     
-                    获取用户订单列表
+                    Get order list
             
                 </a>
             
@@ -321,7 +347,7 @@
                 <a href="../dex_apis/cancelOrders.html">
             
                     
-                    取消订单
+                    Cancel order
             
                 </a>
             
@@ -334,7 +360,7 @@
                 <a href="../dex_apis/batchCancelOrdersByOrderHash.html">
             
                     
-                    根据订单HASH批量取消订单
+                    Cancel multiple order by hashes.
             
                 </a>
             
@@ -347,7 +373,7 @@
                 <a href="../dex_apis/batchCancelOrdersByClientOrderId.html">
             
                     
-                    根据订单的客户端标识的订单ID批量取消订单
+                    Cancel multiple orders by clientOrderIds.
             
                 </a>
             
@@ -360,7 +386,7 @@
                 <a href="../dex_apis/sendTransaction.html">
             
                     
-                    发送以太坊交易
+                    Send raw transaction
             
                 </a>
             
@@ -373,7 +399,7 @@
                 <a href="../dex_apis/getEthNonce.html">
             
                     
-                    查询nonce
+                    Query the available nonce of the users Ethereum address
             
                 </a>
             
@@ -386,7 +412,7 @@
                 <a href="../dex_apis/getEthBalance.html">
             
                     
-                    查询ETH余额
+                    Query ETH balance
             
                 </a>
             
@@ -399,7 +425,7 @@
                 <a href="../dex_apis/getRecommendedGasPrice.html">
             
                     
-                    获取推荐gas
+                    Get current recommended gas price
             
                 </a>
             
@@ -412,7 +438,7 @@
                 <a href="../dex_apis/getMarkets.html">
             
                     
-                    查询市场配置
+                    Query the market configuration supported by the exchange
             
                 </a>
             
@@ -425,7 +451,7 @@
                 <a href="../dex_apis/getTokens.html">
             
                     
-                    查询交易所支持的通证信息
+                    Query the token information supported by the exchange
             
                 </a>
             
@@ -438,7 +464,7 @@
                 <a href="../dex_apis/getExchangeInfo.html">
             
                     
-                    查询交易所的基本必要信息
+                    Query exchange basic info.
             
                 </a>
             
@@ -451,7 +477,7 @@
                 <a href="../dex_apis/getDepth.html">
             
                     
-                    获取市场深度信息
+                    Get order book info
             
                 </a>
             
@@ -464,7 +490,7 @@
                 <a href="../dex_apis/getTicker.html">
             
                     
-                    查询交易所Ticker
+                    The response of querying the exchange ticker
             
                 </a>
             
@@ -477,7 +503,7 @@
                 <a href="../dex_apis/getCandlestick.html">
             
                     
-                    查询K线数据
+                    Query candlestick data
             
                 </a>
             
@@ -490,7 +516,7 @@
                 <a href="../dex_apis/getPrice.html">
             
                     
-                    查询token法币价
+                    Query token fiat price
             
                 </a>
             
@@ -503,7 +529,7 @@
                 <a href="../dex_apis/getMarketTrade.html">
             
                     
-                    查询市场交易
+                    Query market trades
             
                 </a>
             
@@ -516,7 +542,7 @@
                 <a href="../dex_apis/getAllowance.html">
             
                     
-                    查询授权
+                    Query allowance
             
                 </a>
             
@@ -529,7 +555,7 @@
                 <a href="../dex_apis/getTokenBalance.html">
             
                     
-                    查询Token余额
+                    Query token balance
             
                 </a>
             
@@ -542,7 +568,7 @@
                 <a href="../dex_apis/getAccount.html">
             
                     
-                    查询用户信息
+                    Query user information
             
                 </a>
             
@@ -555,7 +581,7 @@
                 <a href="../dex_apis/getUserCreate.html">
             
                     
-                    获取用户开户记录
+                    Get user creation list
             
                 </a>
             
@@ -568,7 +594,7 @@
                 <a href="../dex_apis/getUserUpdate.html">
             
                     
-                    获取用户更新记录
+                    Get user update list
             
                 </a>
             
@@ -581,7 +607,7 @@
                 <a href="../dex_apis/getUserBalances.html">
             
                     
-                    查询用户交易所余额
+                    Query the users balance in exchange
             
                 </a>
             
@@ -594,7 +620,7 @@
                 <a href="../dex_apis/getUserDeposits.html">
             
                     
-                    获取用户充值记录
+                    Get user deposit list
             
                 </a>
             
@@ -607,7 +633,7 @@
                 <a href="../dex_apis/getUserWithdrawals.html">
             
                     
-                    获取用户提现记录
+                    Get user withdrawal list
             
                 </a>
             
@@ -620,7 +646,7 @@
                 <a href="../dex_apis/getUserTransfers.html">
             
                     
-                    获取用户转账记录
+                    Get user transfer list
             
                 </a>
             
@@ -633,7 +659,7 @@
                 <a href="../dex_apis/getUserTrades.html">
             
                     
-                    获取用户交易记录
+                    Get user trading list
             
                 </a>
             
@@ -770,7 +796,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            本书使用 GitBook 发布
+            Published with GitBook
         </a>
     </li>
 </ul>
@@ -793,7 +819,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >管理API Key</a>
+        <a href=".." >Key Management</a>
     </h1>
 </div>
 
@@ -808,9 +834,42 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x7BA1;&#x7406;api-key">&#x7BA1;&#x7406;API Key</h1>
-<p>&#x60A8;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8DEF;&#x5370;&#x4EA4;&#x6613;&#x6240;&#x7684;UI&#xFF08;<a href="https://loopring.io" target="_blank">Loopring.io</a>&#xFF09;&#xFF0C;&#x5728;&#x767B;&#x9646;&#x8D26;&#x53F7;&#x540E;&#xFF0C;&#x901A;&#x8FC7;&#x300E;&#x5BFC;&#x51FA;&#x8D26;&#x6237;&#x300F;&#x529F;&#x80FD;&#x83B7;&#x53D6;&#x81EA;&#x5DF1;&#x8D26;&#x53F7;&#x7684;API Key&#x548C;EdDSA&#x79C1;&#x94A5;&#x3002;&#x60A8;&#x4E5F;&#x901A;&#x8FC7;<a href="dex_apis/getApiKey.md">&#x67E5;&#x8BE2;&#x7528;&#x6237;ApiKey</a>&#x83B7;&#x53D6;&#x81EA;&#x5DF1;&#x8D26;&#x53F7;&#x7684;API Key&#x3002;&#x6B64;&#x65F6;&#x60A8;&#x9700;&#x8981;&#x5BF9;&#x8BF7;&#x6C42;&#x505A;&#x7B7E;&#x540D;&#xFF0C;&#x4EE5;&#x4FDD;&#x8BC1;&#x522B;&#x7684;&#x7528;&#x6237;&#x65E0;&#x6CD5;&#x83B7;&#x53D6;&#x60A8;&#x7684;API key&#x3002;</p>
-<p>&#x5982;&#x679C;&#x60A8;&#x60F3;&#x66F4;&#x6539;API Key&#xFF0C;&#x53EF;&#x4EE5;&#x8C03;&#x7528;<a href="dex_apis/applyApiKey.md">&#x66F4;&#x65B0;&#x7528;&#x6237;ApiKey</a>&#x63A5;&#x53E3;&#xFF0C;&#x5E76;&#x63D0;&#x4F9B;&#x5165;&#x8001;&#x7684;API Key&#x3002;&#x6216;&#x8005;&#x60A8;&#x4E5F;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;&#x8DEF;&#x5370;&#x4EA4;&#x6613;&#x6240;&#x7684;UI&#xFF08;<a href="https://loopring.io" target="_blank">Loopring.io</a>&#xFF09;&#x624B;&#x52A8;&#x66F4;&#x65B0;API Key.</p>
+                                <h1 id="key-management">Key Management</h1>
+<p>Before using Loopring&apos;s API, you need to know how to obtain and change your account&apos;s EdDSA key pair and ApiKey. When invoking the API, the ApiKey needs to be passed to the relayer as an HTTP header value; the EdDSA secret key is used to sign the request on the client-side digitally.</p>
+<h2 id="obtain-eddsa-key-pair-and-apikey">Obtain EdDSA key pair and ApiKey</h2>
+<p>First of all, you need to register an account on Loopring Exchange (<a href="https://loopring.io" target="_blank">Loopring.io</a>). Then you can use the &quot;Export Account&quot; function to export account-related information as a JSON object. The JSON object includes your EdDSA key pair and your account&apos;s ApiKey.</p>
+<p>The exported JSON should look like the following:</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;exchangeName&quot;</span>: <span class="hljs-string">&quot;LoopringDEX: Beta 1&quot;</span>,
+    <span class="hljs-string">&quot;exchangeAddress&quot;</span>: <span class="hljs-string">&quot;0x944644Ea989Ec64c2Ab9eF341D383cEf586A5777&quot;</span>,
+    <span class="hljs-string">&quot;exchangeId&quot;</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-string">&quot;accountAddress&quot;</span>: <span class="hljs-string">&quot;0xe9577b420d96adfc97ff1e9e0557f8c73d7247fe&quot;</span>,
+    <span class="hljs-string">&quot;accountId&quot;</span>: <span class="hljs-number">12345</span>,
+    <span class="hljs-string">&quot;apiKey&quot;</span>: <span class="hljs-string">&quot;qXJpfTKrF0O5jIDPYIu7YkVgLFbvm5uIgPKBmHP2kBpcdKZjgfFKhIlE8evo9lKa&quot;</span>,
+    <span class="hljs-string">&quot;publicKeyX&quot;</span>: <span class="hljs-string">&quot;20230748339558541226323870947000799026059173889124399831342481595010628000129&quot;</span>,
+    <span class="hljs-string">&quot;publicKeyY&quot;</span>: <span class="hljs-string">&quot;4980637490279511620100245514492532318691849019959343538108355525575855311214&quot;</span>,
+    <span class="hljs-string">&quot;privateKey&quot;</span>: <span class="hljs-string">&quot;1242957328515765470505817310060337585626176314364086438653683782645761561015&quot;</span>
+}
+</code></pre>
+<p>The first four fields are constants to the current version of the Loopring Exchange; other fields are about your account. Among them, <code>publicKeyX</code> and<code>publicKeyY</code>  are collectively the EdDSA public key of your account, and <code>privateKey</code> is the EdDSA private key.</p>
+<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>Please keep your EdDSA key pair and ApiKey strictly confidential. If you leak these information, your assets will be at risk.
+In any case, Loopring Exchange&apos;s UI and its API will never ask you for your EdDSA private key.</p>
+</div></div></p>
+<h2 id="change-eddsa-key-pair-and-apikey">Change EdDSA key pair and ApiKey</h2>
+<p>You can change your EdDSA key pair through the &quot;Change Password&quot; function on Loopring Exchange. Because changing the password involves an Ethereum transaction and zero-knowledge proof generation, it will take a while for your new EdDSA key pair to becomes effective. You can get account information through the <code>/api/v2/account</code> API. If the<code>frozen</code> field is <code>true</code>, it means that your account is in the processing of applying the new EdDSA key pair, during such a period, neither your previous EdDSA key pair nor your new EdDSA key pair can be used to sign requests.</p>
+<p>When you change your password on Loopring.io, your ApiKey will also be automatically updated.  You can also change your ApiKey using  API.</p>
+<h4 id="eddsa-generation">EdDSA Generation</h4>
+<p>The Loopring protocol does not specify how to generate or manage  EdDSA key pairs. Loopring Exchange uses each account&apos;s <strong>Ethereum address</strong> and <strong>trading password</strong> to derive the EdDSA key pair.
+As Ethereum addresses are public information, <strong>the strength of your trading password is thus critical to the security of your trading assets</strong>.</p>
+<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>If you use Loopring Exchange&apos;s website to set the trading password, your password should be strong enough not to worry about being brute-forced; otherwise, you need to be careful not to use a simple password. Unlike a centralized exchange, brute-forcing your EdDSA key does not have to go through Loopring relayer - your EdDSA public key is stored on Ethereum, and hackers can read it out for brute force comparison.</p>
+</div></div></p>
+<p>The algorithm for compute the EdDSA key pair is as follows (Python):</p>
+<pre><code class="lang-python">seed = keccakHash(<span class="hljs-string">&apos;LOOPRING&apos;</span> + address.toLowerCase() + keccakHash(password))
+keyPair = myEdDSAGenerator.generate(seed)
+</code></pre>
+<p>where <code>keccakHash</code> returns the hex string of the kecca256 result.</p>
+<h4 id="apikey-generation">ApiKey Generation</h4>
+<p>ApiKey is a globally unique string randomly generated by the Loopring relayer and bound to your account when your account is registered.</p>
 
                                 
                                 </section>
@@ -838,12 +897,12 @@
 
             
                 
-                <a href="../GLOSSARY.html" class="navigation navigation-prev " aria-label="Previous page: 术语">
+                <a href="orders.html" class="navigation navigation-prev " aria-label="Previous page: Orders">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="signing.html" class="navigation navigation-next " aria-label="Next page: 链下请求签名">
+                <a href="signing.html" class="navigation navigation-next " aria-label="Next page: Request Signing">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -854,7 +913,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"管理API Key","level":"2.1","depth":1,"next":{"title":"链下请求签名","level":"2.2","depth":1,"path":"tutorials/signing.md","ref":"tutorials/signing.md","articles":[]},"previous":{"title":"术语","level":"1.2","depth":1,"path":"GLOSSARY.md","ref":"GLOSSARY.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.org/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"tutorials/api_key.md","mtime":"2020-04-03T01:50:56.957Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-03T01:50:58.241Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"Key Management","level":"2.2","depth":1,"next":{"title":"Request Signing","level":"2.3","depth":1,"path":"basics/signing.md","ref":"basics/signing.md","articles":[]},"previous":{"title":"Orders","level":"2.1","depth":1,"path":"basics/orders.md","ref":"basics/orders.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"basics/key_mgmt.md","mtime":"2020-04-08T00:40:12.479Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-08T00:40:14.047Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>

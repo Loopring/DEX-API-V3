@@ -1,8 +1,9 @@
-提交订单接口, 要正确提交Loopring订单,需要以下步骤:
-- 通过[/api/v2/orderId](./getNextOrderId.md)获取正确的orderId
-- 选择合理有效时间(validSince和validUntil, 最佳方案是validSince大于当前时间, validUntil是当前时间很久之后, 比如一年)
-- 选择合理的MaxFeeBips, 这个字段限制了交易所对用户收费的上限
-- 如果做市商想使用自己的唯一ID来标示订单, 请使用clientOrderId
-- 如果订单是有渠道来源的, 请使用channelId
-- 对订单进行签名
-- 提交订单, 确认返回的结果包含订单Hash
+
+您需要以下步骤来下单：
+
+1. 通过`/api/v2/orderId`获取正确的`orderId`。如果您在客户端维护订单ID，可以跳过该步骤。
+1. 选择合理的`validSince`和`validUntil`值。我们推荐的参数是`validSince`设置为当前系统时间，`validUntil`设置成比当前时间晚至少一个星期。
+1. 选择合理的`MaxFeeBips`。我们建议这个值设置为`63`。
+1. 如果您想更好地追踪订单，请选择使用`clientOrderId`和（或）`channelId`。
+1. 对订单进行签名。
+1. 提交订单, 确认返回的结果包含订单哈希。

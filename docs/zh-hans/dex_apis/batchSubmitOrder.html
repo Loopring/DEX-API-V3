@@ -132,9 +132,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2" data-path="../GLOSSARY.html">
+        <li class="chapter " data-level="1.2" data-path="../glossary.html">
             
-                <a href="../GLOSSARY.html">
+                <a href="../glossary.html">
             
                     
                     术语
@@ -148,16 +148,16 @@
 
     
         
-        <li class="header">教程</li>
+        <li class="header">基础</li>
         
         
     
-        <li class="chapter " data-level="2.1" data-path="../tutorials/api_key.html">
+        <li class="chapter " data-level="2.1" data-path="../basics/orders.html">
             
-                <a href="../tutorials/api_key.html">
+                <a href="../basics/orders.html">
             
                     
-                    管理API Key
+                    订单模型
             
                 </a>
             
@@ -165,12 +165,12 @@
             
         </li>
     
-        <li class="chapter " data-level="2.2" data-path="../tutorials/signing.html">
+        <li class="chapter " data-level="2.2" data-path="../basics/key_mgmt.html">
             
-                <a href="../tutorials/signing.html">
+                <a href="../basics/key_mgmt.html">
             
                     
-                    链下请求签名
+                    秘钥管理
             
                 </a>
             
@@ -178,12 +178,38 @@
             
         </li>
     
-        <li class="chapter " data-level="2.3" data-path="../tutorials/trading.html">
+        <li class="chapter " data-level="2.3" data-path="../basics/signing.html">
             
-                <a href="../tutorials/trading.html">
+                <a href="../basics/signing.html">
             
                     
-                    做市商集成
+                    请求签名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="../basics/examples.html">
+            
+                <a href="../basics/examples.html">
+            
+                    
+                    示范代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="../basics/contracts.html">
+            
+                <a href="../basics/contracts.html">
+            
+                    
+                    智能合约
             
                 </a>
             
@@ -198,12 +224,12 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="../REST_APIS.html">
+        <li class="chapter " data-level="3.1" data-path="../rest_apis.html">
             
-                <a href="../REST_APIS.html">
+                <a href="../rest_apis.html">
             
                     
-                    REST APIs
+                    REST API
             
                 </a>
             
@@ -373,7 +399,7 @@
                 <a href="getEthNonce.html">
             
                     
-                    查询nonce
+                    查询用户以太坊地址可用的nonce
             
                 </a>
             
@@ -412,7 +438,7 @@
                 <a href="getMarkets.html">
             
                     
-                    查询市场配置
+                    查询交易所支持的市场配置
             
                 </a>
             
@@ -658,7 +684,7 @@
                 <a href="../websocket/overview.html">
             
                     
-                    WebSocket APIs
+                    WebSocket API
             
                 </a>
             
@@ -685,7 +711,7 @@
                 <a href="../websocket/depth10.html">
             
                     
-                    订阅订单簿买卖前10的全量推送
+                    订阅买卖前10全量推送
             
                 </a>
             
@@ -698,7 +724,7 @@
                 <a href="../websocket/trade.html">
             
                     
-                    订阅市场交易的更新
+                    订阅最新成交
             
                 </a>
             
@@ -711,7 +737,7 @@
                 <a href="../websocket/ticker.html">
             
                     
-                    订阅市场Ticker的更新
+                    订阅Ticker更新
             
                 </a>
             
@@ -724,7 +750,7 @@
                 <a href="../websocket/candleStick.html">
             
                     
-                    订阅市场CandleStick更新
+                    订阅CandleStick更新
             
                 </a>
             
@@ -737,7 +763,7 @@
                 <a href="../websocket/account.html">
             
                     
-                    订阅用户余额更新
+                    订阅用户账号金额更新
             
                 </a>
             
@@ -836,7 +862,7 @@
 <td style="text-align:left">X-API-KEY</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">API Key</td>
+<td style="text-align:left">ApiKey</td>
 <td style="text-align:left">&quot;HlkcGxbqBeaF76j4rvPaOasyfPwnkQ<br>6B6DQ6THZWbvrAGxzEdulXQvOKLrRW<br>ZLnN&quot;</td>
 </tr>
 </tbody>
@@ -892,7 +918,7 @@
             <span class="hljs-attr">&quot;signatureRy&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
             <span class="hljs-attr">&quot;signatureS&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
             <span class="hljs-attr">&quot;clientOrderId&quot;</span> : <span class="hljs-string">&quot;1&quot;</span>,
-            <span class="hljs-attr">&quot;channelId&quot;</span> : <span class="hljs-string">&quot;1&quot;</span>
+            <span class="hljs-attr">&quot;channelId&quot;</span> : <span class="hljs-string">&quot;hebao::subchannel::0001&quot;</span>
         }
     ]
 }</span></code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -X POST -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> -H <span class="hljs-string">&quot;Content-Type:application/json&quot;</span> https://api.loopring.io/api/v2/batchOrders <span class="hljs-_">-d</span> \
@@ -916,7 +942,7 @@
             &quot;signatureRy&quot; : &quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;,
             &quot;signatureS&quot; : &quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;,
             &quot;clientOrderId&quot; : &quot;1&quot;,
-            &quot;channelId&quot; : &quot;1&quot;
+            &quot;channelId&quot; : &quot;hebao::subchannel::0001&quot;
         }
     ]
 }&apos;</span></code></pre></div></div></div></p>
@@ -965,11 +991,11 @@
     ]
 }
 </code></pre>
-<h4 id="&#x8FD4;&#x56DE;&#x7801;">&#x8FD4;&#x56DE;&#x7801;</h4>
+<h4 id="&#x72B6;&#x6001;&#x7801;">&#x72B6;&#x6001;&#x7801;</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">&#x8FD4;&#x56DE;&#x7801;</th>
+<th style="text-align:left">&#x72B6;&#x6001;&#x7801;</th>
 <th style="text-align:left">&#x63CF;&#x8FF0;</th>
 </tr>
 </thead>
@@ -1091,28 +1117,28 @@
 <td style="text-align:left">label</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x8BA2;&#x5355;&#x6765;&#x6E90;&#x6807;&#x7B7E;</td>
+<td style="text-align:left">&#x8BA2;&#x5355;&#x6807;&#x7B7E;,&#x7528;&#x6765;&#x6807;&#x793A;&#x8BA2;&#x5355;&#x5C5E;&#x6027;&#x6216;&#x8005;&#x6765;&#x6E90;&#x7B49;, &#x53C2;&#x4E0E;&#x8BA2;&#x5355;&#x7B7E;&#x540D;, &#x53D6;&#x503C;&#x8303;&#x56F4;0~65535</td>
 <td style="text-align:left">20</td>
 </tr>
 <tr>
 <td style="text-align:left">signatureRx</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x8BA2;&#x5355;&#x7B7E;&#x540D;&#x7ED3;&#x679C;x&#x90E8;&#x5206;</td>
+<td style="text-align:left">&#x8BA2;&#x5355;&#x7B7E;&#x540D;&#x7ED3;&#x679C;Rx&#x90E8;&#x5206;</td>
 <td style="text-align:left">13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859</td>
 </tr>
 <tr>
 <td style="text-align:left">signatureRy</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x8BA2;&#x5355;&#x7B7E;&#x540D;&#x7ED3;&#x679C;y&#x90E8;&#x5206;</td>
+<td style="text-align:left">&#x8BA2;&#x5355;&#x7B7E;&#x540D;&#x7ED3;&#x679C;Ry&#x90E8;&#x5206;</td>
 <td style="text-align:left">13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859</td>
 </tr>
 <tr>
 <td style="text-align:left">signatureS</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x8BA2;&#x5355;&#x7B7E;&#x540D;&#x7ED3;&#x679C;s&#x90E8;&#x5206;</td>
+<td style="text-align:left">&#x8BA2;&#x5355;&#x7B7E;&#x540D;&#x7ED3;&#x679C;S&#x90E8;&#x5206;</td>
 <td style="text-align:left">13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859</td>
 </tr>
 <tr>
@@ -1126,8 +1152,8 @@
 <td style="text-align:left">channelId</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">&#x8BA2;&#x5355;&#x6E20;&#x9053;&#x53F7;</td>
-<td style="text-align:left">1</td>
+<td style="text-align:left">&#x8BA2;&#x5355;&#x6E20;&#x9053;&#x53F7;, &#x7528;&#x6765;&#x6807;&#x793A;&#x8BA2;&#x5355;&#x4ECE;&#x54EA;&#x4E2A;&#x6E20;&#x9053;&#x63D0;&#x4EA4;</td>
+<td style="text-align:left">hebao::subchannel::0<br>001</td>
 </tr>
 </tbody>
 </table>
@@ -1261,7 +1287,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"批量提交订单","level":"3.1.7","depth":2,"next":{"title":"获取用户订单列表","level":"3.1.8","depth":2,"path":"dex_apis/getOrders.md","ref":"dex_apis/getOrders.md","articles":[]},"previous":{"title":"提交订单","level":"3.1.6","depth":2,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.org/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/batchSubmitOrder.md","mtime":"2020-04-03T01:50:56.664Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-03T01:50:58.241Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"批量提交订单","level":"3.1.7","depth":2,"next":{"title":"获取用户订单列表","level":"3.1.8","depth":2,"path":"dex_apis/getOrders.md","ref":"dex_apis/getOrders.md","articles":[]},"previous":{"title":"提交订单","level":"3.1.6","depth":2,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/batchSubmitOrder.md","mtime":"2020-04-08T00:40:12.170Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-08T00:40:14.047Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>
