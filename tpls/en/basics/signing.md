@@ -4,7 +4,7 @@ The Loopring API involves two different categories of signatures. One is the com
 
 ## Common API Request Signatures
 
-- **TODO**: wait for Yongfeng's final implementation
+{% include "./generic_api_signature.md" %}
 
 ## Off-chain Request Signatures
 

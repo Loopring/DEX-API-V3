@@ -5,7 +5,7 @@
 
 ## 通用API请求签名
 
-- **TODO**: 等待永丰
+{% include "./generic_api_signature.md" %}
 
 ## 路印协议链下请求签名
 
