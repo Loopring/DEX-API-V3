@@ -599,7 +599,7 @@ def parse_tps(config):
     tps['default'] = default
     for apitps in config.get('apis', []):
         name = apitps.get('api')
-        keyRate = apitps.get('keyRate', DEFAULT_KEY_TPS)
+        keyRate = apitps.get('keyRate', default)
         if (apitps.get('method') is None):
             tps[(name, 'get')] = keyRate
             tps[(name, 'post')] = keyRate
