@@ -3,7 +3,7 @@
 ## {{l.summary.About.About}}
 
 * [{{l.summary.About.Loopring}}](README.md)
-* [{{l.summary.About.Glossary}}](glossary.md)
+* [{{l.summary.About.Glossary}}](GLOSSARY.md)
 
 ## {{l.summary.Basics.Basics}}
 
@@ -15,7 +15,7 @@
 
 ## [{{l.summary.APISpec.APISpec}}](dex_api_overview.md)
 
-* [{{l.summary.APISpec.RESTAPIs}}](rest_apis.md)
+* [{{l.summary.APISpec.RESTAPIs}}](REST_APIS.md)
     {% for api in apis %}
     * [{{api.summary}}]({{g_api_doc(api.operationId, "dex_apis", api.operationId)}})
     {% endfor %}
