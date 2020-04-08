@@ -1,0 +1,964 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Key Management · Loopring API</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-codetabs/codetabs.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="signing.html" />
+    
+    
+    <link rel="prev" href="orders.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">About</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Loopring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../glossary.html">
+            
+                <a href="../glossary.html">
+            
+                    
+                    Glossary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Fundamental</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="orders.html">
+            
+                <a href="orders.html">
+            
+                    
+                    Orders
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.2" data-path="key_mgmt.html">
+            
+                <a href="key_mgmt.html">
+            
+                    
+                    Key Management
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.3" data-path="signing.html">
+            
+                <a href="signing.html">
+            
+                    
+                    Request Signing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="examples.html">
+            
+                <a href="examples.html">
+            
+                    
+                    Example Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="contracts.html">
+            
+                <a href="contracts.html">
+            
+                    
+                    Smart Contracts
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">API Specification (2.0)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../rest_apis.html">
+            
+                <a href="../rest_apis.html">
+            
+                    
+                    REST APIs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../dex_apis/getTimestamp.html">
+            
+                <a href="../dex_apis/getTimestamp.html">
+            
+                    
+                    Query the servers current time
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../dex_apis/getApiKey.html">
+            
+                <a href="../dex_apis/getApiKey.html">
+            
+                    
+                    Query users ApiKey
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../dex_apis/applyApiKey.html">
+            
+                <a href="../dex_apis/applyApiKey.html">
+            
+                    
+                    Update users ApiKey
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../dex_apis/getNextOrderId.html">
+            
+                <a href="../dex_apis/getNextOrderId.html">
+            
+                    
+                    Get the next valid OrderId
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../dex_apis/getOrderDetail.html">
+            
+                <a href="../dex_apis/getOrderDetail.html">
+            
+                    
+                    Get order details
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../dex_apis/submitOrder.html">
+            
+                <a href="../dex_apis/submitOrder.html">
+            
+                    
+                    Submit order
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" data-path="../dex_apis/batchSubmitOrder.html">
+            
+                <a href="../dex_apis/batchSubmitOrder.html">
+            
+                    
+                    Batch submit order
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.8" data-path="../dex_apis/getOrders.html">
+            
+                <a href="../dex_apis/getOrders.html">
+            
+                    
+                    Get order list
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.9" data-path="../dex_apis/cancelOrders.html">
+            
+                <a href="../dex_apis/cancelOrders.html">
+            
+                    
+                    Cancel order
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.10" data-path="../dex_apis/batchCancelOrdersByOrderHash.html">
+            
+                <a href="../dex_apis/batchCancelOrdersByOrderHash.html">
+            
+                    
+                    Cancel multiple order by hashes.
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.11" data-path="../dex_apis/batchCancelOrdersByClientOrderId.html">
+            
+                <a href="../dex_apis/batchCancelOrdersByClientOrderId.html">
+            
+                    
+                    Cancel multiple orders by clientOrderIds.
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.12" data-path="../dex_apis/sendTransaction.html">
+            
+                <a href="../dex_apis/sendTransaction.html">
+            
+                    
+                    Send raw transaction
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.13" data-path="../dex_apis/getEthNonce.html">
+            
+                <a href="../dex_apis/getEthNonce.html">
+            
+                    
+                    Query the available nonce of the users Ethereum address
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.14" data-path="../dex_apis/getEthBalance.html">
+            
+                <a href="../dex_apis/getEthBalance.html">
+            
+                    
+                    Query ETH balance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.15" data-path="../dex_apis/getRecommendedGasPrice.html">
+            
+                <a href="../dex_apis/getRecommendedGasPrice.html">
+            
+                    
+                    Get current recommended gas price
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.16" data-path="../dex_apis/getMarkets.html">
+            
+                <a href="../dex_apis/getMarkets.html">
+            
+                    
+                    Query the market configuration supported by the exchange
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.17" data-path="../dex_apis/getTokens.html">
+            
+                <a href="../dex_apis/getTokens.html">
+            
+                    
+                    Query the token information supported by the exchange
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.18" data-path="../dex_apis/getExchangeInfo.html">
+            
+                <a href="../dex_apis/getExchangeInfo.html">
+            
+                    
+                    Query exchange basic info.
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.19" data-path="../dex_apis/getDepth.html">
+            
+                <a href="../dex_apis/getDepth.html">
+            
+                    
+                    Get order book info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.20" data-path="../dex_apis/getTicker.html">
+            
+                <a href="../dex_apis/getTicker.html">
+            
+                    
+                    The response of querying the exchange ticker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.21" data-path="../dex_apis/getCandlestick.html">
+            
+                <a href="../dex_apis/getCandlestick.html">
+            
+                    
+                    Query candlestick data
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.22" data-path="../dex_apis/getPrice.html">
+            
+                <a href="../dex_apis/getPrice.html">
+            
+                    
+                    Query token fiat price
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.23" data-path="../dex_apis/getMarketTrade.html">
+            
+                <a href="../dex_apis/getMarketTrade.html">
+            
+                    
+                    Query market trades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.24" data-path="../dex_apis/getAllowance.html">
+            
+                <a href="../dex_apis/getAllowance.html">
+            
+                    
+                    Query allowance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.25" data-path="../dex_apis/getTokenBalance.html">
+            
+                <a href="../dex_apis/getTokenBalance.html">
+            
+                    
+                    Query token balance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.26" data-path="../dex_apis/getAccount.html">
+            
+                <a href="../dex_apis/getAccount.html">
+            
+                    
+                    Query user information
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.27" data-path="../dex_apis/getUserCreate.html">
+            
+                <a href="../dex_apis/getUserCreate.html">
+            
+                    
+                    Get user creation list
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.28" data-path="../dex_apis/getUserUpdate.html">
+            
+                <a href="../dex_apis/getUserUpdate.html">
+            
+                    
+                    Get user update list
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.29" data-path="../dex_apis/getUserBalances.html">
+            
+                <a href="../dex_apis/getUserBalances.html">
+            
+                    
+                    Query the users balance in exchange
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.30" data-path="../dex_apis/getUserDeposits.html">
+            
+                <a href="../dex_apis/getUserDeposits.html">
+            
+                    
+                    Get user deposit list
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.31" data-path="../dex_apis/getUserWithdrawals.html">
+            
+                <a href="../dex_apis/getUserWithdrawals.html">
+            
+                    
+                    Get user withdrawal list
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.32" data-path="../dex_apis/getUserTransfers.html">
+            
+                <a href="../dex_apis/getUserTransfers.html">
+            
+                    
+                    Get user transfer list
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.33" data-path="../dex_apis/getUserTrades.html">
+            
+                <a href="../dex_apis/getUserTrades.html">
+            
+                    
+                    Get user trading list
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../websocket/overview.html">
+            
+                <a href="../websocket/overview.html">
+            
+                    
+                    WebSocket APIs
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../websocket/depth.html">
+            
+                <a href="../websocket/depth.html">
+            
+                    
+                    订阅订单簿更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../websocket/depth10.html">
+            
+                <a href="../websocket/depth10.html">
+            
+                    
+                    订阅订单簿买卖前10的全量推送
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../websocket/trade.html">
+            
+                <a href="../websocket/trade.html">
+            
+                    
+                    订阅市场交易的更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../websocket/ticker.html">
+            
+                <a href="../websocket/ticker.html">
+            
+                    
+                    订阅市场Ticker的更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../websocket/candleStick.html">
+            
+                <a href="../websocket/candleStick.html">
+            
+                    
+                    订阅市场CandleStick更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../websocket/account.html">
+            
+                <a href="../websocket/account.html">
+            
+                    
+                    订阅用户余额更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.7" data-path="../websocket/order.html">
+            
+                <a href="../websocket/order.html">
+            
+                    
+                    订阅用户订单更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Key Management</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="key-management">Key Management</h1>
+<p>Before using Loopring&apos;s API, you need to know how to obtain and change your account&apos;s EdDSA key pair and ApiKey. When invoking the API, the ApiKey needs to be passed to the relayer as an HTTP header value; the EdDSA secret key is used to sign the request on the client-side digitally.</p>
+<h2 id="obtain-eddsa-key-pair-and-apikey">Obtain EdDSA key pair and ApiKey</h2>
+<p>First of all, you need to register an account on Loopring Exchange (<a href="https://loopring.io" target="_blank">Loopring.io</a>). Then you can use the &quot;Export Account&quot; function to export account-related information as a JSON object. The JSON object includes your EdDSA key pair and your account&apos;s ApiKey.</p>
+<p>The exported JSON should look like the following:</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;exchangeName&quot;</span>: <span class="hljs-string">&quot;LoopringDEX: Beta 1&quot;</span>,
+    <span class="hljs-string">&quot;exchangeAddress&quot;</span>: <span class="hljs-string">&quot;0x944644Ea989Ec64c2Ab9eF341D383cEf586A5777&quot;</span>,
+    <span class="hljs-string">&quot;exchangeId&quot;</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-string">&quot;accountAddress&quot;</span>: <span class="hljs-string">&quot;0xe9577b420d96adfc97ff1e9e0557f8c73d7247fe&quot;</span>,
+    <span class="hljs-string">&quot;accountId&quot;</span>: <span class="hljs-number">12345</span>,
+    <span class="hljs-string">&quot;apiKey&quot;</span>: <span class="hljs-string">&quot;qXJpfTKrF0O5jIDPYIu7YkVgLFbvm5uIgPKBmHP2kBpcdKZjgfFKhIlE8evo9lKa&quot;</span>,
+    <span class="hljs-string">&quot;publicKeyX&quot;</span>: <span class="hljs-string">&quot;20230748339558541226323870947000799026059173889124399831342481595010628000129&quot;</span>,
+    <span class="hljs-string">&quot;publicKeyY&quot;</span>: <span class="hljs-string">&quot;4980637490279511620100245514492532318691849019959343538108355525575855311214&quot;</span>,
+    <span class="hljs-string">&quot;privateKey&quot;</span>: <span class="hljs-string">&quot;1242957328515765470505817310060337585626176314364086438653683782645761561015&quot;</span>
+}
+</code></pre>
+<p>The first four fields are constants to the current version of the Loopring Exchange; other fields are about your account. Among them, <code>publicKeyX</code> and<code>publicKeyY</code>  are collectively the EdDSA public key of your account, and <code>privateKey</code> is the EdDSA private key.</p>
+<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>Please keep your EdDSA key pair and ApiKey strictly confidential. If you leak these information, your assets will be at risk.
+In any case, Loopring Exchange&apos;s UI and its API will never ask you for your EdDSA private key.</p>
+</div></div></p>
+<h2 id="change-eddsa-key-pair-and-apikey">Change EdDSA key pair and ApiKey</h2>
+<p>You can change your EdDSA key pair through the &quot;Change Password&quot; function on Loopring Exchange. Because changing the password involves an Ethereum transaction and zero-knowledge proof generation, it will take a while for your new EdDSA key pair to becomes effective. You can get account information through the <code>/api/v2/account</code> API. If the<code>frozen</code> field is <code>true</code>, it means that your account is in the processing of applying the new EdDSA key pair, during such a period, neither your previous EdDSA key pair nor your new EdDSA key pair can be used to sign requests.</p>
+<p>When you change your password on Loopring.io, your ApiKey will also be automatically updated.  You can also change your ApiKey using  API.</p>
+<h4 id="eddsa-generation">EdDSA Generation</h4>
+<p>The Loopring protocol does not specify how to generate or manage  EdDSA key pairs. Loopring Exchange uses each account&apos;s <strong>Ethereum address</strong> and <strong>trading password</strong> to derive the EdDSA key pair.
+As Ethereum addresses are public information, <strong>the strength of your trading password is thus critical to the security of your trading assets</strong>.</p>
+<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>If you use Loopring Exchange&apos;s website to set the trading password, your password should be strong enough not to worry about being brute-forced; otherwise, you need to be careful not to use a simple password. Unlike a centralized exchange, brute-forcing your EdDSA key does not have to go through Loopring relayer - your EdDSA public key is stored on Ethereum, and hackers can read it out for brute force comparison.</p>
+</div></div></p>
+<p>The algorithm for compute the EdDSA key pair is as follows (Python):</p>
+<pre><code class="lang-python">seed = keccakHash(<span class="hljs-string">&apos;LOOPRING&apos;</span> + address.toLowerCase() + keccakHash(password))
+keyPair = myEdDSAGenerator.generate(seed)
+</code></pre>
+<p>where <code>keccakHash</code> returns the hex string of the kecca256 result.</p>
+<h4 id="apikey-generation">ApiKey Generation</h4>
+<p>ApiKey is a globally unique string randomly generated by the Loopring relayer and bound to your account when your account is registered.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="orders.html" class="navigation navigation-prev " aria-label="Previous page: Orders">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="signing.html" class="navigation navigation-next " aria-label="Next page: Request Signing">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Key Management","level":"2.2","depth":1,"next":{"title":"Request Signing","level":"2.3","depth":1,"path":"basics/signing.md","ref":"basics/signing.md","articles":[]},"previous":{"title":"Orders","level":"2.1","depth":1,"path":"basics/orders.md","ref":"basics/orders.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"basics/key_mgmt.md","mtime":"2020-04-08T02:19:34.251Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-08T02:19:35.961Z"},"basePath":"..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-codetabs/codetabs.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+
+    </body>
+</html>
+
