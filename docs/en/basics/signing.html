@@ -837,56 +837,52 @@
                                 <h1 id="request-signing">Request Signing</h1>
 <p>The Loopring API involves two different categories of signatures. One is the common <strong>API request signature</strong>, which is used to verify that the API invocations have been authenticated; the other is Loopring Protocol&apos;s <strong>off-chain request signature</strong>, which is used by Loopring to verify that off-chain requests have been authenticated. We will explain each of these two categories separately.</p>
 <h2 id="common-api-request-signatures">Common API Request Signatures</h2>
-<h4 id="&#x7B7E;&#x540D;&#x751F;&#x6210;&#x7B97;&#x6CD5;&#xFF08;&#x4F2A;&#x4EE3;&#x7801;&#xFF09;">&#x7B7E;&#x540D;&#x751F;&#x6210;&#x7B97;&#x6CD5;&#xFF08;&#x4F2A;&#x4EE3;&#x7801;&#xFF09;</h4>
+<h4 id="algorithm">Algorithm</h4>
 <ul>
-<li>&#x521D;&#x59CB;&#x5316;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;<code>signatureBase</code></li>
-<li>&#x5C06;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x5B57;&#x7B26;&#x4E32;&#x8FFD;&#x52A0;&#x5230;<code>signatureBase</code></li>
-<li>&#x5C06;&#x201C;&#xFF06;&#x201D;&#x5B57;&#x7B26;&#x9644;&#x52A0;&#x5230;<code>signatureBase</code></li>
-<li>&#x5C06;<code>percent-encoded</code>&#x7684;&#x8BF7;&#x6C42;&#x8DEF;&#x5F84;&#xFF08;&#x4E0D;&#x662F;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#xFF09;&#x8FFD;&#x52A0;&#x5230;<code>signatureBase</code></li>
-<li>&#x5C06;&#x201C;&#xFF06;&#x201D;&#x5B57;&#x7B26;&#x9644;&#x52A0;&#x5230;<code>signatureBase</code></li>
-<li>&#x521D;&#x59CB;&#x5316;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;<code>parameterString</code></li>
-<li>&#x5BF9;&#x4E8E;GET / DELETE &#x6570;&#x636E;<ul>
-<li>&#x5C06;&#x8BF7;&#x6C42;&#x91CC;&#x7684;&#x53C2;&#x6570;&#x6309;&#x952E;&#x7684;&#x5B57;&#x5178;&#x987A;&#x5E8F;&#x6392;&#x5E8F;&#xFF0C;&#x5F97;&#x5230;&#x6392;&#x8FC7;&#x5E8F;&#x540E;&#x7684;&#x952E;/&#x503C;&#x5BF9;</li>
-<li>&#x5C06;<code>percent-encoded</code>&#x7684;&#x952E;&#x9644;&#x52A0;&#x5230;<code>parameterString</code></li>
-<li>&#x5C06;&#x201C;=&#x201D;&#x5B57;&#x7B26;&#x9644;&#x52A0;&#x5230;<code>parameterString</code></li>
-<li>&#x5C06;<code>percent-encoded</code>&#x7684;&#x503C;&#x9644;&#x52A0;&#x5230;<code>parameterString</code></li>
-<li>&#x5982;&#x679C;&#x6709;&#x66F4;&#x591A;&#x7684;&#x952E;/&#x503C;&#x5BF9;&#xFF0C;&#x8BF7;&#x5728;<code>parameterString</code>&#x540E;&#x9762;&#x9644;&#x52A0;&#x201C;&#xFF06;&#x201D;&#x5B57;&#x7B26;</li>
+<li>Initialize <code>signatureBase</code> to an empty string.</li>
+<li>Append the API&apos;s  HTTP method to <code>signatureBase</code>.</li>
+<li>Append <code>&apos;&#xFF06;&apos;</code> to <code>signatureBase</code>.</li>
+<li>Append <em>percent-encoded</em> full URL path (without <code>?</code> or any query parameters) to <code>signatureBase</code>.</li>
+<li>Append <code>&apos;&amp;&apos;</code> to <code>signatureBase</code>.</li>
+<li>Initialize <code>parameterString</code> to an empty string.</li>
+<li>For GET / DELETE requests:<ul>
+<li>Sort query parameters in ascending order lexicographically;</li>
+<li>Append <em>percent-encoded</em> key name to <code>parameterString</code>;</li>
+<li>Append an <code>&apos;=&apos;</code> to <code>parameterString</code>;</li>
+<li>Append <em>percent-encoded</em> value to <code>parameterString</code>;</li>
+<li>Append a <code>&apos;&amp;&apos;</code> if there are more key value pairs.</li>
 </ul>
 </li>
-<li>&#x5BF9;&#x4E8E;POST / PUT &#x6570;&#x636E;<ul>
-<li>&#x5C06;&#x53D1;&#x9001;&#x8BF7;&#x6C42;&#x7684;body json&#x5B57;&#x7B26;&#x4E32;&#x9644;&#x52A0;&#x5230;<code>parameterString</code></li>
+<li>For POST / PUT requests:<ul>
+<li>Append request body as a string to <code>parameterString</code>.</li>
 </ul>
 </li>
-<li>&#x5C06;<code>percent-encoded</code>&#x7684;<code>parameterString</code>&#x9644;&#x52A0;&#x5230;<code>signatureBase</code></li>
-<li>&#x8BA1;&#x7B97;<code>signatureBase</code>&#x7684;<strong>SHA-256</strong>&#x54C8;&#x5E0C;&#x503C;<code>hash</code></li>
-<li>&#x5BF9;<code>hash</code>&#x7528;&#x8D26;&#x53F7;&#x7684;&#x79C1;&#x94A5;<code>privateKey</code>&#x505A;&#x7B7E;&#x540D;&#xFF0C;&#x5F97;&#x5230;&#x4E09;&#x4E2A;&#x503C;&#xFF1A;<code>Rx</code>,<code>Ry</code>, &#x548C;<code>S</code></li>
-<li>&#x5C06;<code>Rx</code>,<code>Ry</code>, &#x548C;<code>S</code>&#x901A;&#x8FC7;&#x9017;&#x53F7;&#x5206;&#x9694;&#x62FC;&#x63A5;&#x6210;&#x6700;&#x7EC8;&#x7B7E;&#x540D;&#x5B57;&#x7B26;&#x4E32;&#xFF1A;<code>${Rx},${Ry},${S}</code></li>
+<li>Append <em>percent-encoded</em> <code>parameterString</code> to <code>signatureBase</code></li>
+<li>Calculate the <strong>SHA-256</strong> hash of <code>signatureBase</code> as <code>hash</code>.</li>
+<li>Sign<code>hash</code> with the private EdDSA key and get <code>Rx</code>, <code>Ry</code>, and <code>S</code>.</li>
+<li>Concatenate <code>Rx</code>,<code>Ry</code>, and<code>S</code> using <code>&apos;,&apos;</code> as: <code>${Rx},${Ry},${S}</code>.</li>
 </ul>
-<h4 id="&#x83B7;&#x53D6;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x548C;url">&#x83B7;&#x53D6;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#x548C;URL</h4>
-<p>&#x8981;&#x751F;&#x6210;&#x7B7E;&#x540D;&#xFF0C;&#x8BF7;&#x5148;&#x786E;&#x5B9A;HTTP method&#x548C;&#x8BF7;&#x6C42;&#x7684;base URL&#x3002;loopring.io REST API&#x4F7F;&#x7528;&#x56DB;&#x79CD;&#x8BF7;&#x6C42;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<h4 id="http-method-and-url">HTTP Method and URL</h4>
+<p>Please make sure you use only the following HTTP methods, in upper case letters.</p>
 <ul>
 <li>GET</li>
 <li>POST</li>
 <li>PUT</li>
 <li>DELETE</li>
 </ul>
-<blockquote>
-<p>Http method</p>
-<pre><code>GET
-</code></pre></blockquote>
-<p>base URL&#x662F;&#x8BF7;&#x6C42;&#x6307;&#x5411;&#x7684;URL&#xFF0C;&#x51CF;&#x53BB;&#x4EFB;&#x4F55;&#x67E5;&#x8BE2;&#x5B57;&#x7B26;&#x4E32;&#x6216;&#x54C8;&#x5E0C;&#x53C2;&#x6570;&#x3002; &#x8BF7;&#x59CB;&#x7EC8;&#x5BF9;loopring.io API&#x4F7F;&#x7528;&quot;<a href="https://&quot;&#x534F;&#x8BAE;&#x3002;" target="_blank">https://&quot;&#x534F;&#x8BAE;&#x3002;</a></p>
-<blockquote>
-<p>Base URL:</p>
+<p>Also make sure the HTTPS header is included and is in lower case. For example:</p>
 <pre><code>https://api.loopring.io/api/v2/apiKey
-</code></pre></blockquote>
-<h4 id="&#x83B7;&#x53D6;&#x8BF7;&#x6C42;&#x53C2;&#x6570;">&#x83B7;&#x53D6;&#x8BF7;&#x6C42;&#x53C2;&#x6570;</h4>
-<p>&#x63A5;&#x4E0B;&#x6765;&#xFF0C;&#x4ECE;query string&#x4E2D;&#x83B7;&#x53D6;&#x8BF7;&#x6C42;&#x53C2;&#x6570;(&#x7528;&#x4E8E;GET&#x548C;POST&#x8BF7;&#x6C42;)&#x548C;body(POST&#x3001;PUT)&#x3002;</p>
-<p>&#x5728;HTTP&#x8BF7;&#x6C42;&#x4E2D;&#xFF0C;&#x53C2;&#x6570;&#x662F;url&#x7F16;&#x7801;&#x7684;&#xFF0C;&#x4F46;&#x662F;&#x60A8;&#x5E94;&#x8BE5;&#x6536;&#x96C6;&#x539F;&#x59CB;&#x503C;&#x3002;&#x5728;&#x4E0A;&#x9762;&#x7684;&#x539F;&#x59CB;HTTP&#x8BF7;&#x6C42;&#x4E2D;&#xFF0C;&#x53C2;&#x6570;&#x5982;&#x4E0B;:</p>
+</code></pre><h4 id="example">Example</h4>
+<p>For the above url with the following url query parameters:</p>
+<pre><code>https://api.loopring.io/api/v2/apiKey?publicKeyX=13375450901292179417154974849571793069
+911517354720397125027633242680470075859&amp;publicKeyY=133754509012921794171549748495717930
+69911517354720397125027633242680470075859&amp;accountId=1
+</code></pre><p>or</p>
 <table>
 <thead>
 <tr>
-<th>&#x53C2;&#x6570;&#x540D;</th>
-<th>&#x53C2;&#x6570;&#x503C;</th>
+<th>Query param</th>
+<th>Value</th>
 </tr>
 </thead>
 <tbody>
@@ -904,29 +900,15 @@
 </tr>
 </tbody>
 </table>
-<p>&#x8FD9;&#x4E9B;&#x503C;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x7F16;&#x7801;&#x548C;&#x62FC;&#x63A5;:</p>
-<ul>
-<li>&#x6309;&#x952E;&#x6309;&#x5B57;&#x5178;&#x987A;&#x5E8F;&#x5BF9;&#x53C2;&#x6570;&#x5217;&#x8868;&#x8FDB;&#x884C;&#x6392;&#x5E8F;</li>
-<li>&#x5BF9;&#x4E8E;&#x6BCF;&#x4E2A;&#x952E;/&#x503C;&#x5BF9;:<ul>
-<li><code>percent-encoded</code>&#x53C2;&#x6570;&#x540D;&#x5E76;&#x5C06;&#x5176;&#x9644;&#x52A0;&#x5230;&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;</li>
-<li>&#x5C06;&apos; = &apos;&#x5B57;&#x7B26;&#x9644;&#x52A0;&#x5230;&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x4E32;</li>
-<li><code>percent-encoded</code>&#x53C2;&#x6570;&#x503C;&#x5E76;&#x5C06;&#x5176;&#x9644;&#x52A0;&#x5230;&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;</li>
-<li>&#x5982;&#x679C;&#x8FD8;&#x5269;&#x4E0B;&#x66F4;&#x591A;&#x7684;&#x952E;/&#x503C;&#x5BF9;&#xFF0C;&#x5219;&#x5C06;&apos;&amp;&apos;&#x5B57;&#x7B26;&#x9644;&#x52A0;&#x5230;&#x8F93;&#x51FA;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;</li>
-</ul>
-</li>
-</ul>
-<blockquote>
-<p>Parameter string:</p>
-<pre><code>accountId=1&amp;publicKeyX=13375450901292179417154974849571793069911517354720397125027633242680470075859&amp;publicKeyY=13375450901292179417154974849571793069911517354720397125027633242680470075859
-</code></pre></blockquote>
-<h4 id="&#x751F;&#x6210;-signature-base-string">&#x751F;&#x6210; <code>signature base string</code></h4>
-<p><code>signature base string</code>&#x662F;&#x6211;&#x4EEC;&#x6309;&#x7167;&#x4EE5;&#x4E0B;&#x987A;&#x5E8F;&#x5C06;&#x4E4B;&#x524D;&#x751F;&#x6210;&#x7684;&#x4E09;&#x4E2A;&#x5B57;&#x7B26;&#x4E32;&#x8FDE;&#x63A5;&#x8D77;&#x6765;&#x7684;&#x7ED3;&#x679C;:HTTP method&#x3001;<code>percent-encoded</code>&#x7684;<code>base URL</code>&#x548C;<code>percent-encoded</code>&#x7684;<code>parameter string</code>&#xFF0C;&#x5728;&#x76F8;&#x90BB;&#x7EC4;&#x4EF6;&#x4E4B;&#x95F4;&#x7528;&apos;&amp;&apos;&#x5B57;&#x7B26;&#x8FDE;&#x63A5;&#x3002;</p>
-<blockquote>
-<p>Signature base string:</p>
-<pre><code>GET&amp;https%3A%2F%2Fapi.loopring.io%2Fapi%2Fv2%2FapiKey&amp;accountId%3D1%26publicKeyX%3D13375450901292179417154974849571793069911517354720397125027633242680470075859%26publicKeyY%3D13375450901292179417154974849571793069911517354720397125027633242680470075859
-</code></pre><p>&#x8BF7;&#x6CE8;&#x610F;&#xFF0C;&#x6BCF;&#x4E00;&#x90E8;&#x5206;&#x90FD;&#x5E94;&#x8BE5;&#x662F;&#x7ECF;&#x8FC7;<code>percent-encoded</code>&#x7684;&#xFF0C;&#x56E0;&#x6B64;&#x5728;&#x751F;&#x6210;&#x7684;&#x7B7E;&#x540D;&#x57FA;&#x5B57;&#x7B26;&#x4E32;&#x4E2D;&#x5E94;&#x8BE5;&#x6B63;&#x597D;&#x6709;&#x4E24;&#x4E2A;&apos;&amp;&apos;&#x5B57;&#x7B26;&#x3002;</p>
-</blockquote>
-<h2 id="off-chain-request-signatures">Off-chain Request Signatures</h2>
+<p><code>parameterString</code> shoule be:</p>
+<pre><code>accountId=1&amp;publicKeyX=1337545090129217941715497484957179306991151735472039712502763324
+2680470075859&amp;publicKeyY=13375450901292179417154974849571793069911517354720397125027633
+242680470075859
+</code></pre><p>and <code>signatureBase</code> should be:</p>
+<pre><code>GET&amp;https%3A%2F%2Fapi.loopring.io%2Fapi%2Fv2%2FapiKey&amp;accountId%3D1%26publicKeyX%3D1337
+5450901292179417154974849571793069911517354720397125027633242680470075859%26publicKeyY%
+3D13375450901292179417154974849571793069911517354720397125027633242680470075859
+</code></pre><h2 id="off-chain-request-signatures">Off-chain Request Signatures</h2>
 <p>Loopring 3.1.1 supports two types of off-chain requests: <strong>orders</strong> and <strong>off-chain withdrawals</strong>. Since these two off-chain requests will result in modifications to the exchange&apos;s state Merkel tree, when you submit these two types of requests using Loopring&apos;s API, you must provide special signatures required by the Loopring protocol.</p>
 <p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Loopring 3.1.1 also supports a third type of off-chain requests: <strong>order cancellation</strong>, but it will be deprecated in the up-coming 3.5 version. Therefore, Loopring Exchange will not support this type of off-chain requests.</p>
 </div></div></p>
@@ -1080,7 +1062,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Request Signing","level":"2.3","depth":1,"next":{"title":"Example Code","level":"2.4","depth":1,"path":"basics/examples.md","ref":"basics/examples.md","articles":[]},"previous":{"title":"Key Management","level":"2.2","depth":1,"path":"basics/key_mgmt.md","ref":"basics/key_mgmt.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"basics/signing.md","mtime":"2020-04-08T02:30:39.486Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-08T02:30:41.005Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Request Signing","level":"2.3","depth":1,"next":{"title":"Example Code","level":"2.4","depth":1,"path":"basics/examples.md","ref":"basics/examples.md","articles":[]},"previous":{"title":"Key Management","level":"2.2","depth":1,"path":"basics/key_mgmt.md","ref":"basics/key_mgmt.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"basics/signing.md","mtime":"2020-04-10T05:06:12.248Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-10T05:06:13.404Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
