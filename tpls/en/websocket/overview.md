@@ -28,12 +28,11 @@ Clients can send JSON to subscribe to multiple topics:
             "market": "LRC-USDT"
         },
         {
-            "topic:": "depth",
-            "market": "LRC-ETH",
-            "count": 10
+            "topic:": "orderbook",
+            "market": "LRC-ETH"
         },
         {
-            "topic:": "depth",
+            "topic:": "orderbook",
             "market": "LRC-USDT",
             "count": 20,
             "snapshot": true
@@ -73,7 +72,7 @@ Clients can send JSON to unsubscribe from multiple topics:
             "market": "LRC-USDT"
         },
         {
-            "topic:": "depth",
+            "topic:": "orderbook",
             "unsubscribeAll":true
         }
     ]
@@ -94,27 +93,27 @@ After a WebSocket connection is established, the relay will send a "ping" messag
 
 ## Response
 
-|  Field  |     Type     | Required |               Note               |      
+|  Field  |     Type     | Required |               Note               |
 | :---- | :---------- | :------ | :------------------------------ |
-|   op   |    string    |    Y    |         "sub" or "unSub"         |    
-|   sequence   |    integer    |    N    |        A client-side sequence number        |   
-| topics |   JSON  |    Y    |             Topics and their configurations            | 
-| result |    [Result](#result)   |    Y    |             Subscription result             |            
+|   op   |    string    |    Y    |         "sub" or "unSub"         |
+|   sequence   |    integer    |    N    |        A client-side sequence number        |
+| topics |   JSON  |    Y    |             Topics and their configurations            |
+| result |    [Result](#result)   |    Y    |             Subscription result             |
 
 
 ####  <span id="result">Result</span>
 
-|  Field  |      Type       | Required |         Note         | 
+|  Field  |      Type       | Required |         Note         |
 | :---- | :------------- | :------ | :------------------ |
-| status |     string      |    Y    |     Status code     | 
-| error  | [Error](#error) |    N    | Error | 
+| status |     string      |    Y    |     Status code     |
+| error  | [Error](#error) |    N    | Error |
 
 ####   <span id="error">Error</span>
 
-|  Field   |  Type   | Required |   Note   |     
-| :----- | :----- | :------ | :------ | 
-|  code   | integer |    Y    |  Value  |  
-| message | string  |    Y    | Error message | 
+|  Field   |  Type   | Required |   Note   |
+| :----- | :----- | :------ | :------ |
+|  code   | integer |    Y    |  Value  |
+| message | string  |    Y    | Error message |
 
 #### Status code
 
@@ -140,9 +139,8 @@ A successful subscription：
     "op": "sub",
     "sequence": 10000,
     "topic": {
-        "topic:": "depth",
-        "market": "LRC-ETH",
-        "count": 10
+        "topic:": "orderbook",
+        "market": "LRC-ETH"
     },
     "result": {
         "status": "ok"
@@ -157,7 +155,7 @@ A failed subscription：
     "op": "sub",
     "sequence": 10000,
     "topic": {
-        "topic:": "depth",
+        "topic:": "candlestick",
         "market": "LRC-ETH",
         "count": 10
     },
@@ -177,11 +175,7 @@ Another failed subscription：
 {
     "op": "",
     "sequence": 10000,
-    "topic": {
-        "topic:": "depth",
-        "market": "LRC-ETH",
-        "count": 10
-    },
+    "topic": "xxx",
     "result": {
         "status": "failed",
         "error": {

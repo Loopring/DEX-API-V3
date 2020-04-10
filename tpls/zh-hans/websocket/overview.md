@@ -28,13 +28,14 @@ wss://ws.loopring.io/v2/ws
             "market": "LRC-USDT"
         },
         {
-            "topic:": "depth",
+            "topic:": "orderbook",
             "market": "LRC-ETH",
-            "count": 10
+          	"level": 0
         },
         {
-            "topic:": "depth",
+            "topic:": "orderbook",
             "market": "LRC-USDT",
+          	"level": 0,
             "count": 20,
             "snapshot": true
         }
@@ -73,7 +74,7 @@ wss://ws.loopring.io/v2/ws
             "market": "LRC-USDT"
         },
         {
-            "topic:": "depth",
+            "topic:": "orderbook",
             "unsubscribeAll":true
         }
     ]
@@ -94,27 +95,27 @@ WebSocket链接建立后，中继会每30秒会发送“ping”消息给客户�
 
 ## 返回值
 
-|  字段  |     类型     | 必现 |               说明               |      
+|  字段  |     类型     | 必现 |               说明               |
 | :---- | :---------- | :------ | :------------------------------ |
-|   op   |    string    |    是    |         订阅（"sub"）或订退（unSub"）         |    
-|   sequence   |    integer    |    否    |        操作序列号        |   
-| topics |   JSON  |    是    |             订阅主题和参数            | 
-| result |    [Result](#result)   |    是    |             订阅结果             |            
+|   op   |    string    |    是    |         订阅（"sub"）或订退（unSub"）         |
+|   sequence   |    integer    |    否    |        操作序列号        |
+| topics |   JSON  |    是    |             订阅主题和参数            |
+| result |    [Result](#result)   |    是    |             订阅结果             |
 
 
 ####  <span id="result">Result结构</span>
 
-|  字段  |      类型       | 必现 |         说明         | 
+|  字段  |      类型       | 必现 |         说明         |
 | :---- | :------------- | :------ | :------------------ |
-| status |     string      |    是    |     订阅是否成功     | 
-| error  | [Error](#error) |    否    | 订阅失败时的错误信息 | 
+| status |     string      |    是    |     订阅是否成功     |
+| error  | [Error](#error) |    否    | 订阅失败时的错误信息 |
 
 ####   <span id="error">Error结构</span>
 
-|  字段   |  类型   | 必现 |   说明   |     
-| :----- | :----- | :------ | :------ | 
-|  code   | integer |    是    |  状态码  |  
-| message | string  |    是    | 错误信息 | 
+|  字段   |  类型   | 必现 |   说明   |
+| :----- | :----- | :------ | :------ |
+|  code   | integer |    是    |  状态码  |
+| message | string  |    是    | 错误信息 |
 
 #### 状态码
 
@@ -140,7 +141,7 @@ WebSocket链接建立后，中继会每30秒会发送“ping”消息给客户�
     "op": "sub",
     "sequence": 10000,
     "topic": {
-        "topic:": "depth",
+        "topic:": "orderbook",
         "market": "LRC-ETH",
         "count": 10
     },
@@ -157,7 +158,7 @@ WebSocket链接建立后，中继会每30秒会发送“ping”消息给客户�
     "op": "sub",
     "sequence": 10000,
     "topic": {
-        "topic:": "depth",
+        "topic:": "candlestick",
         "market": "LRC-ETH",
         "count": 10
     },
@@ -175,13 +176,9 @@ WebSocket链接建立后，中继会每30秒会发送“ping”消息给客户�
 
 ```json
 {
-    "op": "",
+    "op": "sub",
     "sequence": 10000,
-    "topic": {
-        "topic:": "depth",
-        "market": "LRC-ETH",
-        "count": 10
-    },
+    "topic":"xxx",
     "result": {
         "status": "failed",
         "error": {

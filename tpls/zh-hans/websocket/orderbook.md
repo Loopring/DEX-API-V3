@@ -16,8 +16,8 @@
 | :---- | :------ |:--------------------------------- |
 | market | 是 | 交易对（支持的交易对可以通过api接口[api/v2/exchange/markets](../dex_apis/getMarkets.md)获取）|
 | level | 是 | 深度聚合级别 |
-| count | 是 | 买卖深度条目数量，值不可以超过50。 |
-| snapshot |否 | 默认为false。 如果该值为true，count不可以大于20，并且当深度条目有任何一条变化，那么指定数量的深度条目会被全量推送给客户端。 |
+| count | 是 | 买卖深度条目数量，值不可以超过50。仅在snapshot = true时生效 |
+| snapshot |否 | 默认为false。 如果该值为true，并且当深度条目有任何一条变化，那么指定数量的深度条目会被全量推送给客户端。 |
 
 ## 状态码
 
@@ -32,6 +32,7 @@
     "topic": {
         "topic:": "orderbook",
         "market": "LRC-USDT",
+      	"level": 0,
         "count": 20,
         "snapshot": true
     },
@@ -63,29 +64,29 @@
 
 #### 推送消息数据结构
 
-|     字段     |      类型       | 必现 |         说明         |    
-| :---------- | :------------- | :------ | :------------------ | 
-| topic |       JSON        |    是    | 主题和参数 |  
-|      ts      |     integer     |    是    |       推送时间（毫秒）       |  
-| startVersion |     integer     |    是    | 该次推送的起始版本号 |     
-|  endVersion  |     integer     |    是    | 该次推送的终结版本号 |     
-|     data     | [Orderbook](#orderbook) |    是    |       订单簿信息       |     
+|     字段     |      类型       | 必现 |         说明         |
+| :---------- | :------------- | :------ | :------------------ |
+| topic |       JSON        |    是    | 主题和参数 |
+|      ts      |     integer     |    是    |       推送时间（毫秒）       |
+| startVersion |     integer     |    是    | 该次推送的起始版本号 |
+|  endVersion  |     integer     |    是    | 该次推送的终结版本号 |
+|     data     | [Orderbook](#orderbook) |    是    |       订单簿信息       |
 
 ####<span id="orderbook">Orderbook数据结构</span>
 
-| 字段 | 类型                           | 必现 | 说明     | 
+| 字段 | 类型                           | 必现 | 说明     |
 | :---- | :------------------------------ | :-------- | :-------- |
 | bids | List\[List\[string\]] | 是       | 代表买单深度的[PriceSlot](#slot)数组列表 |
-| asks | List\[List\[string\]]| 是       | 代表卖单深度的[PriceSlot](#slot)t数组列表 | 
+| asks | List\[List\[string\]]| 是       | 代表卖单深度的[PriceSlot](#slot)t数组列表 |
 
 #### <span id = "slot">PriceSlot数组</span>
 
-| 序号  | 类型   | 必现 | 说明           | 
-| :------ | :------ | :-------- | :-------------- | :
-|    1     | string | 是       | 价格           | 
-|    2     | string | 是       | 数量（基础通证的数量）         | 
+| 序号  | 类型   | 必现 | 说明           |
+| :------ | :------ | :-------- | :-------------- | :|
+|    1     | string | 是       | 价格           |
+|    2     | string | 是       | 数量（基础通证的数量）         |
 |    3     | string | 是       | 成交额（ 计价通证的数量）  |
-|    4     | string | 是       | 聚合的订单数目 | 
+|    4     | string | 是       | 聚合的订单数目 |
 
 
 需要注意的是，每一个推送中的数量和成交额代表这个价格目前的数量和成交额的绝对值，而不是相对变化。
