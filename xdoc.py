@@ -663,11 +663,16 @@ def refresh_swagger():
 def main():
     """Main for xdoc"""
 
-    parser = argparse.ArgumentParser(description = 'This tool is used for' +
-                                     ' generating API docs (gitbook hosted).',
-                                     fromfile_prefix_chars = '@')
-    parser.add_argument('command', type = str, nargs = '+', default = 'build',
-                        choices = ['build', 'refresh'])
+    parser = argparse.ArgumentParser(
+        description = 'This tool is used for' +
+        ' generating API docs (gitbook hosted).',
+        fromfile_prefix_chars = '@',
+        formatter_class = argparse.RawTextHelpFormatter)
+    parser.add_argument(
+        'command', type = str, nargs = '+', default = 'build',
+        choices = ['refresh', 'build'], help =
+        'refresh: get new swagger json as well as tps config\n' +
+        'build: generate doc')
 
     args = parser.parse_args()
 
