@@ -27,6 +27,9 @@ OUTPUT_DIR = 'generated'
 PURGE_IGNORE = ['swp', 'tpl']
 OUTPUT_IGNORE = ['_book', 'docs', 'node_modules']
 
+IN_DOCS_PATH = 'in_docs'
+FILES_NEED_IN_DOCS = ['CNAME']
+
 SWAGGER_JSON_PATH = '/api'
 
 VARS = {}
@@ -660,6 +663,13 @@ def refresh_swagger():
         fetch_and_save_swagger_json(lang)
     fetch_tps_config()
 
+def windup():
+    if not os.path.exists('./docs'):
+        LOGGER.error('No docs dir found.')
+        return
+    for f in FILES_NEED_IN_DOCS:
+        run_command_with_return_info(
+            'cp %s ./docs'%(os.path.join(IN_DOCS_PATH, f)))
 def main():
     """Main for xdoc"""
 
@@ -670,9 +680,10 @@ def main():
         formatter_class = argparse.RawTextHelpFormatter)
     parser.add_argument(
         'command', type = str, nargs = '+', default = 'build',
-        choices = ['refresh', 'build'], help =
+        choices = ['refresh', 'build', 'windup'], help =
         'refresh: get new swagger json as well as tps config\n' +
-        'build: generate doc')
+        'build: generate docs\n' +
+        'windup: do something after generated docs')
 
     args = parser.parse_args()
 
@@ -680,6 +691,8 @@ def main():
         refresh_swagger()
     if 'build' in args.command:
         build_doc()
+    if 'windup' in args.command:
+        windup()
 
 if __name__ == '__main__':
     main()
