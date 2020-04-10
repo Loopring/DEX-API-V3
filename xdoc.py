@@ -28,7 +28,6 @@ PURGE_IGNORE = ['swp', 'tpl']
 OUTPUT_IGNORE = ['_book', 'docs', 'node_modules']
 
 IN_DOCS_PATH = 'in_docs'
-FILES_NEED_IN_DOCS = ['CNAME']
 
 SWAGGER_JSON_PATH = '/api'
 
@@ -667,9 +666,7 @@ def windup():
     if not os.path.exists('./docs'):
         LOGGER.error('No docs dir found.')
         return
-    for f in FILES_NEED_IN_DOCS:
-        run_command_with_return_info(
-            'cp %s ./docs'%(os.path.join(IN_DOCS_PATH, f)))
+    run_command_with_return_info('cp -rf ./%s/* ./docs'%(IN_DOCS_PATH))
 def main():
     """Main for xdoc"""
 
