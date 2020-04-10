@@ -1,28 +1,34 @@
-# 订阅最新成交
+# Trade Notification
 
-通过订阅该主题，您可以获得特定交易对全部用户新成交记录的数据推送。
+Subscribe to this topic to receive notifications about bew trades for specific trading pairs.
 
+## Rules
 
-## 订阅规则
-
-- `topic`需要指定交易对。如果交易对是`LRC-ETH`，那么`topic`应该拼写为：`trade&LRC-ETH`。
-- 订阅该主题不需要提供ApiKey。
-- 支持的交易对可以通过api接口[api/v2/exchange/markets](../dex_apis/getMarkets.md)获取。
+- Topic name: `trade`
+- ApiKey requred: No
 
 
+## Parameters
+
+|  Parameter |   Required |             Note                |
+| :---- | :---|:--------------------------------- |
+| market |  Y |[Trading pair](../dex_apis/getMarkets.md)|
 
 
-## 状态码
+## Status code
 
-| 状态码 |                描述                 |
+| Value |                Note                |
 | :---- | :--------------------------------- |
-| 104109 | `topic`的值或其参数非法|
+| 104109 | Invalid topic or parameters|
 
-## 推送示例
+## Notification example
 
 ```json
 {
-    "topic": "trade&LRC-ETH",
+    "topic": {
+        "topic": "trade",
+        "market": "LRC-ETH"
+    },
     "ts": 1584717910000,
     "data": [
         [
@@ -37,24 +43,24 @@
 }
 ```
 
-## 模型
+## Data Model
 
-#### 推送数据结构
+#### Notification
 
-|  字段   |          类型           | 必现 |       说明       |      举例       |
-| :----- | :--------------------- | :------ | :-------------- | :------------- |
-|  topic  |         string          |    是    | 订阅的主题和条件 | "trade&LRC-ETH" |
-| integer |         integer         |    是    |     推送时间     |  1584717910000  |
-|  data   | [List[List\[string]](#trade)] （Trade列表）|    是    |     深度信息     |        /        |
+|  Field   |          Type           | Required |       Note       |    
+| :----- | :--------------------- | :------ | :-------------- |
+| topic |       JSON        |    Y    | Topic and parameters |  
+| ts |         integer         |    Y    |     Notification timestamp (milliseconds)     | 
+|  data   | [List[List\[string]](#trade)] |    Y    |    Trade array list     |  
 
-#### <span id="trade">Trade 数据结构</span>
+#### <span id="trade">Trade</span>
 
-| 序号  |  类型   | 必现 |         说明         |     举例      |
-| :------ | :----- | :------ | :------------------ | :----------- |
-|    1     | integer |    是    |       成交时间       | 1584717910000 |
-|    2     | integer |    是    |       交易编号       |   123456789   |
-|    3     | string  |    是    |  买或者卖，指taker   |     "buy"     |
-|    4     | string  |    是    | base token的成交数量 |   "500000"    |
-|    5     | string  |    是    |       成交价格       |   "0.0008"    |
-|    6     | string  |    是    |   base token的收费   |     "100"     |
+| Index  |  Type   | Required |         Note         |  
+| :------ | :----- | :------ | :------------------ | 
+|    1     | integer |    Y    |       Trade timestamp       | 
+|    2     | integer |    Y    |       Fill sequence number      |   
+|    3     | string  |    Y    |  Taker's side (buy or sell)   |    
+|    4     | string  |    Y    | Filled amount of base token |  
+|    5     | string  |    Y    |       Fill price       |   
+|    6     | string  |    Y    |   Fee paid in base token   |    
 

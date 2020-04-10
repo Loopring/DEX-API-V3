@@ -64,12 +64,11 @@
     "claim": "本文件由代码自动生成，请勿直接修改。"
   },
   "websocket": {
-    "depth": "订阅订单簿更新",
-    "depth10": "订阅买卖前10全量推送",
-    "trade": "订阅最新成交",
-    "ticker": "订阅Ticker更新",
-    "candleStick": "订阅CandleStick更新",
-    "account": "订阅用户账号金额更新",
-    "order": "订阅用户订单更新"
+    "orderbook": "订单簿更新",
+    "trade": "最新成交更新",
+    "ticker": "Ticker更新",
+    "candlestick": "Candlestick更新",
+    "account": "账号金额更新",
+    "order": "用户订单更新"
   }
 }

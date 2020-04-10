@@ -63,7 +63,7 @@ What is the effect of reversing the `buy` value in the two orders above? The sel
 Besides its elegancy and simplicity, Loopring's UDOM also makes it possible to implement much simpler settlement logic in ZKP circuits.
 
 
-## Order Structure
+## Order object
 Loopring's actual order format is a bit more complex. You can use the following JSON to express a limit price order. For details of specific parameters, see [Submit Order](../dex_apis/submitOrder.md).
 
 ```JSON

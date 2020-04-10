@@ -1,137 +1,169 @@
 # WebSocket APIs
 
-## 接入URL
+## Base URL
 
 ```
-wss://api.loopring.io/v2/ws
+wss://ws.loopring.io/v2/ws
 ```
 
-## 心跳
+## Subscription
+Clients can send JSON to subscribe to multiple topics:
 
-当用户连接到路印中继的WebSocket之后，中继会进行心跳检测，每30秒会发送“ping”信息，期待接收客户端的“pong”信息。2分钟未收到回复会自动断开连接。
-
-## 订阅规则
-
-用户在与路印中继建立WebSocket连接之后，可以订阅消息。需满足以下规则：
-
-1. 用户可以一次订阅或者取消订阅多个主题，如果订阅的多个主题中有需要ApiKey的，则必须包含ApiKey。
-1. 用户可以重复订阅相同的主题，最新的订阅条件会覆盖之前的订阅条件。
-1. 用户在一次订阅中，不允许订阅相同的主题
-1. 用户在取消订阅需要ApiKey的主题时，必须包含订阅该主题时所使用的ApiKey。
-
-
-## 请求
-
-|  字段  |     类型     | 必须 |               说明               |                 举例                 |
-| :---- | :---------- | :------ | :------------------------------ | :---------------------------------- |
-|   op   |    string    |    是    |         订阅或者取消订阅（"sub"或者"unSub"）         |                "sub"               |
-| apiKey |    string    |    否    | 订阅要求传ApiKey的主题才是必须的 | “16M2hKHw9b5VuP21YBAJQmCd3VhuNtdDqG” |
-|  args  | list<string> |    是    |         订阅的主题及条件         | [ "depth&LRC-ETH&0","trade&LRC-ETH"] |
-
-#### 示例
-
-
-订阅请求示例
-
-```json
-{
-    "op": "sub",
-    "args": [
-        "candlestick&LRC-BTC&1Hour",
-        "depth&LRC-BTC&1",
-        "depth10&LRC-BTC&1",
-        "trade&LRC-BTC",
-        "ticker&LRC-BTC"
+```JSON
+ {
+    "op":"sub",
+    "sequence": 10000,
+    "apiKey": ".....",
+    "unsubscribeAll": true,
+    "topics": [
+        {
+            "topic": "account"
+        },
+        {
+            "topic": "order",
+            "market": "LRC-ETH"
+        },
+        {
+            "topic": "order",
+            "market": "LRC-USDT"
+        },
+        {
+            "topic:": "depth",
+            "market": "LRC-ETH",
+            "count": 10
+        },
+        {
+            "topic:": "depth",
+            "market": "LRC-USDT",
+            "count": 20,
+            "snapshot": true
+        }
     ]
-}
+  },
 ```
 
-取消订阅请求示例
 
-```json
-{
-    "op": "unSub",
-    "args": [
-        "candlestick",
-        "depth",
-        "depth10",
-        "trade",
-        "ticker"
+1. In one subscription request, if at least one topic requires the ApiKey, then the `apiKey` filed is required;
+1. In one subscription request, the same topic configuration can only occur once;
+1. In one subscription request, if there are any configuration errors, the entire subscription request fails;
+1. If `unsubscribeAll` is `true`, all previous subscriptions will be canceled;
+1. If `sequence` is provided, the relayer will use the same sequence number in its response.
+
+
+
+## Unsubscription
+Clients can send JSON to unsubscribe from multiple topics:
+
+```JSON
+ {
+    "op":"unSub",
+    "sequence": 10000,
+    "apiKey": ".....",
+    "unsubscribeAll": false,
+    "topics": [
+        {
+            "topic": "account",
+        },
+        {
+            "topic": "order",
+            "market": "LRC-ETH"
+        },
+        {
+            "topic": "order",
+            "market": "LRC-USDT"
+        },
+        {
+            "topic:": "depth",
+            "unsubscribeAll":true
+        }
     ]
-}
+  },
 ```
 
-## 返回值
 
-|  字段  |     类型     | 必现 |               说明               |                 举例                 |
-| :---- | :---------- | :------ | :------------------------------ | :---------------------------------- |
-|   op   |    string    |    是    |         用户传送来的操作         |                "sub"                 |
-| apiKey |    string    |    否    | 订阅要求传ApiKey的主题才是必须的 | “16M2hKHw9b5VuP21YBAJQmCd3VhuNtdDqG” |
-|  args  | list<string> |    是    |         订阅的主题及条件         | [ "depth&LRC-ETH&0","trade&LRC-ETH"] |
-| result |    [Result](#result)   |    是    |             订阅结果             |                  /                   |
+1. In one unsubscription request, if at least one topic requires the ApiKey, then the `apiKey` filed is required;
+1. In one unsubscription request, the same topic configuration can only occur once;
+1. In one unsubscription request, if there are any configuration errors, the entire unsubscription request fails;
+1. If the top-level `unsubscribeAll` is `true`, all previous subscriptions will be canceled; if the per-topic `unsubscribeAll` is `true`, then all subscriptions to that topic will be canceled;
+1. If `sequence` is provided, the relayer will use the same sequence number in its response.
+
+#### Heartbeat
+
+After a WebSocket connection is established, the relay will send a "ping" message to the client for heartbeat detection every 30 seconds. If the client does not reply with a "pong" message within 2 minutes, the relay will disconnect. If the number of "pong" messages exceeds the number of "ping" messages, the relay will also disconnect.
 
 
-####  <span id="result">Result结构</span>
+## Response
 
-|  字段  |      类型       | 必现 |         说明         | 举例 |
-| :---- | :------------- | :------ | :------------------ | :-- |
-| status |     string      |    是    |     订阅是否成功     | "OK" |
-| error  | [Error](#error) |    否    | 订阅失败时的错误信息 |  /   |
+|  Field  |     Type     | Required |               Note               |      
+| :---- | :---------- | :------ | :------------------------------ |
+|   op   |    string    |    Y    |         "sub" or "unSub"         |    
+|   sequence   |    integer    |    N    |        A client-side sequence number        |   
+| topics |   JSON  |    Y    |             Topics and their configurations            | 
+| result |    [Result](#result)   |    Y    |             Subscription result             |            
 
-####   <span id="error">Error结构</span>
 
-|  字段   |  类型   | 必现 |   说明   |     举例     |
-| :----- | :----- | :------ | :------ | :---------- |
-|  code   | integer |    是    |  状态码  |    107500    |
-| message | string  |    是    | 错误信息 | 空的订阅信息 |
+####  <span id="result">Result</span>
 
-#### 状态码
+|  Field  |      Type       | Required |         Note         | 
+| :---- | :------------- | :------ | :------------------ |
+| status |     string      |    Y    |     Status code     | 
+| error  | [Error](#error) |    N    | Error | 
 
-| **状态码** |                         描述                         |
+####   <span id="error">Error</span>
+
+|  Field   |  Type   | Required |   Note   |     
+| :----- | :----- | :------ | :------ | 
+|  code   | integer |    Y    |  Value  |  
+| message | string  |    Y    | Error message | 
+
+#### Status code
+
+| **Value** |                         Note                        |
 | :-------- | :-------------------------------------------------- |
-|   104100   |                     空的订阅信息                     |
-|   104101   | 不支持的操作（路印中继服务器仅支持sub 和 unsub操作） |
-|   104102   |                     不支持的主题                     |
-|   104103   |                    重复的订阅主题                    |
-|   104104   |                    缺少ApiKey信息                    |
-|   104105   |              与之前订阅使用的ApiKey不符              |
-|   104112   |                    不合法的ApiKey                    |
-|   104113   |               取消订阅未曾订阅过的主题               |
-|   104114   |             无法通过APiKey找到对应的用户             |
-|   104115   |                  无法识别的订阅消息                  |
+|   104100   |                     Topic missing                     |
+|   104101   | Invalid op code |
+|   104102   |                     Invalid topic                    |
+|   104103   |                    Duplicate topic configs                    |
+|   104104   |                    Missing ApiKey                    |
+|   104105   |              ApiKey mismatched              |
+|   104112   |                    Invalid ApiKey                    |
+|   104113   |               Subscription not found              |
+|   104114   |             Invalid ApiKey (user not found)                |
+|   104115   |                  Invalid topic config                |
 
-#### 示例
+#### Examples
 
-订阅成功示例
+A successful subscription：
 
 ```json
 {
     "op": "sub",
-    "apiKey": "",
-    "args": [
-        "candlestick&LRC-ETH&1hr",
-        "depth&LRC-ETH&1",
-        "trade&LRC-ETH",
-        "ticker&LRC-ETH"
-    ],
+    "sequence": 10000,
+    "topic": {
+        "topic:": "depth",
+        "market": "LRC-ETH",
+        "count": 10
+    },
     "result": {
         "status": "ok"
     }
 }
 ```
 
-订阅条件不合法的失败示例
+A failed subscription：
 
 ```json
 {
     "op": "sub",
-    "apiKey": "",
-    "args": [
-        "candlestick&LRC-ETH"
-    ],
+    "sequence": 10000,
+    "topic": {
+        "topic:": "depth",
+        "market": "LRC-ETH",
+        "count": 10
+    },
     "result": {
         "status": "failed",
-            "error": {
+        "error": {
             "code": 104106,
             "message": "receive illegal arg for candlestick:lrc-eth"
         }
@@ -139,13 +171,17 @@ wss://api.loopring.io/v2/ws
 }
 ```
 
-订阅条件无法解析的失败示例
+Another failed subscription：
 
 ```json
 {
     "op": "",
-    "apiKey": "",
-    "args": [],
+    "sequence": 10000,
+    "topic": {
+        "topic:": "depth",
+        "market": "LRC-ETH",
+        "count": 10
+    },
     "result": {
         "status": "failed",
         "error": {

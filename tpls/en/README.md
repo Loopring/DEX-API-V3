@@ -1,7 +1,7 @@
 # Loopring
 
 
-##Loopring Protocol & Loopring Exchange
+##Protocol & Exchange
 
 **Loopring** is the first scalable DEX protocol built with zkRollup for Etheruem. Using Loopring, people can build a high-performance, orderbook-based, decentralized exchanges that do not take custody of users' crypto-assets. Due to the use of zkRollup, a layer-2 scalability solution, Loopring is capable of settling more than 2,000 trades per second on Ethereum 1.0. If you would like to learn more about Loopring's design and technical details, please check out Loopring's official website: [https://loopring.org](https://loopring.org).
 
