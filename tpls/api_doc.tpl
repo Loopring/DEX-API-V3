@@ -2,7 +2,7 @@
 
 ## {{api.summary}}
 {% set tps = g_tps(api) %}
-{{l.apidoc.throttle}}: {{tps.count}} / {{tps.interval}}
+{{l.apidoc.throttle}}: {{tps.count}} / {{tps.interval}} {{l.apidoc.seconds}}
 
 ### {{ l.apidoc.overview }}
 ----
@@ -111,7 +111,7 @@
 
 #### {{ l.apidoc.retcode }}
 
-| {{ l.apidoc.retcode }} | {{ l.apidoc.codedesc }} |
+| {{ l.apidoc.value }} | {{ l.apidoc.codedesc }} |
 | :---- | :---- |
 {%- for code in api.responses.codes %}
 |{{code.ec}}|{{code.description}}|

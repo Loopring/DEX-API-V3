@@ -64,11 +64,15 @@ def get_response_fields(response):
     modelName = response['$ref']
     return VARS['models'][modelName]['properties']
 
+def get_link(ref):
+    return '<a href="%s#%s">%s</a>'%(
+        '../REST_APIS.md' if ref == 'ResultInfo' else '', ref, ref)
+
 def create_html_type(field):
     if (field.get('type') is None):
         if (field.get('$ref') is not None):
             cleanRef = field['$ref']
-            return '<a href="#%s">%s</a>'%(cleanRef, cleanRef)
+            return get_link(cleanRef)
         else:
             return '/'
     else:
@@ -77,14 +81,14 @@ def create_html_type(field):
             if (field.get('$ref') is not None):
                 cleanRef = field['$ref']
                 return 'List[' * field['count'] + \
-                    '<a href="#%s">%s</a>'%(cleanRef, cleanRef) + \
+                    get_link(cleanRef) + \
                     ']' * field['count']
             else:
                 return 'List[' * field['count'] + '%s'%(field['itemType']) + \
                     ']' * field['count']
         elif (field.get('$ref') is not None):
             cleanRef = field['$ref']
-            return '<a href="#%s">%s</a>'%(cleanRef, cleanRef)
+            return get_link(cleanRef)
         else:
             return field['type']
 
@@ -496,7 +500,7 @@ def get_ref_models(api):
                 if (name not in modelNames):
                     modelNames.append(name)
                     modelNames += expend_models(name)
-    ret = [VARS['models'][x] for x in modelNames]
+    ret = [VARS['models'][x] for x in modelNames if x != 'ResultInfo']
     return ret
 
 def get_description(api):
