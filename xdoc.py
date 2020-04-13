@@ -175,8 +175,6 @@ def set_field(f, t, field, tField = None,
                   or field == 'description'):
                 if isinstance(t[tField], bool):
                     t[tField] = str(t[tField]).lower()
-                elif (t[tField] == 0):
-                    t[tField] = '0'
             return
     if (showMsgIfMiss):
         if message is None:
@@ -199,7 +197,7 @@ def seg_str(word, segSize):
 
 def modifyStr(content, segSize):
     words = content.split(' ')
-    return ' '.join([seg_str(word, segSize) for word in words])
+    return '"' + ' '.join([seg_str(word, segSize) for word in words]) + '"'
 
 def parse_array(items):
     if (items.get('$ref') is not None or items.get('type') != 'array'):
@@ -515,6 +513,8 @@ def get_description(api):
         return '/'
 
 def get_example(example):
+    if example == 0:
+        return example
     if not example:
         return '/'
     if not isinstance(example, str):
