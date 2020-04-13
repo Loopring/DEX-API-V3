@@ -138,16 +138,18 @@ WebSocket链接建立后，中继会每30秒会发送“ping”消息给客户�
 
 ```json
 {
-    "op": "sub",
-    "sequence": 10000,
-    "topic": {
-        "topic:": "orderbook",
-        "market": "LRC-ETH",
-        "count": 10
-    },
-    "result": {
-        "status": "ok"
+  "op": "sub",
+  "sequence": 10000,
+  "topics": [
+    {
+      "topic:": "orderbook",
+      "market": "LRC-ETH",
+      "count": 10
     }
+  ],
+  "result": {
+    "status": "ok"
+  }
 }
 ```
 
@@ -155,20 +157,22 @@ WebSocket链接建立后，中继会每30秒会发送“ping”消息给客户�
 
 ```json
 {
-    "op": "sub",
-    "sequence": 10000,
-    "topic": {
-        "topic:": "candlestick",
-        "market": "LRC-ETH",
-        "count": 10
-    },
-    "result": {
-        "status": "failed",
-        "error": {
-            "code": 104106,
-            "message": "receive illegal arg for candlestick:lrc-eth"
-        }
+  "op": "sub",
+  "sequence": 10000,
+  "topics": [
+    {
+      "topic:": "candlestick",
+      "market": "LRC-ETH",
+      "count": 10
     }
+  ],
+  "result": {
+    "status": "failed",
+    "error": {
+      "code": 104106,
+      "message": "receive illegal arg for candlestick:lrc-eth"
+    }
+  }
 }
 ```
 
@@ -178,7 +182,7 @@ WebSocket链接建立后，中继会每30秒会发送“ping”消息给客户�
 {
     "op": "sub",
     "sequence": 10000,
-    "topic":"xxx",
+    "topics":[],
     "result": {
         "status": "failed",
         "error": {
