@@ -1,4 +1,4 @@
-Please follow the following steps to place an order:
+Please follow the following steps to submit an order:
 
 1. Get the next orderId through `/api/v2/orderId`. If you maintain order IDs on the client side, you can skip this step.
 1. Choose reasonable values for `validSince` and` validUntil`. We recommend that `validSince` is set to the current system time, and `validUntil` is set to be at least one week later than the current time.
