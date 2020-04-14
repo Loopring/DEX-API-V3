@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Get order details · Loopring API</title>
+        <title>Get an orders details · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -243,7 +243,7 @@
                 <a href="getTimestamp.html">
             
                     
-                    Query the server's current time
+                    Get relayer's current time
             
                 </a>
             
@@ -256,7 +256,7 @@
                 <a href="getApiKey.html">
             
                     
-                    Query user's ApiKey
+                    Get user's ApiKey
             
                 </a>
             
@@ -282,7 +282,7 @@
                 <a href="getNextOrderId.html">
             
                     
-                    Get the next valid OrderId
+                    Get next order ID
             
                 </a>
             
@@ -295,7 +295,7 @@
                 <a href="getOrderDetail.html">
             
                     
-                    Get order details
+                    Get an orders details
             
                 </a>
             
@@ -308,7 +308,7 @@
                 <a href="submitOrder.html">
             
                     
-                    Submit order
+                    Submit an order
             
                 </a>
             
@@ -321,7 +321,7 @@
                 <a href="batchSubmitOrder.html">
             
                     
-                    Batch submit order
+                    Submit multiple order
             
                 </a>
             
@@ -347,7 +347,7 @@
                 <a href="cancelOrders.html">
             
                     
-                    Cancel order
+                    Cancel orders
             
                 </a>
             
@@ -399,7 +399,7 @@
                 <a href="getEthNonce.html">
             
                     
-                    Query the available nonce of the user's Ethereum address
+                    Get user's next Ethereum nonce
             
                 </a>
             
@@ -412,7 +412,7 @@
                 <a href="getEthBalance.html">
             
                     
-                    Query ETH balance
+                    Get user's Ether balance on Ethereum mainnet
             
                 </a>
             
@@ -438,7 +438,7 @@
                 <a href="getMarkets.html">
             
                     
-                    Query the market configuration supported by the exchange
+                    Get market configurations
             
                 </a>
             
@@ -451,7 +451,7 @@
                 <a href="getTokens.html">
             
                     
-                    Query the token information supported by the exchange
+                    Get token configurations.
             
                 </a>
             
@@ -464,7 +464,7 @@
                 <a href="getExchangeInfo.html">
             
                     
-                    Query exchange basic info.
+                    Get exchange configurations.
             
                 </a>
             
@@ -477,7 +477,7 @@
                 <a href="getDepth.html">
             
                     
-                    Get order book info
+                    Get a markets orderbook.
             
                 </a>
             
@@ -490,7 +490,7 @@
                 <a href="getTicker.html">
             
                     
-                    The response of querying the exchange ticker
+                    Get a markets ticker
             
                 </a>
             
@@ -503,7 +503,7 @@
                 <a href="getCandlestick.html">
             
                     
-                    Query candlestick data
+                    Get a markets candlestick
             
                 </a>
             
@@ -516,7 +516,7 @@
                 <a href="getPrice.html">
             
                     
-                    Query token fiat price
+                    Get token's current fiat-price
             
                 </a>
             
@@ -542,7 +542,7 @@
                 <a href="getAllowance.html">
             
                     
-                    Query allowance
+                    Get a token's allowance
             
                 </a>
             
@@ -555,7 +555,7 @@
                 <a href="getTokenBalance.html">
             
                     
-                    Query token balance
+                    Get user's token balance on Ethereum mainnet
             
                 </a>
             
@@ -581,7 +581,7 @@
                 <a href="getUserCreate.html">
             
                     
-                    Get user creation list
+                    Get user registration transactions
             
                 </a>
             
@@ -594,7 +594,7 @@
                 <a href="getUserUpdate.html">
             
                     
-                    Get user update list
+                    Get user password change transactions
             
                 </a>
             
@@ -607,7 +607,7 @@
                 <a href="getUserBalances.html">
             
                     
-                    Query the user's balance in exchange
+                    Get the user's exchange balances
             
                 </a>
             
@@ -620,7 +620,7 @@
                 <a href="getUserDeposits.html">
             
                     
-                    Get user deposit list
+                    Get a users deposit history
             
                 </a>
             
@@ -633,7 +633,7 @@
                 <a href="getUserWithdrawals.html">
             
                     
-                    api.getUserOnchainWithdrawals.value
+                    Get user onchain withdrawal list
             
                 </a>
             
@@ -659,7 +659,7 @@
                 <a href="getUserTrades.html">
             
                     
-                    Get user trading list
+                    Get a users trade history
             
                 </a>
             
@@ -806,7 +806,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Get order details</a>
+        <a href=".." >Get an orders details</a>
     </h1>
 </div>
 
@@ -821,7 +821,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="get-order-details">Get order details</h2>
+                                <h2 id="get-an-orders-details">Get an orders details</h2>
 <p>Rate limit: 5 / 1 seconds</p>
 <h3 id="api-overview">API Overview</h3>
 <hr>
@@ -830,7 +830,7 @@
 <h4 id="path">Path</h4>
 <p><strong>/api/v2/order</strong></p>
 <h4 id="summary">Summary</h4>
-<p>Get order details according to specified hash</p>
+<p>Get the details of an order based on order hash</p>
 <h3 id="api-description">API description</h3>
 <hr>
 <h4 id="http-header">HTTP Header</h4>
@@ -870,7 +870,7 @@
 <td style="text-align:left">accountId</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Account id</td>
+<td style="text-align:left">Account ID</td>
 <td style="text-align:left">1</td>
 </tr>
 <tr>
@@ -969,15 +969,15 @@
 </tr>
 <tr>
 <td style="text-align:left">104001</td>
-<td style="text-align:left">APIKEY cannot be empty</td>
+<td style="text-align:left">Empty ApiKey</td>
 </tr>
 <tr>
 <td style="text-align:left">104002</td>
-<td style="text-align:left">APIKEY verification failed</td>
+<td style="text-align:left">Invalid ApiKey</td>
 </tr>
 <tr>
 <td style="text-align:left">104003</td>
-<td style="text-align:left">The user was not found</td>
+<td style="text-align:left">Invalid Account ID</td>
 </tr>
 </tbody>
 </table>
@@ -1007,49 +1007,49 @@
 <td style="text-align:left">clientOrderId</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Client order unique id</td>
+<td style="text-align:left">Orders client-side id</td>
 <td style="text-align:left">&quot;200310143135081332&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">size</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Order quantity</td>
+<td style="text-align:left">Order size, as wei in base token</td>
 <td style="text-align:left">&quot;8210000000000001024&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">volume</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Order amount</td>
+<td style="text-align:left">Order volume, as wei in quote token</td>
 <td style="text-align:left">&quot;163182534700000032&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">price</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Deal price</td>
+<td style="text-align:left">Order price</td>
 <td style="text-align:left">&quot;0.01987608&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">filledSize</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Volume</td>
+<td style="text-align:left">Filled size, as wei in base token</td>
 <td style="text-align:left">&quot;0&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">filledVolume</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Turnover</td>
+<td style="text-align:left">Filled volume, as wei in quote token</td>
 <td style="text-align:left">&quot;0&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">filledFee</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Fee</td>
+<td style="text-align:left">Fees charged</td>
 <td style="text-align:left">&quot;0&quot;</td>
 </tr>
 <tr>
@@ -1063,35 +1063,35 @@
 <td style="text-align:left">validSince</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Order effective time from</td>
+<td style="text-align:left">Timestamp for order to become valid</td>
 <td style="text-align:left">1583929591</td>
 </tr>
 <tr>
 <td style="text-align:left">validUntil</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Order effective time to</td>
+<td style="text-align:left">Timestamp for order to become invalid</td>
 <td style="text-align:left">1586521591</td>
 </tr>
 <tr>
 <td style="text-align:left">createdAt</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Order creation time</td>
+<td style="text-align:left">Order creation timestamp</td>
 <td style="text-align:left">1583933191494</td>
 </tr>
 <tr>
 <td style="text-align:left">side</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Sell or buy<br>Allowable : [&apos;SELL&apos;, &apos;BUY&apos;]</td>
+<td style="text-align:left">Orders side<br>Allowable : [&apos;SELL&apos;, &apos;BUY&apos;]</td>
 <td style="text-align:left">&quot;SELL&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">market</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Market</td>
+<td style="text-align:left">Trading pair</td>
 <td style="text-align:left">&quot;LRC-ETH&quot;</td>
 </tr>
 </tbody>
@@ -1123,12 +1123,12 @@
 
             
                 
-                <a href="getNextOrderId.html" class="navigation navigation-prev " aria-label="Previous page: Get the next valid OrderId">
+                <a href="getNextOrderId.html" class="navigation navigation-prev " aria-label="Previous page: Get next order ID">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="submitOrder.html" class="navigation navigation-next " aria-label="Next page: Submit order">
+                <a href="submitOrder.html" class="navigation navigation-next " aria-label="Next page: Submit an order">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1139,7 +1139,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Get order details","level":"3.1.5","depth":2,"next":{"title":"Submit order","level":"3.1.6","depth":2,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},"previous":{"title":"Get the next valid OrderId","level":"3.1.4","depth":2,"path":"dex_apis/getNextOrderId.md","ref":"dex_apis/getNextOrderId.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getOrderDetail.md","mtime":"2020-04-14T14:00:50.295Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-14T14:00:52.039Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Get an orders details","level":"3.1.5","depth":2,"next":{"title":"Submit an order","level":"3.1.6","depth":2,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},"previous":{"title":"Get next order ID","level":"3.1.4","depth":2,"path":"dex_apis/getNextOrderId.md","ref":"dex_apis/getNextOrderId.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getOrderDetail.md","mtime":"2020-04-14T14:34:54.274Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-14T14:34:55.406Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>

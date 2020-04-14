@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Get order book info · Loopring API</title>
+        <title>Get a markets orderbook. · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -243,7 +243,7 @@
                 <a href="getTimestamp.html">
             
                     
-                    Query the server's current time
+                    Get relayer's current time
             
                 </a>
             
@@ -256,7 +256,7 @@
                 <a href="getApiKey.html">
             
                     
-                    Query user's ApiKey
+                    Get user's ApiKey
             
                 </a>
             
@@ -282,7 +282,7 @@
                 <a href="getNextOrderId.html">
             
                     
-                    Get the next valid OrderId
+                    Get next order ID
             
                 </a>
             
@@ -295,7 +295,7 @@
                 <a href="getOrderDetail.html">
             
                     
-                    Get order details
+                    Get an orders details
             
                 </a>
             
@@ -308,7 +308,7 @@
                 <a href="submitOrder.html">
             
                     
-                    Submit order
+                    Submit an order
             
                 </a>
             
@@ -321,7 +321,7 @@
                 <a href="batchSubmitOrder.html">
             
                     
-                    Batch submit order
+                    Submit multiple order
             
                 </a>
             
@@ -347,7 +347,7 @@
                 <a href="cancelOrders.html">
             
                     
-                    Cancel order
+                    Cancel orders
             
                 </a>
             
@@ -399,7 +399,7 @@
                 <a href="getEthNonce.html">
             
                     
-                    Query the available nonce of the user's Ethereum address
+                    Get user's next Ethereum nonce
             
                 </a>
             
@@ -412,7 +412,7 @@
                 <a href="getEthBalance.html">
             
                     
-                    Query ETH balance
+                    Get user's Ether balance on Ethereum mainnet
             
                 </a>
             
@@ -438,7 +438,7 @@
                 <a href="getMarkets.html">
             
                     
-                    Query the market configuration supported by the exchange
+                    Get market configurations
             
                 </a>
             
@@ -451,7 +451,7 @@
                 <a href="getTokens.html">
             
                     
-                    Query the token information supported by the exchange
+                    Get token configurations.
             
                 </a>
             
@@ -464,7 +464,7 @@
                 <a href="getExchangeInfo.html">
             
                     
-                    Query exchange basic info.
+                    Get exchange configurations.
             
                 </a>
             
@@ -477,7 +477,7 @@
                 <a href="getDepth.html">
             
                     
-                    Get order book info
+                    Get a markets orderbook.
             
                 </a>
             
@@ -490,7 +490,7 @@
                 <a href="getTicker.html">
             
                     
-                    The response of querying the exchange ticker
+                    Get a markets ticker
             
                 </a>
             
@@ -503,7 +503,7 @@
                 <a href="getCandlestick.html">
             
                     
-                    Query candlestick data
+                    Get a markets candlestick
             
                 </a>
             
@@ -516,7 +516,7 @@
                 <a href="getPrice.html">
             
                     
-                    Query token fiat price
+                    Get token's current fiat-price
             
                 </a>
             
@@ -542,7 +542,7 @@
                 <a href="getAllowance.html">
             
                     
-                    Query allowance
+                    Get a token's allowance
             
                 </a>
             
@@ -555,7 +555,7 @@
                 <a href="getTokenBalance.html">
             
                     
-                    Query token balance
+                    Get user's token balance on Ethereum mainnet
             
                 </a>
             
@@ -581,7 +581,7 @@
                 <a href="getUserCreate.html">
             
                     
-                    Get user creation list
+                    Get user registration transactions
             
                 </a>
             
@@ -594,7 +594,7 @@
                 <a href="getUserUpdate.html">
             
                     
-                    Get user update list
+                    Get user password change transactions
             
                 </a>
             
@@ -607,7 +607,7 @@
                 <a href="getUserBalances.html">
             
                     
-                    Query the user's balance in exchange
+                    Get the user's exchange balances
             
                 </a>
             
@@ -620,7 +620,7 @@
                 <a href="getUserDeposits.html">
             
                     
-                    Get user deposit list
+                    Get a users deposit history
             
                 </a>
             
@@ -633,7 +633,7 @@
                 <a href="getUserWithdrawals.html">
             
                     
-                    api.getUserOnchainWithdrawals.value
+                    Get user onchain withdrawal list
             
                 </a>
             
@@ -659,7 +659,7 @@
                 <a href="getUserTrades.html">
             
                     
-                    Get user trading list
+                    Get a users trade history
             
                 </a>
             
@@ -806,7 +806,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Get order book info</a>
+        <a href=".." >Get a markets orderbook.</a>
     </h1>
 </div>
 
@@ -821,7 +821,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="get-order-book-info">Get order book info</h2>
+                                <h2 id="get-a-markets-orderbook">Get a markets orderbook.</h2>
 <p>Rate limit: 5 / 1 seconds</p>
 <h3 id="api-overview">API Overview</h3>
 <hr>
@@ -830,7 +830,7 @@
 <h4 id="path">Path</h4>
 <p><strong>/api/v2/depth</strong></p>
 <h4 id="summary">Summary</h4>
-<p>Get order book info about a specified market</p>
+<p>Returns the order book of a given trading pair.</p>
 <h3 id="api-description">API description</h3>
 <hr>
 <h4 id="http-header">HTTP Header</h4>
@@ -870,21 +870,21 @@
 <td style="text-align:left">market</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Market&#xFF0C;not support multiple markets</td>
+<td style="text-align:left">The id of a trading pair.</td>
 <td style="text-align:left">&quot;LRC-ETH&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">level</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Order book aggregation level, bigger level means more aggregation.</td>
+<td style="text-align:left">Order book aggregation level, larger value means further price aggregation.</td>
 <td style="text-align:left">2</td>
 </tr>
 <tr>
 <td style="text-align:left">limit</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">N</td>
-<td style="text-align:left">Limit on the number of bids and asks returned<br>Default : 50</td>
+<td style="text-align:left">Maximum numbers of bids/asks.<br>Default : 50</td>
 <td style="text-align:left">50</td>
 </tr>
 </tbody>
@@ -981,28 +981,28 @@
 <td style="text-align:left">version</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Order book update version number,the client judges whether the data is lost according to this (refer to the websocket for details)</td>
+<td style="text-align:left">An ever-increasing numeric version number that reflects its change history.</td>
 <td style="text-align:left">147</td>
 </tr>
 <tr>
 <td style="text-align:left">timestamp</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Push timestamp</td>
+<td style="text-align:left">Update timestamp</td>
 <td style="text-align:left">432312312</td>
 </tr>
 <tr>
 <td style="text-align:left">bids</td>
 <td style="text-align:left">List[List[string]]</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Bids,each contains price, size, volume and order count.</td>
+<td style="text-align:left">Array of bids, each item is an array that contains the price, size, volume and the number of orders aggregated at this price.</td>
 <td style="text-align:left">&quot;[[&quot;0.002&quot;,&quot;21000&quot;,&quot;3<br>3220000&quot;,&quot;4&quot;]]&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">asks</td>
 <td style="text-align:left">List[List[string]]</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Asks,each contains price, size, volume and order count.</td>
+<td style="text-align:left">Array of asks, each item is an array that contains the price, size, volume and the number of orders aggregated at this price.</td>
 <td style="text-align:left">&quot;[]&quot;</td>
 </tr>
 </tbody>
@@ -1034,12 +1034,12 @@
 
             
                 
-                <a href="getExchangeInfo.html" class="navigation navigation-prev " aria-label="Previous page: Query exchange basic info.">
+                <a href="getExchangeInfo.html" class="navigation navigation-prev " aria-label="Previous page: Get exchange configurations.">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="getTicker.html" class="navigation navigation-next " aria-label="Next page: The response of querying the exchange ticker">
+                <a href="getTicker.html" class="navigation navigation-next " aria-label="Next page: Get a markets ticker">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1050,7 +1050,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Get order book info","level":"3.1.19","depth":2,"next":{"title":"The response of querying the exchange ticker","level":"3.1.20","depth":2,"path":"dex_apis/getTicker.md","ref":"dex_apis/getTicker.md","articles":[]},"previous":{"title":"Query exchange basic info.","level":"3.1.18","depth":2,"path":"dex_apis/getExchangeInfo.md","ref":"dex_apis/getExchangeInfo.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getDepth.md","mtime":"2020-04-14T14:00:50.144Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-14T14:00:52.039Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Get a markets orderbook.","level":"3.1.19","depth":2,"next":{"title":"Get a markets ticker","level":"3.1.20","depth":2,"path":"dex_apis/getTicker.md","ref":"dex_apis/getTicker.md","articles":[]},"previous":{"title":"Get exchange configurations.","level":"3.1.18","depth":2,"path":"dex_apis/getExchangeInfo.md","ref":"dex_apis/getExchangeInfo.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getDepth.md","mtime":"2020-04-14T14:34:54.178Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-14T14:34:55.406Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>

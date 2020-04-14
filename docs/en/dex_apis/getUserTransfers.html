@@ -243,7 +243,7 @@
                 <a href="getTimestamp.html">
             
                     
-                    Query the server's current time
+                    Get relayer's current time
             
                 </a>
             
@@ -256,7 +256,7 @@
                 <a href="getApiKey.html">
             
                     
-                    Query user's ApiKey
+                    Get user's ApiKey
             
                 </a>
             
@@ -282,7 +282,7 @@
                 <a href="getNextOrderId.html">
             
                     
-                    Get the next valid OrderId
+                    Get next order ID
             
                 </a>
             
@@ -295,7 +295,7 @@
                 <a href="getOrderDetail.html">
             
                     
-                    Get order details
+                    Get an orders details
             
                 </a>
             
@@ -308,7 +308,7 @@
                 <a href="submitOrder.html">
             
                     
-                    Submit order
+                    Submit an order
             
                 </a>
             
@@ -321,7 +321,7 @@
                 <a href="batchSubmitOrder.html">
             
                     
-                    Batch submit order
+                    Submit multiple order
             
                 </a>
             
@@ -347,7 +347,7 @@
                 <a href="cancelOrders.html">
             
                     
-                    Cancel order
+                    Cancel orders
             
                 </a>
             
@@ -399,7 +399,7 @@
                 <a href="getEthNonce.html">
             
                     
-                    Query the available nonce of the user's Ethereum address
+                    Get user's next Ethereum nonce
             
                 </a>
             
@@ -412,7 +412,7 @@
                 <a href="getEthBalance.html">
             
                     
-                    Query ETH balance
+                    Get user's Ether balance on Ethereum mainnet
             
                 </a>
             
@@ -438,7 +438,7 @@
                 <a href="getMarkets.html">
             
                     
-                    Query the market configuration supported by the exchange
+                    Get market configurations
             
                 </a>
             
@@ -451,7 +451,7 @@
                 <a href="getTokens.html">
             
                     
-                    Query the token information supported by the exchange
+                    Get token configurations.
             
                 </a>
             
@@ -464,7 +464,7 @@
                 <a href="getExchangeInfo.html">
             
                     
-                    Query exchange basic info.
+                    Get exchange configurations.
             
                 </a>
             
@@ -477,7 +477,7 @@
                 <a href="getDepth.html">
             
                     
-                    Get order book info
+                    Get a markets orderbook.
             
                 </a>
             
@@ -490,7 +490,7 @@
                 <a href="getTicker.html">
             
                     
-                    The response of querying the exchange ticker
+                    Get a markets ticker
             
                 </a>
             
@@ -503,7 +503,7 @@
                 <a href="getCandlestick.html">
             
                     
-                    Query candlestick data
+                    Get a markets candlestick
             
                 </a>
             
@@ -516,7 +516,7 @@
                 <a href="getPrice.html">
             
                     
-                    Query token fiat price
+                    Get token's current fiat-price
             
                 </a>
             
@@ -542,7 +542,7 @@
                 <a href="getAllowance.html">
             
                     
-                    Query allowance
+                    Get a token's allowance
             
                 </a>
             
@@ -555,7 +555,7 @@
                 <a href="getTokenBalance.html">
             
                     
-                    Query token balance
+                    Get user's token balance on Ethereum mainnet
             
                 </a>
             
@@ -581,7 +581,7 @@
                 <a href="getUserCreate.html">
             
                     
-                    Get user creation list
+                    Get user registration transactions
             
                 </a>
             
@@ -594,7 +594,7 @@
                 <a href="getUserUpdate.html">
             
                     
-                    Get user update list
+                    Get user password change transactions
             
                 </a>
             
@@ -607,7 +607,7 @@
                 <a href="getUserBalances.html">
             
                     
-                    Query the user's balance in exchange
+                    Get the user's exchange balances
             
                 </a>
             
@@ -620,7 +620,7 @@
                 <a href="getUserDeposits.html">
             
                     
-                    Get user deposit list
+                    Get a users deposit history
             
                 </a>
             
@@ -633,7 +633,7 @@
                 <a href="getUserWithdrawals.html">
             
                     
-                    api.getUserOnchainWithdrawals.value
+                    Get user onchain withdrawal list
             
                 </a>
             
@@ -659,7 +659,7 @@
                 <a href="getUserTrades.html">
             
                     
-                    Get user trading list
+                    Get a users trade history
             
                 </a>
             
@@ -870,56 +870,56 @@
 <td style="text-align:left">accountId</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Account id</td>
+<td style="text-align:left">Account ID</td>
 <td style="text-align:left">1</td>
 </tr>
 <tr>
 <td style="text-align:left">start</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">N</td>
-<td style="text-align:left">Start time in millisecond (create time larger than this param will be matched)<br>Default : 0L</td>
+<td style="text-align:left">Start time in milliseconds<br>Default : 0L</td>
 <td style="text-align:left">1578558098000</td>
 </tr>
 <tr>
 <td style="text-align:left">end</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">N</td>
-<td style="text-align:left">End time in millisecond (create time less than this param will be matched)<br>Default : 0L</td>
+<td style="text-align:left">End time in milliseconds<br>Default : 0L</td>
 <td style="text-align:left">1578558098000</td>
 </tr>
 <tr>
 <td style="text-align:left">status</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">N</td>
-<td style="text-align:left">Current status<br>Allowable : [&apos;processing&apos;, &apos;processed&apos;, &apos;received&apos;, &apos;failed&apos;]</td>
+<td style="text-align:left">Comma separated status values<br>Allowable : [&apos;processing&apos;, &apos;processed&apos;, &apos;received&apos;, &apos;failed&apos;]</td>
 <td style="text-align:left">&quot;processing,processed&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">limit</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">N</td>
-<td style="text-align:left">Limit of list (default 50)</td>
+<td style="text-align:left">Number of records to return</td>
 <td style="text-align:left">50</td>
 </tr>
 <tr>
 <td style="text-align:left">fromHash</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">N</td>
-<td style="text-align:left">Create time less than specific hash will be matched</td>
+<td style="text-align:left">Pagination of data to return records earlier than the requested hash</td>
 <td style="text-align:left">&quot;0x9d114267e8b261457d<br>567093c13cf3deea5f14<br>c9235be26c6fa833dba1<br>2a9632&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">tokenSymbol</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">N</td>
-<td style="text-align:left">Token symbol</td>
+<td style="text-align:left">Token to filter. If you want to return deposit records for all tokens, omit this parameter</td>
 <td style="text-align:left">&quot;LRC&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">offset</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">N</td>
-<td style="text-align:left">Offset of list (default 0)<br>Default : 0L</td>
+<td style="text-align:left">Number of records to skip<br>Default : 0L</td>
 <td style="text-align:left">1</td>
 </tr>
 </tbody>
@@ -955,7 +955,7 @@
 <td style="text-align:left">data</td>
 <td style="text-align:left"><a href="#TxDataList">TxDataList</a></td>
 <td style="text-align:left">N</td>
-<td style="text-align:left">User transactions response</td>
+<td style="text-align:left">TxDataList</td>
 <td style="text-align:left">/</td>
 </tr>
 </tbody>
@@ -1009,22 +1009,22 @@
 </tr>
 <tr>
 <td style="text-align:left">104001</td>
-<td style="text-align:left">APIKEY cannot be empty</td>
+<td style="text-align:left">Empty ApiKey</td>
 </tr>
 <tr>
 <td style="text-align:left">104002</td>
-<td style="text-align:left">APIKEY verification failed</td>
+<td style="text-align:left">Invalid ApiKey</td>
 </tr>
 <tr>
 <td style="text-align:left">104003</td>
-<td style="text-align:left">The user was not found</td>
+<td style="text-align:left">Invalid Account ID</td>
 </tr>
 </tbody>
 </table>
 <h3 id="model">Model</h3>
 <hr>
 <h4 id="txdatalist">TxDataList</h4>
-<p><span id="TxDataList"></span>User transactions response</p>
+<p><span id="TxDataList"></span>TxDataList</p>
 <table>
 <thead>
 <tr>
@@ -1040,14 +1040,14 @@
 <td style="text-align:left">totalNum</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Total number of user transactions</td>
+<td style="text-align:left">Total number of records found</td>
 <td style="text-align:left">1</td>
 </tr>
 <tr>
 <td style="text-align:left">transactions</td>
 <td style="text-align:left">List[<a href="#TxData">TxData</a>]</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">list of user transaction</td>
+<td style="text-align:left">List of user transaction</td>
 <td style="text-align:left">/</td>
 </tr>
 </tbody>
@@ -1090,14 +1090,14 @@
 <td style="text-align:left">amount</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Request amount</td>
+<td style="text-align:left">Amount requested by the user</td>
 <td style="text-align:left">&quot;1000000000000000000&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">realAmount</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Effective amount</td>
+<td style="text-align:left">Actual amount processed</td>
 <td style="text-align:left">&quot;1000000000000000000&quot;</td>
 </tr>
 <tr>
@@ -1139,7 +1139,7 @@
 <td style="text-align:left">timestamp</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Update time</td>
+<td style="text-align:left">Create time</td>
 <td style="text-align:left">1578572292000</td>
 </tr>
 <tr>
@@ -1160,14 +1160,14 @@
 <td style="text-align:left">updatedAt</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">field.TxData.updatedAt</td>
+<td style="text-align:left">Update time</td>
 <td style="text-align:left">1578572292000</td>
 </tr>
 <tr>
 <td style="text-align:left">distributeHash</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">N</td>
-<td style="text-align:left">field.TxData.distributeHash</td>
+<td style="text-align:left">Distribute Hash</td>
 <td style="text-align:left">&quot;0x9d114267e8b261457d<br>567093c13cf3deea5f14<br>c9235be26c6fa833dba1<br>2a9632&quot;</td>
 </tr>
 </tbody>
@@ -1199,12 +1199,12 @@
 
             
                 
-                <a href="getUserWithdrawals.html" class="navigation navigation-prev " aria-label="Previous page: api.getUserOnchainWithdrawals.value">
+                <a href="getUserWithdrawals.html" class="navigation navigation-prev " aria-label="Previous page: Get user onchain withdrawal list">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="getUserTrades.html" class="navigation navigation-next " aria-label="Next page: Get user trading list">
+                <a href="getUserTrades.html" class="navigation navigation-next " aria-label="Next page: Get a users trade history">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1215,7 +1215,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Get user transfer list","level":"3.1.32","depth":2,"next":{"title":"Get user trading list","level":"3.1.33","depth":2,"path":"dex_apis/getUserTrades.md","ref":"dex_apis/getUserTrades.md","articles":[]},"previous":{"title":"api.getUserOnchainWithdrawals.value","level":"3.1.31","depth":2,"path":"dex_apis/getUserWithdrawals.md","ref":"dex_apis/getUserWithdrawals.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getUserTransfers.md","mtime":"2020-04-14T14:00:50.054Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-14T14:00:52.039Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Get user transfer list","level":"3.1.32","depth":2,"next":{"title":"Get a users trade history","level":"3.1.33","depth":2,"path":"dex_apis/getUserTrades.md","ref":"dex_apis/getUserTrades.md","articles":[]},"previous":{"title":"Get user onchain withdrawal list","level":"3.1.31","depth":2,"path":"dex_apis/getUserWithdrawals.md","ref":"dex_apis/getUserWithdrawals.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getUserTransfers.md","mtime":"2020-04-14T14:34:54.111Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-14T14:34:55.406Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
