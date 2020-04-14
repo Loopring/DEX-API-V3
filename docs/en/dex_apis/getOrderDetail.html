@@ -633,7 +633,7 @@
                 <a href="getUserWithdrawals.html">
             
                     
-                    Get user withdrawal list
+                    api.getUserOnchainWithdrawals.value
             
                 </a>
             
@@ -878,7 +878,7 @@
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Order hash</td>
-<td style="text-align:left">13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859</td>
+<td style="text-align:left">&quot;13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859&quot;</td>
 </tr>
 </tbody>
 </table>
@@ -1001,63 +1001,63 @@
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Order hash</td>
-<td style="text-align:left">0xfb5e711c2f044e9432<br>2ed262229cd8f0d0da00<br>c22e1a00a0f5d881e45a<br>38e1cf</td>
+<td style="text-align:left">&quot;0xfb5e711c2f044e9432<br>2ed262229cd8f0d0da00<br>c22e1a00a0f5d881e45a<br>38e1cf&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">clientOrderId</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Client order unique id</td>
-<td style="text-align:left">200310143135081332</td>
+<td style="text-align:left">&quot;200310143135081332&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">size</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Order quantity</td>
-<td style="text-align:left">8210000000000001024</td>
+<td style="text-align:left">&quot;8210000000000001024&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">volume</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Order amount</td>
-<td style="text-align:left">163182534700000032</td>
+<td style="text-align:left">&quot;163182534700000032&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">price</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Deal price</td>
-<td style="text-align:left">0.01987608</td>
+<td style="text-align:left">&quot;0.01987608&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">filledSize</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Volume</td>
-<td style="text-align:left">0</td>
+<td style="text-align:left">&quot;0&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">filledVolume</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Turnover</td>
-<td style="text-align:left">0</td>
+<td style="text-align:left">&quot;0&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">filledFee</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Fee</td>
-<td style="text-align:left">0</td>
+<td style="text-align:left">&quot;0&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">status</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Order status<br>Allowable : [&apos;processing&apos;, &apos;processed&apos;, &apos;cancelling&apos;, &apos;cancelled&apos;, &apos;expired&apos;, &apos;waiting&apos;]</td>
-<td style="text-align:left">processing</td>
+<td style="text-align:left">&quot;processing&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">validSince</td>
@@ -1085,14 +1085,14 @@
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Sell or buy<br>Allowable : [&apos;SELL&apos;, &apos;BUY&apos;]</td>
-<td style="text-align:left">SELL</td>
+<td style="text-align:left">&quot;SELL&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">market</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Market</td>
-<td style="text-align:left">LRC-ETH</td>
+<td style="text-align:left">&quot;LRC-ETH&quot;</td>
 </tr>
 </tbody>
 </table>
@@ -1139,7 +1139,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Get order details","level":"3.1.5","depth":2,"next":{"title":"Submit order","level":"3.1.6","depth":2,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},"previous":{"title":"Get the next valid OrderId","level":"3.1.4","depth":2,"path":"dex_apis/getNextOrderId.md","ref":"dex_apis/getNextOrderId.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getOrderDetail.md","mtime":"2020-04-12T07:24:57.655Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-12T07:24:58.718Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Get order details","level":"3.1.5","depth":2,"next":{"title":"Submit order","level":"3.1.6","depth":2,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},"previous":{"title":"Get the next valid OrderId","level":"3.1.4","depth":2,"path":"dex_apis/getNextOrderId.md","ref":"dex_apis/getNextOrderId.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getOrderDetail.md","mtime":"2020-04-14T13:47:03.259Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-14T13:47:04.653Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
