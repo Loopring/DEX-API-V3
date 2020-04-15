@@ -4,6 +4,7 @@
         "/api/v2/dexNonce",
         "/api/v2/offchainWithdrawal",
         "/api/v2/transfer",
+        "/api/v2/user/transfers",
         "/api/v2/crawl"
     ],
     "enable_apis" : [
@@ -38,7 +39,6 @@
         "/api/v2/user/balances",
         "/api/v2/user/deposits",
         "/api/v2/user/withdrawals",
-        "/api/v2/user/transfers",
         "/api/v2/user/trades"
     ],
     "no_key": ["getApiKey"],
