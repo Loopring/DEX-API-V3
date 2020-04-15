@@ -23,5 +23,5 @@ The overall architecture of Loopring Exchange is shown below:
 
 Some key points you need to know:
 
-- Loopring Exchange provides APIs to handle user offchain requests, namely order submission and cancellation, and withdrawals. Other user requests, including account registration, password reset, and deposits, must be submitted using Ethereum transactions. These requests are called on-chain requests.
+- Loopring Exchange provides API to handle user offchain requests, namely order submission and cancellation, and withdrawals. Other user requests, including account registration, password reset, and deposits, must be submitted using Ethereum transactions. These requests are called on-chain requests.
 - Loopring offers a high-performance trading experience similar to centralized exchanges, which mainly benefits from the batch processing capability of the underlying Loopring protocol. Loopring uses Ethereum as a data availability layer and a ZKP verification layer; Loopring does not perform trading related computations on Ethereum.

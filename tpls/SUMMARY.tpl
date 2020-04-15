@@ -15,12 +15,12 @@
 
 ## [{{l.summary.APISpec.APISpec}}](dex_api_overview.md)
 
-* [{{l.summary.APISpec.RESTAPIs}}](REST_APIS.md)
+* [{{l.summary.APISpec.RESTAPI}}](REST_APIS.md)
     {% for api in apis %}
     * [{{api.summary}}]({{g_api_doc(api.operationId, "dex_apis", api.operationId)}})
     {% endfor %}
 
-* [{{ l.summary.APISpec.WebSocketAPIs}}](websocket/overview.md)
+* [{{ l.summary.APISpec.WebSocketAPI}}](websocket/overview.md)
     * [{{l.websocket.account}}](websocket/account.md)
     * [{{l.websocket.order}}](websocket/order.md)
     * [{{l.websocket.orderbook}}](websocket/orderbook.md)

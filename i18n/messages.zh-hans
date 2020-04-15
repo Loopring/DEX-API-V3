@@ -15,8 +15,8 @@
     },
     "APISpec": {
       "APISpec": "API规范（2.0）",
-      "RESTAPIs": "REST API",
-      "WebSocketAPIs": "WebSocket API"
+      "RESTAPI": "REST API",
+      "WebSocketAPI": "WebSocket API"
     }
   },
   "apidoc": {

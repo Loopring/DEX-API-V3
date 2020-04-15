@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>REST APIs · Loopring API</title>
+        <title>REST API · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -229,7 +229,7 @@
                 <a href="REST_APIS.html">
             
                     
-                    REST APIs
+                    REST API
             
                 </a>
             
@@ -684,7 +684,7 @@
                 <a href="websocket/overview.html">
             
                     
-                    WebSocket APIs
+                    WebSocket API
             
                 </a>
             
@@ -806,7 +806,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="." >REST APIs</a>
+        <a href="." >REST API</a>
     </h1>
 </div>
 
@@ -821,15 +821,15 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="rest-apis">REST APIs</h1>
-<p>This article describes some common parts for Loopring&apos;s REST APIs.</p>
+                                <h1 id="rest-apis">REST API</h1>
+<p>This article describes some common parts for Loopring&apos;s REST API.</p>
 <h2 id="base-url">Base URL</h2>
 <pre><code>https://api.loopring.io
 </code></pre><h2 id="rate-limit">Rate Limit</h2>
 <p>Each API has its rate limit settings. The relayer will reject all API invocations beyond this limit, with status code <code>429</code>. Stop excessive API invocations to avoid your account from being suspended.</p>
 <h2 id="http-headers">HTTP Headers</h2>
 <h4 id="x-api-key">X-API-KEY</h4>
-<p>All APIs except <a href="dex_apis/getApiKey.html">querying user ApiKey</a> need to specify the <code>X-API-KEY</code> HTTP header with the user&apos;s ApiKey as the value.</p>
+<p>All API except <a href="dex_apis/getApiKey.html">querying user ApiKey</a> need to specify the <code>X-API-KEY</code> HTTP header with the user&apos;s ApiKey as the value.</p>
 <h4 id="x-api-sig">X-API-SIG</h4>
 <p>The following API needs to specify the <code>X-API-SIG</code> HTTP header to provide an EdDSA signature:</p>
 <ul>
@@ -849,7 +849,7 @@
     <span class="hljs-keyword">return</span> session
 </code></pre>
 <h2 id="response">Response</h2>
-<p>Except for network errors, all APIs will return the <code>200</code> HTTP status code and a JSON object representing the actual API result. The JSON  contains a <code>resultInfo</code> structure that has a <code>code</code> field for application-specific status code, and a <code>data</code> JSON object that represents API-specific response.</p>
+<p>Except for network errors, all API will return the <code>200</code> HTTP status code and a JSON object representing the actual API result. The JSON  contains a <code>resultInfo</code> structure that has a <code>code</code> field for application-specific status code, and a <code>data</code> JSON object that represents API-specific response.</p>
 <h4 id="response">Response</h4>
 <table>
 <thead>
@@ -982,7 +982,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"REST APIs","level":"3.1","depth":1,"next":{"title":"Get relayer's current time","level":"3.1.1","depth":2,"path":"dex_apis/getTimestamp.md","ref":"dex_apis/getTimestamp.md","articles":[]},"previous":{"title":"Smart Contracts","level":"2.5","depth":1,"path":"basics/contracts.md","ref":"basics/contracts.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"REST_APIS.md","mtime":"2020-04-14T14:56:39.209Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-14T14:56:40.172Z"},"basePath":".","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"REST API","level":"3.1","depth":1,"next":{"title":"Get relayer's current time","level":"3.1.1","depth":2,"path":"dex_apis/getTimestamp.md","ref":"dex_apis/getTimestamp.md","articles":[]},"previous":{"title":"Smart Contracts","level":"2.5","depth":1,"path":"basics/contracts.md","ref":"basics/contracts.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"REST_APIS.md","mtime":"2020-04-14T14:56:39.209Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-14T14:56:40.172Z"},"basePath":".","book":{"language":"en"}});
         });
     </script>
 </div>

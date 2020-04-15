@@ -15,7 +15,7 @@ Loopring Exchange's backend system that handles order matching and settlement, d
 User requests sent to Loopring Exchange through Ethereum transactions.
 
 ### Off-chain Requests
-User requests sent to Loopring Exchange using Loopring's APIs.
+User requests sent to Loopring Exchange using Loopring's API.
 
 ### Base Token
 The target token to trade. For example, in the LRC-ETH trading pair, LRC is referred to as the base token.

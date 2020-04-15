@@ -1,4 +1,4 @@
-# WebSocket APIs
+# WebSocket API
 
 ## Base URL
 

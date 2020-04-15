@@ -1,8 +1,8 @@
 
 
-# REST APIs
+# REST API
 
-This article describes some common parts for Loopring's REST APIs.
+This article describes some common parts for Loopring's REST API.
 
 ## Base URL
 
@@ -18,7 +18,7 @@ Each API has its rate limit settings. The relayer will reject all API invocation
 
 
 #### X-API-KEY
-All APIs except [querying user ApiKey](./dex_apis/getApiKey.md) need to specify the `X-API-KEY` HTTP header with the user's ApiKey as the value.
+All API except [querying user ApiKey](./dex_apis/getApiKey.md) need to specify the `X-API-KEY` HTTP header with the user's ApiKey as the value.
 
 #### X-API-SIG
 
@@ -44,6 +44,6 @@ def init_request_session(apiKey, sig):
 
 ## Response
 
-Except for network errors, all APIs will return the `200` HTTP status code and a JSON object representing the actual API result. The JSON  contains a `resultInfo` structure that has a `code` field for application-specific status code, and a `data` JSON object that represents API-specific response.
+Except for network errors, all API will return the `200` HTTP status code and a JSON object representing the actual API result. The JSON  contains a `resultInfo` structure that has a `code` field for application-specific status code, and a `data` JSON object that represents API-specific response.
 
 {% include "./common.md" %}
