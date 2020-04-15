@@ -53,6 +53,8 @@
     "default": "Default",
     "allow": "Allowable",
     "throttle": "Rate limit",
+    "every": "every",
+    "second": "second",
     "seconds": "seconds",
     "code0": "Success",
     "code1000000": "Unknown internal error",

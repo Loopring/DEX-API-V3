@@ -2,7 +2,12 @@
 
 ## {{api.summary}}
 {% set tps = g_tps(api) %}
-{{l.apidoc.throttle}}: {{tps.count}} / {{tps.interval}} {{l.apidoc.seconds}}
+{{l.apidoc.throttle}}: {{tps.count}} {{l.apidoc.every}}
+{%- if tps.interval == 1 %}
+{{l.apidoc.second}}
+{%- else %}
+{{tps.interval}} {{l.apidoc.seconds}}
+{% endif %}
 
 ### {{ l.apidoc.overview }}
 ----
