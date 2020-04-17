@@ -85,6 +85,7 @@ Clients can send JSON to unsubscribe from multiple topics:
 1. In one unsubscription request, if there are any configuration errors, the entire unsubscription request fails;
 1. If the top-level `unsubscribeAll` is `true`, all previous subscriptions will be canceled; if the per-topic `unsubscribeAll` is `true`, then all subscriptions to that topic will be canceled;
 1. If `sequence` is provided, the relayer will use the same sequence number in its response.
+1. Subscribe up to 20 topics in total.
 
 #### Heartbeat
 
@@ -129,6 +130,7 @@ After a WebSocket connection is established, the relay will send a "ping" messag
 |   104113   |               Subscription not found              |
 |   104114   |             Invalid ApiKey (user not found)                |
 |   104115   |                  Invalid topic config                |
+| 104116 | exceed maximum subscriptions |
 
 #### Examples
 
@@ -178,7 +180,6 @@ Another failed subscription：
 ```json
 {
     "op": "sub",
-    "sequence": 10000,
     "topics": [],
     "result": {
         "status": "failed",
