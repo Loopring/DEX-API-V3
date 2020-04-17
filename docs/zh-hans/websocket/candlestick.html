@@ -1,10 +1,10 @@
 
 <!DOCTYPE HTML>
-<html lang="en" >
+<html lang="zh-hans" >
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Orderbook Notification · Loopring API</title>
+        <title>Candlestick更新 · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -85,10 +85,8 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="trade.html" />
     
-    
-    <link rel="prev" href="order.html" />
+    <link rel="prev" href="ticker.html" />
     
 
     </head>
@@ -99,7 +97,7 @@
         
             
 <div id="book-search-input" role="search">
-    <input type="text" placeholder="Type to search" />
+    <input type="text" placeholder="输入并搜索" />
 </div>
 
             
@@ -115,7 +113,7 @@
 
     
         
-        <li class="header">About</li>
+        <li class="header">关于</li>
         
         
     
@@ -124,7 +122,7 @@
                 <a href="../">
             
                     
-                    Loopring
+                    路印
             
                 </a>
             
@@ -137,7 +135,7 @@
                 <a href="../GLOSSARY.html">
             
                     
-                    Glossary
+                    术语
             
                 </a>
             
@@ -148,7 +146,7 @@
 
     
         
-        <li class="header">Fundamental</li>
+        <li class="header">基础</li>
         
         
     
@@ -157,7 +155,7 @@
                 <a href="../basics/orders.html">
             
                     
-                    Orders
+                    订单模型
             
                 </a>
             
@@ -170,7 +168,7 @@
                 <a href="../basics/key_mgmt.html">
             
                     
-                    Key Management
+                    秘钥管理
             
                 </a>
             
@@ -183,7 +181,7 @@
                 <a href="../basics/signing.html">
             
                     
-                    Request Signing
+                    请求签名
             
                 </a>
             
@@ -196,7 +194,7 @@
                 <a href="../basics/examples.html">
             
                     
-                    Example Code
+                    示范代码
             
                 </a>
             
@@ -209,7 +207,7 @@
                 <a href="../basics/contracts.html">
             
                     
-                    Smart Contracts
+                    智能合约
             
                 </a>
             
@@ -220,7 +218,7 @@
 
     
         
-        <li class="header">API Specification (2.0)</li>
+        <li class="header">API规范（2.0）</li>
         
         
     
@@ -243,7 +241,7 @@
                 <a href="../dex_apis/getTimestamp.html">
             
                     
-                    Get relayer's current time
+                    查询服务器当前时间
             
                 </a>
             
@@ -256,7 +254,7 @@
                 <a href="../dex_apis/getApiKey.html">
             
                     
-                    Get user ApiKey
+                    查询用户ApiKey
             
                 </a>
             
@@ -269,7 +267,7 @@
                 <a href="../dex_apis/applyApiKey.html">
             
                     
-                    Update user's ApiKey
+                    更新用户ApiKey
             
                 </a>
             
@@ -282,7 +280,7 @@
                 <a href="../dex_apis/getNextOrderId.html">
             
                     
-                    Get next order ID
+                    获取下一个有效OrderId
             
                 </a>
             
@@ -295,7 +293,7 @@
                 <a href="../dex_apis/getOrderDetail.html">
             
                     
-                    Get order details
+                    获取订单详情
             
                 </a>
             
@@ -308,7 +306,7 @@
                 <a href="../dex_apis/submitOrder.html">
             
                     
-                    Submit an order
+                    提交订单
             
                 </a>
             
@@ -321,7 +319,7 @@
                 <a href="../dex_apis/batchSubmitOrder.html">
             
                     
-                    Submit multiple orders
+                    批量提交订单
             
                 </a>
             
@@ -334,7 +332,7 @@
                 <a href="../dex_apis/getOrders.html">
             
                     
-                    Get multiple orders
+                    获取用户订单列表
             
                 </a>
             
@@ -347,7 +345,7 @@
                 <a href="../dex_apis/cancelOrders.html">
             
                     
-                    Cancel orders
+                    取消订单
             
                 </a>
             
@@ -360,7 +358,7 @@
                 <a href="../dex_apis/batchCancelOrdersByOrderHash.html">
             
                     
-                    Cancel multiple orders by hash
+                    根据订单HASH批量取消订单
             
                 </a>
             
@@ -373,7 +371,7 @@
                 <a href="../dex_apis/batchCancelOrdersByClientOrderId.html">
             
                     
-                    Cancel multiple orders by clientOrderId
+                    根据订单的客户端标识的订单ID批量取消订单
             
                 </a>
             
@@ -386,7 +384,7 @@
                 <a href="../dex_apis/sendTransaction.html">
             
                     
-                    Send a raw Ethereum transaction
+                    发送以太坊交易
             
                 </a>
             
@@ -399,7 +397,7 @@
                 <a href="../dex_apis/getEthNonce.html">
             
                     
-                    Get user's next Ethereum nonce
+                    查询用户以太坊地址可用的nonce
             
                 </a>
             
@@ -412,7 +410,7 @@
                 <a href="../dex_apis/getEthBalance.html">
             
                     
-                    Get user's Ether balance on Ethereum mainnet
+                    查询ETH余额
             
                 </a>
             
@@ -425,7 +423,7 @@
                 <a href="../dex_apis/getRecommendedGasPrice.html">
             
                     
-                    Get recommended gas price
+                    获取推荐gas
             
                 </a>
             
@@ -438,7 +436,7 @@
                 <a href="../dex_apis/getMarkets.html">
             
                     
-                    Get market configurations
+                    查询交易所支持的市场配置
             
                 </a>
             
@@ -451,7 +449,7 @@
                 <a href="../dex_apis/getTokens.html">
             
                     
-                    Get token configurations
+                    查询交易所支持的通证信息
             
                 </a>
             
@@ -464,7 +462,7 @@
                 <a href="../dex_apis/getExchangeInfo.html">
             
                     
-                    Get exchange configurations
+                    查询交易所的基本必要信息
             
                 </a>
             
@@ -477,7 +475,7 @@
                 <a href="../dex_apis/getDepth.html">
             
                     
-                    Get market orderbook
+                    获取市场深度信息
             
                 </a>
             
@@ -490,7 +488,7 @@
                 <a href="../dex_apis/getTicker.html">
             
                     
-                    Get market ticker
+                    查询交易所Ticker
             
                 </a>
             
@@ -503,7 +501,7 @@
                 <a href="../dex_apis/getCandlestick.html">
             
                     
-                    Get market candlestick
+                    查询K线数据
             
                 </a>
             
@@ -516,7 +514,7 @@
                 <a href="../dex_apis/getPrice.html">
             
                     
-                    Get token fiat prices
+                    查询token法币价
             
                 </a>
             
@@ -529,7 +527,7 @@
                 <a href="../dex_apis/getMarketTrade.html">
             
                     
-                    Get market recent trades
+                    查询市场交易
             
                 </a>
             
@@ -542,7 +540,7 @@
                 <a href="../dex_apis/getAllowance.html">
             
                     
-                    Get user token allowance
+                    查询授权
             
                 </a>
             
@@ -555,7 +553,7 @@
                 <a href="../dex_apis/getTokenBalance.html">
             
                     
-                    Get user token balance
+                    查询Token余额
             
                 </a>
             
@@ -568,7 +566,7 @@
                 <a href="../dex_apis/getAccount.html">
             
                     
-                    Query user information
+                    查询用户信息
             
                 </a>
             
@@ -581,7 +579,7 @@
                 <a href="../dex_apis/getUserCreate.html">
             
                     
-                    Get user registration transactions
+                    获取用户开户记录
             
                 </a>
             
@@ -594,7 +592,7 @@
                 <a href="../dex_apis/getUserUpdate.html">
             
                     
-                    Get password reset transactions
+                    获取用户更新记录
             
                 </a>
             
@@ -607,7 +605,7 @@
                 <a href="../dex_apis/getUserBalances.html">
             
                     
-                    Get user exchange balances
+                    查询用户交易所余额
             
                 </a>
             
@@ -620,7 +618,7 @@
                 <a href="../dex_apis/getUserDeposits.html">
             
                     
-                    Get user deposit history
+                    获取用户充值记录
             
                 </a>
             
@@ -633,7 +631,7 @@
                 <a href="../dex_apis/getUserWithdrawals.html">
             
                     
-                    Get user onchain withdrawal history
+                    获取用户链上提现记录
             
                 </a>
             
@@ -646,7 +644,7 @@
                 <a href="../dex_apis/getUserTrades.html">
             
                     
-                    Get user trade history
+                    获取用户交易记录
             
                 </a>
             
@@ -685,7 +683,7 @@
                 <a href="account.html">
             
                     
-                    Account Notification
+                    账号金额更新
             
                 </a>
             
@@ -698,7 +696,7 @@
                 <a href="order.html">
             
                     
-                    Order Notification
+                    用户订单更新
             
                 </a>
             
@@ -706,12 +704,12 @@
             
         </li>
     
-        <li class="chapter active" data-level="4.1.3" data-path="orderbook.html">
+        <li class="chapter " data-level="4.1.3" data-path="orderbook.html">
             
                 <a href="orderbook.html">
             
                     
-                    Orderbook Notification
+                    订单簿更新
             
                 </a>
             
@@ -724,7 +722,7 @@
                 <a href="trade.html">
             
                     
-                    Trade Notification
+                    最新成交更新
             
                 </a>
             
@@ -737,7 +735,7 @@
                 <a href="ticker.html">
             
                     
-                    Ticker Notification
+                    Ticker更新
             
                 </a>
             
@@ -745,12 +743,12 @@
             
         </li>
     
-        <li class="chapter " data-level="4.1.6" data-path="candlestick.html">
+        <li class="chapter active" data-level="4.1.6" data-path="candlestick.html">
             
                 <a href="candlestick.html">
             
                     
-                    Candlestick Notification
+                    Candlestick更新
             
                 </a>
             
@@ -770,7 +768,7 @@
 
     <li>
         <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
-            Published with GitBook
+            本书使用 GitBook 发布
         </a>
     </li>
 </ul>
@@ -793,7 +791,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Orderbook Notification</a>
+        <a href=".." >Candlestick更新</a>
     </h1>
 </div>
 
@@ -808,198 +806,213 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="orderbook-notification">Orderbook Notification</h1>
-<p>Subscribe to this topic to receive notifications about orderbook updates for specific trading pairs.</p>
-<h2 id="rules">Rules</h2>
+                                <h1 id="candlestick&#x66F4;&#x65B0;">Candlestick&#x66F4;&#x65B0;</h1>
+<p>&#x8BA2;&#x9605;&#x6B64;&#x4E3B;&#x9898;&#x4EE5;&#x63A5;&#x6536;&#x7279;&#x5B9A;&#x4EA4;&#x6613;&#x5BF9;Candlestick&#x66F4;&#x65B0;&#x7684;&#x901A;&#x77E5;&#x3002;</p>
+<h2 id="&#x8BA2;&#x9605;&#x89C4;&#x5219;">&#x8BA2;&#x9605;&#x89C4;&#x5219;</h2>
 <ul>
-<li>Topic name: <code>orderbook</code></li>
-<li>ApiKey requred: No</li>
+<li>&#x4E3B;&#x9898;&#x540D;&#x79F0;&#xFF1A;<code>candlestick</code></li>
+<li>&#x8BA2;&#x9605;&#x8BE5;&#x4E3B;&#x9898;&#x662F;&#x5426;&#x9700;&#x8981;&#x63D0;&#x4F9B;ApiKey&#xFF1A;&#x5426;</li>
 </ul>
-<h2 id="parameters">Parameters</h2>
+<h2 id="&#x53C2;&#x6570;&#x5217;&#x8868;">&#x53C2;&#x6570;&#x5217;&#x8868;</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Parameter</th>
-<th style="text-align:left">Required</th>
-<th style="text-align:left">Note</th>
+<th style="text-align:left">&#x53C2;&#x6570;&#x540D;</th>
+<th style="text-align:left">&#x5FC5;&#x73B0;</th>
+<th style="text-align:left">&#x63CF;&#x8FF0;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">market</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left"><a href="../dex_apis/getMarkets.html">Trading pair</a></td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x4EA4;&#x6613;&#x5BF9;&#xFF08;&#x652F;&#x6301;&#x7684;&#x4EA4;&#x6613;&#x5BF9;&#x53EF;&#x4EE5;&#x901A;&#x8FC7;api&#x63A5;&#x53E3;<a href="../dex_apis/getMarkets.html">api/v2/exchange/markets</a>&#x83B7;&#x53D6;&#xFF09;</td>
 </tr>
 <tr>
-<td style="text-align:left">level</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Price aggregation level</td>
-</tr>
-<tr>
-<td style="text-align:left">count</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Number of bids/ask price slots, count can not be larger than 50, and only take effect when snapshot is true.</td>
-</tr>
-<tr>
-<td style="text-align:left">snapshot</td>
-<td style="text-align:left">N</td>
-<td style="text-align:left">Default to false. If true, the client will receive full notification with up to <code>count</code> bid/ask price slots when at least one slot has update.</td>
+<td style="text-align:left">interval</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x65F6;&#x95F4;&#x95F4;&#x9694;</td>
 </tr>
 </tbody>
 </table>
-<h2 id="status-code">Status code</h2>
+<h4 id="&#x65F6;&#x95F4;&#x95F4;&#x9694;">&#x65F6;&#x95F4;&#x95F4;&#x9694;</h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Value</th>
-<th style="text-align:left">Note</th>
+<th style="text-align:left">&#x95F4;&#x9694;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">104107</td>
-<td style="text-align:left">Invalid topic or parameters</td>
+<td style="text-align:left">1min</td>
+<td style="text-align:left">1&#x5206;&#x949F;</td>
+</tr>
+<tr>
+<td style="text-align:left">5min</td>
+<td style="text-align:left">5&#x5206;&#x949F;</td>
+</tr>
+<tr>
+<td style="text-align:left">15min</td>
+<td style="text-align:left">15&#x5206;&#x949F;</td>
+</tr>
+<tr>
+<td style="text-align:left">30min</td>
+<td style="text-align:left">30&#x5206;&#x949F;</td>
+</tr>
+<tr>
+<td style="text-align:left">1hr</td>
+<td style="text-align:left">1&#x5C0F;&#x65F6;</td>
+</tr>
+<tr>
+<td style="text-align:left">2hr</td>
+<td style="text-align:left">2&#x5C0F;&#x65F6;</td>
+</tr>
+<tr>
+<td style="text-align:left">4hr</td>
+<td style="text-align:left">4&#x5C0F;&#x65F6;</td>
+</tr>
+<tr>
+<td style="text-align:left">12hr</td>
+<td style="text-align:left">12&#x5C0F;&#x65F6;</td>
+</tr>
+<tr>
+<td style="text-align:left">1d</td>
+<td style="text-align:left">1&#x5929;</td>
+</tr>
+<tr>
+<td style="text-align:left">1w</td>
+<td style="text-align:left">1&#x5468;</td>
 </tr>
 </tbody>
 </table>
-<h2 id="notification-example">Notification example</h2>
-<pre><code class="lang-json">{
-    <span class="hljs-string">&quot;topic&quot;</span>: {
-        <span class="hljs-string">&quot;topic:&quot;</span>: <span class="hljs-string">&quot;orderbook&quot;</span>,
-        <span class="hljs-string">&quot;market&quot;</span>: <span class="hljs-string">&quot;LRC-USDT&quot;</span>,
-        <span class="hljs-string">&quot;count&quot;</span>: <span class="hljs-number">20</span>,
-        <span class="hljs-string">&quot;snapshot&quot;</span>: <span class="hljs-literal">true</span>
-    },
-    <span class="hljs-string">&quot;ts&quot;</span>: <span class="hljs-number">1584717910000</span>,
-    <span class="hljs-string">&quot;startVersion&quot;</span>: <span class="hljs-number">1212121</span>,
-    <span class="hljs-string">&quot;endVersion&quot;</span>: <span class="hljs-string">&quot;1212123&quot;</span>,
-    <span class="hljs-string">&quot;data&quot;</span>: {
-        <span class="hljs-string">&quot;bids&quot;</span>: [
-            [
-                <span class="hljs-string">&quot;295.97&quot;</span>,  <span class="hljs-comment">//price</span>
-                <span class="hljs-string">&quot;456781000000000&quot;</span>,  <span class="hljs-comment">//size</span>
-                <span class="hljs-string">&quot;3015000000000&quot;</span>,  <span class="hljs-comment">//volume</span>
-                <span class="hljs-string">&quot;4&quot;</span>  <span class="hljs-comment">//count</span>
-            ]
-        ],
-        <span class="hljs-string">&quot;asks&quot;</span>: [
-            [
-              <span class="hljs-string">&quot;298.97&quot;</span>,
-              <span class="hljs-string">&quot;456781000000000000&quot;</span>,
-              <span class="hljs-string">&quot;301500000000000&quot;</span>,
-              <span class="hljs-string">&quot;2&quot;</span>
-            ]
-        ]
-    }
-}
-</code></pre>
-<h2 id="data-model">Data Model</h2>
-<h4 id="notification">Notification</h4>
+<h2 id="&#x72B6;&#x6001;&#x7801;">&#x72B6;&#x6001;&#x7801;</h2>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Field</th>
-<th style="text-align:left">Type</th>
-<th style="text-align:left">Required</th>
-<th style="text-align:left">Note</th>
+<th style="text-align:left">&#x72B6;&#x6001;&#x7801;</th>
+<th style="text-align:left">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">104106</td>
+<td style="text-align:left">&#x4E3B;&#x9898;&#x6216;&#x53C2;&#x6570;&#x975E;&#x6CD5;</td>
+</tr>
+</tbody>
+</table>
+<h2 id="&#x63A8;&#x9001;&#x793A;&#x4F8B;">&#x63A8;&#x9001;&#x793A;&#x4F8B;</h2>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;topic&quot;</span>: {
+        <span class="hljs-string">&quot;topic&quot;</span>: <span class="hljs-string">&quot;candlestick&quot;</span>,
+        <span class="hljs-string">&quot;interval&quot;</span>: <span class="hljs-string">&quot;2hr&quot;</span>
+    },
+    <span class="hljs-string">&quot;ts&quot;</span>:<span class="hljs-number">1584717910000</span>,
+    <span class="hljs-string">&quot;data&quot;</span>: [
+        <span class="hljs-string">&quot;1584717910000&quot;</span>,  <span class="hljs-comment">//start</span>
+        <span class="hljs-string">&quot;5000&quot;</span>,  <span class="hljs-comment">//count</span>
+        <span class="hljs-string">&quot;3997.3&quot;</span>,  <span class="hljs-comment">//open</span>
+        <span class="hljs-string">&quot;3998.7&quot;</span>,  <span class="hljs-comment">//close</span>
+        <span class="hljs-string">&quot;4031.9&quot;</span>,  <span class="hljs-comment">//high</span>
+        <span class="hljs-string">&quot;3982.5&quot;</span>,  <span class="hljs-comment">//low</span>
+        <span class="hljs-string">&quot;500000000000000000&quot;</span>,  <span class="hljs-comment">//size</span>
+        <span class="hljs-string">&quot;2617521141385000000&quot;</span>,  <span class="hljs-comment">//volume</span>
+    ]
+}
+</code></pre>
+<h2 id="&#x6A21;&#x578B;">&#x6A21;&#x578B;</h2>
+<h4 id="&#x63A8;&#x9001;&#x6D88;&#x606F;&#x6570;&#x636E;&#x7ED3;&#x6784;">&#x63A8;&#x9001;&#x6D88;&#x606F;&#x6570;&#x636E;&#x7ED3;&#x6784;</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x5FC5;&#x73B0;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">topic</td>
 <td style="text-align:left">JSON</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Topic and parameters</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x4E3B;&#x9898;&#x548C;&#x53C2;&#x6570;</td>
 </tr>
 <tr>
 <td style="text-align:left">ts</td>
 <td style="text-align:left">integer</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Notification timestamp (milliseconds)</td>
-</tr>
-<tr>
-<td style="text-align:left">startVersion</td>
-<td style="text-align:left">integer</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Previous version number</td>
-</tr>
-<tr>
-<td style="text-align:left">endVersion</td>
-<td style="text-align:left">integer</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Updated versionnumber</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x63A8;&#x9001;&#x65F6;&#x95F4;&#xFF08;&#x6BEB;&#x79D2;&#xFF09;</td>
 </tr>
 <tr>
 <td style="text-align:left">data</td>
-<td style="text-align:left"><a href="#orderbook">OrderBook</a></td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">The orderbook</td>
+<td style="text-align:left"><a href="#candlestick">List[string]</a> &#xFF08;<code>Candlestick</code>&#x5217;&#x8868;&#xFF09;</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">cCandlestick&#x6570;&#x7EC4;</td>
 </tr>
 </tbody>
 </table>
-<h4 id="orderbook"><span id="orderbook">OrderBook</span></h4>
+<h4 id="candlestick&#x6570;&#x7EC4;"><span id="candlestick">Candlestick&#x6570;&#x7EC4;</span></h4>
 <table>
 <thead>
 <tr>
-<th style="text-align:left">Field</th>
-<th style="text-align:left">Type</th>
-<th style="text-align:left">Required</th>
-<th style="text-align:left">Note</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">bids</td>
-<td style="text-align:left">List[List[string]]</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left"><a href="#slot">PriceSlot</a> array for bids</td>
-</tr>
-<tr>
-<td style="text-align:left">asks</td>
-<td style="text-align:left">List[List[string]]</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left"><a href="#slot">PriceSlot</a> array for asks</td>
-</tr>
-</tbody>
-</table>
-<h4 id="priceslot"><span id="slot">PriceSlot</span></h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Index</th>
-<th style="text-align:left">Type</th>
-<th style="text-align:left">Required</th>
-<th style="text-align:left">Note</th>
+<th style="text-align:left">&#x5E8F;&#x53F7;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x5FC5;&#x73B0;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td style="text-align:left">1</td>
-<td style="text-align:left">string</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Price</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x6307;&#x5F00;&#x76D8;&#x65F6;&#x95F4;</td>
 </tr>
 <tr>
 <td style="text-align:left">2</td>
-<td style="text-align:left">string</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Amount (quantity of base token)</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x6210;&#x4EA4;&#x7B14;&#x6570;</td>
 </tr>
 <tr>
 <td style="text-align:left">3</td>
 <td style="text-align:left">string</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Total (quantity of quote token)</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x5F00;&#x76D8;&#x4EF7;&#x683C;</td>
 </tr>
 <tr>
 <td style="text-align:left">4</td>
 <td style="text-align:left">string</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Number of orders at this price</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x6536;&#x76D8;&#x4EF7;&#x683C;</td>
+</tr>
+<tr>
+<td style="text-align:left">5</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x6700;&#x9AD8;&#x4EF7;</td>
+</tr>
+<tr>
+<td style="text-align:left">6</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x6700;&#x4F4E;&#x4EF7;</td>
+</tr>
+<tr>
+<td style="text-align:left">7</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x4E3A;wei&#x4E3A;&#x5355;&#x4F4D;&#x7684;Base Token&#x7684;&#x6210;&#x4EA4;&#x6570;&#x91CF;</td>
+</tr>
+<tr>
+<td style="text-align:left">8</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">&#x4E3A;wei&#x4E3A;&#x5355;&#x4F4D; Quote Token&#x7684;&#x6210;&#x4EA4;&#x6570;&#x91CF;</td>
 </tr>
 </tbody>
 </table>
-<p>Note that amount and total are the curent values, not the delta between the current and the previous values.</p>
 
                                 
                                 </section>
@@ -1027,14 +1040,10 @@
 
             
                 
-                <a href="order.html" class="navigation navigation-prev " aria-label="Previous page: Order Notification">
+                <a href="ticker.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: Ticker更新">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
-                
-                <a href="trade.html" class="navigation navigation-next " aria-label="Next page: Trade Notification">
-                    <i class="fa fa-angle-right"></i>
-                </a>
                 
             
         
@@ -1043,7 +1052,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Orderbook Notification","level":"4.1.3","depth":2,"next":{"title":"Trade Notification","level":"4.1.4","depth":2,"path":"websocket/trade.md","ref":"websocket/trade.md","articles":[]},"previous":{"title":"Order Notification","level":"4.1.2","depth":2,"path":"websocket/order.md","ref":"websocket/order.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"websocket/orderbook.md","mtime":"2020-04-17T05:36:23.548Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-17T05:36:25.129Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Candlestick更新","level":"4.1.6","depth":2,"previous":{"title":"Ticker更新","level":"4.1.5","depth":2,"path":"websocket/ticker.md","ref":"websocket/ticker.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"websocket/candlestick.md","mtime":"2020-04-17T05:36:23.195Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-04-17T05:36:25.129Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>
