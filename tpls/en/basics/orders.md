@@ -147,7 +147,7 @@ We know the inconvenience caused by the slot design. However, this is a design d
 
 - `exchangeId`: Loopring Exchange's unique numeric ID in the Looping protocol, currently has value `2` and is constant. This ID will change once we upgrade to a new protocol version.
 - `accountId`: User's account ID.
-- `allOrNone`: `" true "` if the order must be fully filled or canceled. This parameter is not supported yet by our matching engine, so please set it to "false" for now.
+- `allOrNone`: `" true "` if the order must be fully filled or cancelled. This parameter is not supported yet by our matching engine, so please set it to "false" for now.
 - `label`: Used to label orders at the protocol layer but has no impact on trading. Because users will sign this field as part of the order, so it's more trustworthy for different parties to use, for example, to calculate profit-sharing.
 - `clientOrderId`: Used to label orders by the client without user awareness. It also has no impact on trading. 
 - `channelId`: Used to lable order's channel.

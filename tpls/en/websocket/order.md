@@ -83,7 +83,7 @@ ApiKey requred: Yes
 | :-------- | :---------------------------------------- |
 | processing | Active (aka Open, may be partially filled) |
 | processed  |                Fully filled                |
-| cancelling |                   Being canceled                   |
-| cancelled  |                 Canceled                  |
+| cancelling |                   Being cancelled                   |
+| cancelled  |                 Cancelled                  |
 |  expired   |                  Expired                  |
 |  waiting   |                Pending active                |

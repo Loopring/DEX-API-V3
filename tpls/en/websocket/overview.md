@@ -45,7 +45,7 @@ Clients can send JSON to subscribe to multiple topics:
 1. In one subscription request, if at least one topic requires the ApiKey, then the `apiKey` filed is required;
 1. In one subscription request, the same topic configuration can only occur once;
 1. In one subscription request, if there are any configuration errors, the entire subscription request fails;
-1. If `unsubscribeAll` is `true`, all previous subscriptions will be canceled;
+1. If `unsubscribeAll` is `true`, all previous subscriptions will be cancelled;
 1. If `sequence` is provided, the relayer will use the same sequence number in its response.
 
 
@@ -83,7 +83,7 @@ Clients can send JSON to unsubscribe from multiple topics:
 1. In one unsubscription request, if at least one topic requires the ApiKey, then the `apiKey` filed is required;
 1. In one unsubscription request, the same topic configuration can only occur once;
 1. In one unsubscription request, if there are any configuration errors, the entire unsubscription request fails;
-1. If the top-level `unsubscribeAll` is `true`, all previous subscriptions will be canceled; if the per-topic `unsubscribeAll` is `true`, then all subscriptions to that topic will be canceled;
+1. If the top-level `unsubscribeAll` is `true`, all previous subscriptions will be cancelled; if the per-topic `unsubscribeAll` is `true`, then all subscriptions to that topic will be cancelled;
 1. If `sequence` is provided, the relayer will use the same sequence number in its response.
 1. Subscribe up to 20 topics in total.
 
