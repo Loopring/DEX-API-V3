@@ -5,9 +5,11 @@
 
 time=$(date "+%Y%m%d-%H%M%S")
 
-./xdoc.py build && \
+cd generated && \
+    rm -rf $(ls | grep -v "node_modules") && \
+    cd .. && \
+    ./xdoc.py build && \
     cd generated && \
-    rm -rf ./docs && \
     gitbook build . docs && \
     cd .. && rm -rf ./docs && \
     cp -rf generated/docs . && \
