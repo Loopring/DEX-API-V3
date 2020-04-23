@@ -30,8 +30,7 @@ Subscribe to this topic to receive notifications about orderbook updates for spe
     "topic": {
         "topic:": "orderbook",
         "market": "LRC-USDT",
-        "count": 20,
-        "snapshot": true
+      	"level": 0
     },
     "ts": 1584717910000,
     "startVersion": 1212121,

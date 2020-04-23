@@ -10,35 +10,37 @@ wss://ws.loopring.io/v2/ws
 Clients can send JSON to subscribe to multiple topics:
 
 ```JSON
- {
-    "op":"sub",
-    "sequence": 10000,
-    "apiKey": ".....",
-    "unsubscribeAll": true,
-    "topics": [
-        {
-            "topic": "account"
-        },
-        {
-            "topic": "order",
-            "market": "LRC-ETH"
-        },
-        {
-            "topic": "order",
-            "market": "LRC-USDT"
-        },
-        {
-            "topic:": "orderbook",
-            "market": "LRC-ETH"
-        },
-        {
-            "topic:": "orderbook",
-            "market": "LRC-USDT",
-            "count": 20,
-            "snapshot": true
-        }
-    ]
-  },
+{
+  "op": "sub",
+  "sequence": 10000,
+  "apiKey": ".....",
+  "unsubscribeAll": true,
+  "topics": [
+    {
+      "topic": "account"
+    },
+    {
+      "topic": "order",
+      "market": "LRC-ETH"
+    },
+    {
+      "topic": "order",
+      "market": "LRC-USDT"
+    },
+    {
+      "topic:": "orderbook",
+      "market": "LRC-ETH",
+      "level": 0
+    },
+    {
+      "topic:": "orderbook",
+      "market": "LRC-USDT",
+      "level": 0,
+      "count": 20,
+      "snapshot": true
+    }
+  ]
+}
 ```
 
 
@@ -143,7 +145,8 @@ A successful subscription：
   "topics": [
     {
       "topic:": "orderbook",
-      "market": "LRC-ETH"
+      "market": "LRC-ETH",
+      "level": 0
     }
   ],
   "result": {

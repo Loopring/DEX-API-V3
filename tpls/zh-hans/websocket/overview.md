@@ -10,37 +10,37 @@ wss://ws.loopring.io/v2/ws
 客户端可以通过发送JSON数据订阅多个主题：
 
 ```JSON
- {
-    "op":"sub",
-    "sequence": 10000,
-    "apiKey": ".....",
-    "unsubscribeAll": true,
-    "topics": [
-        {
-            "topic": "account"
-        },
-        {
-            "topic": "order",
-            "market": "LRC-ETH"
-        },
-        {
-            "topic": "order",
-            "market": "LRC-USDT"
-        },
-        {
-            "topic:": "orderbook",
-            "market": "LRC-ETH",
-          	"level": 0
-        },
-        {
-            "topic:": "orderbook",
-            "market": "LRC-USDT",
-          	"level": 0,
-            "count": 20,
-            "snapshot": true
-        }
-    ]
-  },
+{
+  "op": "sub",
+  "sequence": 10000,
+  "apiKey": ".....",
+  "unsubscribeAll": true,
+  "topics": [
+    {
+      "topic": "account"
+    },
+    {
+      "topic": "order",
+      "market": "LRC-ETH"
+    },
+    {
+      "topic": "order",
+      "market": "LRC-USDT"
+    },
+    {
+      "topic:": "orderbook",
+      "market": "LRC-ETH",
+      "level": 0
+    },
+    {
+      "topic:": "orderbook",
+      "market": "LRC-USDT",
+      "level": 0,
+      "count": 20,
+      "snapshot": true
+    }
+  ]
+}
 ```
 
 
@@ -144,7 +144,7 @@ WebSocket链接建立后，中继会每30秒会发送“ping”消息给客户�
     {
       "topic:": "orderbook",
       "market": "LRC-ETH",
-      "count": 10
+      "level": 0
     }
   ],
   "result": {
