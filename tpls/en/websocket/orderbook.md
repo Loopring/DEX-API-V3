@@ -14,7 +14,7 @@ Subscribe to this topic to receive notifications about orderbook updates for spe
 | :---- | :------ |:--------------------------------- |
 | market | Y | [Trading pair](../dex_apis/getMarkets.md)|
 | level | Y | Price aggregation level |
-| count | Y | Number of bids/ask price slots, count can not be larger than 50, and only take effect when snapshot is true. |
+| count | N | Number of bids/ask price slots, count can not be larger than 50, and only take effect when snapshot is true. |
 | snapshot |N | Default to false. If true, the client will receive full notification with up to `count` bid/ask price slots when at least one slot has update. |
 
 ## Status code

@@ -16,7 +16,7 @@
 | :---- | :------ |:--------------------------------- |
 | market | 是 | 交易对（支持的交易对可以通过api接口[api/v2/exchange/markets](../dex_apis/getMarkets.md)获取）|
 | level | 是 | 深度聚合级别 |
-| count | 是 | 买卖深度条目数量，值不可以超过50。仅在snapshot = true时生效 |
+| count | 否 | 买卖深度条目数量，值不可以超过50。仅在snapshot = true时生效 |
 | snapshot |否 | 默认为false。 如果该值为true，并且当深度条目有任何一条变化，那么指定数量的深度条目会被全量推送给客户端。 |
 
 ## 状态码
