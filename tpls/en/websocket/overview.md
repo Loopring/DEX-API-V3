@@ -28,12 +28,12 @@ Clients can send JSON to subscribe to multiple topics:
       "market": "LRC-USDT"
     },
     {
-      "topic:": "orderbook",
+      "topic": "orderbook",
       "market": "LRC-ETH",
       "level": 0
     },
     {
-      "topic:": "orderbook",
+      "topic": "orderbook",
       "market": "LRC-USDT",
       "level": 0,
       "count": 20,
@@ -74,7 +74,7 @@ Clients can send JSON to unsubscribe from multiple topics:
             "market": "LRC-USDT"
         },
         {
-            "topic:": "orderbook",
+            "topic": "orderbook",
             "unsubscribeAll":true
         }
     ]
@@ -144,7 +144,7 @@ A successful subscription：
   "sequence": 10000,
   "topics": [
     {
-      "topic:": "orderbook",
+      "topic": "orderbook",
       "market": "LRC-ETH",
       "level": 0
     }
@@ -163,7 +163,7 @@ A failed subscription：
   "sequence": 10000,
   "topics": [
     {
-      "topic:": "candlestick",
+      "topic": "candlestick",
       "market": "LRC-ETH",
       "count": 10
     }

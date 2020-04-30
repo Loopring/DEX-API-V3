@@ -47,20 +47,19 @@
 
 #### 推送消息数据结构
 
-|  字段   |          类型           | 必现 |       说明       |    
+|  字段   |          类型           | 必现 |       说明       |
 | :----- | :--------------------- | :------ | :-------------- |
-| topic |       JSON        |    是    | 主题和参数 |  
-| ts |         integer         |    是    |     推送时间（毫秒）     | 
-|  data   | [List[List\[string]](#trade)] |    是    |    Trade数组列表     |  
+| topic |       JSON        |    是    | 主题和参数 |
+| ts |         integer         |    是    |     推送时间（毫秒）     |
+|  data   | [List[List\[string]](#trade)] |    是    |    Trade数组列表     |
 
 #### <span id="trade">Trade数组</span>
 
-| 序号  |  类型   | 必现 |         说明         |  
-| :------ | :----- | :------ | :------------------ | 
-|    1     | integer |    是    |       成交时间       | 
-|    2     | integer |    是    |       成交记录的编号       |   
-|    3     | string  |    是    |  Taker的方向（买或卖）   |    
-|    4     | string  |    是    | Base Token的成交数量 |  
-|    5     | string  |    是    |       成交价格       |   
-|    6     | string  |    是    |   Base Token的收费   |    
-
+| 序号  |  类型   | 必现 |         说明         |
+| :------ | :----- | :------ | :------------------ |
+|    1     | integer |    是    |       成交时间       |
+|    2     | integer |    是    |       成交记录的编号       |
+|    3     | string  |    是    |  Taker的方向（买或卖）   |
+|    4     | string  |    是    | Base Token的成交数量 |
+|    5     | string  |    是    |       成交价格       |
+|    6     | string  |    是    |   Base Token的收费   |

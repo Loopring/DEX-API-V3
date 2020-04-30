@@ -36,18 +36,17 @@ This topic doesn't support any parameter.
 
 #### Notification
 
-| Field  |        Type         | Required |       Note       |     
-| :--- | :----------------- | :------ | :-------------- | 
-| topic |       JSON        |    Y    | Topic and parameters |  
-|  ts   |       integer       |    Y    |     Notification timestamp (milliseconds)     | 
-| data  | [Balance](#balance) |    Y    |     User's new balances   |     
+| Field  |        Type         | Required |       Note       |
+| :--- | :----------------- | :------ | :-------------- |
+| topic |       JSON        |    Y    | Topic and parameters |
+|  ts   |       integer       |    Y    |     Notification timestamp (milliseconds)     |
+| data  | [Balance](#balance) |    Y    |     User's new balances   |
 
 #### <span id= "balance">Balance</span> 
 
-|     Field     |  Type   | Required |    Note    |     
-| :---------- | :----- | :------ | :-------- | 
-|  accountId   | integer |    Y    |   Account ID   |     
-|   tokenId    | integer |    Y    |   Token ID   |     
-| totalAmount  | string  |    Y    |  Total token balance  | 
-| amountLocked | string  |    Y    | Token balance locked by orders |    
-
+|     Field     |  Type   | Required |    Note    |
+| :---------- | :----- | :------ | :-------- |
+|  accountId   | integer |    Y    |   Account ID   |
+|   tokenId    | integer |    Y    |   Token ID   |
+| totalAmount  | string  |    Y    |  Total token balance  |
+| amountLocked | string  |    Y    | Token balance locked by orders |

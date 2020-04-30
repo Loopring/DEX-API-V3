@@ -28,12 +28,12 @@ wss://ws.loopring.io/v2/ws
       "market": "LRC-USDT"
     },
     {
-      "topic:": "orderbook",
+      "topic": "orderbook",
       "market": "LRC-ETH",
       "level": 0
     },
     {
-      "topic:": "orderbook",
+      "topic": "orderbook",
       "market": "LRC-USDT",
       "level": 0,
       "count": 20,
@@ -73,7 +73,7 @@ wss://ws.loopring.io/v2/ws
             "market": "LRC-USDT"
         },
         {
-            "topic:": "orderbook",
+            "topic": "orderbook",
             "unsubscribeAll":true
         }
     ]
@@ -142,7 +142,7 @@ WebSocket链接建立后，中继会每30秒会发送“ping”消息给客户�
   "sequence": 10000,
   "topics": [
     {
-      "topic:": "orderbook",
+      "topic": "orderbook",
       "market": "LRC-ETH",
       "level": 0
     }
@@ -161,7 +161,7 @@ WebSocket链接建立后，中继会每30秒会发送“ping”消息给客户�
   "sequence": 10000,
   "topics": [
     {
-      "topic:": "candlestick",
+      "topic": "candlestick",
       "market": "LRC-ETH",
       "count": 10
     }
