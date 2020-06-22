@@ -132,7 +132,85 @@ def sign_offchain_withdrawal(privateKey, offchainWithdrawal):
     offchainWithdrawal.update(signed)
 ```
 
+
+
+#### Signing Internal Transfer
+
+You need to seralized specific fields of an transfer into an integer array, then calculate the Poseidon hash of the array, and then sign the hash with your EdDSA private key.
+
+The following is an example of internal transfers:
+
+```json
+{
+    "exchangeId": 2,
+    "sender":100,
+  	"receiver":101,
+    "tokenId": 0,
+    "amount": 1000000000000000000,
+    "feeTokenId": 2,
+    "amountFee": 20000000000000000000,
+    "label": 0,
+    "nonce": 10
+}
+```
+
+where `nonce` must start from 0 and increment by 1, and internal and transfer share the same  nonce.
+
+The code for signing it in Python is as follows:
+
+```python
+def serialize_internal_transfer(transfer):
+    return [
+        int(transfer['exchangeId']),
+        int(transfer['sender']),
+        int(transfer['receiver']),
+        int(transfer['tokenId']),
+        int(transfer['amount']),
+        int(transfer['feeTokenId']),
+        int(transfer['amountFee']),
+        int(transfer['label']),
+        int(transfer['nonce'])
+    ]
+
+def sign_internal_transfer(privateKey, transfer):
+    serialized = serialize_internal_transfer(transfer)
+    signed = sign_int_array(serialized, 10 /* 注意这个t值 */)
+    transfer.update(signed)
+```
+
+In addition to EDSSA signature, you also need to use ECDSA to sign internal transfers. You need to serialize specific fields of an transfer into a Json string, and use sha256 hash algorithm to calculate the hash of the json string. Convert the resutl to hexadecimal string, add a fixed header: "Sign this message to authorize Loopring Pay: ", use personal _sign to sign the combined string.
+
+The code for signing it in Javascript is as follows:
+
+```javascript
+function serialize_transfer(transfer) {
+  const data = {
+    exchangeId: transfer.exchangeId,
+    sender: transfer.sender,
+    receiver: transfer.receiver,
+    token: transfer.tokenId,
+    amount: transfer.amount,
+    tokenF: transfer.feeTokenId,
+    amountF: transfer.amountFee,
+    label: transfer.label,
+    nonce: transfer.nonce,
+  };
+
+  return "0x" + sha256(JSON.stringify(data)).toString('hex');
+}
+
+function sign_internal_transfer(transfer){
+  const transferData = serialize_transfer(transfer);
+  const prefix = "Sign this message to authorize Loopring Pay:  ";
+  const message = prefix + transferData;
+  const sig = personal_sign(privateKey, message);
+}
+```
+
+
+
 ## References
+
 You can learn more about the Poseidon hash and EdDSA signature through the following literature and github repositories.
 
 1. **ethsnarks**: https://github.com/HarryR/ethsnarks.git

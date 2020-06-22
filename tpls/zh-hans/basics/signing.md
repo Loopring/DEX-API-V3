@@ -133,7 +133,85 @@ def sign_offchain_withdrawal(privateKey, offchainWithdrawal):
     offchainWithdrawal.update(signed)
 ```
 
+
+
+#### 内部转账签名
+
+内部转账请求中一些数据项需要按照特定序列化成一个整数数组，对这个数组计算Poseidon哈希，然后对该哈希做EdDSA签名。
+
+下面是内部转账的一个例子：
+
+```json
+{
+    "exchangeId": 2,
+    "sender":100,
+  	"receiver":101,
+    "tokenId": 0,
+    "amount": 1000000000000000000,
+    "feeTokenId": 2,
+    "amountFee": 20000000000000000000,
+    "label": 0,
+    "nonce": 10
+}
+```
+
+其中的`nonce`值必须从0开始，不间断增加。
+
+用Python对其签名的代码如下：
+
+```python
+def serialize_internal_transfer(transfer):
+    return [
+        int(transfer['exchangeId']),
+        int(transfer['sender']),
+        int(transfer['receiver']),
+        int(transfer['tokenId']),
+        int(transfer['amount']),
+        int(transfer['feeTokenId']),
+        int(transfer['amountFee']),
+        int(transfer['label']),
+        int(transfer['nonce'])
+    ]
+
+def sign_internal_transfer(privateKey, transfer):
+    serialized = serialize_internal_transfer(transfer)
+    signed = sign_int_array(serialized, 10 /* 注意这个t值 */)
+    transfer.update(signed)
+```
+
+除了EDDSA的签名，用户还需要使用ECDSA对内部转账请求进行签名。内部转账请求的一些数据需要构造成一个Json的字符串，然后采用sha256哈希算法，计算得到hash，转成16进制字符串形式，加上固定的头："Sign this message to authorize Loopring Pay:  "，对组合之后的字符采用personal _sign 方法签名。
+
+使用Js对其签名的代码如下:
+
+```javascript
+function serialize_transfer(transfer) {
+  const data = {
+    exchangeId: transfer.exchangeId,
+    sender: transfer.sender,
+    receiver: transfer.receiver,
+    token: transfer.tokenId,
+    amount: transfer.amount,
+    tokenF: transfer.feeTokenId,
+    amountF: transfer.amountFee,
+    label: transfer.label,
+    nonce: transfer.nonce,
+  };
+
+  return "0x" + sha256(JSON.stringify(data)).toString('hex');
+}
+
+function sign_internal_transfer(transfer){
+  const transferData = serialize_transfer(transfer);
+  const prefix = "Sign this message to authorize Loopring Pay:  ";
+  const message = prefix + transferData;
+  const sig = personal_sign(privateKey, message);
+}
+```
+
+
+
 ## 参考资料
+
 您可以通过下列文献和代码仓库了解更多关于Poseidon哈希和EdDSA签名的细节。
 
 1. **ethsnarks**：https://github.com/HarryR/ethsnarks.git

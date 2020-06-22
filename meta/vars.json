@@ -3,8 +3,6 @@
     "not_ready": [
         "/api/v2/dexNonce",
         "/api/v2/offchainWithdrawal",
-        "/api/v2/transfer",
-        "/api/v2/user/transfers",
         "/api/v2/crawl"
     ],
     "enable_apis" : [
@@ -32,14 +30,16 @@
         "/api/v2/trade",
         "/api/v2/allowances",
         "/api/v2/tokenBalances",
-
+        "/api/v2/transfer",
         "/api/v2/account",
         "/api/v2/user/createInfo",
         "/api/v2/user/updateInfo",
         "/api/v2/user/balances",
         "/api/v2/user/deposits",
         "/api/v2/user/withdrawals",
-        "/api/v2/user/trades"
+        "/api/v2/user/transfers",
+        "/api/v2/user/trades",
+        "/api/v2/user/feeRates"
     ],
     "no_key": ["getApiKey"],
     "has_sig": ["getApiKey", "cancelOrders"],
