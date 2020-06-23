@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Get exchange configurations · Loopring API</title>
+        <title>Get user transfer list · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -85,10 +85,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="getDepth.html" />
+    <link rel="next" href="getUserTrades.html" />
     
     
-    <link rel="prev" href="getTokens.html" />
+    <link rel="prev" href="getUserWithdrawals.html" />
     
 
     </head>
@@ -459,7 +459,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.1.18" data-path="getExchangeInfo.html">
+        <li class="chapter " data-level="3.1.18" data-path="getExchangeInfo.html">
             
                 <a href="getExchangeInfo.html">
             
@@ -654,7 +654,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.33" data-path="getUserTransfers.html">
+        <li class="chapter active" data-level="3.1.33" data-path="getUserTransfers.html">
             
                 <a href="getUserTransfers.html">
             
@@ -832,7 +832,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Get exchange configurations</a>
+        <a href=".." >Get user transfer list</a>
     </h1>
 </div>
 
@@ -847,7 +847,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="get-exchange-configurations">Get exchange configurations</h2>
+                                <h2 id="get-user-transfer-list">Get user transfer list</h2>
 <p>Rate limit: 5 every
 second</p>
 <h3 id="api-overview">API Overview</h3>
@@ -855,9 +855,9 @@ second</p>
 <h4 id="http-method">HTTP method</h4>
 <p><strong>GET</strong></p>
 <h4 id="path">Path</h4>
-<p><strong>/api/v2/exchange/info</strong></p>
+<p><strong>/api/v2/user/transfers</strong></p>
 <h4 id="summary">Summary</h4>
-<p>Return various configurations of Loopring.io</p>
+<p>Get user transfer list.</p>
 <h3 id="api-description">API description</h3>
 <hr>
 <h4 id="http-header">HTTP Header</h4>
@@ -882,15 +882,83 @@ second</p>
 </tbody>
 </table>
 <h4 id="request-parameters">Request parameters</h4>
-<p>None</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Field</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Required</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">accountId</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Account ID</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">start</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">Start time in milliseconds<br>Default : 0L</td>
+<td style="text-align:left">1578558098000</td>
+</tr>
+<tr>
+<td style="text-align:left">end</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">End time in milliseconds<br>Default : 0L</td>
+<td style="text-align:left">1578558098000</td>
+</tr>
+<tr>
+<td style="text-align:left">status</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">Comma separated status values<br>Allowable : [&apos;processing&apos;, &apos;processed&apos;, &apos;received&apos;, &apos;failed&apos;]</td>
+<td style="text-align:left">&quot;processing,processed&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">limit</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">Number of records to return</td>
+<td style="text-align:left">50</td>
+</tr>
+<tr>
+<td style="text-align:left">fromHash</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">Pagination of data to return records earlier than the requested hash</td>
+<td style="text-align:left">&quot;0x9d114267e8b261457d<br>567093c13cf3deea5f14<br>c9235be26c6fa833dba1<br>2a9632&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">tokenSymbol</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">Token to filter. If you want to return deposit records for all tokens, omit this parameter</td>
+<td style="text-align:left">&quot;LRC&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">offset</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">Number of records to skip<br>Default : 0L</td>
+<td style="text-align:left">1</td>
+</tr>
+</tbody>
+</table>
 <h4 id="request-example">Request example</h4>
-<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">GET</span> <span class="hljs-string">https://api.loopring.io/api/v2/exchange/info</span> HTTP/1.1
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">GET</span> <span class="hljs-string">https://api.loopring.io/api/v2/user/transfers?accountId=1&amp;start=1578558098000&amp;end=1578558098000&amp;status=processing,processed&amp;limit=50&amp;fromHash=0x9d114267e8b261457d567093c13cf3deea5f14c9235be26c6fa833dba12a9632&amp;tokenSymbol=LRC&amp;offset=1</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: api.loopring.io
 <span class="hljs-attribute">Connection</span>: keep-alive
 <span class="hljs-attribute">Accept</span>: */*
 <span class="hljs-attribute">Accept-Encoding</span>: gzip, deflate, br
 <span class="hljs-attribute">Accept-Language</span>: zh,en;q=0.9
-<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa</code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> https://api.loopring.io/api/v2/exchange/info</code></pre></div></div></div></p>
+<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa</code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> https://api.loopring.io/api/v2/user/transfers\?accountId\=1\&amp;start\=1578558098000\&amp;end\=1578558098000\&amp;status\=processing,processed\&amp;<span class="hljs-built_in">limit</span>\=50\&amp;fromHash\=0x9d114267e8b261457d567093c13cf3deea5f14c9235be26c6fa833dba12a9632\&amp;tokenSymbol\=LRC\&amp;offset\=1</code></pre></div></div></div></p>
 <h4 id="response-fields">Response fields</h4>
 <table>
 <thead>
@@ -912,9 +980,9 @@ second</p>
 </tr>
 <tr>
 <td style="text-align:left">data</td>
-<td style="text-align:left"><a href="#ExchangeInfo">ExchangeInfo</a></td>
+<td style="text-align:left"><a href="#TransferDataList">TransferDataList</a></td>
 <td style="text-align:left">N</td>
-<td style="text-align:left">Necessary exchange to interact with the exchange</td>
+<td style="text-align:left">TxDataList</td>
 <td style="text-align:left">/</td>
 </tr>
 </tbody>
@@ -926,25 +994,21 @@ second</p>
         <span class="hljs-string">&quot;message&quot;</span> : <span class="hljs-string">&quot;SUCCESS&quot;</span>
     },
     <span class="hljs-string">&quot;data&quot;</span> : {
-        <span class="hljs-string">&quot;chainId&quot;</span> : <span class="hljs-number">1</span>,
-        <span class="hljs-string">&quot;exchangeId&quot;</span> : <span class="hljs-number">1</span>,
-        <span class="hljs-string">&quot;exchangeAddress&quot;</span> : <span class="hljs-string">&quot;0xbA1D5779131aa529F51B4B00186E9e97f3BeB854&quot;</span>,
-        <span class="hljs-string">&quot;onchainFees&quot;</span> : [
+        <span class="hljs-string">&quot;totalNum&quot;</span> : <span class="hljs-number">1</span>,
+        <span class="hljs-string">&quot;transactions&quot;</span> : [
             {
-                <span class="hljs-string">&quot;type&quot;</span> : <span class="hljs-string">&quot;withdraw&quot;</span>,
-                <span class="hljs-string">&quot;fee&quot;</span> : <span class="hljs-string">&quot;2000000000000000&quot;</span>
-            }
-        ],
-        <span class="hljs-string">&quot;transferFees&quot;</span> : [
-            {
-                <span class="hljs-string">&quot;token&quot;</span> : <span class="hljs-string">&quot;ETH&quot;</span>,
-                <span class="hljs-string">&quot;fee&quot;</span> : <span class="hljs-string">&quot;2000000000000000&quot;</span>
-            }
-        ],
-        <span class="hljs-string">&quot;withdrawalFees&quot;</span> : [
-            {
-                <span class="hljs-string">&quot;token&quot;</span> : <span class="hljs-string">&quot;ETH&quot;</span>,
-                <span class="hljs-string">&quot;fee&quot;</span> : <span class="hljs-string">&quot;2000000000000000&quot;</span>
+                <span class="hljs-string">&quot;id&quot;</span> : <span class="hljs-number">1</span>,
+                <span class="hljs-string">&quot;symbol&quot;</span> : <span class="hljs-string">&quot;LRC&quot;</span>,
+                <span class="hljs-string">&quot;amount&quot;</span> : <span class="hljs-string">&quot;1000000000000000000&quot;</span>,
+                <span class="hljs-string">&quot;senderAddress&quot;</span> : <span class="hljs-string">&quot;0x0306b9d5c9Ed358FC7b77780bACD15398D242f26&quot;</span>,
+                <span class="hljs-string">&quot;receiver&quot;</span> : <span class="hljs-number">1</span>,
+                <span class="hljs-string">&quot;receiverAddress&quot;</span> : <span class="hljs-string">&quot;0x0306b9d5c9Ed358FC7b77780bACD15398D242f26&quot;</span>,
+                <span class="hljs-string">&quot;feeAmount&quot;</span> : <span class="hljs-string">&quot;1000000000000000&quot;</span>,
+                <span class="hljs-string">&quot;status&quot;</span> : <span class="hljs-string">&quot;processing&quot;</span>,
+                <span class="hljs-string">&quot;progress&quot;</span> : <span class="hljs-string">&quot;100%&quot;</span>,
+                <span class="hljs-string">&quot;timestamp&quot;</span> : <span class="hljs-number">1578572292000</span>,
+                <span class="hljs-string">&quot;updatedAt&quot;</span> : <span class="hljs-number">1578572292000</span>,
+                <span class="hljs-string">&quot;memo&quot;</span> : <span class="hljs-string">&quot;Air Drop&quot;</span>
             }
         ]
     }
@@ -963,12 +1027,28 @@ second</p>
 <td style="text-align:left">100000</td>
 <td style="text-align:left">Unknown error</td>
 </tr>
+<tr>
+<td style="text-align:left">107001</td>
+<td style="text-align:left">User ID cannot be empty</td>
+</tr>
+<tr>
+<td style="text-align:left">104001</td>
+<td style="text-align:left">Empty ApiKey</td>
+</tr>
+<tr>
+<td style="text-align:left">104002</td>
+<td style="text-align:left">Invalid ApiKey</td>
+</tr>
+<tr>
+<td style="text-align:left">104003</td>
+<td style="text-align:left">Invalid Account ID</td>
+</tr>
 </tbody>
 </table>
 <h3 id="model">Model</h3>
 <hr>
-<h4 id="exchangeinfo">ExchangeInfo</h4>
-<p><span id="ExchangeInfo"></span>Exchange basic info.</p>
+<h4 id="transferdatalist">TransferDataList</h4>
+<p><span id="TransferDataList"></span>Transfer Data List</p>
 <table>
 <thead>
 <tr>
@@ -981,51 +1061,23 @@ second</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">chainId</td>
+<td style="text-align:left">totalNum</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Loopring&apos;s smart contract network id.</td>
+<td style="text-align:left">Total number of records found</td>
 <td style="text-align:left">1</td>
 </tr>
 <tr>
-<td style="text-align:left">exchangeId</td>
-<td style="text-align:left">integer</td>
+<td style="text-align:left">transactions</td>
+<td style="text-align:left">List[<a href="#TransferData">TransferData</a>]</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">The ID of Loopring.io&apos;s smart contract in Loopring protocol&apos;s registry.</td>
-<td style="text-align:left">1</td>
-</tr>
-<tr>
-<td style="text-align:left">exchangeAddress</td>
-<td style="text-align:left">string</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Contract address of exchange.</td>
-<td style="text-align:left">&quot;0xbA1D5779131aa529F5<br>1B4B00186E9e97f3BeB8<br>54&quot;</td>
-</tr>
-<tr>
-<td style="text-align:left">onchainFees</td>
-<td style="text-align:left">List[<a href="#FeeInfo">FeeInfo</a>]</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Fees settings.</td>
-<td style="text-align:left">/</td>
-</tr>
-<tr>
-<td style="text-align:left">transferFees</td>
-<td style="text-align:left">List[<a href="#OffFeeInfo">OffFeeInfo</a>]</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Transfer fee settings.</td>
-<td style="text-align:left">/</td>
-</tr>
-<tr>
-<td style="text-align:left">withdrawalFees</td>
-<td style="text-align:left">List[<a href="#OffFeeInfo">OffFeeInfo</a>]</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Off-chain withdrawal fee settings.</td>
+<td style="text-align:left">List of Transfer record</td>
 <td style="text-align:left">/</td>
 </tr>
 </tbody>
 </table>
-<h4 id="feeinfo">FeeInfo</h4>
-<p><span id="FeeInfo"></span>Information about fees charged by loopring exchange.</p>
+<h4 id="transferdata">TransferData</h4>
+<p><span id="TransferData"></span></p>
 <table>
 <thead>
 <tr>
@@ -1038,47 +1090,88 @@ second</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">type</td>
-<td style="text-align:left">string</td>
+<td style="text-align:left">id</td>
+<td style="text-align:left">integer</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Fee category.</td>
-<td style="text-align:left">&quot;withdraw&quot;</td>
+<td style="text-align:left">Unique id</td>
+<td style="text-align:left">1</td>
 </tr>
 <tr>
-<td style="text-align:left">fee</td>
+<td style="text-align:left">symbol</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Fee amount in Ether as wei.</td>
-<td style="text-align:left">&quot;2000000000000000&quot;</td>
+<td style="text-align:left">Token symbol</td>
+<td style="text-align:left">&quot;LRC&quot;</td>
 </tr>
-</tbody>
-</table>
-<h4 id="offfeeinfo">OffFeeInfo</h4>
-<p><span id="OffFeeInfo"></span>Off-chain fee info charged by loopring exchange.</p>
-<table>
-<thead>
 <tr>
-<th style="text-align:left">Field</th>
-<th style="text-align:left">Type</th>
-<th style="text-align:left">Required</th>
-<th style="text-align:left">Description</th>
-<th style="text-align:left">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">token</td>
+<td style="text-align:left">amount</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">fee token</td>
-<td style="text-align:left">&quot;ETH&quot;</td>
+<td style="text-align:left">Amount requested by the user</td>
+<td style="text-align:left">&quot;1000000000000000000&quot;</td>
 </tr>
 <tr>
-<td style="text-align:left">fee</td>
+<td style="text-align:left">senderAddress</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">Sender Ethereum Address</td>
+<td style="text-align:left">&quot;0x0306b9d5c9Ed358FC7<br>b77780bACD15398D242f<br>26&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">receiver</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">Receiver id</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">receiverAddress</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">Recipient Ethereum Address</td>
+<td style="text-align:left">&quot;0x0306b9d5c9Ed358FC7<br>b77780bACD15398D242f<br>26&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">feeAmount</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">fee amount</td>
-<td style="text-align:left">&quot;2000000000000000&quot;</td>
+<td style="text-align:left">User transaction type</td>
+<td style="text-align:left">&quot;1000000000000000&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">status</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Current status<br>Allowable : [&apos;processing&apos;, &apos;processed&apos;, &apos;received&apos;, &apos;failed&apos;]</td>
+<td style="text-align:left">&quot;processing&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">progress</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Progress</td>
+<td style="text-align:left">&quot;100%&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">timestamp</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Create time</td>
+<td style="text-align:left">1578572292000</td>
+</tr>
+<tr>
+<td style="text-align:left">updatedAt</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Update time</td>
+<td style="text-align:left">1578572292000</td>
+</tr>
+<tr>
+<td style="text-align:left">memo</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">Memo</td>
+<td style="text-align:left">&quot;Air Drop&quot;</td>
 </tr>
 </tbody>
 </table>
@@ -1109,12 +1202,12 @@ second</p>
 
             
                 
-                <a href="getTokens.html" class="navigation navigation-prev " aria-label="Previous page: Get token configurations">
+                <a href="getUserWithdrawals.html" class="navigation navigation-prev " aria-label="Previous page: Get user onchain withdrawal history">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="getDepth.html" class="navigation navigation-next " aria-label="Next page: Get market orderbook">
+                <a href="getUserTrades.html" class="navigation navigation-next " aria-label="Next page: Get user trade history">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1125,7 +1218,7 @@ second</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Get exchange configurations","level":"3.1.18","depth":2,"next":{"title":"Get market orderbook","level":"3.1.19","depth":2,"path":"dex_apis/getDepth.md","ref":"dex_apis/getDepth.md","articles":[]},"previous":{"title":"Get token configurations","level":"3.1.17","depth":2,"path":"dex_apis/getTokens.md","ref":"dex_apis/getTokens.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getExchangeInfo.md","mtime":"2020-06-23T06:52:18.963Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-23T06:52:20.003Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Get user transfer list","level":"3.1.33","depth":2,"next":{"title":"Get user trade history","level":"3.1.34","depth":2,"path":"dex_apis/getUserTrades.md","ref":"dex_apis/getUserTrades.md","articles":[]},"previous":{"title":"Get user onchain withdrawal history","level":"3.1.32","depth":2,"path":"dex_apis/getUserWithdrawals.md","ref":"dex_apis/getUserWithdrawals.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getUserTransfers.md","mtime":"2020-06-23T06:52:18.800Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-23T06:52:20.003Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>

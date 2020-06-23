@@ -563,7 +563,20 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.26" data-path="../dex_apis/getAccount.html">
+        <li class="chapter " data-level="3.1.26" data-path="../dex_apis/submitTransfer.html">
+            
+                <a href="../dex_apis/submitTransfer.html">
+            
+                    
+                    Submit a transfer request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.27" data-path="../dex_apis/getAccount.html">
             
                 <a href="../dex_apis/getAccount.html">
             
@@ -576,7 +589,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.27" data-path="../dex_apis/getUserCreate.html">
+        <li class="chapter " data-level="3.1.28" data-path="../dex_apis/getUserCreate.html">
             
                 <a href="../dex_apis/getUserCreate.html">
             
@@ -589,7 +602,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.28" data-path="../dex_apis/getUserUpdate.html">
+        <li class="chapter " data-level="3.1.29" data-path="../dex_apis/getUserUpdate.html">
             
                 <a href="../dex_apis/getUserUpdate.html">
             
@@ -602,7 +615,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.29" data-path="../dex_apis/getUserBalances.html">
+        <li class="chapter " data-level="3.1.30" data-path="../dex_apis/getUserBalances.html">
             
                 <a href="../dex_apis/getUserBalances.html">
             
@@ -615,7 +628,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.30" data-path="../dex_apis/getUserDeposits.html">
+        <li class="chapter " data-level="3.1.31" data-path="../dex_apis/getUserDeposits.html">
             
                 <a href="../dex_apis/getUserDeposits.html">
             
@@ -628,7 +641,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.31" data-path="../dex_apis/getUserWithdrawals.html">
+        <li class="chapter " data-level="3.1.32" data-path="../dex_apis/getUserWithdrawals.html">
             
                 <a href="../dex_apis/getUserWithdrawals.html">
             
@@ -641,12 +654,38 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.32" data-path="../dex_apis/getUserTrades.html">
+        <li class="chapter " data-level="3.1.33" data-path="../dex_apis/getUserTransfers.html">
+            
+                <a href="../dex_apis/getUserTransfers.html">
+            
+                    
+                    Get user transfer list
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.34" data-path="../dex_apis/getUserTrades.html">
             
                 <a href="../dex_apis/getUserTrades.html">
             
                     
                     Get user trade history
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.35" data-path="../dex_apis/getUserFeeRates.html">
+            
+                <a href="../dex_apis/getUserFeeRates.html">
+            
+                    
+                    Query user place order fee rate
             
                 </a>
             
@@ -984,6 +1023,66 @@
     signed = sign_int_array(serialized, <span class="hljs-number">9</span> /* Pay attention to this t value */)
     offchainWithdrawal.update(signed)
 </code></pre>
+<h4 id="signing-internal-transfer">Signing Internal Transfer</h4>
+<p>You need to seralized specific fields of an transfer into an integer array, then calculate the Poseidon hash of the array, and then sign the hash with your EdDSA private key.</p>
+<p>The following is an example of internal transfers:</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;exchangeId&quot;</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-string">&quot;sender&quot;</span>:<span class="hljs-number">100</span>,
+      <span class="hljs-string">&quot;receiver&quot;</span>:<span class="hljs-number">101</span>,
+    <span class="hljs-string">&quot;tokenId&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-string">&quot;amount&quot;</span>: <span class="hljs-number">1000000000000000000</span>,
+    <span class="hljs-string">&quot;feeTokenId&quot;</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-string">&quot;amountFee&quot;</span>: <span class="hljs-number">20000000000000000000</span>,
+    <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-string">&quot;nonce&quot;</span>: <span class="hljs-number">10</span>
+}
+</code></pre>
+<p>where <code>nonce</code> must start from 0 and increment by 1, and internal and transfer share the same  nonce.</p>
+<p>The code for signing it in Python is as follows:</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">serialize_internal_transfer</span><span class="hljs-params">(transfer)</span>:</span>
+    <span class="hljs-keyword">return</span> [
+        int(transfer[<span class="hljs-string">&apos;exchangeId&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;sender&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;receiver&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;tokenId&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;amount&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;feeTokenId&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;amountFee&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;label&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;nonce&apos;</span>])
+    ]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sign_internal_transfer</span><span class="hljs-params">(privateKey, transfer)</span>:</span>
+    serialized = serialize_internal_transfer(transfer)
+    signed = sign_int_array(serialized, <span class="hljs-number">10</span> /* &#x6CE8;&#x610F;&#x8FD9;&#x4E2A;t&#x503C; */)
+    transfer.update(signed)
+</code></pre>
+<p>In addition to EDSSA signature, you also need to use ECDSA to sign internal transfers. You need to serialize specific fields of an transfer into a Json string, and use sha256 hash algorithm to calculate the hash of the json string. Convert the resutl to hexadecimal string, add a fixed header: &quot;Sign this message to authorize Loopring Pay: &quot;, use personal _sign to sign the combined string.</p>
+<p>The code for signing it in Javascript is as follows:</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">serialize_transfer</span>(<span class="hljs-params">transfer</span>) </span>{
+  <span class="hljs-keyword">const</span> data = {
+    exchangeId: transfer.exchangeId,
+    sender: transfer.sender,
+    receiver: transfer.receiver,
+    token: transfer.tokenId,
+    amount: transfer.amount,
+    tokenF: transfer.feeTokenId,
+    amountF: transfer.amountFee,
+    label: transfer.label,
+    nonce: transfer.nonce,
+  };
+
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0x&quot;</span> + sha256(<span class="hljs-built_in">JSON</span>.stringify(data)).toString(<span class="hljs-string">&apos;hex&apos;</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sign_internal_transfer</span>(<span class="hljs-params">transfer</span>)</span>{
+  <span class="hljs-keyword">const</span> transferData = serialize_transfer(transfer);
+  <span class="hljs-keyword">const</span> prefix = <span class="hljs-string">&quot;Sign this message to authorize Loopring Pay:  &quot;</span>;
+  <span class="hljs-keyword">const</span> message = prefix + transferData;
+  <span class="hljs-keyword">const</span> sig = personal_sign(privateKey, message);
+}
+</code></pre>
 <h2 id="references">References</h2>
 <p>You can learn more about the Poseidon hash and EdDSA signature through the following literature and github repositories.</p>
 <ol>
@@ -1036,7 +1135,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Request Signing","level":"2.3","depth":1,"next":{"title":"Example Code","level":"2.4","depth":1,"path":"basics/examples.md","ref":"basics/examples.md","articles":[]},"previous":{"title":"Key Management","level":"2.2","depth":1,"path":"basics/key_mgmt.md","ref":"basics/key_mgmt.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"basics/signing.md","mtime":"2020-05-28T10:05:31.854Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-05-28T10:05:33.037Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Request Signing","level":"2.3","depth":1,"next":{"title":"Example Code","level":"2.4","depth":1,"path":"basics/examples.md","ref":"basics/examples.md","articles":[]},"previous":{"title":"Key Management","level":"2.2","depth":1,"path":"basics/key_mgmt.md","ref":"basics/key_mgmt.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"basics/signing.md","mtime":"2020-06-23T06:52:18.671Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-06-23T06:52:20.003Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>

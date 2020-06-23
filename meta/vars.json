@@ -45,7 +45,7 @@
     "has_sig": ["getApiKey", "cancelOrders"],
     "cir_sig": ["submitOrder"],
     "hosturl" : "https://api.loopring.io",
-    "fetchurl" : "http://a0852987b722b11eaac4e06050a6b9f4-653213178.us-east-2.elb.amazonaws.com",
+    "fetchurl" : "http://a45c09ae89ab64c0396d4e04438aeb5a-773760289.us-east-2.elb.amazonaws.com",
     "# fetchurl" : "http://localhost:31610",
     "tpsConfig" : "git@github.com:Loopring/loopring-prod-config.git"
 }
