@@ -42,10 +42,10 @@
         "/api/v2/user/feeRates"
     ],
     "no_key": ["getApiKey"],
-    "has_sig": ["getApiKey", "cancelOrders","submitTransfer"],
+    "has_sig": ["getApiKey", "cancelOrders","submitTransfer","batchCancelOrdersByClientOrderId","batchCancelOrdersByOrderHash"],
     "cir_sig": ["submitOrder"],
     "hosturl" : "https://api.loopring.io",
-    "fetchurl" : "http://a45c09ae89ab64c0396d4e04438aeb5a-773760289.us-east-2.elb.amazonaws.com",
+    "fetchurl" : "http://a32d19036fa5e4b26a3d2aaa348f5817-1729387925.us-east-2.elb.amazonaws.com",
     "# fetchurl" : "http://localhost:31610",
     "tpsConfig" : "git@github.com:Loopring/loopring-prod-config.git"
 }
