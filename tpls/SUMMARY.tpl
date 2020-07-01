@@ -12,6 +12,7 @@
 * [{{l.summary.Basics.HashAndSigning}}](basics/signing.md)
 * [{{l.summary.Basics.ExampleCode}}](basics/examples.md)
 * [{{l.summary.Basics.DEXContracts}}](basics/contracts.md)
+* [{{l.summary.Basics.UatToken}}](basics/uat_token.md)
 
 ## [{{l.summary.APISpec.APISpec}}](dex_api_overview.md)
 

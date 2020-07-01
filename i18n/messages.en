@@ -11,7 +11,8 @@
       "HashAndSigning": "Request Signing",
       "Orders": "Orders",
       "ExampleCode": "Example Code",
-      "DEXContracts": "Smart Contracts"
+      "DEXContracts": "Smart Contracts",
+      "UatToken":"Uat Tokens"
     },
     "APISpec": {
       "APISpec": "API Specification (2.0)",

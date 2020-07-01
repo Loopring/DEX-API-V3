@@ -27,6 +27,9 @@ https://api.loopring.io
 - [查询用户ApiKey](./dex_apis/getApiKey.md)
 - [取消订单](./dex_apis/cancelOrder.md)
 - [更新ApiKey](./dex_apis/applyApiKey.md)
+- [根据orderHash批量取消订单](./dex_apis/batchCancelOrdersByOrderHash.md)
+- [根据clientOrderId批量取消订单](./dex_apis/batchCancelOrdersByClientOrderId.md)
+- [提交transfer](./dex_apis/submitTransfer.md)
 
 #### 设置HTTP头
 使用Python设置HTTP头的代码如下：
