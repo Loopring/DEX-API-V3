@@ -945,7 +945,8 @@
             <span class="hljs-attr">&quot;signatureRy&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
             <span class="hljs-attr">&quot;signatureS&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
             <span class="hljs-attr">&quot;clientOrderId&quot;</span> : <span class="hljs-string">&quot;1&quot;</span>,
-            <span class="hljs-attr">&quot;channelId&quot;</span> : <span class="hljs-string">&quot;hebao::subchannel::0001&quot;</span>
+            <span class="hljs-attr">&quot;channelId&quot;</span> : <span class="hljs-string">&quot;hebao::subchannel::0001&quot;</span>,
+            <span class="hljs-attr">&quot;orderType&quot;</span> : <span class="hljs-string">&quot;LIMIT_ORDER&quot;</span>
         }
     ]
 }</span></code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -X POST -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> -H <span class="hljs-string">&quot;Content-Type:application/json&quot;</span> https://api.loopring.io/api/v2/batchOrders <span class="hljs-_">-d</span> \
@@ -969,7 +970,8 @@
             &quot;signatureRy&quot; : &quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;,
             &quot;signatureS&quot; : &quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;,
             &quot;clientOrderId&quot; : &quot;1&quot;,
-            &quot;channelId&quot; : &quot;hebao::subchannel::0001&quot;
+            &quot;channelId&quot; : &quot;hebao::subchannel::0001&quot;,
+            &quot;orderType&quot; : &quot;LIMIT_ORDER&quot;
         }
     ]
 }&apos;</span></code></pre></div></div></div></p>
@@ -1182,6 +1184,13 @@
 <td style="text-align:left">&#x8BA2;&#x5355;&#x6E20;&#x9053;&#x53F7;, &#x7528;&#x6765;&#x6807;&#x793A;&#x8BA2;&#x5355;&#x4ECE;&#x54EA;&#x4E2A;&#x6E20;&#x9053;&#x63D0;&#x4EA4;</td>
 <td style="text-align:left">&quot;hebao::subchannel::0<br>001&quot;</td>
 </tr>
+<tr>
+<td style="text-align:left">orderType</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x5426;</td>
+<td style="text-align:left">field.SubmitOrderRequest.orderType<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;LIMIT_ORDER&apos;, &apos;TAKER_ONLY&apos;, &apos;MAKER_ONLY&apos;]</td>
+<td style="text-align:left">&quot;LIMIT_ORDER&quot;</td>
+</tr>
 </tbody>
 </table>
 <h4 id="submitorderresult">SubmitOrderResult</h4>
@@ -1256,7 +1265,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"批量提交订单","level":"3.1.7","depth":2,"next":{"title":"获取用户订单列表","level":"3.1.8","depth":2,"path":"dex_apis/getOrders.md","ref":"dex_apis/getOrders.md","articles":[]},"previous":{"title":"提交订单","level":"3.1.6","depth":2,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/batchSubmitOrder.md","mtime":"2020-07-06T03:06:25.422Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-07-06T03:06:27.671Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"批量提交订单","level":"3.1.7","depth":2,"next":{"title":"获取用户订单列表","level":"3.1.8","depth":2,"path":"dex_apis/getOrders.md","ref":"dex_apis/getOrders.md","articles":[]},"previous":{"title":"提交订单","level":"3.1.6","depth":2,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/batchSubmitOrder.md","mtime":"2020-08-04T04:16:51.862Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-08-04T04:16:54.056Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>
