@@ -195,6 +195,7 @@ function serialize_transfer(transfer) {
     amountF: transfer.amountFee,
     label: transfer.label,
     nonce: transfer.nonce,
+    memo:transfer.memo || ""
   };
 
   return "0x" + sha256(JSON.stringify(data)).toString('hex');
