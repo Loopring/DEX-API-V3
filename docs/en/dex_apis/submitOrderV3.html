@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Submit multiple orders · Loopring API</title>
+        <title>Submit an order version 3 · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -85,10 +85,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="getOrders.html" />
+    <link rel="next" href="batchSubmitOrder.html" />
     
     
-    <link rel="prev" href="submitOrderV3.html" />
+    <link rel="prev" href="submitOrder.html" />
     
 
     </head>
@@ -329,7 +329,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.7" data-path="submitOrderV3.html">
+        <li class="chapter active" data-level="3.1.7" data-path="submitOrderV3.html">
             
                 <a href="submitOrderV3.html">
             
@@ -342,7 +342,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.1.8" data-path="batchSubmitOrder.html">
+        <li class="chapter " data-level="3.1.8" data-path="batchSubmitOrder.html">
             
                 <a href="batchSubmitOrder.html">
             
@@ -858,7 +858,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Submit multiple orders</a>
+        <a href=".." >Submit an order version 3</a>
     </h1>
 </div>
 
@@ -873,7 +873,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="submit-multiple-orders">Submit multiple orders</h2>
+                                <h2 id="submit-an-order-version-3">Submit an order version 3</h2>
 <p>Rate limit: 3 every
 second</p>
 <h3 id="api-overview">API Overview</h3>
@@ -881,9 +881,17 @@ second</p>
 <h4 id="http-method">HTTP method</h4>
 <p><strong>POST</strong></p>
 <h4 id="path">Path</h4>
-<p><strong>/api/v2/batchOrders</strong></p>
+<p><strong>/api/v3/order</strong></p>
 <h4 id="summary">Summary</h4>
-<p>Submit up to 10 orders as a batch.</p>
+<p>Please follow the following steps to submit an order:</p>
+<ol>
+<li>Get the next orderId through <code>/api/v2/orderId</code>. If you maintain order IDs on the client side, you can skip this step.</li>
+<li>Choose reasonable values for <code>validSince</code> and<code>validUntil</code>. We recommend that <code>validSince</code> is set to the current system time, and <code>validUntil</code> is set to be at least one month later than the current time.</li>
+<li>Choose a reasonable <code>MaxFeeBips</code>. We recommend setting this value to <code>63</code>.</li>
+<li>Use<code>clientOrderId</code> and/or <code>channelId</code> for better client-side tracking.</li>
+<li>Sign the order.</li>
+<li>Submit the order and receive the order&apos;s hash and status.</li>
+</ol>
 <h3 id="api-description">API description</h3>
 <hr>
 <h4 id="http-header">HTTP Header</h4>
@@ -908,158 +916,6 @@ second</p>
 </tbody>
 </table>
 <h4 id="request-parameters">Request parameters</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Field</th>
-<th style="text-align:left">Type</th>
-<th style="text-align:left">Required</th>
-<th style="text-align:left">Description</th>
-<th style="text-align:left">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">orders</td>
-<td style="text-align:left">List[<a href="#SubmitOrderRequest">SubmitOrderRequest</a>]</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Orders to submit.</td>
-<td style="text-align:left">/</td>
-</tr>
-</tbody>
-</table>
-<h4 id="request-example">Request example</h4>
-<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">POST</span> <span class="hljs-string">https://api.loopring.io/api/v2/batchOrders</span> HTTP/1.1
-<span class="hljs-attribute">Host</span>: api.loopring.io
-<span class="hljs-attribute">Connection</span>: keep-alive
-<span class="hljs-attribute">Accept</span>: */*
-<span class="hljs-attribute">Accept-Encoding</span>: gzip, deflate, br
-<span class="hljs-attribute">Accept-Language</span>: zh,en;q=0.9
-<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa
-<span class="hljs-attribute">Content-Type</span>: application/json
-
-<span class="json">{
-    <span class="hljs-attr">&quot;orders&quot;</span> : [
-        {
-            <span class="hljs-attr">&quot;exchangeId&quot;</span> : <span class="hljs-number">1</span>,
-            <span class="hljs-attr">&quot;orderId&quot;</span> : <span class="hljs-number">1</span>,
-            <span class="hljs-attr">&quot;accountId&quot;</span> : <span class="hljs-number">1</span>,
-            <span class="hljs-attr">&quot;tokenSId&quot;</span> : <span class="hljs-number">0</span>,
-            <span class="hljs-attr">&quot;tokenBId&quot;</span> : <span class="hljs-number">2</span>,
-            <span class="hljs-attr">&quot;amountS&quot;</span> : <span class="hljs-string">&quot;1000000000000000000&quot;</span>,
-            <span class="hljs-attr">&quot;amountB&quot;</span> : <span class="hljs-string">&quot;1000000000000000000&quot;</span>,
-            <span class="hljs-attr">&quot;allOrNone&quot;</span> : <span class="hljs-string">&quot;false&quot;</span>,
-            <span class="hljs-attr">&quot;buy&quot;</span> : <span class="hljs-string">&quot;true&quot;</span>,
-            <span class="hljs-attr">&quot;validSince&quot;</span> : <span class="hljs-number">1567053142</span>,
-            <span class="hljs-attr">&quot;validUntil&quot;</span> : <span class="hljs-number">1567053142</span>,
-            <span class="hljs-attr">&quot;maxFeeBips&quot;</span> : <span class="hljs-number">20</span>,
-            <span class="hljs-attr">&quot;label&quot;</span> : <span class="hljs-number">20</span>,
-            <span class="hljs-attr">&quot;signatureRx&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
-            <span class="hljs-attr">&quot;signatureRy&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
-            <span class="hljs-attr">&quot;signatureS&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
-            <span class="hljs-attr">&quot;clientOrderId&quot;</span> : <span class="hljs-string">&quot;1&quot;</span>,
-            <span class="hljs-attr">&quot;channelId&quot;</span> : <span class="hljs-string">&quot;hebao::subchannel::0001&quot;</span>,
-            <span class="hljs-attr">&quot;orderType&quot;</span> : <span class="hljs-string">&quot;LIMIT_ORDER&quot;</span>
-        }
-    ]
-}</span></code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -X POST -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> -H <span class="hljs-string">&quot;Content-Type:application/json&quot;</span> https://api.loopring.io/api/v2/batchOrders <span class="hljs-_">-d</span> \
-<span class="hljs-string">&apos;{
-    &quot;orders&quot; : [
-        {
-            &quot;exchangeId&quot; : 1,
-            &quot;orderId&quot; : 1,
-            &quot;accountId&quot; : 1,
-            &quot;tokenSId&quot; : 0,
-            &quot;tokenBId&quot; : 2,
-            &quot;amountS&quot; : &quot;1000000000000000000&quot;,
-            &quot;amountB&quot; : &quot;1000000000000000000&quot;,
-            &quot;allOrNone&quot; : &quot;false&quot;,
-            &quot;buy&quot; : &quot;true&quot;,
-            &quot;validSince&quot; : 1567053142,
-            &quot;validUntil&quot; : 1567053142,
-            &quot;maxFeeBips&quot; : 20,
-            &quot;label&quot; : 20,
-            &quot;signatureRx&quot; : &quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;,
-            &quot;signatureRy&quot; : &quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;,
-            &quot;signatureS&quot; : &quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;,
-            &quot;clientOrderId&quot; : &quot;1&quot;,
-            &quot;channelId&quot; : &quot;hebao::subchannel::0001&quot;,
-            &quot;orderType&quot; : &quot;LIMIT_ORDER&quot;
-        }
-    ]
-}&apos;</span></code></pre></div></div></div></p>
-<h4 id="response-fields">Response fields</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Field</th>
-<th style="text-align:left">Type</th>
-<th style="text-align:left">Required</th>
-<th style="text-align:left">Description</th>
-<th style="text-align:left">Example</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">resultInfo</td>
-<td style="text-align:left"><a href="../REST_APIS.html#ResultInfo">ResultInfo</a></td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Information returned by the API</td>
-<td style="text-align:left">/</td>
-</tr>
-<tr>
-<td style="text-align:left">data</td>
-<td style="text-align:left">List[<a href="#SubmitOrderResult">SubmitOrderResult</a>]</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Result of batch submit orders.</td>
-<td style="text-align:left">/</td>
-</tr>
-</tbody>
-</table>
-<h4 id="response-example">Response example</h4>
-<pre><code class="lang-json">{
-    <span class="hljs-string">&quot;resultInfo&quot;</span> : {
-        <span class="hljs-string">&quot;code&quot;</span> : <span class="hljs-number">0</span>,
-        <span class="hljs-string">&quot;message&quot;</span> : <span class="hljs-string">&quot;SUCCESS&quot;</span>
-    },
-    <span class="hljs-string">&quot;data&quot;</span> : [
-        {
-            <span class="hljs-string">&quot;hash&quot;</span> : <span class="hljs-string">&quot;0xfb5e711c2f044e94322ed262229cd8f0d0da00c22e1a00a0f5d881e45a38e1cf&quot;</span>,
-            <span class="hljs-string">&quot;error&quot;</span> : {
-                <span class="hljs-string">&quot;code&quot;</span> : <span class="hljs-number">0</span>,
-                <span class="hljs-string">&quot;message&quot;</span> : <span class="hljs-string">&quot;SUCCESS&quot;</span>
-            }
-        }
-    ]
-}
-</code></pre>
-<h4 id="status-code">Status code</h4>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">Value</th>
-<th style="text-align:left">Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">100000</td>
-<td style="text-align:left">Unknown error</td>
-</tr>
-<tr>
-<td style="text-align:left">100001</td>
-<td style="text-align:left">Invalid argument</td>
-</tr>
-<tr>
-<td style="text-align:left">104209</td>
-<td style="text-align:left">Partial batch operation failed</td>
-</tr>
-</tbody>
-</table>
-<h3 id="model">Model</h3>
-<hr>
-<h4 id="submitorderrequest">SubmitOrderRequest</h4>
-<p><span id="SubmitOrderRequest"></span>Submit order request description</p>
 <table>
 <thead>
 <tr>
@@ -1206,8 +1062,59 @@ second</p>
 </tr>
 </tbody>
 </table>
-<h4 id="submitorderresult">SubmitOrderResult</h4>
-<p><span id="SubmitOrderResult"></span>Single order submission results.</p>
+<h4 id="request-example">Request example</h4>
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">POST</span> <span class="hljs-string">https://api.loopring.io/api/v3/order</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: api.loopring.io
+<span class="hljs-attribute">Connection</span>: keep-alive
+<span class="hljs-attribute">Accept</span>: */*
+<span class="hljs-attribute">Accept-Encoding</span>: gzip, deflate, br
+<span class="hljs-attribute">Accept-Language</span>: zh,en;q=0.9
+<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa
+<span class="hljs-attribute">Content-Type</span>: application/json
+
+<span class="json">{
+    <span class="hljs-attr">&quot;exchangeId&quot;</span> : <span class="hljs-number">1</span>,
+    <span class="hljs-attr">&quot;orderId&quot;</span> : <span class="hljs-number">1</span>,
+    <span class="hljs-attr">&quot;accountId&quot;</span> : <span class="hljs-number">1</span>,
+    <span class="hljs-attr">&quot;tokenSId&quot;</span> : <span class="hljs-number">0</span>,
+    <span class="hljs-attr">&quot;tokenBId&quot;</span> : <span class="hljs-number">2</span>,
+    <span class="hljs-attr">&quot;amountS&quot;</span> : <span class="hljs-string">&quot;1000000000000000000&quot;</span>,
+    <span class="hljs-attr">&quot;amountB&quot;</span> : <span class="hljs-string">&quot;1000000000000000000&quot;</span>,
+    <span class="hljs-attr">&quot;allOrNone&quot;</span> : <span class="hljs-string">&quot;false&quot;</span>,
+    <span class="hljs-attr">&quot;buy&quot;</span> : <span class="hljs-string">&quot;true&quot;</span>,
+    <span class="hljs-attr">&quot;validSince&quot;</span> : <span class="hljs-number">1567053142</span>,
+    <span class="hljs-attr">&quot;validUntil&quot;</span> : <span class="hljs-number">1567053142</span>,
+    <span class="hljs-attr">&quot;maxFeeBips&quot;</span> : <span class="hljs-number">20</span>,
+    <span class="hljs-attr">&quot;label&quot;</span> : <span class="hljs-number">20</span>,
+    <span class="hljs-attr">&quot;signatureRx&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
+    <span class="hljs-attr">&quot;signatureRy&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
+    <span class="hljs-attr">&quot;signatureS&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
+    <span class="hljs-attr">&quot;clientOrderId&quot;</span> : <span class="hljs-string">&quot;1&quot;</span>,
+    <span class="hljs-attr">&quot;channelId&quot;</span> : <span class="hljs-string">&quot;hebao::subchannel::0001&quot;</span>,
+    <span class="hljs-attr">&quot;orderType&quot;</span> : <span class="hljs-string">&quot;LIMIT_ORDER&quot;</span>
+}</span></code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -X POST -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> -H <span class="hljs-string">&quot;Content-Type:application/json&quot;</span> https://api.loopring.io/api/v3/order <span class="hljs-_">-d</span> \
+<span class="hljs-string">&apos;{
+    &quot;exchangeId&quot; : 1,
+    &quot;orderId&quot; : 1,
+    &quot;accountId&quot; : 1,
+    &quot;tokenSId&quot; : 0,
+    &quot;tokenBId&quot; : 2,
+    &quot;amountS&quot; : &quot;1000000000000000000&quot;,
+    &quot;amountB&quot; : &quot;1000000000000000000&quot;,
+    &quot;allOrNone&quot; : &quot;false&quot;,
+    &quot;buy&quot; : &quot;true&quot;,
+    &quot;validSince&quot; : 1567053142,
+    &quot;validUntil&quot; : 1567053142,
+    &quot;maxFeeBips&quot; : 20,
+    &quot;label&quot; : 20,
+    &quot;signatureRx&quot; : &quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;,
+    &quot;signatureRy&quot; : &quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;,
+    &quot;signatureS&quot; : &quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;,
+    &quot;clientOrderId&quot; : &quot;1&quot;,
+    &quot;channelId&quot; : &quot;hebao::subchannel::0001&quot;,
+    &quot;orderType&quot; : &quot;LIMIT_ORDER&quot;
+}&apos;</span></code></pre></div></div></div></p>
+<h4 id="response-fields">Response fields</h4>
 <table>
 <thead>
 <tr>
@@ -1220,18 +1127,164 @@ second</p>
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">hash</td>
-<td style="text-align:left">string</td>
+<td style="text-align:left">resultInfo</td>
+<td style="text-align:left"><a href="../REST_APIS.html#ResultInfo">ResultInfo</a></td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">Hash of order submitted</td>
-<td style="text-align:left">&quot;0xfb5e711c2f044e9432<br>2ed262229cd8f0d0da00<br>c22e1a00a0f5d881e45a<br>38e1cf&quot;</td>
+<td style="text-align:left">Information returned by the API</td>
+<td style="text-align:left">/</td>
 </tr>
 <tr>
-<td style="text-align:left">error</td>
-<td style="text-align:left"><a href="../REST_APIS.html#ResultInfo">ResultInfo</a></td>
-<td style="text-align:left">N</td>
-<td style="text-align:left">Error for order submission failure.</td>
+<td style="text-align:left">data</td>
+<td style="text-align:left"><a href="#SubmitOrderResponseV3Item">SubmitOrderResponseV3Item</a></td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Result of the newly submitted order</td>
 <td style="text-align:left">/</td>
+</tr>
+</tbody>
+</table>
+<h4 id="response-example">Response example</h4>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;resultInfo&quot;</span> : {
+        <span class="hljs-string">&quot;code&quot;</span> : <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;message&quot;</span> : <span class="hljs-string">&quot;SUCCESS&quot;</span>
+    },
+    <span class="hljs-string">&quot;data&quot;</span> : {
+        <span class="hljs-string">&quot;orderHash&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
+        <span class="hljs-string">&quot;status&quot;</span> : <span class="hljs-string">&quot;NEW_ACTIVED, SUBMIT_ORDER_FAIL&quot;</span>,
+        <span class="hljs-string">&quot;isIdempotent&quot;</span> : <span class="hljs-literal">true</span>
+    }
+}
+</code></pre>
+<h4 id="status-code">Status code</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Value</th>
+<th style="text-align:left">Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">100000</td>
+<td style="text-align:left">Unknown error</td>
+</tr>
+<tr>
+<td style="text-align:left">102001</td>
+<td style="text-align:left">Exchange ID is incorrect</td>
+</tr>
+<tr>
+<td style="text-align:left">102002</td>
+<td style="text-align:left">Unsupported TokenId in the order</td>
+</tr>
+<tr>
+<td style="text-align:left">102003</td>
+<td style="text-align:left">Invalid account ID</td>
+</tr>
+<tr>
+<td style="text-align:left">102004</td>
+<td style="text-align:left">Invalid order ID</td>
+</tr>
+<tr>
+<td style="text-align:left">102005</td>
+<td style="text-align:left">Market does not support</td>
+</tr>
+<tr>
+<td style="text-align:left">102006</td>
+<td style="text-align:left">Illegal rate field</td>
+</tr>
+<tr>
+<td style="text-align:left">102007</td>
+<td style="text-align:left">Order already exists</td>
+</tr>
+<tr>
+<td style="text-align:left">102008</td>
+<td style="text-align:left">Order has expired</td>
+</tr>
+<tr>
+<td style="text-align:left">102010</td>
+<td style="text-align:left">Order is missing signature information</td>
+</tr>
+<tr>
+<td style="text-align:left">102011</td>
+<td style="text-align:left">Insufficient user balance</td>
+</tr>
+<tr>
+<td style="text-align:left">102012</td>
+<td style="text-align:left">The order amount is too small</td>
+</tr>
+<tr>
+<td style="text-align:left">102014</td>
+<td style="text-align:left">Failed to freeze the amount, please try again later</td>
+</tr>
+<tr>
+<td style="text-align:left">102020</td>
+<td style="text-align:left">Exceeded the maximum order amount</td>
+</tr>
+<tr>
+<td style="text-align:left">102027</td>
+<td style="text-align:left">Submit order fail</td>
+</tr>
+<tr>
+<td style="text-align:left">102120</td>
+<td style="text-align:left">Order is not valid</td>
+</tr>
+<tr>
+<td style="text-align:left">104001</td>
+<td style="text-align:left">Empty ApiKey</td>
+</tr>
+<tr>
+<td style="text-align:left">104002</td>
+<td style="text-align:left">Invalid ApiKey</td>
+</tr>
+<tr>
+<td style="text-align:left">104003</td>
+<td style="text-align:left">Invalid Account ID</td>
+</tr>
+<tr>
+<td style="text-align:left">104004</td>
+<td style="text-align:left">No signature information provided</td>
+</tr>
+<tr>
+<td style="text-align:left">104005</td>
+<td style="text-align:left">Wrong signature information</td>
+</tr>
+</tbody>
+</table>
+<h3 id="model">Model</h3>
+<hr>
+<h4 id="submitorderresponsev3item">SubmitOrderResponseV3Item</h4>
+<p><span id="SubmitOrderResponseV3Item"></span>Submit order response detail</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Field</th>
+<th style="text-align:left">Type</th>
+<th style="text-align:left">Required</th>
+<th style="text-align:left">Description</th>
+<th style="text-align:left">Example</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">orderHash</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order hash of submit order response</td>
+<td style="text-align:left">&quot;13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">status</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Order status of submit order response<br>Allowable : [&apos;NEW_ACTIVED&apos;, &apos;SUBMIT_ORDER_FAIL&apos;, &apos;UNKNOWN&apos;]</td>
+<td style="text-align:left">&quot;NEW_ACTIVED, SUBMIT_ORDER_FAIL&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">isIdempotent</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">Idempotent of submit order response, submit same order again when order was UNKNOWN or WAIT_FREEZE_BALANCE in relayer, idempotent will be true<br>Allowable : [True, False]</td>
+<td style="text-align:left">&quot;true&quot;</td>
 </tr>
 </tbody>
 </table>
@@ -1262,12 +1315,12 @@ second</p>
 
             
                 
-                <a href="submitOrderV3.html" class="navigation navigation-prev " aria-label="Previous page: Submit an order version 3">
+                <a href="submitOrder.html" class="navigation navigation-prev " aria-label="Previous page: Submit an order">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="getOrders.html" class="navigation navigation-next " aria-label="Next page: Get multiple orders">
+                <a href="batchSubmitOrder.html" class="navigation navigation-next " aria-label="Next page: Submit multiple orders">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1278,7 +1331,7 @@ second</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Submit multiple orders","level":"3.1.8","depth":2,"next":{"title":"Get multiple orders","level":"3.1.9","depth":2,"path":"dex_apis/getOrders.md","ref":"dex_apis/getOrders.md","articles":[]},"previous":{"title":"Submit an order version 3","level":"3.1.7","depth":2,"path":"dex_apis/submitOrderV3.md","ref":"dex_apis/submitOrderV3.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/batchSubmitOrder.md","mtime":"2020-09-27T02:46:58.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-27T02:46:59.167Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Submit an order version 3","level":"3.1.7","depth":2,"next":{"title":"Submit multiple orders","level":"3.1.8","depth":2,"path":"dex_apis/batchSubmitOrder.md","ref":"dex_apis/batchSubmitOrder.md","articles":[]},"previous":{"title":"Submit an order","level":"3.1.6","depth":2,"path":"dex_apis/submitOrder.md","ref":"dex_apis/submitOrder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/submitOrderV3.md","mtime":"2020-09-27T02:46:58.000Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-09-27T02:46:59.167Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
