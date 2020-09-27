@@ -11,6 +11,7 @@
 
         "/api/v2/orderId",
         "/api/v2/order",
+        "/api/v3/order",
         "/api/v2/batchOrders",
         "/api/v2/orders",
         "/api/v2/orders/byHash",
@@ -43,7 +44,7 @@
     ],
     "no_key": ["getApiKey"],
     "has_sig": ["getApiKey", "cancelOrders","submitTransfer","batchCancelOrdersByClientOrderId","batchCancelOrdersByOrderHash"],
-    "cir_sig": ["submitOrder"],
+    "cir_sig": ["submitOrder", "submitOrderV3"],
     "hosturl" : "https://api.loopring.io",
     "fetchurl" : "http://uat.loopring.io",
     "# fetchurl" : "http://localhost:31610",
