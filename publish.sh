@@ -14,4 +14,4 @@ cd generated && \
     cd .. && rm -rf ./docs && \
     cp -rf generated/docs . && \
     ./xdoc.py windup && \
-    git add . && git commit -m "publish ${time}" && git push origin master
+    git add . && git commit -m "publish ${time}" && git push v3 master

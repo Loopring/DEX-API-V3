@@ -533,6 +533,7 @@ def get_request_headers(operationId):
     return ret
 
 def get_tps(api):
+    return 1
     return VARS['tps'].get(
         (api['path'], api['method'].lower()), VARS['tps']['default'])
 
@@ -627,7 +628,7 @@ def load_tps_config():
 
 def build_doc():
     load_info()
-    load_tps_config()
+    # load_tps_config()
     LOGGER.info('Creating gitbook files...')
     generate_structs()
     LOGGER.info('Syncing gitbook files...')
@@ -659,12 +660,11 @@ def fetch_tps_config():
     run_command_with_return_info(
         'git clone %s %s'%(VARS['v']['tpsConfig'], TPS_CONFIG))
 
-
 def refresh_swagger():
     load_info()
     for lang in VARS['v']['langs']:
         fetch_and_save_swagger_json(lang)
-    fetch_tps_config()
+    # fetch_tps_config()
 
 def windup():
     if not os.path.exists('./docs'):
