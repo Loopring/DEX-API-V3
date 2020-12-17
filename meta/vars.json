@@ -7,8 +7,9 @@
 
         "---------------- v3 ----------------",
         "/api/v3/tokenBalances",
-        "/api/v3/amm/transactions",
-        "/api/v3/allowances"
+        "/api/v3/allowances",
+        "/api/v3/amm/swaps",
+        "/api/v3/amm/transactions"
     ],
     "enable_apis" : [
         "/api/v3/timestamp",
@@ -43,8 +44,7 @@
         "/api/v3/amm/join",
         "/api/v3/amm/exit",
         "/api/v3/amm/user/transactions",
-        "/api/v3/amm/trades",
-        "/api/v3/amm/swaps"
+        "/api/v3/amm/trades"
     ],
     "no_key": ["getApiKey"],
     "has_sig": ["getApiKey", "cancelOrders","submitTransfer","", ""],
