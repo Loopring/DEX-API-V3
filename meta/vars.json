@@ -1,5 +1,5 @@
 {
-    "langs": ["en"],
+    "langs": ["zh-hans", "en"],
     "not_ready": [
         "/api/v2/dexNonce",
         "/api/v2/offchainWithdrawal",
