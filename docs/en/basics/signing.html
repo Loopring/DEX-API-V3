@@ -1,0 +1,1187 @@
+
+<!DOCTYPE HTML>
+<html lang="en" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Request Signing · Loopring API</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-codetabs/codetabs.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="examples.html" />
+    
+    
+    <link rel="prev" href="key_mgmt.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">About</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    Loopring
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../GLOSSARY.html">
+            
+                <a href="../GLOSSARY.html">
+            
+                    
+                    Glossary
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">Fundamental</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="orders.html">
+            
+                <a href="orders.html">
+            
+                    
+                    Orders
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="key_mgmt.html">
+            
+                <a href="key_mgmt.html">
+            
+                    
+                    Key Management
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="2.3" data-path="signing.html">
+            
+                <a href="signing.html">
+            
+                    
+                    Request Signing
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.4" data-path="examples.html">
+            
+                <a href="examples.html">
+            
+                    
+                    Example Code
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="contracts.html">
+            
+                <a href="contracts.html">
+            
+                    
+                    Smart Contracts
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.6" data-path="uat_token.html">
+            
+                <a href="uat_token.html">
+            
+                    
+                    Uat Tokens
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">API Specification (2.0)</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../REST_APIS.html">
+            
+                <a href="../REST_APIS.html">
+            
+                    
+                    REST API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="3.1.1" data-path="../dex_apis/getTimestamp.html">
+            
+                <a href="../dex_apis/getTimestamp.html">
+            
+                    
+                    Get relayer's current time
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.2" data-path="../dex_apis/getApiKey.html">
+            
+                <a href="../dex_apis/getApiKey.html">
+            
+                    
+                    Get user ApiKey
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.3" data-path="../dex_apis/applyApiKey.html">
+            
+                <a href="../dex_apis/applyApiKey.html">
+            
+                    
+                    Update user's ApiKey
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.4" data-path="../dex_apis/getNextStorageId.html">
+            
+                <a href="../dex_apis/getNextStorageId.html">
+            
+                    
+                    Get next storage ID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.5" data-path="../dex_apis/getOrderDetail.html">
+            
+                <a href="../dex_apis/getOrderDetail.html">
+            
+                    
+                    Get order details
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.6" data-path="../dex_apis/submitOrderV3.html">
+            
+                <a href="../dex_apis/submitOrderV3.html">
+            
+                    
+                    Submit an order
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.7" data-path="../dex_apis/cancelOrder.html">
+            
+                <a href="../dex_apis/cancelOrder.html">
+            
+                    
+                    Cancel order
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.8" data-path="../dex_apis/getOrders.html">
+            
+                <a href="../dex_apis/getOrders.html">
+            
+                    
+                    Get multiple orders
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.9" data-path="../dex_apis/getMarkets.html">
+            
+                <a href="../dex_apis/getMarkets.html">
+            
+                    
+                    Get market configurations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.10" data-path="../dex_apis/getTokens.html">
+            
+                <a href="../dex_apis/getTokens.html">
+            
+                    
+                    Get token configurations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.11" data-path="../dex_apis/getExchangeInfo.html">
+            
+                <a href="../dex_apis/getExchangeInfo.html">
+            
+                    
+                    Get exchange configurations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.12" data-path="../dex_apis/getDepth.html">
+            
+                <a href="../dex_apis/getDepth.html">
+            
+                    
+                    Get market orderbook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.13" data-path="../dex_apis/getTicker.html">
+            
+                <a href="../dex_apis/getTicker.html">
+            
+                    
+                    Get market ticker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.14" data-path="../dex_apis/getCandlestick.html">
+            
+                <a href="../dex_apis/getCandlestick.html">
+            
+                    
+                    Get market candlestick
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.15" data-path="../dex_apis/getPrice.html">
+            
+                <a href="../dex_apis/getPrice.html">
+            
+                    
+                    Get token fiat prices
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.16" data-path="../dex_apis/getMarketTrade.html">
+            
+                <a href="../dex_apis/getMarketTrade.html">
+            
+                    
+                    Get market recent trades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.17" data-path="../dex_apis/submitTransfer.html">
+            
+                <a href="../dex_apis/submitTransfer.html">
+            
+                    
+                    Submit internal transfer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.18" data-path="../dex_apis/getAccount.html">
+            
+                <a href="../dex_apis/getAccount.html">
+            
+                    
+                    Query user information
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.19" data-path="../dex_apis/submitUpdateAccount.html">
+            
+                <a href="../dex_apis/submitUpdateAccount.html">
+            
+                    
+                    Update account EDDSA key
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.20" data-path="../dex_apis/getUserCreate.html">
+            
+                <a href="../dex_apis/getUserCreate.html">
+            
+                    
+                    Get user registration transactions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.21" data-path="../dex_apis/getUserUpdate.html">
+            
+                <a href="../dex_apis/getUserUpdate.html">
+            
+                    
+                    Get password reset transactions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.22" data-path="../dex_apis/getUserBalances.html">
+            
+                <a href="../dex_apis/getUserBalances.html">
+            
+                    
+                    Get user exchange balances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.23" data-path="../dex_apis/getUserDeposits.html">
+            
+                <a href="../dex_apis/getUserDeposits.html">
+            
+                    
+                    Get user deposit history
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.24" data-path="../dex_apis/getUserWithdrawals.html">
+            
+                <a href="../dex_apis/getUserWithdrawals.html">
+            
+                    
+                    Get user onchain withdrawal history
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.25" data-path="../dex_apis/submitOffChainWithdrawal.html">
+            
+                <a href="../dex_apis/submitOffChainWithdrawal.html">
+            
+                    
+                    Submit offchain withdraw request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.26" data-path="../dex_apis/getUserTransfers.html">
+            
+                <a href="../dex_apis/getUserTransfers.html">
+            
+                    
+                    Get user transfer list
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.27" data-path="../dex_apis/getUserTrades.html">
+            
+                <a href="../dex_apis/getUserTrades.html">
+            
+                    
+                    Get user trade history
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.28" data-path="../dex_apis/getUserFeeRates.html">
+            
+                <a href="../dex_apis/getUserFeeRates.html">
+            
+                    
+                    Query user place order fee rate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.29" data-path="../dex_apis/getAmmPools.html">
+            
+                <a href="../dex_apis/getAmmPools.html">
+            
+                    
+                    Get AMM pool configurations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.30" data-path="../dex_apis/getAmmPoolBalance.html">
+            
+                <a href="../dex_apis/getAmmPoolBalance.html">
+            
+                    
+                    Get AMM pool balance snapshot
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.31" data-path="../dex_apis/submitAmmPoolJoin.html">
+            
+                <a href="../dex_apis/submitAmmPoolJoin.html">
+            
+                    
+                    Join into AMM pool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.32" data-path="../dex_apis/submitAmmPoolExit.html">
+            
+                <a href="../dex_apis/submitAmmPoolExit.html">
+            
+                    
+                    Exit an AMM pool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.33" data-path="../dex_apis/getAmmUserTransactions.html">
+            
+                <a href="../dex_apis/getAmmUserTransactions.html">
+            
+                    
+                    User's AMM join/exit transactions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.1.34" data-path="../dex_apis/getAmmTrades.html">
+            
+                <a href="../dex_apis/getAmmTrades.html">
+            
+                    
+                    get AMM pool trade transactions
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../websocket/overview.html">
+            
+                <a href="../websocket/overview.html">
+            
+                    
+                    WebSocket API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="4.1.1" data-path="../websocket/account.html">
+            
+                <a href="../websocket/account.html">
+            
+                    
+                    Account Notification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.2" data-path="../websocket/order.html">
+            
+                <a href="../websocket/order.html">
+            
+                    
+                    Order Notification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.3" data-path="../websocket/orderbook.html">
+            
+                <a href="../websocket/orderbook.html">
+            
+                    
+                    Orderbook Notification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.4" data-path="../websocket/trade.html">
+            
+                <a href="../websocket/trade.html">
+            
+                    
+                    Trade Notification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.5" data-path="../websocket/ticker.html">
+            
+                <a href="../websocket/ticker.html">
+            
+                    
+                    Ticker Notification
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="4.1.6" data-path="../websocket/candlestick.html">
+            
+                <a href="../websocket/candlestick.html">
+            
+                    
+                    Candlestick Notification
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Request Signing</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="request-signing">Request Signing</h1>
+<p>The Loopring API involves two different categories of signatures. One is the common <strong>API request signature</strong>, which is used to verify that the API invocations have been authenticated; the other is Loopring Protocol&apos;s <strong>off-chain request signature</strong>, which is used by Loopring to verify that off-chain requests have been authenticated. We will explain each of these two categories separately.</p>
+<h2 id="common-api-request-signatures">Common API Request Signatures</h2>
+<h4 id="algorithm">Algorithm</h4>
+<ul>
+<li>Initialize <code>signatureBase</code> to an empty string.</li>
+<li>Append the API&apos;s  HTTP method to <code>signatureBase</code>.</li>
+<li>Append <code>&apos;&#xFF06;&apos;</code> to <code>signatureBase</code>.</li>
+<li>Append <em>percent-encoded</em> full URL path (without <code>?</code> or any query parameters) to <code>signatureBase</code>.</li>
+<li>Append <code>&apos;&amp;&apos;</code> to <code>signatureBase</code>.</li>
+<li>Initialize <code>parameterString</code> to an empty string.</li>
+<li>For GET / DELETE requests:<ul>
+<li>Sort query parameters in ascending order lexicographically;</li>
+<li>Append <em>percent-encoded</em> key name to <code>parameterString</code>;</li>
+<li>Append an <code>&apos;=&apos;</code> to <code>parameterString</code>;</li>
+<li>Append <em>percent-encoded</em> value to <code>parameterString</code>;</li>
+<li>Append a <code>&apos;&amp;&apos;</code> if there are more key value pairs.</li>
+</ul>
+</li>
+<li>For POST / PUT requests:<ul>
+<li>Append request body as a string to <code>parameterString</code>.</li>
+</ul>
+</li>
+<li>Append <em>percent-encoded</em> <code>parameterString</code> to <code>signatureBase</code></li>
+<li>Calculate the <strong>SHA-256</strong> hash of <code>signatureBase</code> as <code>hash</code>.</li>
+<li>Sign<code>hash</code> with the private EdDSA key and get <code>Rx</code>, <code>Ry</code>, and <code>S</code>.</li>
+<li>Concatenate <code>Rx</code>,<code>Ry</code>, and<code>S</code> using <code>&apos;,&apos;</code> as: <code>${Rx},${Ry},${S}</code>.</li>
+</ul>
+<h4 id="http-method-and-url">HTTP Method and URL</h4>
+<p>Please make sure you use only the following HTTP methods, in upper case letters.</p>
+<ul>
+<li>GET</li>
+<li>POST</li>
+<li>PUT</li>
+<li>DELETE</li>
+</ul>
+<p>Also make sure the HTTPS header is included and is in lower case. For example:</p>
+<pre><code>https://api.loopring.io/api/v2/apiKey
+</code></pre><h4 id="example">Example</h4>
+<p>For the above url with the following url query parameters:</p>
+<pre><code>https://api.loopring.io/api/v2/apiKey?publicKeyX=13375450901292179417154974849571793069
+911517354720397125027633242680470075859&amp;publicKeyY=133754509012921794171549748495717930
+69911517354720397125027633242680470075859&amp;accountId=1
+</code></pre><p>or</p>
+<table>
+<thead>
+<tr>
+<th>Query param</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>publicKeyX</td>
+<td>13375450901292179417154974849571793069911517354720397125027633242680470075859</td>
+</tr>
+<tr>
+<td>publicKeyY</td>
+<td>13375450901292179417154974849571793069911517354720397125027633242680470075859</td>
+</tr>
+<tr>
+<td>accountId</td>
+<td>1</td>
+</tr>
+</tbody>
+</table>
+<p><code>parameterString</code> shoule be:</p>
+<pre><code>accountId=1&amp;publicKeyX=1337545090129217941715497484957179306991151735472039712502763324
+2680470075859&amp;publicKeyY=13375450901292179417154974849571793069911517354720397125027633
+242680470075859
+</code></pre><p>and <code>signatureBase</code> should be:</p>
+<pre><code>GET&amp;https%3A%2F%2Fapi.loopring.io%2Fapi%2Fv2%2FapiKey&amp;accountId%3D1%26publicKeyX%3D1337
+5450901292179417154974849571793069911517354720397125027633242680470075859%26publicKeyY%
+3D13375450901292179417154974849571793069911517354720397125027633242680470075859
+</code></pre><h2 id="off-chain-request-signatures">Off-chain Request Signatures</h2>
+<p>Loopring 3.1.1 supports two types of off-chain requests: <strong>orders</strong> and <strong>off-chain withdrawals</strong>. Since these two off-chain requests will result in modifications to the exchange&apos;s state Merkel tree, when you submit these two types of requests using Loopring&apos;s API, you must provide special signatures required by the Loopring protocol.</p>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Loopring 3.1.1 also supports a third type of off-chain requests: <strong>order cancellation</strong>, but it will be deprecated in the up-coming 3.5 version. Therefore, Loopring Exchange will not support this type of off-chain requests.</p>
+</div></div></p>
+<p>The off-chain request signature includes the following steps:</p>
+<ol>
+<li>Regularize the request <code>r</code> (JSON) to generate a string<code>s</code>.</li>
+<li>Calculate the <strong>Poseidon</strong> hash of <code>s</code> as <code>h</code>(see the following section).</li>
+<li>Sign <code>h</code> with the account&apos;s EdDSA private key<code>privateKey</code> and get three values: <code>Rx</code>,<code>Ry</code>, and <code>S</code> (see the following section).</li>
+<li>Convert <code>h</code>,<code>Rx</code>, <code>Ry</code>, and<code>S</code> into strings and merge them into <code>r</code> (please note the name change).</li>
+</ol>
+<pre><code class="lang-json">{
+    ...,
+    <span class="hljs-string">&quot;hash&quot;</span>: ...,
+    <span class="hljs-string">&quot;signatureRx&quot;</span>: <span class="hljs-string">&quot;16367919966553849834214288740952929086694704883595501207054796240908626703398&quot;</span>,
+    <span class="hljs-string">&quot;signatureRy&quot;</span>: <span class="hljs-string">&quot;5706650945525714138019517276433581394702490352313697178959212750249847059862&quot;</span>,
+    <span class="hljs-string">&quot;signatureS&quot;</span>: <span class="hljs-string">&quot;410675649229327911665390972834008845981102813589085982164606483611508480748&quot;</span>
+}
+</code></pre>
+<h4 id="signing-orders">Signing Orders</h4>
+<p>You need to seralized specific fields of an order into an integer array, then calculate the Poseidon hash of the array, and then sign the hash with your EdDSA private key.</p>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>The rules for serialization of orders, hashing, and signature methods must strictly follow <a href="https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/DESIGN.md" target="_blank">Loopring&apos;s Specification</a>.</p>
+</div></div></p>
+<p>Below we use Python code as a demo:</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sign_int_array</span><span class="hljs-params">(privateKey, serialized, t)</span>:</span>
+    PoseidonHashParams = poseidon_params(
+        SNARK_SCALAR_FIELD,
+        t,
+        <span class="hljs-number">6</span>,
+        <span class="hljs-number">53</span>,
+        <span class="hljs-string">b&apos;poseidon&apos;</span>,
+        <span class="hljs-number">5</span>,
+        security_target=<span class="hljs-number">128</span>
+    )
+
+    hash = poseidon(serialized, PoseidonHashParams)
+    signedMessage = PoseidonEdDSA.sign(hash, FQ(int(privateKey)))
+    <span class="hljs-keyword">return</span> ({
+        <span class="hljs-string">&quot;hash&quot;</span>: str(hash),
+        <span class="hljs-string">&quot;signatureRx&quot;</span>: str(signedMessage.sig.R.x),
+        <span class="hljs-string">&quot;signatureRy&quot;</span>: str(signedMessage.sig.R.y),
+        <span class="hljs-string">&quot;signatureS&quot;</span>: str(signedMessage.sig.s),
+    })
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">serialize_order</span><span class="hljs-params">(order)</span>:</span>
+    <span class="hljs-keyword">return</span> [
+        int(order[<span class="hljs-string">&quot;exchangeId&quot;</span>]),
+        int(order[<span class="hljs-string">&quot;orderId&quot;</span>]),
+        int(order[<span class="hljs-string">&quot;accountId&quot;</span>]),
+        int(order[<span class="hljs-string">&quot;tokenSId&quot;</span>]),
+        int(order[<span class="hljs-string">&quot;tokenBId&quot;</span>]),
+        int(order[<span class="hljs-string">&quot;amountS&quot;</span>]),
+        int(order[<span class="hljs-string">&quot;amountB&quot;</span>]),
+        int(order[<span class="hljs-string">&quot;allOrNone&quot;</span>]==<span class="hljs-string">&quot;true&quot;</span>),
+        int(order[<span class="hljs-string">&quot;validSince&quot;</span>]),
+        int(order[<span class="hljs-string">&quot;validUntil&quot;</span>]),
+        int(order[<span class="hljs-string">&quot;maxFeeBips&quot;</span>]),
+        int(order[<span class="hljs-string">&quot;buy&quot;</span>]==<span class="hljs-string">&quot;true&quot;</span>),
+        int(order[<span class="hljs-string">&quot;label&quot;</span>])
+    ]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sign_order</span><span class="hljs-params">(privateKey, order)</span>:</span>
+    serialized = serialize_order(order)
+    signed = sign_int_array(serialized, <span class="hljs-number">14</span> /* Pay attention to this t value */)
+    order.update(signed)
+</code></pre>
+<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>If you don&apos;t use the <em>ethsnarks</em> library to calculate Poseidon hash, please pay attention to the values of the Poseidon parameters to ensure that they are entirely consistent with those used by Loopring. Otherwise, signature verification will fail.</p>
+</div></div></p>
+<h4 id="signing-off-chain-withdrawals">Signing Off-chain Withdrawals</h4>
+<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>The current Loopring API does not yet support off-chain withdrawal requests. But we will add it soon.</p>
+</div></div></p>
+<p>The following is an example of off-chain withdrawals:</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;exchangeId&quot;</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-string">&quot;accountId&quot;</span>:<span class="hljs-number">100</span>,
+    <span class="hljs-string">&quot;tokenId&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-string">&quot;amount&quot;</span>: <span class="hljs-number">1000000000000000000</span>,
+    <span class="hljs-string">&quot;feeTokenId&quot;</span>: <span class="hljs-string">&quot;2&quot;</span>,
+    <span class="hljs-string">&quot;amountFee&quot;</span>: <span class="hljs-number">20000000000000000000</span>,
+    <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-string">&quot;nonce&quot;</span>: <span class="hljs-number">10</span>
+}
+</code></pre>
+<p>where <code>nonce</code> must start from 0 and increment by 1.</p>
+<p>The code for signing it in Python is as follows:</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">serialize_offchain_withdrawal</span><span class="hljs-params">(withdrawal)</span>:</span>
+    <span class="hljs-keyword">return</span> [
+        int(withdrawal[<span class="hljs-string">&apos;exchangeId&apos;</span>]),
+        int(withdrawal[<span class="hljs-string">&apos;accountId&apos;</span>]),
+        int(withdrawal[<span class="hljs-string">&apos;tokenId&apos;</span>]),
+        int(withdrawal[<span class="hljs-string">&apos;amount&apos;</span>]),
+        int(withdrawal[<span class="hljs-string">&apos;feeTokenId&apos;</span>]),
+        int(withdrawal[<span class="hljs-string">&apos;amountFee&apos;</span>]),
+        int(withdrawal[<span class="hljs-string">&apos;label&apos;</span>]),
+        int(withdrawal[<span class="hljs-string">&apos;nonce&apos;</span>])
+    ]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sign_offchain_withdrawal</span><span class="hljs-params">(privateKey, offchainWithdrawal)</span>:</span>
+    serialized = serialize_offchain_withdrawal(offchainWithdrawal)
+    signed = sign_int_array(serialized, <span class="hljs-number">9</span> /* Pay attention to this t value */)
+    offchainWithdrawal.update(signed)
+</code></pre>
+<h4 id="signing-internal-transfer">Signing Internal Transfer</h4>
+<p>You need to seralized specific fields of an transfer into an integer array, then calculate the Poseidon hash of the array, and then sign the hash with your EdDSA private key.</p>
+<p>The following is an example of internal transfers:</p>
+<pre><code class="lang-json">{
+    <span class="hljs-string">&quot;exchangeId&quot;</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-string">&quot;sender&quot;</span>:<span class="hljs-number">100</span>,
+      <span class="hljs-string">&quot;receiver&quot;</span>:<span class="hljs-number">101</span>,
+    <span class="hljs-string">&quot;tokenId&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-string">&quot;amount&quot;</span>: <span class="hljs-number">1000000000000000000</span>,
+    <span class="hljs-string">&quot;feeTokenId&quot;</span>: <span class="hljs-number">2</span>,
+    <span class="hljs-string">&quot;amountFee&quot;</span>: <span class="hljs-number">20000000000000000000</span>,
+    <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-number">0</span>,
+    <span class="hljs-string">&quot;nonce&quot;</span>: <span class="hljs-number">10</span>
+}
+</code></pre>
+<p>where <code>nonce</code> must start from 0 and increment by 1, and internal and transfer share the same  nonce.</p>
+<p>The code for signing it in Python is as follows:</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">serialize_internal_transfer</span><span class="hljs-params">(transfer)</span>:</span>
+    <span class="hljs-keyword">return</span> [
+        int(transfer[<span class="hljs-string">&apos;exchangeId&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;sender&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;receiver&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;tokenId&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;amount&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;feeTokenId&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;amountFee&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;label&apos;</span>]),
+        int(transfer[<span class="hljs-string">&apos;nonce&apos;</span>])
+    ]
+
+<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sign_internal_transfer</span><span class="hljs-params">(privateKey, transfer)</span>:</span>
+    serialized = serialize_internal_transfer(transfer)
+    signed = sign_int_array(serialized, <span class="hljs-number">10</span> /* &#x6CE8;&#x610F;&#x8FD9;&#x4E2A;t&#x503C; */)
+    transfer.update(signed)
+</code></pre>
+<p>In addition to EDSSA signature, you also need to use ECDSA to sign internal transfers. You need to serialize specific fields of an transfer into a Json string, and use sha256 hash algorithm to calculate the hash of the json string. Convert the resutl to hexadecimal string, add a fixed header: &quot;Sign this message to authorize Loopring Pay: &quot;, use personal _sign to sign the combined string.</p>
+<p>The code for signing it in Javascript is as follows:</p>
+<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">serialize_transfer</span>(<span class="hljs-params">transfer</span>) </span>{
+  <span class="hljs-keyword">const</span> data = {
+    exchangeId: transfer.exchangeId,
+    sender: transfer.sender,
+    receiver: transfer.receiver,
+    token: transfer.tokenId,
+    amount: transfer.amount,
+    tokenF: transfer.feeTokenId,
+    amountF: transfer.amountFee,
+    label: transfer.label,
+    nonce: transfer.nonce,
+    memo:transfer.memo || <span class="hljs-string">&quot;&quot;</span>
+  };
+
+  <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0x&quot;</span> + sha256(<span class="hljs-built_in">JSON</span>.stringify(data)).toString(<span class="hljs-string">&apos;hex&apos;</span>);
+}
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sign_internal_transfer</span>(<span class="hljs-params">transfer</span>)</span>{
+  <span class="hljs-keyword">const</span> transferData = serialize_transfer(transfer);
+  <span class="hljs-keyword">const</span> prefix = <span class="hljs-string">&quot;Sign this message to authorize Loopring Pay:  &quot;</span>;
+  <span class="hljs-keyword">const</span> message = prefix + transferData;
+  <span class="hljs-keyword">const</span> sig = personal_sign(privateKey, message);
+}
+</code></pre>
+<h2 id="references">References</h2>
+<p>You can learn more about the Poseidon hash and EdDSA signature through the following literature and github repositories.</p>
+<ol>
+<li><strong>ethsnarks</strong>: <a href="https://github.com/HarryR/ethsnarks.git" target="_blank">https://github.com/HarryR/ethsnarks.git</a></li>
+<li><strong>SHA256 Hash</strong>: <a href="https://en.wikipedia.org/wiki/SHA-2" target="_blank">https://en.wikipedia.org/wiki/SHA-2</a></li>
+<li><strong>EdDSA</strong>: <a href="https://en.wikipedia.org/wiki/EdDSA" target="_blank">https://en.wikipedia.org/wiki/EdDSA</a></li>
+<li><strong>Poseidon Hash</strong>: <a href="https://www.poseidon-hash.info/" target="_blank">https://www.poseidon-hash.info/</a></li>
+</ol>
+<p>You can also refer to our <a href="examples.html">example code</a> for more details.</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="key_mgmt.html" class="navigation navigation-prev " aria-label="Previous page: Key Management">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="examples.html" class="navigation navigation-next " aria-label="Next page: Example Code">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Request Signing","level":"2.3","depth":1,"next":{"title":"Example Code","level":"2.4","depth":1,"path":"basics/examples.md","ref":"basics/examples.md","articles":[]},"previous":{"title":"Key Management","level":"2.2","depth":1,"path":"basics/key_mgmt.md","ref":"basics/key_mgmt.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"basics/signing.md","mtime":"2020-12-18T07:22:23.957Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-18T07:22:25.700Z"},"basePath":"..","book":{"language":"en"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-codetabs/codetabs.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+
+    </body>
+</html>
+
