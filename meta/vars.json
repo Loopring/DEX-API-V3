@@ -51,6 +51,5 @@
     "cir_sig": ["submitOrder", "submitOrderV3"],
     "hosturl" : "http://aa90cd58e38014a1b864ddc488129b7a-624979106.us-east-2.elb.amazonaws.com",
     "fetchurl" : "http://aa90cd58e38014a1b864ddc488129b7a-624979106.us-east-2.elb.amazonaws.com",
-    "# fetchurl" : "http://localhost:31610",
     "tpsConfig" : "git@github.com:Loopring/loopring-prod-config.git"
 }

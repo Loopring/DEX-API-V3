@@ -8,28 +8,23 @@ The Loopring API involves two different categories of signatures. One is the com
 
 ## Off-chain Request Signatures
 
-Loopring 3.1.1 supports two types of off-chain requests: **orders** and **off-chain withdrawals**. Since these two off-chain requests will result in modifications to the exchange's state Merkel tree, when you submit these two types of requests using Loopring's API, you must provide special signatures required by the Loopring protocol.
+Loopring 3.6 supports support lots of off-chain requests: **orders**, **order cancellation**, **swap**, **join AMM pool**, **exit AMM pool** , **transfer** and **off-chain withdrawals**, etc. Since these off-chain requests will result in modifications to the exchange's state Merkel tree, when you submit these types of requests using Loopring's API, you must provide special signatures required by the Loopring protocol.
 
-{% hint style='info' %}
-Loopring 3.1.1 also supports a third type of off-chain requests: **order cancellation**, but it will be deprecated in the up-coming 3.5 version. Therefore, Loopring Exchange will not support this type of off-chain requests.
-{% endhint %}
+### Overview of signatures and requests
 
-The off-chain request signature includes the following steps:
+Below is a signature type table for all those requests, each request asks for different signature methods due to different business models.
 
-1. Regularize the request `r` (JSON) to generate a string` s`.
-1. Calculate the **Poseidon** hash of `s` as `h`(see the following section).
-1. Sign `h` with the account's EdDSA private key` privateKey` and get three values: `Rx`,` Ry`, and `S` (see the following section).
-1. Convert `h`,` Rx`, `Ry`, and` S` into strings and merge them into `r` (please note the name change).
+| Request                | EDDSA       | ECDSA       | Approved Hash | X-API-SIG in header |
+| -----------            | ----------- | ----------- | -----------   | -----------         |
+| submitOrder(AMM swap)  | Y           | N           | N             | N                   |
+| cancelOrder            | N           | N           | N             | EDDSA signed URL    |
+| joinAmmPool            | Y           | Optional    | Y             | N                   |
+| exitAmmPool            | Y           | Optional    | Y             | N                   |
+| submitTransfer         | Y           | Optional    | Y             | EIP-712 signed structure |
+| submitOffchainWithdraw | Y           | Optional    | Y             | EIP-712 signed structure |
+| updateAccount          | Y           | Y           | Y             | EIP-712 signed structure |
 
-```json
-{
-    ...,
-    "hash": ...,
-    "signatureRx": "16367919966553849834214288740952929086694704883595501207054796240908626703398",
-    "signatureRy": "5706650945525714138019517276433581394702490352313697178959212750249847059862",
-    "signatureS": "410675649229327911665390972834008845981102813589085982164606483611508480748"
-}
-```
+We suggest using EDDSA to sign every requests, which saves both time & money as no Eth mainnet transaction confirmation.
 
 #### Signing Orders
 
@@ -41,98 +36,102 @@ The rules for serialization of orders, hashing, and signature methods must stric
 {% endhint %}
 
 Below we use Python code as a demo:
-
 ```python
-def sign_int_array(privateKey, serialized, t):
-    PoseidonHashParams = poseidon_params(
-        SNARK_SCALAR_FIELD,
-        t,
-        6,
-        53,
-        b'poseidon',
-        5,
-        security_target=128
-    )
+class EddsaSignHelper:
+    def __init__(self, poseidon_params, private_key):
+        self.poseidon_sign_param = poseidon_params
+        self.private_key = private_key
+        # print(f"self.private_key = {self.private_key}")
+
+    def hash(self, structure_data):
+        serialized_data = self.serialize_data(structure_data)
+        msgHash = poseidon(serialized_data, self.poseidon_sign_param)
+        return msgHash
+
+    def sign(self, structure_data):
+        msgHash = self.hash(structure_data)
+        signedMessage = PoseidonEdDSA.sign(msgHash, FQ(int(self.private_key, 16)))
+        return "0x" + "".join([
+                        hex(int(signedMessage.sig.R.x))[2:].zfill(64),
+                        hex(int(signedMessage.sig.R.y))[2:].zfill(64),
+                        hex(int(signedMessage.sig.s))[2:].zfill(64)
+                    ])
+
+class OrderEddsaSignHelper(EddsaSignHelper):
+    def __init__(self, private_key):
+        super(OrderEddsaSignHelper, self).__init__(
+            poseidon_params(SNARK_SCALAR_FIELD, 12, 6, 53, b'poseidon', 5, security_target=128),
+            private_key
+        )
     
-    hash = poseidon(serialized, PoseidonHashParams)
-    signedMessage = PoseidonEdDSA.sign(hash, FQ(int(privateKey)))
-    return ({
-        "hash": str(hash),
-        "signatureRx": str(signedMessage.sig.R.x),
-        "signatureRy": str(signedMessage.sig.R.y),
-        "signatureS": str(signedMessage.sig.s),
-    })
-
-def serialize_order(order):
-    return [
-        int(order["exchangeId"]),
-        int(order["orderId"]),
-        int(order["accountId"]),
-        int(order["tokenSId"]),
-        int(order["tokenBId"]),
-        int(order["amountS"]),
-        int(order["amountB"]),
-        int(order["allOrNone"]=="true"),
-        int(order["validSince"]),
-        int(order["validUntil"]),
-        int(order["maxFeeBips"]),
-        int(order["buy"]=="true"),
-        int(order["label"])
-    ]
-
-def sign_order(privateKey, order):
-	serialized = serialize_order(order)
-	signed = sign_int_array(serialized, 14 /* Pay attention to this t value */)
-    order.update(signed)
+    def serialize_data(self, order):
+        return [
+            int(order["exchange"], 16),
+            int(order["storageId"]),
+            int(order["accountId"]),
+            int(order["sellToken"]['tokenId']),
+            int(order["buyToken"]['tokenId']),
+            int(order["sellToken"]['volume']),
+            int(order["buyToken"]['volume']),
+            int(order["validUntil"]),
+            int(order["maxFeeBips"]),
+            int(order["fillAmountBOrS"]),
+            int(order.get("taker", "0x0"), 16)
+        ]
 ```
 {% hint style='info' %}
 If you don't use the *ethsnarks* library to calculate Poseidon hash, please pay attention to the values of the Poseidon parameters to ensure that they are entirely consistent with those used by Loopring. Otherwise, signature verification will fail.
 {% endhint %}
 
 
-
 #### Signing Off-chain Withdrawals
-{% hint style='danger' %}
-The current Loopring API does not yet support off-chain withdrawal requests. But we will add it soon.
-{% endhint %}
 
-The following is an example of off-chain withdrawals:
-```json
-{
-    "exchangeId": 2,
-    "accountId":100,
-    "tokenId": 0,
-    "amount": 1000000000000000000,
-    "feeTokenId": "2",
-    "amountFee": 20000000000000000000,
-    "label": 0,
-    "nonce": 10
-}
-```
-
-where `nonce` must start from 0 and increment by 1.
-
-The code for signing it in Python is as follows:
+Following structure shows a offchain withdrawal request:
 ```python
-def serialize_offchain_withdrawal(withdrawal):
-    return [
-        int(withdrawal['exchangeId']),
-        int(withdrawal['accountId']),
-        int(withdrawal['tokenId']),
-        int(withdrawal['amount']),
-        int(withdrawal['feeTokenId']),
-        int(withdrawal['amountFee']),
-        int(withdrawal['label']),
-        int(withdrawal['nonce'])
-    ]
-
-def sign_offchain_withdrawal(privateKey, offchainWithdrawal):
-    serialized = serialize_offchain_withdrawal(offchainWithdrawal)
-    signed = sign_int_array(serialized, 9 /* Pay attention to this t value */)
-    offchainWithdrawal.update(signed)
+    {
+        "exchange": "0x35990C74eB567B3bbEfD2Aa480467b1031b23eD9",
+        "accountId": 5,
+        "owner": "0x23a51c5f860527f971d0587d130c64536256040d",
+        "token": {
+            "tokenId": 0,
+            "volume": str(1000000000000000000),
+        },
+        "maxFee" : {
+            "tokenId": 0,
+            "volume": str(1000000000000000),
+        },
+        "to": "0xc0ff3f78529ab90f765406f7234ce0f2b1ed69ee",
+        "onChainDataHash": "0x" + bytes.hex(onchainDataHash),
+        "storageId": 5,
+        "validUntil" : 0xfffffff,
+        "minGas": 300000,
+        "extraData": bytes.hex(extraData)
+    }
 ```
 
+The code for signing it in Python is as follows. Just like the order, the only difference is the request itself, so we just adjust params which calculate the poseidon hash.
 
+```python
+class WithdrawalEddsaSignHelper(EddsaSignHelper):
+    def __init__(self, private_key):
+        super(WithdrawalEddsaSignHelper, self).__init__(
+            poseidon_params(SNARK_SCALAR_FIELD, 10, 6, 53, b'poseidon', 5, security_target=128),
+            private_key
+        )
+
+    def serialize_data(self, withdraw):
+        return [
+            int(withdraw['exchange'], 16),
+            int(withdraw['accountId']),
+            int(withdraw['token']['tokenId']),
+            int(withdraw['token']['volume']),
+            int(withdraw['maxFee']['tokenId']),
+            int(withdraw['maxFee']['volume']),
+            int(withdraw['onChainDataHash'], 16),
+            int(withdraw['validUntil']),
+            int(withdraw['storageId']),
+        ]
+```
 
 #### Signing Internal Transfer
 
@@ -140,75 +139,58 @@ You need to seralized specific fields of an transfer into an integer array, then
 
 The following is an example of internal transfers:
 
-```json
-{
-    "exchangeId": 2,
-    "sender":100,
-  	"receiver":101,
-    "tokenId": 0,
-    "amount": 1000000000000000000,
-    "feeTokenId": 2,
-    "amountFee": 20000000000000000000,
-    "label": 0,
-    "nonce": 10
-}
+```python
+    {
+        "exchange": "0x35990C74eB567B3bbEfD2Aa480467b1031b23eD9",
+        "payerId": 0,
+        "payerAddr": "0x611db73454c27e07281d2317aa088f9918321415",
+        "payeeId": 0,
+        "payeeAddr": "0xc0ff3f78529ab90f765406f7234ce0f2b1ed69ee",
+        "token": {
+            "tokenId": 0,
+            "volume": str(1000000000000000000),
+        },
+        "maxFee" : {
+            "tokenId": 0,
+            "volume": str(1000000000000000),
+        },
+        "storageId": 1,
+        "validUntil": 0xfffffff
+    }
 ```
 
-where `nonce` must start from 0 and increment by 1, and internal and transfer share the same  nonce.
+where `storageId` must start from 1 and increment by 2.
 
 The code for signing it in Python is as follows:
 
 ```python
-def serialize_internal_transfer(transfer):
-    return [
-        int(transfer['exchangeId']),
-        int(transfer['sender']),
-        int(transfer['receiver']),
-        int(transfer['tokenId']),
-        int(transfer['amount']),
-        int(transfer['feeTokenId']),
-        int(transfer['amountFee']),
-        int(transfer['label']),
-        int(transfer['nonce'])
-    ]
+class OriginTransferEddsaSignHelper(EddsaSignHelper):
+    def __init__(self, private_key):
+        super(OriginTransferEddsaSignHelper, self).__init__(
+            poseidon_params(SNARK_SCALAR_FIELD, 13, 6, 53, b'poseidon', 5, security_target=128),
+            private_key
+        )
 
-def sign_internal_transfer(privateKey, transfer):
-    serialized = serialize_internal_transfer(transfer)
-    signed = sign_int_array(serialized, 10 /* 注意这个t值 */)
-    transfer.update(signed)
+    def serialize_data(self, originTransfer):
+        return [
+            int(originTransfer['exchange'], 16),
+            int(originTransfer['payerId']),
+            int(originTransfer['payeeId']), # payer_toAccountID
+            int(originTransfer['token']['tokenId']),
+            int(originTransfer['token']['volume']),
+            int(originTransfer['maxFee']['tokenId']),
+            int(originTransfer['maxFee']['volume']),
+            int(originTransfer['payeeAddr'], 16), # payer_to
+            0, #int(originTransfer.get('dualAuthKeyX', '0'),16),
+            0, #int(originTransfer.get('dualAuthKeyY', '0'),16),
+            int(originTransfer['validUntil']),
+            int(originTransfer['storageId'])
+        ]
 ```
 
-In addition to EDSSA signature, you also need to use ECDSA to sign internal transfers. You need to serialize specific fields of an transfer into a Json string, and use sha256 hash algorithm to calculate the hash of the json string. Convert the resutl to hexadecimal string, add a fixed header: "Sign this message to authorize Loopring Pay: ", use personal _sign to sign the combined string.
+## Extra ECDSA authentic in header 
 
-The code for signing it in Javascript is as follows:
-
-```javascript
-function serialize_transfer(transfer) {
-  const data = {
-    exchangeId: transfer.exchangeId,
-    sender: transfer.sender,
-    receiver: transfer.receiver,
-    token: transfer.tokenId,
-    amount: transfer.amount,
-    tokenF: transfer.feeTokenId,
-    amountF: transfer.amountFee,
-    label: transfer.label,
-    nonce: transfer.nonce,
-    memo:transfer.memo || ""
-  };
-
-  return "0x" + sha256(JSON.stringify(data)).toString('hex');
-}
-
-function sign_internal_transfer(transfer){
-  const transferData = serialize_transfer(transfer);
-  const prefix = "Sign this message to authorize Loopring Pay:  ";
-  const message = prefix + transferData;
-  const sig = personal_sign(privateKey, message);
-}
-```
-
-
+{% include "./ecdsa_authentic.md" %}
 
 ## References
 
