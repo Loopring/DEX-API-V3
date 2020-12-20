@@ -6,7 +6,7 @@ Before using Loopring's API, you need to know how to obtain and change your acco
 ## Obtain EdDSA key pair and ApiKey
 
 
-First of all, you need to register an account on Loopring Exchange ([Loopring.io](https://loopring.io)). Then you can use the "Export Account" function to export account-related information as a JSON object. The JSON object includes your EdDSA key pair and your account's ApiKey.
+First of all, you need to register an account on Loopring Exchange ([LoopringV2](https://exchange.loopring.io)). Then you can use the "Export Account" function to export account-related information as a JSON object. The JSON object includes your EdDSA key pair and your account's ApiKey.
 
 The exported JSON should look like the following:
 
@@ -14,13 +14,12 @@ The exported JSON should look like the following:
 {
     "exchangeName": "LoopringDEX: Beta 1",
     "exchangeAddress": "0x944644Ea989Ec64c2Ab9eF341D383cEf586A5777",
-    "exchangeId": 2,
     "accountAddress": "0xe9577b420d96adfc97ff1e9e0557f8c73d7247fe",
     "accountId": 12345,
     "apiKey": "qXJpfTKrF0O5jIDPYIu7YkVgLFbvm5uIgPKBmHP2kBpcdKZjgfFKhIlE8evo9lKa",
-    "publicKeyX": "20230748339558541226323870947000799026059173889124399831342481595010628000129",
-    "publicKeyY": "4980637490279511620100245514492532318691849019959343538108355525575855311214",
-    "privateKey": "1242957328515765470505817310060337585626176314364086438653683782645761561015"
+    "publicKeyX": "0x2cba32a1bdb218aa380c1e42a8d7dcbf345ec9c914ecf37e34006b34260d1981",
+    "publicKeyY": "0xb02f0e022052972c3f8b25d69e6f289cb8f847063c62840ea880089b2dc096e",
+    "privateKey": "0x2bf7d29ae0293dd8b7538681341934a26ec5c98bd2f8c58e4d67bbede05d1b7"
 }
 ```
 
@@ -35,7 +34,7 @@ In any case, Loopring Exchange's UI and its API will never ask you for your EdDS
 
 ## Change EdDSA key pair and ApiKey
 
-You can change your EdDSA key pair through the "Change Password" function on Loopring Exchange. Because changing the password involves an Ethereum transaction and zero-knowledge proof generation, it will take a while for your new EdDSA key pair to becomes effective. You can get account information through the `/api/v2/account` API. If the` frozen` field is `true`, it means that your account is in the processing of applying the new EdDSA key pair, during such a period, neither your previous EdDSA key pair nor your new EdDSA key pair can be used to sign requests.
+You can change your EdDSA key pair through the "Change Password" function on Loopring Exchange. Because changing the password involves an Ethereum transaction and zero-knowledge proof generation, it will take a while for your new EdDSA key pair to becomes effective. You can get account information through the `/api/v3/account` API. If the` frozen` field is `true`, it means that your account is in the processing of applying the new EdDSA key pair, during such a period, neither your previous EdDSA key pair nor your new EdDSA key pair can be used to sign requests.
 
 When you change your password on Loopring.io, your ApiKey will also be automatically updated.  You can also change your ApiKey using  API.
 

@@ -3,7 +3,7 @@
 **[https://github.com/Loopring/hello_loopring](https://github.com/Loopring/hello_loopring)** contains some simple examples to help you quickly get started using the Loopring API. Among them:
 
 {% hint %}
-Now it's in loopring-v3 branch, will merge master soon
+Now it's in loopring-v3 branch, will merge to master soon
 {% endhint %}
 
 - **hash_and_sign/**: Use Python and the *ethsnarks* to calculate the Poseidon hash of any strings; sign and verify EdDSA signatures.

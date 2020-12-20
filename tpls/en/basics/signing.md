@@ -18,13 +18,14 @@ Below is a signature type table for all those requests, each request asks for di
 | -----------            | ----------- | ----------- | -----------   | -----------         |
 | submitOrder(AMM swap)  | Y           | N           | N             | N                   |
 | cancelOrder            | N           | N           | N             | EDDSA signed URL    |
+| updateApiKey           | N           | N           | N             | EDDSA signed URL    |
 | joinAmmPool            | Y           | Optional    | Y             | N                   |
 | exitAmmPool            | Y           | Optional    | Y             | N                   |
 | submitTransfer         | Y           | Optional    | Y             | EIP-712 signed structure |
 | submitOffchainWithdraw | Y           | Optional    | Y             | EIP-712 signed structure |
 | updateAccount          | Y           | Y           | Y             | EIP-712 signed structure |
 
-We suggest using EDDSA to sign every requests, which saves both time & money as no Eth mainnet transaction confirmation.
+We **STRONGLY** suggest using EDDSA key to sign every requests, which saves both time & money of both user and Loopring as no Eth mainnet transaction and the corresponding block confirmation.
 
 #### Signing Orders
 
