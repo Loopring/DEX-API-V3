@@ -85,7 +85,7 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="examples.html" />
+    <link rel="next" href="orders.html" />
     
     
     <link rel="prev" href="key_mgmt.html" />
@@ -152,12 +152,12 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="orders.html">
+        <li class="chapter " data-level="2.1" data-path="general_info.html">
             
-                <a href="orders.html">
+                <a href="general_info.html">
             
                     
-                    Orders
+                    General Info
             
                 </a>
             
@@ -191,7 +191,20 @@
             
         </li>
     
-        <li class="chapter " data-level="2.4" data-path="examples.html">
+        <li class="chapter " data-level="2.4" data-path="orders.html">
+            
+                <a href="orders.html">
+            
+                    
+                    Orders
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="examples.html">
             
                 <a href="examples.html">
             
@@ -204,7 +217,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.5" data-path="contracts.html">
+        <li class="chapter " data-level="2.6" data-path="contracts.html">
             
                 <a href="contracts.html">
             
@@ -217,7 +230,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.6" data-path="uat_token.html">
+        <li class="chapter " data-level="2.7" data-path="uat_token.html">
             
                 <a href="uat_token.html">
             
@@ -849,7 +862,7 @@
                                 
                                 <h1 id="request-signing">Request Signing</h1>
 <p>The Loopring API involves two different categories of signatures. One is the common <strong>API request signature</strong>, which is used to verify that the API invocations have been authenticated; the other is Loopring Protocol&apos;s <strong>off-chain request signature</strong>, which is used by Loopring to verify that off-chain requests have been authenticated. We will explain each of these two categories separately.</p>
-<h2 id="common-api-request-signatures">Common API Request Signatures</h2>
+<h2 id="special-api-request-signatures">Special API Request Signatures</h2>
 <h4 id="algorithm">Algorithm</h4>
 <ul>
 <li>Initialize <code>signatureBase</code> to an empty string.</li>
@@ -884,12 +897,12 @@
 <li>DELETE</li>
 </ul>
 <p>Also make sure the HTTPS header is included and is in lower case. For example:</p>
-<pre><code>https://api.loopring.io/api/v2/apiKey
+<pre><code>https://api.loopring.io/api/v3/apiKey
 </code></pre><h4 id="example">Example</h4>
+<p>Actually So far only 2 API need this special EDDSA API signing -- <strong>updateApiKey</strong> &amp; <strong>cancel order</strong>, let&apos;s see how the signatureBase is contructed.</p>
+<h5 id="update-user-api-key">Update user API key</h5>
 <p>For the above url with the following url query parameters:</p>
-<pre><code>https://api.loopring.io/api/v2/apiKey?publicKeyX=13375450901292179417154974849571793069
-911517354720397125027633242680470075859&amp;publicKeyY=133754509012921794171549748495717930
-69911517354720397125027633242680470075859&amp;accountId=1
+<pre><code>https://api.loopring.io/api/v3/apiKey?accountId=10005
 </code></pre><p>or</p>
 <table>
 <thead>
@@ -900,189 +913,380 @@
 </thead>
 <tbody>
 <tr>
-<td>publicKeyX</td>
-<td>13375450901292179417154974849571793069911517354720397125027633242680470075859</td>
-</tr>
-<tr>
-<td>publicKeyY</td>
-<td>13375450901292179417154974849571793069911517354720397125027633242680470075859</td>
-</tr>
-<tr>
 <td>accountId</td>
-<td>1</td>
+<td>10005</td>
 </tr>
 </tbody>
 </table>
 <p><code>parameterString</code> shoule be:</p>
-<pre><code>accountId=1&amp;publicKeyX=1337545090129217941715497484957179306991151735472039712502763324
-2680470075859&amp;publicKeyY=13375450901292179417154974849571793069911517354720397125027633
-242680470075859
+<pre><code>accountId=10005
 </code></pre><p>and <code>signatureBase</code> should be:</p>
-<pre><code>GET&amp;https%3A%2F%2Fapi.loopring.io%2Fapi%2Fv2%2FapiKey&amp;accountId%3D1%26publicKeyX%3D1337
-5450901292179417154974849571793069911517354720397125027633242680470075859%26publicKeyY%
-3D13375450901292179417154974849571793069911517354720397125027633242680470075859
+<pre><code>GET&amp;https%3A%2F%2Fapi.loopring.io%2Fapi%2Fv2%2FapiKey&amp;accountId%3D10005
+</code></pre><h5 id="cancel-order">Cancel Order</h5>
+<p>For the above url with the following url query parameters:</p>
+<pre><code>https://api3.loopring.io/api/v3/order?accountId=10005&amp;clientOrderId=Sample
+</code></pre><p>or</p>
+<table>
+<thead>
+<tr>
+<th>Query param</th>
+<th>Value</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>accountId</td>
+<td>10005</td>
+</tr>
+<tr>
+<td>clientOrderId</td>
+<td>Sample</td>
+</tr>
+</tbody>
+</table>
+<p><code>parameterString</code> shoule be:</p>
+<pre><code>accountId=10005&amp;clientOrderId=Sample
+</code></pre><p>and <code>signatureBase</code> should be:</p>
+<pre><code>DELETE&amp;https%3A%2F%2Fapi3.loopring.io%2Fapi%2Fv3%2Forder&amp;accountId%3D10005%26clientOrderId%3DSample
 </code></pre><h2 id="off-chain-request-signatures">Off-chain Request Signatures</h2>
-<p>Loopring 3.1.1 supports two types of off-chain requests: <strong>orders</strong> and <strong>off-chain withdrawals</strong>. Since these two off-chain requests will result in modifications to the exchange&apos;s state Merkel tree, when you submit these two types of requests using Loopring&apos;s API, you must provide special signatures required by the Loopring protocol.</p>
-<p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>Loopring 3.1.1 also supports a third type of off-chain requests: <strong>order cancellation</strong>, but it will be deprecated in the up-coming 3.5 version. Therefore, Loopring Exchange will not support this type of off-chain requests.</p>
-</div></div></p>
-<p>The off-chain request signature includes the following steps:</p>
-<ol>
-<li>Regularize the request <code>r</code> (JSON) to generate a string<code>s</code>.</li>
-<li>Calculate the <strong>Poseidon</strong> hash of <code>s</code> as <code>h</code>(see the following section).</li>
-<li>Sign <code>h</code> with the account&apos;s EdDSA private key<code>privateKey</code> and get three values: <code>Rx</code>,<code>Ry</code>, and <code>S</code> (see the following section).</li>
-<li>Convert <code>h</code>,<code>Rx</code>, <code>Ry</code>, and<code>S</code> into strings and merge them into <code>r</code> (please note the name change).</li>
-</ol>
-<pre><code class="lang-json">{
-    ...,
-    <span class="hljs-string">&quot;hash&quot;</span>: ...,
-    <span class="hljs-string">&quot;signatureRx&quot;</span>: <span class="hljs-string">&quot;16367919966553849834214288740952929086694704883595501207054796240908626703398&quot;</span>,
-    <span class="hljs-string">&quot;signatureRy&quot;</span>: <span class="hljs-string">&quot;5706650945525714138019517276433581394702490352313697178959212750249847059862&quot;</span>,
-    <span class="hljs-string">&quot;signatureS&quot;</span>: <span class="hljs-string">&quot;410675649229327911665390972834008845981102813589085982164606483611508480748&quot;</span>
-}
-</code></pre>
+<p>Loopring 3.6 supports support lots of off-chain requests: <strong>orders</strong>, <strong>order cancellation</strong>, <strong>swap</strong>, <strong>join AMM pool</strong>, <strong>exit AMM pool</strong> , <strong>transfer</strong> and <strong>off-chain withdrawals</strong>, etc. Since these off-chain requests will result in modifications to the exchange&apos;s state Merkel tree, when you submit these types of requests using Loopring&apos;s API, you must provide special signatures required by the Loopring protocol.</p>
+<h3 id="overview-of-signatures-and-requests">Overview of signatures and requests</h3>
+<p>Below is a signature type table for all those requests, each request asks for different signature methods due to different business models.</p>
+<table>
+<thead>
+<tr>
+<th>Request</th>
+<th>EDDSA</th>
+<th>ECDSA</th>
+<th>Approved Hash</th>
+<th>X-API-SIG in header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>submitOrder(AMM swap)</td>
+<td>Y</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+</tr>
+<tr>
+<td>cancelOrder</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>EDDSA signed URL</td>
+</tr>
+<tr>
+<td>updateApiKey</td>
+<td>N</td>
+<td>N</td>
+<td>N</td>
+<td>EDDSA signed URL</td>
+</tr>
+<tr>
+<td>joinAmmPool</td>
+<td>Y</td>
+<td>Optional</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>exitAmmPool</td>
+<td>Y</td>
+<td>Optional</td>
+<td>Y</td>
+<td>N</td>
+</tr>
+<tr>
+<td>submitTransfer</td>
+<td>Y</td>
+<td>Optional</td>
+<td>Y</td>
+<td>EIP712 signed structure</td>
+</tr>
+<tr>
+<td>submitOffchainWithdraw</td>
+<td>Y</td>
+<td>Optional</td>
+<td>Y</td>
+<td>EIP712 signed structure</td>
+</tr>
+<tr>
+<td>updateAccount</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>EIP712 signed structure</td>
+</tr>
+</tbody>
+</table>
+<p>We <strong>STRONGLY</strong> suggest using EDDSA key to sign every requests, which saves both time &amp; money of both user and Loopring as no Eth mainnet transaction and the corresponding block confirmation.</p>
 <h4 id="signing-orders">Signing Orders</h4>
 <p>You need to seralized specific fields of an order into an integer array, then calculate the Poseidon hash of the array, and then sign the hash with your EdDSA private key.</p>
 <p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>The rules for serialization of orders, hashing, and signature methods must strictly follow <a href="https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/DESIGN.md" target="_blank">Loopring&apos;s Specification</a>.</p>
 </div></div></p>
 <p>Below we use Python code as a demo:</p>
-<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sign_int_array</span><span class="hljs-params">(privateKey, serialized, t)</span>:</span>
-    PoseidonHashParams = poseidon_params(
-        SNARK_SCALAR_FIELD,
-        t,
-        <span class="hljs-number">6</span>,
-        <span class="hljs-number">53</span>,
-        <span class="hljs-string">b&apos;poseidon&apos;</span>,
-        <span class="hljs-number">5</span>,
-        security_target=<span class="hljs-number">128</span>
-    )
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">EddsaSignHelper</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, poseidon_params, private_key)</span>:</span>
+        self.poseidon_sign_param = poseidon_params
+        self.private_key = private_key
+        <span class="hljs-comment"># print(f&quot;self.private_key = {self.private_key}&quot;)</span>
 
-    hash = poseidon(serialized, PoseidonHashParams)
-    signedMessage = PoseidonEdDSA.sign(hash, FQ(int(privateKey)))
-    <span class="hljs-keyword">return</span> ({
-        <span class="hljs-string">&quot;hash&quot;</span>: str(hash),
-        <span class="hljs-string">&quot;signatureRx&quot;</span>: str(signedMessage.sig.R.x),
-        <span class="hljs-string">&quot;signatureRy&quot;</span>: str(signedMessage.sig.R.y),
-        <span class="hljs-string">&quot;signatureS&quot;</span>: str(signedMessage.sig.s),
-    })
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">hash</span><span class="hljs-params">(self, structure_data)</span>:</span>
+        serialized_data = self.serialize_data(structure_data)
+        msgHash = poseidon(serialized_data, self.poseidon_sign_param)
+        <span class="hljs-keyword">return</span> msgHash
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">serialize_order</span><span class="hljs-params">(order)</span>:</span>
-    <span class="hljs-keyword">return</span> [
-        int(order[<span class="hljs-string">&quot;exchangeId&quot;</span>]),
-        int(order[<span class="hljs-string">&quot;orderId&quot;</span>]),
-        int(order[<span class="hljs-string">&quot;accountId&quot;</span>]),
-        int(order[<span class="hljs-string">&quot;tokenSId&quot;</span>]),
-        int(order[<span class="hljs-string">&quot;tokenBId&quot;</span>]),
-        int(order[<span class="hljs-string">&quot;amountS&quot;</span>]),
-        int(order[<span class="hljs-string">&quot;amountB&quot;</span>]),
-        int(order[<span class="hljs-string">&quot;allOrNone&quot;</span>]==<span class="hljs-string">&quot;true&quot;</span>),
-        int(order[<span class="hljs-string">&quot;validSince&quot;</span>]),
-        int(order[<span class="hljs-string">&quot;validUntil&quot;</span>]),
-        int(order[<span class="hljs-string">&quot;maxFeeBips&quot;</span>]),
-        int(order[<span class="hljs-string">&quot;buy&quot;</span>]==<span class="hljs-string">&quot;true&quot;</span>),
-        int(order[<span class="hljs-string">&quot;label&quot;</span>])
-    ]
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sign</span><span class="hljs-params">(self, structure_data)</span>:</span>
+        msgHash = self.hash(structure_data)
+        signedMessage = PoseidonEdDSA.sign(msgHash, FQ(int(self.private_key, <span class="hljs-number">16</span>)))
+        <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0x&quot;</span> + <span class="hljs-string">&quot;&quot;</span>.join([
+                        hex(int(signedMessage.sig.R.x))[<span class="hljs-number">2</span>:].zfill(<span class="hljs-number">64</span>),
+                        hex(int(signedMessage.sig.R.y))[<span class="hljs-number">2</span>:].zfill(<span class="hljs-number">64</span>),
+                        hex(int(signedMessage.sig.s))[<span class="hljs-number">2</span>:].zfill(<span class="hljs-number">64</span>)
+                    ])
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sign_order</span><span class="hljs-params">(privateKey, order)</span>:</span>
-    serialized = serialize_order(order)
-    signed = sign_int_array(serialized, <span class="hljs-number">14</span> /* Pay attention to this t value */)
-    order.update(signed)
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OrderEddsaSignHelper</span><span class="hljs-params">(EddsaSignHelper)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, private_key)</span>:</span>
+        super(OrderEddsaSignHelper, self).__init__(
+            poseidon_params(SNARK_SCALAR_FIELD, <span class="hljs-number">12</span>, <span class="hljs-number">6</span>, <span class="hljs-number">53</span>, <span class="hljs-string">b&apos;poseidon&apos;</span>, <span class="hljs-number">5</span>, security_target=<span class="hljs-number">128</span>),
+            private_key
+        )
+
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">serialize_data</span><span class="hljs-params">(self, order)</span>:</span>
+        <span class="hljs-keyword">return</span> [
+            int(order[<span class="hljs-string">&quot;exchange&quot;</span>], <span class="hljs-number">16</span>),
+            int(order[<span class="hljs-string">&quot;storageId&quot;</span>]),
+            int(order[<span class="hljs-string">&quot;accountId&quot;</span>]),
+            int(order[<span class="hljs-string">&quot;sellToken&quot;</span>][<span class="hljs-string">&apos;tokenId&apos;</span>]),
+            int(order[<span class="hljs-string">&quot;buyToken&quot;</span>][<span class="hljs-string">&apos;tokenId&apos;</span>]),
+            int(order[<span class="hljs-string">&quot;sellToken&quot;</span>][<span class="hljs-string">&apos;volume&apos;</span>]),
+            int(order[<span class="hljs-string">&quot;buyToken&quot;</span>][<span class="hljs-string">&apos;volume&apos;</span>]),
+            int(order[<span class="hljs-string">&quot;validUntil&quot;</span>]),
+            int(order[<span class="hljs-string">&quot;maxFeeBips&quot;</span>]),
+            int(order[<span class="hljs-string">&quot;fillAmountBOrS&quot;</span>]),
+            int(order.get(<span class="hljs-string">&quot;taker&quot;</span>, <span class="hljs-string">&quot;0x0&quot;</span>), <span class="hljs-number">16</span>)
+        ]
 </code></pre>
 <p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>If you don&apos;t use the <em>ethsnarks</em> library to calculate Poseidon hash, please pay attention to the values of the Poseidon parameters to ensure that they are entirely consistent with those used by Loopring. Otherwise, signature verification will fail.</p>
 </div></div></p>
 <h4 id="signing-off-chain-withdrawals">Signing Off-chain Withdrawals</h4>
-<p><div class="alert alert-danger hints-alert"><div class="hints-icon"><i class="fa fa-exclamation-circle"></i></div><div class="hints-container"><p>The current Loopring API does not yet support off-chain withdrawal requests. But we will add it soon.</p>
-</div></div></p>
-<p>The following is an example of off-chain withdrawals:</p>
-<pre><code class="lang-json">{
-    <span class="hljs-string">&quot;exchangeId&quot;</span>: <span class="hljs-number">2</span>,
-    <span class="hljs-string">&quot;accountId&quot;</span>:<span class="hljs-number">100</span>,
-    <span class="hljs-string">&quot;tokenId&quot;</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-string">&quot;amount&quot;</span>: <span class="hljs-number">1000000000000000000</span>,
-    <span class="hljs-string">&quot;feeTokenId&quot;</span>: <span class="hljs-string">&quot;2&quot;</span>,
-    <span class="hljs-string">&quot;amountFee&quot;</span>: <span class="hljs-number">20000000000000000000</span>,
-    <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-string">&quot;nonce&quot;</span>: <span class="hljs-number">10</span>
-}
+<p>Following structure shows a offchain withdrawal request:</p>
+<pre><code class="lang-python">    {
+        <span class="hljs-string">&quot;exchange&quot;</span>: <span class="hljs-string">&quot;0x35990C74eB567B3bbEfD2Aa480467b1031b23eD9&quot;</span>,
+        <span class="hljs-string">&quot;accountId&quot;</span>: <span class="hljs-number">5</span>,
+        <span class="hljs-string">&quot;owner&quot;</span>: <span class="hljs-string">&quot;0x23a51c5f860527f971d0587d130c64536256040d&quot;</span>,
+        <span class="hljs-string">&quot;token&quot;</span>: {
+            <span class="hljs-string">&quot;tokenId&quot;</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-string">&quot;volume&quot;</span>: str(<span class="hljs-number">1000000000000000000</span>),
+        },
+        <span class="hljs-string">&quot;maxFee&quot;</span> : {
+            <span class="hljs-string">&quot;tokenId&quot;</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-string">&quot;volume&quot;</span>: str(<span class="hljs-number">1000000000000000</span>),
+        },
+        <span class="hljs-string">&quot;to&quot;</span>: <span class="hljs-string">&quot;0xc0ff3f78529ab90f765406f7234ce0f2b1ed69ee&quot;</span>,
+        <span class="hljs-string">&quot;onChainDataHash&quot;</span>: <span class="hljs-string">&quot;0x&quot;</span> + bytes.hex(onchainDataHash),
+        <span class="hljs-string">&quot;storageId&quot;</span>: <span class="hljs-number">5</span>,
+        <span class="hljs-string">&quot;validUntil&quot;</span> : <span class="hljs-number">0xfffffff</span>,
+        <span class="hljs-string">&quot;minGas&quot;</span>: <span class="hljs-number">300000</span>,
+        <span class="hljs-string">&quot;extraData&quot;</span>: bytes.hex(extraData)
+    }
 </code></pre>
-<p>where <code>nonce</code> must start from 0 and increment by 1.</p>
-<p>The code for signing it in Python is as follows:</p>
-<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">serialize_offchain_withdrawal</span><span class="hljs-params">(withdrawal)</span>:</span>
-    <span class="hljs-keyword">return</span> [
-        int(withdrawal[<span class="hljs-string">&apos;exchangeId&apos;</span>]),
-        int(withdrawal[<span class="hljs-string">&apos;accountId&apos;</span>]),
-        int(withdrawal[<span class="hljs-string">&apos;tokenId&apos;</span>]),
-        int(withdrawal[<span class="hljs-string">&apos;amount&apos;</span>]),
-        int(withdrawal[<span class="hljs-string">&apos;feeTokenId&apos;</span>]),
-        int(withdrawal[<span class="hljs-string">&apos;amountFee&apos;</span>]),
-        int(withdrawal[<span class="hljs-string">&apos;label&apos;</span>]),
-        int(withdrawal[<span class="hljs-string">&apos;nonce&apos;</span>])
-    ]
+<p>The code for signing it in Python is as follows. Just like the order, the only difference is the request itself, so we just adjust params which calculate the poseidon hash.</p>
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">WithdrawalEddsaSignHelper</span><span class="hljs-params">(EddsaSignHelper)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, private_key)</span>:</span>
+        super(WithdrawalEddsaSignHelper, self).__init__(
+            poseidon_params(SNARK_SCALAR_FIELD, <span class="hljs-number">10</span>, <span class="hljs-number">6</span>, <span class="hljs-number">53</span>, <span class="hljs-string">b&apos;poseidon&apos;</span>, <span class="hljs-number">5</span>, security_target=<span class="hljs-number">128</span>),
+            private_key
+        )
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sign_offchain_withdrawal</span><span class="hljs-params">(privateKey, offchainWithdrawal)</span>:</span>
-    serialized = serialize_offchain_withdrawal(offchainWithdrawal)
-    signed = sign_int_array(serialized, <span class="hljs-number">9</span> /* Pay attention to this t value */)
-    offchainWithdrawal.update(signed)
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">serialize_data</span><span class="hljs-params">(self, withdraw)</span>:</span>
+        <span class="hljs-keyword">return</span> [
+            int(withdraw[<span class="hljs-string">&apos;exchange&apos;</span>], <span class="hljs-number">16</span>),
+            int(withdraw[<span class="hljs-string">&apos;accountId&apos;</span>]),
+            int(withdraw[<span class="hljs-string">&apos;token&apos;</span>][<span class="hljs-string">&apos;tokenId&apos;</span>]),
+            int(withdraw[<span class="hljs-string">&apos;token&apos;</span>][<span class="hljs-string">&apos;volume&apos;</span>]),
+            int(withdraw[<span class="hljs-string">&apos;maxFee&apos;</span>][<span class="hljs-string">&apos;tokenId&apos;</span>]),
+            int(withdraw[<span class="hljs-string">&apos;maxFee&apos;</span>][<span class="hljs-string">&apos;volume&apos;</span>]),
+            int(withdraw[<span class="hljs-string">&apos;onChainDataHash&apos;</span>], <span class="hljs-number">16</span>),
+            int(withdraw[<span class="hljs-string">&apos;validUntil&apos;</span>]),
+            int(withdraw[<span class="hljs-string">&apos;storageId&apos;</span>]),
+        ]
 </code></pre>
 <h4 id="signing-internal-transfer">Signing Internal Transfer</h4>
 <p>You need to seralized specific fields of an transfer into an integer array, then calculate the Poseidon hash of the array, and then sign the hash with your EdDSA private key.</p>
 <p>The following is an example of internal transfers:</p>
-<pre><code class="lang-json">{
-    <span class="hljs-string">&quot;exchangeId&quot;</span>: <span class="hljs-number">2</span>,
-    <span class="hljs-string">&quot;sender&quot;</span>:<span class="hljs-number">100</span>,
-      <span class="hljs-string">&quot;receiver&quot;</span>:<span class="hljs-number">101</span>,
-    <span class="hljs-string">&quot;tokenId&quot;</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-string">&quot;amount&quot;</span>: <span class="hljs-number">1000000000000000000</span>,
-    <span class="hljs-string">&quot;feeTokenId&quot;</span>: <span class="hljs-number">2</span>,
-    <span class="hljs-string">&quot;amountFee&quot;</span>: <span class="hljs-number">20000000000000000000</span>,
-    <span class="hljs-string">&quot;label&quot;</span>: <span class="hljs-number">0</span>,
-    <span class="hljs-string">&quot;nonce&quot;</span>: <span class="hljs-number">10</span>
-}
+<pre><code class="lang-python">    {
+        <span class="hljs-string">&quot;exchange&quot;</span>: <span class="hljs-string">&quot;0x35990C74eB567B3bbEfD2Aa480467b1031b23eD9&quot;</span>,
+        <span class="hljs-string">&quot;payerId&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;payerAddr&quot;</span>: <span class="hljs-string">&quot;0x611db73454c27e07281d2317aa088f9918321415&quot;</span>,
+        <span class="hljs-string">&quot;payeeId&quot;</span>: <span class="hljs-number">0</span>,
+        <span class="hljs-string">&quot;payeeAddr&quot;</span>: <span class="hljs-string">&quot;0xc0ff3f78529ab90f765406f7234ce0f2b1ed69ee&quot;</span>,
+        <span class="hljs-string">&quot;token&quot;</span>: {
+            <span class="hljs-string">&quot;tokenId&quot;</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-string">&quot;volume&quot;</span>: str(<span class="hljs-number">1000000000000000000</span>),
+        },
+        <span class="hljs-string">&quot;maxFee&quot;</span> : {
+            <span class="hljs-string">&quot;tokenId&quot;</span>: <span class="hljs-number">0</span>,
+            <span class="hljs-string">&quot;volume&quot;</span>: str(<span class="hljs-number">1000000000000000</span>),
+        },
+        <span class="hljs-string">&quot;storageId&quot;</span>: <span class="hljs-number">1</span>,
+        <span class="hljs-string">&quot;validUntil&quot;</span>: <span class="hljs-number">0xfffffff</span>
+    }
 </code></pre>
-<p>where <code>nonce</code> must start from 0 and increment by 1, and internal and transfer share the same  nonce.</p>
+<p>where <code>storageId</code> must start from 1 and increment by 2.</p>
 <p>The code for signing it in Python is as follows:</p>
-<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">serialize_internal_transfer</span><span class="hljs-params">(transfer)</span>:</span>
-    <span class="hljs-keyword">return</span> [
-        int(transfer[<span class="hljs-string">&apos;exchangeId&apos;</span>]),
-        int(transfer[<span class="hljs-string">&apos;sender&apos;</span>]),
-        int(transfer[<span class="hljs-string">&apos;receiver&apos;</span>]),
-        int(transfer[<span class="hljs-string">&apos;tokenId&apos;</span>]),
-        int(transfer[<span class="hljs-string">&apos;amount&apos;</span>]),
-        int(transfer[<span class="hljs-string">&apos;feeTokenId&apos;</span>]),
-        int(transfer[<span class="hljs-string">&apos;amountFee&apos;</span>]),
-        int(transfer[<span class="hljs-string">&apos;label&apos;</span>]),
-        int(transfer[<span class="hljs-string">&apos;nonce&apos;</span>])
-    ]
+<pre><code class="lang-python"><span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">OriginTransferEddsaSignHelper</span><span class="hljs-params">(EddsaSignHelper)</span>:</span>
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">__init__</span><span class="hljs-params">(self, private_key)</span>:</span>
+        super(OriginTransferEddsaSignHelper, self).__init__(
+            poseidon_params(SNARK_SCALAR_FIELD, <span class="hljs-number">13</span>, <span class="hljs-number">6</span>, <span class="hljs-number">53</span>, <span class="hljs-string">b&apos;poseidon&apos;</span>, <span class="hljs-number">5</span>, security_target=<span class="hljs-number">128</span>),
+            private_key
+        )
 
-<span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">sign_internal_transfer</span><span class="hljs-params">(privateKey, transfer)</span>:</span>
-    serialized = serialize_internal_transfer(transfer)
-    signed = sign_int_array(serialized, <span class="hljs-number">10</span> /* &#x6CE8;&#x610F;&#x8FD9;&#x4E2A;t&#x503C; */)
-    transfer.update(signed)
+    <span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">serialize_data</span><span class="hljs-params">(self, originTransfer)</span>:</span>
+        <span class="hljs-keyword">return</span> [
+            int(originTransfer[<span class="hljs-string">&apos;exchange&apos;</span>], <span class="hljs-number">16</span>),
+            int(originTransfer[<span class="hljs-string">&apos;payerId&apos;</span>]),
+            int(originTransfer[<span class="hljs-string">&apos;payeeId&apos;</span>]), <span class="hljs-comment"># payer_toAccountID</span>
+            int(originTransfer[<span class="hljs-string">&apos;token&apos;</span>][<span class="hljs-string">&apos;tokenId&apos;</span>]),
+            int(originTransfer[<span class="hljs-string">&apos;token&apos;</span>][<span class="hljs-string">&apos;volume&apos;</span>]),
+            int(originTransfer[<span class="hljs-string">&apos;maxFee&apos;</span>][<span class="hljs-string">&apos;tokenId&apos;</span>]),
+            int(originTransfer[<span class="hljs-string">&apos;maxFee&apos;</span>][<span class="hljs-string">&apos;volume&apos;</span>]),
+            int(originTransfer[<span class="hljs-string">&apos;payeeAddr&apos;</span>], <span class="hljs-number">16</span>), <span class="hljs-comment"># payer_to</span>
+            <span class="hljs-number">0</span>, <span class="hljs-comment">#int(originTransfer.get(&apos;dualAuthKeyX&apos;, &apos;0&apos;),16),</span>
+            <span class="hljs-number">0</span>, <span class="hljs-comment">#int(originTransfer.get(&apos;dualAuthKeyY&apos;, &apos;0&apos;),16),</span>
+            int(originTransfer[<span class="hljs-string">&apos;validUntil&apos;</span>]),
+            int(originTransfer[<span class="hljs-string">&apos;storageId&apos;</span>])
+        ]
 </code></pre>
-<p>In addition to EDSSA signature, you also need to use ECDSA to sign internal transfers. You need to serialize specific fields of an transfer into a Json string, and use sha256 hash algorithm to calculate the hash of the json string. Convert the resutl to hexadecimal string, add a fixed header: &quot;Sign this message to authorize Loopring Pay: &quot;, use personal _sign to sign the combined string.</p>
-<p>The code for signing it in Javascript is as follows:</p>
-<pre><code class="lang-javascript"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">serialize_transfer</span>(<span class="hljs-params">transfer</span>) </span>{
-  <span class="hljs-keyword">const</span> data = {
-    exchangeId: transfer.exchangeId,
-    sender: transfer.sender,
-    receiver: transfer.receiver,
-    token: transfer.tokenId,
-    amount: transfer.amount,
-    tokenF: transfer.feeTokenId,
-    amountF: transfer.amountFee,
-    label: transfer.label,
-    nonce: transfer.nonce,
-    memo:transfer.memo || <span class="hljs-string">&quot;&quot;</span>
-  };
+<h2 id="extra-ecdsa-authentic-in-header">Extra ECDSA authentic in header</h2>
+<p>As the above table shows, some requests need extra authentic in request header.</p>
+<p>Listed as below:</p>
+<table>
+<thead>
+<tr>
+<th>Request</th>
+<th>EDDSA</th>
+<th>ECDSA</th>
+<th>Approved Hash</th>
+<th>X-API-SIG in header</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>submitTransfer</td>
+<td>Y</td>
+<td>Optional</td>
+<td>Y</td>
+<td>EIP712 signed structure</td>
+</tr>
+<tr>
+<td>submitOffchainWithdraw</td>
+<td>Y</td>
+<td>Optional</td>
+<td>Y</td>
+<td>EIP712 signed structure</td>
+</tr>
+<tr>
+<td>updateAccount</td>
+<td>Y</td>
+<td>Y</td>
+<td>Y</td>
+<td>EIP712 signed structure</td>
+</tr>
+</tbody>
+</table>
+<p>So, If a user wants to do submitTransfer, submitOffchainWithdraw and updateAccount, in addition to EDSSA signature, you also need to use ECDSA to sign them and put the signature in request header. Loopring 3.6 uses the EIP712 standard, A user need to serialize specific fields of an request, say transfer into a EIP712 compatible structure, and then use standard EIP712 hash algorithm to calculate the hash of the structure, and then, use personal _sign to sign the combined string.</p>
+<p>The code for EIP712 signing it in python is as follows:</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">createOriginTransferMessage</span><span class="hljs-params">(req: dict)</span>:</span>
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Transfer</span><span class="hljs-params">(EIP712Struct)</span>:</span>
+        <span class="hljs-keyword">pass</span>
 
-  <span class="hljs-keyword">return</span> <span class="hljs-string">&quot;0x&quot;</span> + sha256(<span class="hljs-built_in">JSON</span>.stringify(data)).toString(<span class="hljs-string">&apos;hex&apos;</span>);
-}
+    setattr(Transfer, <span class="hljs-string">&apos;from&apos;</span>, Address())
+    Transfer.to           = Address()
+    Transfer.tokenID      = Uint(<span class="hljs-number">16</span>)
+    Transfer.amount       = Uint(<span class="hljs-number">96</span>)
+    Transfer.feeTokenID   = Uint(<span class="hljs-number">16</span>)
+    Transfer.maxFee       = Uint(<span class="hljs-number">96</span>)
+    Transfer.validUntil   = Uint(<span class="hljs-number">32</span>)
+    Transfer.storageID    = Uint(<span class="hljs-number">32</span>)
 
-<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">sign_internal_transfer</span>(<span class="hljs-params">transfer</span>)</span>{
-  <span class="hljs-keyword">const</span> transferData = serialize_transfer(transfer);
-  <span class="hljs-keyword">const</span> prefix = <span class="hljs-string">&quot;Sign this message to authorize Loopring Pay:  &quot;</span>;
-  <span class="hljs-keyword">const</span> message = prefix + transferData;
-  <span class="hljs-keyword">const</span> sig = personal_sign(privateKey, message);
-}
+    transfer = Transfer(**{
+        <span class="hljs-string">&quot;from&quot;</span>          : req[<span class="hljs-string">&apos;payerAddr&apos;</span>],
+        <span class="hljs-string">&quot;to&quot;</span>            : req[<span class="hljs-string">&apos;payeeAddr&apos;</span>],
+        <span class="hljs-string">&quot;tokenID&quot;</span>       : req[<span class="hljs-string">&apos;token&apos;</span>][<span class="hljs-string">&apos;tokenId&apos;</span>],
+        <span class="hljs-string">&quot;amount&quot;</span>        : int(req[<span class="hljs-string">&apos;token&apos;</span>][<span class="hljs-string">&apos;volume&apos;</span>]),
+        <span class="hljs-string">&quot;feeTokenID&quot;</span>    : req[<span class="hljs-string">&apos;maxFee&apos;</span>][<span class="hljs-string">&apos;tokenId&apos;</span>],
+        <span class="hljs-string">&quot;maxFee&quot;</span>        : int(req[<span class="hljs-string">&apos;maxFee&apos;</span>][<span class="hljs-string">&apos;volume&apos;</span>]),
+        <span class="hljs-string">&quot;validUntil&quot;</span>    : req[<span class="hljs-string">&apos;validUntil&apos;</span>],
+        <span class="hljs-string">&quot;storageID&quot;</span>     : req[<span class="hljs-string">&apos;storageId&apos;</span>]
+    })
+
+    <span class="hljs-comment"># print(f&quot;transfer type hash = {bytes.hex(transfer.type_hash())}&quot;)</span>
+    <span class="hljs-keyword">return</span> EIP712.hash_packed(
+        EIP712.exchangeDomain.hash_struct(),
+        transfer.hash_struct()
+    )
+
+message = createUpdateAccountMessage(transfer_request)
+v, r, s = sig_utils.ecsign(message, self.ecdsaKey)
+</code></pre>
+<p>The EIP712 structure declarations of each requests types can be found in Loopring contract, or just get it from our reference code base. Below are withdrawal request EIP712 structure.</p>
+<pre><code class="lang-solidity">    struct Withdrawal
+    {
+        address owner;
+        uint32  accountID;
+        uint16  tokenID;
+        uint    amount;
+        uint16  feeTokenID;
+        uint    fee;
+        address to;
+        bytes32 extraDataHash;
+        uint    minGas;
+        uint32  validUntil;
+        uint32  storageID;
+    }
+</code></pre>
+<p>So the signing logic is:</p>
+<pre><code class="lang-python"><span class="hljs-function"><span class="hljs-keyword">def</span> <span class="hljs-title">createOffchainWithdrawalMessage</span><span class="hljs-params">(req: dict)</span>:</span>
+    <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Withdrawal</span><span class="hljs-params">(EIP712Struct)</span>:</span>
+        owner = Address()
+        accountID = Uint(<span class="hljs-number">32</span>)
+        tokenID = Uint(<span class="hljs-number">16</span>)
+        amount = Uint(<span class="hljs-number">96</span>)
+        feeTokenID = Uint(<span class="hljs-number">16</span>)
+        maxFee = Uint(<span class="hljs-number">96</span>)
+        to = Address()
+        extraData = Bytes()
+        minGas = Uint()
+        validUntil = Uint(<span class="hljs-number">32</span>)
+        storageID = Uint(<span class="hljs-number">32</span>)
+
+    <span class="hljs-comment"># &quot;Withdrawal(address owner,uint32 accountID,uint16 tokenID,uint96 amount,uint16 feeTokenID,uint96 maxFee,address to,bytes extraData,uint256 minGas,uint32 validUntil,uint32 storageID)&quot;</span>
+    withdrawal = Withdrawal(**{
+        <span class="hljs-string">&quot;owner&quot;</span>         : req[<span class="hljs-string">&apos;owner&apos;</span>],
+        <span class="hljs-string">&quot;accountID&quot;</span>     : req[<span class="hljs-string">&apos;accountId&apos;</span>],
+        <span class="hljs-string">&quot;tokenID&quot;</span>       : req[<span class="hljs-string">&apos;token&apos;</span>][<span class="hljs-string">&apos;tokenId&apos;</span>],
+        <span class="hljs-string">&quot;amount&quot;</span>        : int(req[<span class="hljs-string">&apos;token&apos;</span>][<span class="hljs-string">&apos;volume&apos;</span>]),
+        <span class="hljs-string">&quot;feeTokenID&quot;</span>    : req[<span class="hljs-string">&apos;maxFee&apos;</span>][<span class="hljs-string">&apos;tokenId&apos;</span>],
+        <span class="hljs-string">&quot;maxFee&quot;</span>        : int(req[<span class="hljs-string">&apos;maxFee&apos;</span>][<span class="hljs-string">&apos;volume&apos;</span>]),
+        <span class="hljs-string">&quot;to&quot;</span>            : req[<span class="hljs-string">&apos;to&apos;</span>],
+        <span class="hljs-string">&quot;extraData&quot;</span>     : bytes.fromhex(req[<span class="hljs-string">&apos;extraData&apos;</span>]),
+        <span class="hljs-string">&quot;minGas&quot;</span>        : int(req[<span class="hljs-string">&apos;minGas&apos;</span>]),
+        <span class="hljs-string">&quot;validUntil&quot;</span>    : req[<span class="hljs-string">&apos;validUntil&apos;</span>],
+        <span class="hljs-string">&quot;storageID&quot;</span>     : req[<span class="hljs-string">&apos;storageId&apos;</span>],
+    })
+
+    <span class="hljs-comment"># print(f&quot;extraData hash = {bytes.hex(Web3.keccak(bytes.fromhex(req[&apos;extraData&apos;])))}&quot;)</span>
+    <span class="hljs-comment"># print(f&quot;withdrawal type hash = {bytes.hex(withdrawal.type_hash())}&quot;)</span>
+    <span class="hljs-keyword">return</span> EIP712.hash_packed(
+        EIP712.exchangeDomain.hash_struct(),
+        withdrawal.hash_struct()
+    )
+
+message = createUpdateAccountMessage(withdrawal_request)
+v, r, s = sig_utils.ecsign(message, self.ecdsaKey)
 </code></pre>
 <h2 id="references">References</h2>
 <p>You can learn more about the Poseidon hash and EdDSA signature through the following literature and github repositories.</p>
@@ -1125,7 +1329,7 @@
                 </a>
                 
                 
-                <a href="examples.html" class="navigation navigation-next " aria-label="Next page: Example Code">
+                <a href="orders.html" class="navigation navigation-next " aria-label="Next page: Orders">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1136,7 +1340,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Request Signing","level":"2.3","depth":1,"next":{"title":"Example Code","level":"2.4","depth":1,"path":"basics/examples.md","ref":"basics/examples.md","articles":[]},"previous":{"title":"Key Management","level":"2.2","depth":1,"path":"basics/key_mgmt.md","ref":"basics/key_mgmt.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"basics/signing.md","mtime":"2020-12-18T07:22:23.957Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-18T07:22:25.700Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Request Signing","level":"2.3","depth":1,"next":{"title":"Orders","level":"2.4","depth":1,"path":"basics/orders.md","ref":"basics/orders.md","articles":[]},"previous":{"title":"Key Management","level":"2.2","depth":1,"path":"basics/key_mgmt.md","ref":"basics/key_mgmt.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"basics/signing.md","mtime":"2020-12-20T14:46:39.213Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-20T14:46:40.837Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>

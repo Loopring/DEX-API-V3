@@ -88,7 +88,7 @@
     <link rel="next" href="signing.html" />
     
     
-    <link rel="prev" href="orders.html" />
+    <link rel="prev" href="general_info.html" />
     
 
     </head>
@@ -152,12 +152,12 @@
         
         
     
-        <li class="chapter " data-level="2.1" data-path="orders.html">
+        <li class="chapter " data-level="2.1" data-path="general_info.html">
             
-                <a href="orders.html">
+                <a href="general_info.html">
             
                     
-                    Orders
+                    General Info
             
                 </a>
             
@@ -191,7 +191,20 @@
             
         </li>
     
-        <li class="chapter " data-level="2.4" data-path="examples.html">
+        <li class="chapter " data-level="2.4" data-path="orders.html">
+            
+                <a href="orders.html">
+            
+                    
+                    Orders
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.5" data-path="examples.html">
             
                 <a href="examples.html">
             
@@ -204,7 +217,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.5" data-path="contracts.html">
+        <li class="chapter " data-level="2.6" data-path="contracts.html">
             
                 <a href="contracts.html">
             
@@ -217,7 +230,7 @@
             
         </li>
     
-        <li class="chapter " data-level="2.6" data-path="uat_token.html">
+        <li class="chapter " data-level="2.7" data-path="uat_token.html">
             
                 <a href="uat_token.html">
             
@@ -850,18 +863,17 @@
                                 <h1 id="key-management">Key Management</h1>
 <p>Before using Loopring&apos;s API, you need to know how to obtain and change your account&apos;s EdDSA key pair and ApiKey. When invoking the API, the ApiKey needs to be passed to the relayer as an HTTP header value; the EdDSA secret key is used to sign the request on the client-side digitally.</p>
 <h2 id="obtain-eddsa-key-pair-and-apikey">Obtain EdDSA key pair and ApiKey</h2>
-<p>First of all, you need to register an account on Loopring Exchange (<a href="https://loopring.io" target="_blank">Loopring.io</a>). Then you can use the &quot;Export Account&quot; function to export account-related information as a JSON object. The JSON object includes your EdDSA key pair and your account&apos;s ApiKey.</p>
+<p>First of all, you need to register an account on Loopring Exchange (<a href="https://exchange.loopring.io" target="_blank">LoopringV2</a>). Then you can use the &quot;Export Account&quot; function to export account-related information as a JSON object. The JSON object includes your EdDSA key pair and your account&apos;s ApiKey.</p>
 <p>The exported JSON should look like the following:</p>
 <pre><code class="lang-json">{
     <span class="hljs-string">&quot;exchangeName&quot;</span>: <span class="hljs-string">&quot;LoopringDEX: Beta 1&quot;</span>,
     <span class="hljs-string">&quot;exchangeAddress&quot;</span>: <span class="hljs-string">&quot;0x944644Ea989Ec64c2Ab9eF341D383cEf586A5777&quot;</span>,
-    <span class="hljs-string">&quot;exchangeId&quot;</span>: <span class="hljs-number">2</span>,
     <span class="hljs-string">&quot;accountAddress&quot;</span>: <span class="hljs-string">&quot;0xe9577b420d96adfc97ff1e9e0557f8c73d7247fe&quot;</span>,
     <span class="hljs-string">&quot;accountId&quot;</span>: <span class="hljs-number">12345</span>,
     <span class="hljs-string">&quot;apiKey&quot;</span>: <span class="hljs-string">&quot;qXJpfTKrF0O5jIDPYIu7YkVgLFbvm5uIgPKBmHP2kBpcdKZjgfFKhIlE8evo9lKa&quot;</span>,
-    <span class="hljs-string">&quot;publicKeyX&quot;</span>: <span class="hljs-string">&quot;20230748339558541226323870947000799026059173889124399831342481595010628000129&quot;</span>,
-    <span class="hljs-string">&quot;publicKeyY&quot;</span>: <span class="hljs-string">&quot;4980637490279511620100245514492532318691849019959343538108355525575855311214&quot;</span>,
-    <span class="hljs-string">&quot;privateKey&quot;</span>: <span class="hljs-string">&quot;1242957328515765470505817310060337585626176314364086438653683782645761561015&quot;</span>
+    <span class="hljs-string">&quot;publicKeyX&quot;</span>: <span class="hljs-string">&quot;0x2cba32a1bdb218aa380c1e42a8d7dcbf345ec9c914ecf37e34006b34260d1981&quot;</span>,
+    <span class="hljs-string">&quot;publicKeyY&quot;</span>: <span class="hljs-string">&quot;0xb02f0e022052972c3f8b25d69e6f289cb8f847063c62840ea880089b2dc096e&quot;</span>,
+    <span class="hljs-string">&quot;privateKey&quot;</span>: <span class="hljs-string">&quot;0x2bf7d29ae0293dd8b7538681341934a26ec5c98bd2f8c58e4d67bbede05d1b7&quot;</span>
 }
 </code></pre>
 <p>The first four fields are constants to the current version of the Loopring Exchange; other fields are about your account. Among them, <code>publicKeyX</code> and<code>publicKeyY</code>  are collectively the EdDSA public key of your account, and <code>privateKey</code> is the EdDSA private key.</p>
@@ -869,7 +881,7 @@
 In any case, Loopring Exchange&apos;s UI and its API will never ask you for your EdDSA private key.</p>
 </div></div></p>
 <h2 id="change-eddsa-key-pair-and-apikey">Change EdDSA key pair and ApiKey</h2>
-<p>You can change your EdDSA key pair through the &quot;Change Password&quot; function on Loopring Exchange. Because changing the password involves an Ethereum transaction and zero-knowledge proof generation, it will take a while for your new EdDSA key pair to becomes effective. You can get account information through the <code>/api/v2/account</code> API. If the<code>frozen</code> field is <code>true</code>, it means that your account is in the processing of applying the new EdDSA key pair, during such a period, neither your previous EdDSA key pair nor your new EdDSA key pair can be used to sign requests.</p>
+<p>You can change your EdDSA key pair through the &quot;Change Password&quot; function on Loopring Exchange. Because changing the password involves an Ethereum transaction and zero-knowledge proof generation, it will take a while for your new EdDSA key pair to becomes effective. You can get account information through the <code>/api/v3/account</code> API. If the<code>frozen</code> field is <code>true</code>, it means that your account is in the processing of applying the new EdDSA key pair, during such a period, neither your previous EdDSA key pair nor your new EdDSA key pair can be used to sign requests.</p>
 <p>When you change your password on Loopring.io, your ApiKey will also be automatically updated.  You can also change your ApiKey using  API.</p>
 <h4 id="eddsa-generation">EdDSA Generation</h4>
 <p>The Loopring protocol does not specify how to generate or manage  EdDSA key pairs. Loopring Exchange uses each account&apos;s <strong>Ethereum address</strong> and <strong>trading password</strong> to derive the EdDSA key pair.
@@ -910,7 +922,7 @@ keyPair = myEdDSAGenerator.generate(seed)
 
             
                 
-                <a href="orders.html" class="navigation navigation-prev " aria-label="Previous page: Orders">
+                <a href="general_info.html" class="navigation navigation-prev " aria-label="Previous page: General Info">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -926,7 +938,7 @@ keyPair = myEdDSAGenerator.generate(seed)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Key Management","level":"2.2","depth":1,"next":{"title":"Request Signing","level":"2.3","depth":1,"path":"basics/signing.md","ref":"basics/signing.md","articles":[]},"previous":{"title":"Orders","level":"2.1","depth":1,"path":"basics/orders.md","ref":"basics/orders.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"basics/key_mgmt.md","mtime":"2020-12-18T07:22:23.988Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-18T07:22:25.700Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Key Management","level":"2.2","depth":1,"next":{"title":"Request Signing","level":"2.3","depth":1,"path":"basics/signing.md","ref":"basics/signing.md","articles":[]},"previous":{"title":"General Info","level":"2.1","depth":1,"path":"basics/general_info.md","ref":"basics/general_info.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"basics/key_mgmt.md","mtime":"2020-12-20T14:46:39.235Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-20T14:46:40.837Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
