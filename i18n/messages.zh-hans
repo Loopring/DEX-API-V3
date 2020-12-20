@@ -7,6 +7,7 @@
     },
     "Basics": {
       "Basics": "基础",
+      "GeneralInfo": "基本信息",
       "ManageAPIKey": "秘钥管理",
       "HashAndSigning": "请求签名",
       "Orders": "订单模型",

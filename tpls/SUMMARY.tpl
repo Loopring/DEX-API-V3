@@ -7,9 +7,10 @@
 
 ## {{l.summary.Basics.Basics}}
 
-* [{{l.summary.Basics.Orders}}](basics/orders.md)
+* [{{l.summary.Basics.GeneralInfo}}](basics/general_info.md)
 * [{{l.summary.Basics.ManageAPIKey}}](basics/key_mgmt.md)
 * [{{l.summary.Basics.HashAndSigning}}](basics/signing.md)
+* [{{l.summary.Basics.Orders}}](basics/orders.md)
 * [{{l.summary.Basics.ExampleCode}}](basics/examples.md)
 * [{{l.summary.Basics.DEXContracts}}](basics/contracts.md)
 * [{{l.summary.Basics.UatToken}}](basics/uat_token.md)

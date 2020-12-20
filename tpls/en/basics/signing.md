@@ -2,7 +2,7 @@
 
 The Loopring API involves two different categories of signatures. One is the common **API request signature**, which is used to verify that the API invocations have been authenticated; the other is Loopring Protocol's **off-chain request signature**, which is used by Loopring to verify that off-chain requests have been authenticated. We will explain each of these two categories separately.
 
-## Common API Request Signatures
+## Special API Request Signatures
 
 {% include "./generic_api_signature.md" %}
 
@@ -21,9 +21,9 @@ Below is a signature type table for all those requests, each request asks for di
 | updateApiKey           | N           | N           | N             | EDDSA signed URL    |
 | joinAmmPool            | Y           | Optional    | Y             | N                   |
 | exitAmmPool            | Y           | Optional    | Y             | N                   |
-| submitTransfer         | Y           | Optional    | Y             | EIP-712 signed structure |
-| submitOffchainWithdraw | Y           | Optional    | Y             | EIP-712 signed structure |
-| updateAccount          | Y           | Y           | Y             | EIP-712 signed structure |
+| submitTransfer         | Y           | Optional    | Y             | EIP712 signed structure |
+| submitOffchainWithdraw | Y           | Optional    | Y             | EIP712 signed structure |
+| updateAccount          | Y           | Y           | Y             | EIP712 signed structure |
 
 We **STRONGLY** suggest using EDDSA key to sign every requests, which saves both time & money of both user and Loopring as no Eth mainnet transaction and the corresponding block confirmation.
 

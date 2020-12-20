@@ -35,7 +35,7 @@ https://api.loopring.io/api/v3/apiKey
 
 #### Example
 
-Actually So far only 2 API need this EDDSA API signing -- **updateApiKey** & **cancel order**, let's see how the signatureBase is contructed.
+Actually So far only 2 API need this special EDDSA API signing -- **updateApiKey** & **cancel order**, let's see how the signatureBase is contructed.
 
 ##### Update user API key
 For the above url with the following url query parameters:

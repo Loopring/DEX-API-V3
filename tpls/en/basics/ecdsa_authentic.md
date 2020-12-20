@@ -4,13 +4,13 @@ Listed as below:
 
 | Request                | EDDSA       | ECDSA       | Approved Hash | X-API-SIG in header |
 | -----------            | ----------- | ----------- | -----------   | -----------         |
-| submitTransfer         | Y           | Optional    | Y             | EIP-712 signed structure |
-| submitOffchainWithdraw | Y           | Optional    | Y             | EIP-712 signed structure |
-| updateAccount          | Y           | Y           | Y             | EIP-712 signed structure |
+| submitTransfer         | Y           | Optional    | Y             | EIP712 signed structure |
+| submitOffchainWithdraw | Y           | Optional    | Y             | EIP712 signed structure |
+| updateAccount          | Y           | Y           | Y             | EIP712 signed structure |
 
-So, If a user wants to do submitTransfer, submitOffchainWithdraw and updateAccount, in addition to EDSSA signature, you also need to use ECDSA to sign them and put the signature in request header. Loopring 3.6 uses the EIP-712 standard, A user need to serialize specific fields of an request, say transfer into a EIP712 compatible structure, and then use standard EIP712 hash algorithm to calculate the hash of the structure, and then, use personal _sign to sign the combined string.
+So, If a user wants to do submitTransfer, submitOffchainWithdraw and updateAccount, in addition to EDSSA signature, you also need to use ECDSA to sign them and put the signature in request header. Loopring 3.6 uses the EIP712 standard, A user need to serialize specific fields of an request, say transfer into a EIP712 compatible structure, and then use standard EIP712 hash algorithm to calculate the hash of the structure, and then, use personal _sign to sign the combined string.
 
-The code for hash & signing it in python is as follows:
+The code for EIP712 signing it in python is as follows:
 
 ```python
 def createOriginTransferMessage(req: dict):
@@ -48,6 +48,7 @@ v, r, s = sig_utils.ecsign(message, self.ecdsaKey)
 ```
 
 The EIP712 structure declarations of each requests types can be found in Loopring contract, or just get it from our reference code base. Below are withdrawal request EIP712 structure.
+
 ```solidity
     struct Withdrawal
     {
@@ -64,7 +65,9 @@ The EIP712 structure declarations of each requests types can be found in Looprin
         uint32  storageID;
     }
 ```
-So the signature hash code is:
+
+So the signing logic is:
+
 ```python
 def createOffchainWithdrawalMessage(req: dict):
     class Withdrawal(EIP712Struct):

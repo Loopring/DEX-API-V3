@@ -7,6 +7,7 @@
     },
     "Basics": {
       "Basics": "Fundamental",
+      "GeneralInfo": "General Info",
       "ManageAPIKey": "Key Management",
       "HashAndSigning": "Request Signing",
       "Orders": "Orders",
