@@ -30,36 +30,57 @@ Please make sure you use only the following HTTP methods, in upper case letters.
 Also make sure the HTTPS header is included and is in lower case. For example:
 
 ```
-https://api.loopring.io/api/v2/apiKey
+https://api.loopring.io/api/v3/apiKey
 ```
 
 #### Example
+
+Actually So far only 2 API need this EDDSA API signing -- **updateApiKey** & **cancel order**, let's see how the signatureBase is contructed.
+
+##### Update user API key
 For the above url with the following url query parameters:
 
 ```
-https://api.loopring.io/api/v2/apiKey?publicKeyX=13375450901292179417154974849571793069
-911517354720397125027633242680470075859&publicKeyY=133754509012921794171549748495717930
-69911517354720397125027633242680470075859&accountId=1
+https://api.loopring.io/api/v3/apiKey?accountId=10005
 ```
 
 or
 
 |  Query param   | Value  |
 |  ----  | ----  |
-| publicKeyX  | 13375450901292179417154974849571793069911517354720397125027633242680470075859 |
-| publicKeyY  | 13375450901292179417154974849571793069911517354720397125027633242680470075859 |
-| accountId  | 1 |
+| accountId  | 10005 |
 
 `parameterString` shoule be:
 ```
-accountId=1&publicKeyX=1337545090129217941715497484957179306991151735472039712502763324
-2680470075859&publicKeyY=13375450901292179417154974849571793069911517354720397125027633
-242680470075859
+accountId=10005
 ```
 
 and `signatureBase` should be:
 ```
-GET&https%3A%2F%2Fapi.loopring.io%2Fapi%2Fv2%2FapiKey&accountId%3D1%26publicKeyX%3D1337
-5450901292179417154974849571793069911517354720397125027633242680470075859%26publicKeyY%
-3D13375450901292179417154974849571793069911517354720397125027633242680470075859
+GET&https%3A%2F%2Fapi.loopring.io%2Fapi%2Fv2%2FapiKey&accountId%3D10005
+```
+
+##### Cancel Order
+
+For the above url with the following url query parameters:
+
+```
+https://api3.loopring.io/api/v3/order?accountId=10005&clientOrderId=Sample
+```
+
+or
+
+|  Query param   | Value  |
+|  ----  | ----  |
+| accountId  | 10005 |
+| clientOrderId  | Sample |
+
+`parameterString` shoule be:
+```
+accountId=10005&clientOrderId=Sample
+```
+
+and `signatureBase` should be:
+```
+DELETE&https%3A%2F%2Fapi3.loopring.io%2Fapi%2Fv3%2Forder&accountId%3D10005%26clientOrderId%3DSample
 ```
