@@ -25,11 +25,11 @@ Below is a signature type table for all those requests, each request asks for di
 | submitOffchainWithdraw | Y           | Disabled    | Y             | EIP712 signature of request structure |
 | updateAccount          | Y           | Y           | Y             | EIP712 signature of request structure |
 
-    * `eddsaSignature`, `ecdsaSignature`, `approvedHash` are located in REST request body.
-    * `X-API-SIG` is located in REST request header.
-    *`Y` means support.
-    *`N` means not support.
-    *'Disabled' means no longer support.
+* `eddsaSignature`, `ecdsaSignature`, `approvedHash` are located in REST request body.
+* `X-API-SIG` is located in REST request header.
+* `Y` means support.
+* `N` means not support.
+* `Disabled` means no longer support.
 
 We **STRONGLY** suggest using Level-2 EDDSA key to sign every requests, which saves both time & money of both user and Loopring as no Eth mainnet transaction and the corresponding block confirmation. For more details, please refer to [Key Management](./key_mgmt.md).
 
