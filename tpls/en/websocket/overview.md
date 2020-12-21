@@ -3,8 +3,14 @@
 ## Base URL
 
 ```
-wss://ws.loopring.io/v2/ws
+mainnet: wss://ws.loopring.io/v3/ws
+mainnet: wss://ws.uat2.loopring.io/v3/ws
 ```
+
+## Before Subscription
+Before subscription, user needs to get a connect key, otherwise, websocket connection will be refused. The full connection steps are listed below:
+1. Get wsApiKey by access REST path "/v3/ws/key", and you will get response like `{"key":"fx2xW5hoVFbcaanWS"}`
+2. Use `fx2xW5hoVFbcaanWS` as a wsApiKey param in ws path, i.e., wss://ws.uat2.loopring.io/v3/ws?wsApiKey=fx2xW5hoVFbcaanWS.
 
 ## Subscription
 Clients can send JSON to subscribe to multiple topics:
@@ -45,11 +51,10 @@ Clients can send JSON to subscribe to multiple topics:
 
 
 1. In one subscription request, if at least one topic requires the ApiKey, then the `apiKey` filed is required;
-1. In one subscription request, the same topic configuration can only occur once;
-1. In one subscription request, if there are any configuration errors, the entire subscription request fails;
-1. If `unsubscribeAll` is `true`, all previous subscriptions will be cancelled;
-1. If `sequence` is provided, the relayer will use the same sequence number in its response.
-
+2. In one subscription request, the same topic configuration can only occur once;
+3. In one subscription request, if there are any configuration errors, the entire subscription request fails;
+4. If `unsubscribeAll` is `true`, all previous subscriptions will be cancelled;
+5. If `sequence` is provided, the relayer will use the same sequence number in its response.
 
 
 ## Unsubscription

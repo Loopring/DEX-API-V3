@@ -3,7 +3,8 @@
 ## 接入URL
 
 ```
-wss://ws.loopring.io/v2/ws
+mainnet: wss://ws.loopring.io/v3/ws
+mainnet: wss://ws.uat2.loopring.io/v3/ws
 ```
 
 ## 订阅
