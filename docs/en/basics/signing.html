@@ -949,17 +949,17 @@
 </code></pre><p>and <code>signatureBase</code> should be:</p>
 <pre><code>DELETE&amp;https%3A%2F%2Fapi3.loopring.io%2Fapi%2Fv3%2Forder&amp;accountId%3D10005%26clientOrderId%3DSample
 </code></pre><h2 id="off-chain-request-signatures">Off-chain Request Signatures</h2>
-<p>Loopring 3.6 supports support lots of off-chain requests: <strong>orders</strong>, <strong>order cancellation</strong>, <strong>swap</strong>, <strong>join AMM pool</strong>, <strong>exit AMM pool</strong> , <strong>transfer</strong> and <strong>off-chain withdrawals</strong>, etc. Since these off-chain requests will result in modifications to the exchange&apos;s state Merkel tree, when you submit these types of requests using Loopring&apos;s API, you must provide special signatures required by the Loopring protocol.</p>
+<p>Loopring 3.6 supports support lots of off-chain requests: <strong>orders</strong>, <strong>order cancellation</strong>, <strong>swap</strong>, <strong>join AMM pool</strong>, <strong>exit AMM pool</strong> , <strong>transfer</strong> and <strong>off-chain withdrawals</strong>, etc. Since these off-chain requests will result in modifications to the exchange&apos;s state Merkel tree, when you submit these types of requests using Loopring&apos;s API, sometimes you must provide <strong>EXTRA</strong> special signatures required by the Loopring protocol.</p>
 <h3 id="overview-of-signatures-and-requests">Overview of signatures and requests</h3>
 <p>Below is a signature type table for all those requests, each request asks for different signature methods due to different business models.</p>
 <table>
 <thead>
 <tr>
-<th>Request</th>
-<th>EDDSA</th>
-<th>ECDSA</th>
-<th>Approved Hash</th>
-<th>X-API-SIG in header</th>
+<th>Request Type</th>
+<th>eddsaSignature</th>
+<th>ecdsaSignature</th>
+<th>approvedHash</th>
+<th>X-API-SIG</th>
 </tr>
 </thead>
 <tbody>
@@ -975,53 +975,59 @@
 <td>N</td>
 <td>N</td>
 <td>N</td>
-<td>EDDSA signed URL</td>
+<td>Special API Request EDDSA Signatures</td>
 </tr>
 <tr>
 <td>updateApiKey</td>
 <td>N</td>
 <td>N</td>
 <td>N</td>
-<td>EDDSA signed URL</td>
+<td>Special API Request EDDSA Signatures</td>
 </tr>
 <tr>
 <td>joinAmmPool</td>
 <td>Y</td>
-<td>Optional</td>
+<td>Disabled</td>
 <td>Y</td>
 <td>N</td>
 </tr>
 <tr>
 <td>exitAmmPool</td>
 <td>Y</td>
-<td>Optional</td>
+<td>Disabled</td>
 <td>Y</td>
 <td>N</td>
 </tr>
 <tr>
 <td>submitTransfer</td>
 <td>Y</td>
-<td>Optional</td>
+<td>Disabled</td>
 <td>Y</td>
-<td>EIP712 signed structure</td>
+<td>EIP712 signature of request structure</td>
 </tr>
 <tr>
 <td>submitOffchainWithdraw</td>
 <td>Y</td>
-<td>Optional</td>
+<td>Disabled</td>
 <td>Y</td>
-<td>EIP712 signed structure</td>
+<td>EIP712 signature of request structure</td>
 </tr>
 <tr>
 <td>updateAccount</td>
 <td>Y</td>
 <td>Y</td>
 <td>Y</td>
-<td>EIP712 signed structure</td>
+<td>EIP712 signature of request structure</td>
 </tr>
 </tbody>
 </table>
-<p>We <strong>STRONGLY</strong> suggest using EDDSA key to sign every requests, which saves both time &amp; money of both user and Loopring as no Eth mainnet transaction and the corresponding block confirmation.</p>
+<pre><code>* `eddsaSignature`, `ecdsaSignature`, `approvedHash` are located in REST request body.
+* `X-API-SIG` is located in REST request header.
+*`Y` means support.
+*`N` means not support.
+*&apos;Disabled&apos; means no longer support.
+</code></pre><p>We <strong>STRONGLY</strong> suggest using Level-2 EDDSA key to sign every requests, which saves both time &amp; money of both user and Loopring as no Eth mainnet transaction and the corresponding block confirmation. For more details, please refer to <a href="key_mgmt.html">Key Management</a>.</p>
+<p>Below we take signing order and signing transfer/withdrawal as examples, as you will see, the first one order signing needs merely Level-2 EDDSA signature, but the later two need extra EIP712 signature in request header, you can see the difference on the way of submitting the requests.</p>
 <h4 id="signing-orders">Signing Orders</h4>
 <p>You need to seralized specific fields of an order into an integer array, then calculate the Poseidon hash of the array, and then sign the hash with your EdDSA private key.</p>
 <p><div class="alert alert-info hints-alert"><div class="hints-icon"><i class="fa fa-info-circle"></i></div><div class="hints-container"><p>The rules for serialization of orders, hashing, and signature methods must strictly follow <a href="https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/DESIGN.md" target="_blank">Loopring&apos;s Specification</a>.</p>
@@ -1340,7 +1346,7 @@ v, r, s = sig_utils.ecsign(message, self.ecdsaKey)
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Request Signing","level":"2.3","depth":1,"next":{"title":"Orders","level":"2.4","depth":1,"path":"basics/orders.md","ref":"basics/orders.md","articles":[]},"previous":{"title":"Key Management","level":"2.2","depth":1,"path":"basics/key_mgmt.md","ref":"basics/key_mgmt.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"basics/signing.md","mtime":"2020-12-21T08:49:38.538Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-21T08:49:40.666Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Request Signing","level":"2.3","depth":1,"next":{"title":"Orders","level":"2.4","depth":1,"path":"basics/orders.md","ref":"basics/orders.md","articles":[]},"previous":{"title":"Key Management","level":"2.2","depth":1,"path":"basics/key_mgmt.md","ref":"basics/key_mgmt.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"basics/signing.md","mtime":"2020-12-21T09:17:20.100Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-21T09:17:21.972Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
