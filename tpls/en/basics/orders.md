@@ -111,7 +111,7 @@ Next, we will further explain some of these data fields for you.
 #### Tokens and Amounts
 In an actual order,  tokens are not expressed by their names or ERC20 addresses, but by their **token ID**, the index at which the tokens have been registered in the Loopring Exchange's smart contract.  Note that the same ERC20 token may have different IDs on different exchanges built on top of the same Loopring protocol.
 
-In the above example, we assume that the IDs of LRC and ETH are 2 and 0, respectively.
+In the above example, we assume that the IDs of LRC and ETH are 1 and 0, respectively.
 You can query token's information using [Token Information Supported by the Exchange](../dex_apis/getTokens.md).
 
 The amounts of tokens are in their smallest unit as strings. Taking LRC as an example, its `decimals` is 18, so 1.0LRC should be expressed as `" 1000000000000000000 "` (1 followed by 18 0s). Each token's `decimals` is coded in its smart contract; the decimals of ETH is 18.
@@ -160,7 +160,7 @@ We know the inconvenience caused by the slot design. However, this is a design d
 
 #### Other Fields
 
-- `exchangeAddress`: Unlike Looping 3.1, we now use Loopring Exchange's address as a unique numeric ID in the Looping protocol.
+- `exchange`: Unlike Looping 3.1, we now use Loopring Exchange's address as a unique numeric ID in the Looping protocol.
 - `accountId`: User's account ID.
 - `allOrNone`: ` true ` if the order must be fully filled or cancelled. This parameter is not supported yet by our matching engine, so please set it to "false" for now.
 - `clientOrderId`: Used to label orders by the client without user awareness. It also has no impact on trading. 

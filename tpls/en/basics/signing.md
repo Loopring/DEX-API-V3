@@ -8,24 +8,32 @@ The Loopring API involves two different categories of signatures. One is the com
 
 ## Off-chain Request Signatures
 
-Loopring 3.6 supports support lots of off-chain requests: **orders**, **order cancellation**, **swap**, **join AMM pool**, **exit AMM pool** , **transfer** and **off-chain withdrawals**, etc. Since these off-chain requests will result in modifications to the exchange's state Merkel tree, when you submit these types of requests using Loopring's API, you must provide special signatures required by the Loopring protocol.
+Loopring 3.6 supports support lots of off-chain requests: **orders**, **order cancellation**, **swap**, **join AMM pool**, **exit AMM pool** , **transfer** and **off-chain withdrawals**, etc. Since these off-chain requests will result in modifications to the exchange's state Merkel tree, when you submit these types of requests using Loopring's API, sometimes you must provide **EXTRA** special signatures required by the Loopring protocol.
 
 ### Overview of signatures and requests
 
 Below is a signature type table for all those requests, each request asks for different signature methods due to different business models.
 
-| Request                | EDDSA       | ECDSA       | Approved Hash | X-API-SIG in header |
+| Request Type           | eddsaSignature | ecdsaSignature | approvedHash | X-API-SIG |
 | -----------            | ----------- | ----------- | -----------   | -----------         |
 | submitOrder(AMM swap)  | Y           | N           | N             | N                   |
-| cancelOrder            | N           | N           | N             | EDDSA signed URL    |
-| updateApiKey           | N           | N           | N             | EDDSA signed URL    |
-| joinAmmPool            | Y           | Optional    | Y             | N                   |
-| exitAmmPool            | Y           | Optional    | Y             | N                   |
-| submitTransfer         | Y           | Optional    | Y             | EIP712 signed structure |
-| submitOffchainWithdraw | Y           | Optional    | Y             | EIP712 signed structure |
-| updateAccount          | Y           | Y           | Y             | EIP712 signed structure |
+| cancelOrder            | N           | N           | N             | Special API Request EDDSA Signatures    |
+| updateApiKey           | N           | N           | N             | Special API Request EDDSA Signatures    |
+| joinAmmPool            | Y           | Disabled    | Y             | N                   |
+| exitAmmPool            | Y           | Disabled    | Y             | N                   |
+| submitTransfer         | Y           | Disabled    | Y             | EIP712 signature of request structure |
+| submitOffchainWithdraw | Y           | Disabled    | Y             | EIP712 signature of request structure |
+| updateAccount          | Y           | Y           | Y             | EIP712 signature of request structure |
 
-We **STRONGLY** suggest using EDDSA key to sign every requests, which saves both time & money of both user and Loopring as no Eth mainnet transaction and the corresponding block confirmation.
+    * `eddsaSignature`, `ecdsaSignature`, `approvedHash` are located in REST request body.
+    * `X-API-SIG` is located in REST request header.
+    *`Y` means support.
+    *`N` means not support.
+    *'Disabled' means no longer support.
+
+We **STRONGLY** suggest using Level-2 EDDSA key to sign every requests, which saves both time & money of both user and Loopring as no Eth mainnet transaction and the corresponding block confirmation. For more details, please refer to [Key Management](./key_mgmt.md).
+
+Below we take signing order and signing transfer/withdrawal as examples, as you will see, the first one order signing needs merely Level-2 EDDSA signature, but the later two need extra EIP712 signature in request header, you can see the difference on the way of submitting the requests.
 
 #### Signing Orders
 

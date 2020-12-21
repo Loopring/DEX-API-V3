@@ -5,7 +5,7 @@
 
 ### LRC and USDT token faucet address：
 
-### https://github.com/Loopring/lightcone/blob/master/docs/loopring36_goerli.md
+https://github.com/Loopring/lightcone/blob/master/docs/loopring36_goerli.md
 
 ### token faucet:
 
