@@ -108,3 +108,14 @@ def createOffchainWithdrawalMessage(req: dict):
 message = createUpdateAccountMessage(withdrawal_request)
 v, r, s = sig_utils.ecsign(message, self.ecdsaKey)
 ```
+
+Please **NOTE**: The final string in request header is a 134 bytes hex string which is constructed as below code shows:
+```python
+    v, r, s = sig_utils.ecsign(message, self.ecdsaKey)
+    header['X-API-SIG'] = "0x" + bytes.hex(v_r_s_to_signature(v, r, s)) + "02"
+```
+It starts with '0x' to indicate hex format and ends with '02' which stands for `EIP_712` signature type.
+
+{% hint style='danger' %}
+Forget to add '02' type leads to signature verification failure as Relay has no hint on the way of verifiction.
+{% endhint %}
