@@ -47,7 +47,8 @@
         "/api/v3/amm/trades"
     ],
     "no_key": ["getApiKey"],
-    "has_sig": ["getApiKey", "cancelOrders","submitTransfer","", ""],
+    "has_eddsa_sig": ["getApiKey", "cancelOrder"],
+    "has_ecdsa_sig": ["submitTransfer","submitUpdateAccount", "submitOffChainWithdrawal"],
     "cir_sig": ["submitOrder", "submitOrderV3"],
     "hosturl" : "http://aa90cd58e38014a1b864ddc488129b7a-624979106.us-east-2.elb.amazonaws.com",
     "fetchurl" : "http://aa90cd58e38014a1b864ddc488129b7a-624979106.us-east-2.elb.amazonaws.com",

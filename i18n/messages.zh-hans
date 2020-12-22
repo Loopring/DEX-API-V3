@@ -49,6 +49,8 @@
     "no": "否",
     "keydesc": "ApiKey",
     "sigdesc": "签名信息",
+    "eddsa_header_sigdesc": "EDDSA 签名信息",
+    "ecdsa_header_sigdesc": "ECDSA 签名信息",
     "resdesc": "调用结果",
     "codedesc": "描述",
     "none": "无",

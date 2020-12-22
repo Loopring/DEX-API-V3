@@ -49,6 +49,8 @@
     "no": "N",
     "keydesc": "ApiKey",
     "sigdesc": "Signature",
+    "eddsa_header_sigdesc": "EDDSA Signature",
+    "ecdsa_header_sigdesc": "ECDSA Signature",
     "resdesc": "Result of API invocation",
     "codedesc": "Description",
     "none": "None",

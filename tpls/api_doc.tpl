@@ -40,8 +40,11 @@
 {%- if header == 'X-API-KEY' %}
 | X-API-KEY | string | {{ l.apidoc.yes }} | {{ l.apidoc.keydesc }} | "HlkcGxbqBeaF76j4rvPaOasyfPwnkQ<br/>6B6DQ6THZWbvrAGxzEdulXQvOKLrRW<br/>ZLnN" |
 {%- endif -%}
-{%- if header == 'X-API-SIG' %}
-| X-API-SIG | string | {{ l.apidoc.yes }} | {{ l.apidoc.sigdesc }} | "138345244293157165270722452892<br/>010987433674489288289416943333<br/>00773464291931668,192524381644<br/>249809013234960675797674572982<br/>626096331826549685003177960107<br/>94338,129650216991857917204601<br/>962488677667247381368354153200<br/>8712357317204831986826" |
+{%- if header == 'X-EDDSA-SIG' %}
+| X-API-SIG | string | {{ l.apidoc.yes }} | {{ l.apidoc.eddsa_header_sigdesc }} | "0xeb14773e8a07d19bc4fe56e36d041dcb<br>002652f7e92160deaf5e6bf21e05c7a9<br>eb14773e8a07d19bc4fe56e36d041dcb<br>002652f7e92160deaf5e6bf21e05c7a9<br>eb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9" |
+{%- endif -%}
+{%- if header == 'X-ECDSA-SIG' %}
+| X-API-SIG | string | {{ l.apidoc.yes }} | {{ l.apidoc.ecdsa_header_sigdesc }} | "0xccf0a141fce2dc5cbbd4f802c52220e9<br>e2ce260e86704d6258603eb346eefe2d<br>4a450005c362b223b28402d087f7065e<br>a5eee0314531adf6a580fce64c25dca81c02" |
 {%- endif -%}
 {% endfor %}
 {% endif %}
