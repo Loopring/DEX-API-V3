@@ -50,7 +50,7 @@
     "has_eddsa_sig": ["getApiKey", "cancelOrder"],
     "has_ecdsa_sig": ["submitTransfer","submitUpdateAccount", "submitOffChainWithdrawal"],
     "cir_sig": ["submitOrder", "submitOrderV3"],
-    "hosturl" : "http://aa90cd58e38014a1b864ddc488129b7a-624979106.us-east-2.elb.amazonaws.com",
-    "fetchurl" : "http://aa90cd58e38014a1b864ddc488129b7a-624979106.us-east-2.elb.amazonaws.com",
+    "hosturl" : "http://acec3f4fd19c04947b09377be33682d0-1254556765.us-east-2.elb.amazonaws.com",
+    "fetchurl" : "http://acec3f4fd19c04947b09377be33682d0-1254556765.us-east-2.elb.amazonaws.com",
     "tpsConfig" : "git@github.com:Loopring/loopring-prod-config.git"
 }
