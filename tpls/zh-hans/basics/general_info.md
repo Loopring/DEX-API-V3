@@ -2,9 +2,9 @@
 
 ## Endpoints
 
-The base mainnet endpoint is: https://api3.loopring.com
+The base mainnet endpoint is: https://api3.loopring.io
 
-The base testnet endpoint is: https://uat2.loopring.com
+The base testnet endpoint is: https://uat2.loopring.io
 
 All endpoints return either a JSON object or array.
 
