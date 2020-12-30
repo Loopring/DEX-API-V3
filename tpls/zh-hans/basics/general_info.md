@@ -35,4 +35,4 @@ For POST, PUT, and DELETE endpoints, the parameters must be in the request body 
 ## LIMITS
 Each API has its own limit control, refer to specific API page for the configuation.
 
-A 429 will be returned when either rate limit is violated.
+A 429 will be returned when rate limit is violated.

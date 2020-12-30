@@ -3,10 +3,6 @@
 - USDT Address: 0xd4E71C4bb48850f5971cE40Aa428b09F242D3e8a, decimals: 6   tokenId: 3  
 - DAI: 0xCd2c81B322A5b530b5fA3432E57Da6803b0317f7, decimals: 18, tokenId: 6
 
-### LRC and USDT token faucet address：
-
-https://github.com/Loopring/lightcone/blob/master/docs/loopring36_goerli.md
-
 ### token faucet:
 
 https://goerli.etherscan.io/address/0x3a7fc292b0a669298ee481e10b3270b00323c556#writeContract
