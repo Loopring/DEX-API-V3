@@ -269,7 +269,7 @@
                 <a href="getTimestamp.html">
             
                     
-                    查询服务器当前时间
+                    Get relayer's current time
             
                 </a>
             
@@ -282,7 +282,7 @@
                 <a href="getApiKey.html">
             
                     
-                    查询用户ApiKey
+                    Get user ApiKey
             
                 </a>
             
@@ -295,7 +295,7 @@
                 <a href="applyApiKey.html">
             
                     
-                    更新用户ApiKey
+                    Update user's ApiKey
             
                 </a>
             
@@ -321,7 +321,7 @@
                 <a href="getOrderDetail.html">
             
                     
-                    获取订单详情
+                    Get order details
             
                 </a>
             
@@ -360,7 +360,7 @@
                 <a href="getOrders.html">
             
                     
-                    获取用户订单列表
+                    Get multiple orders
             
                 </a>
             
@@ -373,7 +373,7 @@
                 <a href="getMarkets.html">
             
                     
-                    查询交易所支持的市场配置
+                    Get market configurations
             
                 </a>
             
@@ -386,7 +386,7 @@
                 <a href="getTokens.html">
             
                     
-                    查询交易所支持的通证信息
+                    Get token configurations
             
                 </a>
             
@@ -399,7 +399,7 @@
                 <a href="getExchangeInfo.html">
             
                     
-                    查询交易所的基本必要信息
+                    Get exchange configurations
             
                 </a>
             
@@ -412,7 +412,7 @@
                 <a href="getDepth.html">
             
                     
-                    获取市场深度信息
+                    Get market orderbook
             
                 </a>
             
@@ -425,7 +425,7 @@
                 <a href="getTicker.html">
             
                     
-                    查询交易所Ticker
+                    Get market ticker
             
                 </a>
             
@@ -438,7 +438,7 @@
                 <a href="getCandlestick.html">
             
                     
-                    查询K线数据
+                    Get market candlestick
             
                 </a>
             
@@ -451,7 +451,7 @@
                 <a href="getPrice.html">
             
                     
-                    查询token法币价
+                    Get token fiat prices
             
                 </a>
             
@@ -464,7 +464,7 @@
                 <a href="getMarketTrade.html">
             
                     
-                    查询市场交易
+                    Get market recent trades
             
                 </a>
             
@@ -477,7 +477,7 @@
                 <a href="submitTransfer.html">
             
                     
-                    提交内部转账
+                    Submit internal transfer
             
                 </a>
             
@@ -490,7 +490,7 @@
                 <a href="getAccount.html">
             
                     
-                    查询用户信息
+                    Query user information
             
                 </a>
             
@@ -516,7 +516,7 @@
                 <a href="getUserCreate.html">
             
                     
-                    获取用户开户记录
+                    Get user registration transactions
             
                 </a>
             
@@ -529,7 +529,7 @@
                 <a href="getUserUpdate.html">
             
                     
-                    获取用户更新记录
+                    Get password reset transactions
             
                 </a>
             
@@ -542,7 +542,7 @@
                 <a href="getUserBalances.html">
             
                     
-                    查询用户交易所余额
+                    Get user exchange balances
             
                 </a>
             
@@ -555,7 +555,7 @@
                 <a href="getUserDeposits.html">
             
                     
-                    获取用户充值记录
+                    Get user deposit history
             
                 </a>
             
@@ -568,7 +568,7 @@
                 <a href="getUserWithdrawals.html">
             
                     
-                    获取用户链上提现记录
+                    Get user onchain withdrawal history
             
                 </a>
             
@@ -594,7 +594,7 @@
                 <a href="getUserTransfers.html">
             
                     
-                    获取用户转账记录
+                    Get user transfer list
             
                 </a>
             
@@ -607,7 +607,7 @@
                 <a href="getUserTrades.html">
             
                     
-                    获取用户交易记录
+                    Get user trade history
             
                 </a>
             
@@ -620,7 +620,7 @@
                 <a href="getUserFeeRates.html">
             
                     
-                    查询用户下单费率
+                    Query user place order fee rate
             
                 </a>
             
@@ -886,13 +886,6 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">X-API-KEY</td>
-<td style="text-align:left">string</td>
-<td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">ApiKey</td>
-<td style="text-align:left">&quot;HlkcGxbqBeaF76j4rvPaOasyfPwnkQ<br>6B6DQ6THZWbvrAGxzEdulXQvOKLrRW<br>ZLnN&quot;</td>
-</tr>
-<tr>
 <td style="text-align:left">X-API-SIG</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
@@ -992,7 +985,6 @@
 <span class="hljs-attribute">Accept</span>: */*
 <span class="hljs-attribute">Accept-Encoding</span>: gzip, deflate, br
 <span class="hljs-attribute">Accept-Language</span>: zh,en;q=0.9
-<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa
 <span class="hljs-attribute">X-API-SIG</span>: dkkfinfasdf
 <span class="hljs-attribute">Content-Type</span>: application/json
 
@@ -1010,7 +1002,7 @@
     <span class="hljs-attr">&quot;eddsaSignature&quot;</span> : <span class="hljs-string">&quot;0xccf0a141fce2dc5cbbd4f802c52220e9e2ce260e86704d6258603eb346eefe2d4a450005c362b223b28402d087f7065ea5eee0314531adf6a580fce64c25dca81c02&quot;</span>,
     <span class="hljs-attr">&quot;ecdsaSignature&quot;</span> : <span class="hljs-string">&quot;0xeb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9eb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9eb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9&quot;</span>,
     <span class="hljs-attr">&quot;hashApproved&quot;</span> : <span class="hljs-string">&quot;0xf7c932351186c3a9053f313eefa16209c018f7f1dba8aa8ca7100400f7c31085&quot;</span>
-}</span></code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -X POST -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> -H <span class="hljs-string">&quot;X-API-SIG:dkkfinfasdf&quot;</span> -H <span class="hljs-string">&quot;Content-Type:application/json&quot;</span> http://acec3f4fd19c04947b09377be33682d0-1254556765.us-east-2.elb.amazonaws.com/api/v3/account <span class="hljs-_">-d</span> \
+}</span></code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -X POST -H <span class="hljs-string">&quot;X-API-SIG:dkkfinfasdf&quot;</span> -H <span class="hljs-string">&quot;Content-Type:application/json&quot;</span> http://acec3f4fd19c04947b09377be33682d0-1254556765.us-east-2.elb.amazonaws.com/api/v3/account <span class="hljs-_">-d</span> \
 <span class="hljs-string">&apos;{
     &quot;exchange&quot; : &quot;1&quot;,
     &quot;owner&quot; : &quot;0xB4A70168340C75119523019f79F5Ffd9c60DceC7&quot;,
@@ -1079,31 +1071,31 @@
 <tbody>
 <tr>
 <td style="text-align:left">100000</td>
-<td style="text-align:left">&#x672A;&#x77E5;&#x9519;&#x8BEF;</td>
+<td style="text-align:left">Unknown error</td>
 </tr>
 <tr>
 <td style="text-align:left">102001</td>
-<td style="text-align:left">&#x4EA4;&#x6613;&#x6240;ID&#x4E0D;&#x6B63;&#x786E;</td>
+<td style="text-align:left">Exchange ID is incorrect</td>
 </tr>
 <tr>
 <td style="text-align:left">102021</td>
-<td style="text-align:left">Nonce&#x4E0D;&#x5408;&#x6CD5;</td>
+<td style="text-align:left">Nonce is invalid</td>
 </tr>
 <tr>
 <td style="text-align:left">102022</td>
-<td style="text-align:left">&#x8F6C;&#x8D26;&#x8005;&#x8D26;&#x6237;ID&#x4E0D;&#x5408;&#x6CD5;</td>
+<td style="text-align:left">Transfer sender is invalid</td>
 </tr>
 <tr>
 <td style="text-align:left">102023</td>
-<td style="text-align:left">&#x63A5;&#x6536;&#x8005;&#x8D26;&#x6237;ID&#x4E0D;&#x5408;&#x6CD5;</td>
+<td style="text-align:left">Transfer receiver is invalid</td>
 </tr>
 <tr>
 <td style="text-align:left">102024</td>
-<td style="text-align:left">&#x4E0D;&#x652F;&#x6301;&#x7684;&#x8F6C;&#x8D26;&#x6536;&#x8D39;token</td>
+<td style="text-align:left">Fee token is unsupported</td>
 </tr>
 <tr>
 <td style="text-align:left">102025</td>
-<td style="text-align:left">&#x8F6C;&#x8D26;&#x7684;token&#x548C;&#x8D39;&#x7528;token&#x4E0D;&#x5339;&#x914D;</td>
+<td style="text-align:left">Transfer token isnt consistent with fee token</td>
 </tr>
 </tbody>
 </table>
@@ -1165,12 +1157,12 @@
 
             
                 
-                <a href="getAccount.html" class="navigation navigation-prev " aria-label="Previous page: 查询用户信息">
+                <a href="getAccount.html" class="navigation navigation-prev " aria-label="Previous page: Query user information">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="getUserCreate.html" class="navigation navigation-next " aria-label="Next page: 获取用户开户记录">
+                <a href="getUserCreate.html" class="navigation navigation-next " aria-label="Next page: Get user registration transactions">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1181,7 +1173,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Update account EDDSA key","level":"3.1.19","depth":2,"next":{"title":"获取用户开户记录","level":"3.1.20","depth":2,"path":"dex_apis/getUserCreate.md","ref":"dex_apis/getUserCreate.md","articles":[]},"previous":{"title":"查询用户信息","level":"3.1.18","depth":2,"path":"dex_apis/getAccount.md","ref":"dex_apis/getAccount.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/submitUpdateAccount.md","mtime":"2020-12-30T06:17:06.045Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T06:17:08.236Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"Update account EDDSA key","level":"3.1.19","depth":2,"next":{"title":"Get user registration transactions","level":"3.1.20","depth":2,"path":"dex_apis/getUserCreate.md","ref":"dex_apis/getUserCreate.md","articles":[]},"previous":{"title":"Query user information","level":"3.1.18","depth":2,"path":"dex_apis/getAccount.md","ref":"dex_apis/getAccount.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/submitUpdateAccount.md","mtime":"2020-12-30T08:04:50.909Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:04:52.986Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>

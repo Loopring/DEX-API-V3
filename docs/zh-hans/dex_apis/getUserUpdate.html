@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>获取用户更新记录 · Loopring API</title>
+        <title>Get password reset transactions · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -269,7 +269,7 @@
                 <a href="getTimestamp.html">
             
                     
-                    查询服务器当前时间
+                    Get relayer's current time
             
                 </a>
             
@@ -282,7 +282,7 @@
                 <a href="getApiKey.html">
             
                     
-                    查询用户ApiKey
+                    Get user ApiKey
             
                 </a>
             
@@ -295,7 +295,7 @@
                 <a href="applyApiKey.html">
             
                     
-                    更新用户ApiKey
+                    Update user's ApiKey
             
                 </a>
             
@@ -321,7 +321,7 @@
                 <a href="getOrderDetail.html">
             
                     
-                    获取订单详情
+                    Get order details
             
                 </a>
             
@@ -360,7 +360,7 @@
                 <a href="getOrders.html">
             
                     
-                    获取用户订单列表
+                    Get multiple orders
             
                 </a>
             
@@ -373,7 +373,7 @@
                 <a href="getMarkets.html">
             
                     
-                    查询交易所支持的市场配置
+                    Get market configurations
             
                 </a>
             
@@ -386,7 +386,7 @@
                 <a href="getTokens.html">
             
                     
-                    查询交易所支持的通证信息
+                    Get token configurations
             
                 </a>
             
@@ -399,7 +399,7 @@
                 <a href="getExchangeInfo.html">
             
                     
-                    查询交易所的基本必要信息
+                    Get exchange configurations
             
                 </a>
             
@@ -412,7 +412,7 @@
                 <a href="getDepth.html">
             
                     
-                    获取市场深度信息
+                    Get market orderbook
             
                 </a>
             
@@ -425,7 +425,7 @@
                 <a href="getTicker.html">
             
                     
-                    查询交易所Ticker
+                    Get market ticker
             
                 </a>
             
@@ -438,7 +438,7 @@
                 <a href="getCandlestick.html">
             
                     
-                    查询K线数据
+                    Get market candlestick
             
                 </a>
             
@@ -451,7 +451,7 @@
                 <a href="getPrice.html">
             
                     
-                    查询token法币价
+                    Get token fiat prices
             
                 </a>
             
@@ -464,7 +464,7 @@
                 <a href="getMarketTrade.html">
             
                     
-                    查询市场交易
+                    Get market recent trades
             
                 </a>
             
@@ -477,7 +477,7 @@
                 <a href="submitTransfer.html">
             
                     
-                    提交内部转账
+                    Submit internal transfer
             
                 </a>
             
@@ -490,7 +490,7 @@
                 <a href="getAccount.html">
             
                     
-                    查询用户信息
+                    Query user information
             
                 </a>
             
@@ -516,7 +516,7 @@
                 <a href="getUserCreate.html">
             
                     
-                    获取用户开户记录
+                    Get user registration transactions
             
                 </a>
             
@@ -529,7 +529,7 @@
                 <a href="getUserUpdate.html">
             
                     
-                    获取用户更新记录
+                    Get password reset transactions
             
                 </a>
             
@@ -542,7 +542,7 @@
                 <a href="getUserBalances.html">
             
                     
-                    查询用户交易所余额
+                    Get user exchange balances
             
                 </a>
             
@@ -555,7 +555,7 @@
                 <a href="getUserDeposits.html">
             
                     
-                    获取用户充值记录
+                    Get user deposit history
             
                 </a>
             
@@ -568,7 +568,7 @@
                 <a href="getUserWithdrawals.html">
             
                     
-                    获取用户链上提现记录
+                    Get user onchain withdrawal history
             
                 </a>
             
@@ -594,7 +594,7 @@
                 <a href="getUserTransfers.html">
             
                     
-                    获取用户转账记录
+                    Get user transfer list
             
                 </a>
             
@@ -607,7 +607,7 @@
                 <a href="getUserTrades.html">
             
                     
-                    获取用户交易记录
+                    Get user trade history
             
                 </a>
             
@@ -620,7 +620,7 @@
                 <a href="getUserFeeRates.html">
             
                     
-                    查询用户下单费率
+                    Query user place order fee rate
             
                 </a>
             
@@ -845,7 +845,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >获取用户更新记录</a>
+        <a href=".." >Get password reset transactions</a>
     </h1>
 </div>
 
@@ -860,7 +860,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="&#x83B7;&#x53D6;&#x7528;&#x6237;&#x66F4;&#x65B0;&#x8BB0;&#x5F55;">&#x83B7;&#x53D6;&#x7528;&#x6237;&#x66F4;&#x65B0;&#x8BB0;&#x5F55;</h2>
+                                <h2 id="get-password-reset-transactions">Get password reset transactions</h2>
 <p>&#x6D41;&#x91CF;&#x63A7;&#x5236;:  &#x6BCF;
  &#x79D2;</p>
 <h3 id="&#x6458;&#x8981;">&#x6458;&#x8981;</h3>
@@ -870,7 +870,7 @@
 <h4 id="&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;">&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;</h4>
 <p><strong>/api/v3/user/updateInfo</strong></p>
 <h4 id="&#x529F;&#x80FD;">&#x529F;&#x80FD;</h4>
-<p>&#x83B7;&#x53D6;&#x7528;&#x6237;&#x66F4;&#x65B0;&#x8BB0;&#x5F55;</p>
+<p>Returns a list Ethereum transactions from users for resetting exchange passwords.</p>
 <h3 id="api-&#x63CF;&#x8FF0;">API &#x63CF;&#x8FF0;</h3>
 <hr>
 <h4 id="http&#x5934;">HTTP&#x5934;</h4>
@@ -910,42 +910,42 @@
 <td style="text-align:left">accountId</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x7528;&#x6237;ID</td>
+<td style="text-align:left">Account ID</td>
 <td style="text-align:left">1</td>
 </tr>
 <tr>
 <td style="text-align:left">start</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">&#x8D77;&#x59CB;&#x65F6;&#x95F4;<br>&#x9ED8;&#x8BA4;&#x503C; : 0L</td>
+<td style="text-align:left">Start time in milliseconds<br>&#x9ED8;&#x8BA4;&#x503C; : 0L</td>
 <td style="text-align:left">1578558098000</td>
 </tr>
 <tr>
 <td style="text-align:left">end</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">&#x7ED3;&#x675F;&#x65F6;&#x95F4;<br>&#x9ED8;&#x8BA4;&#x503C; : 0L</td>
+<td style="text-align:left">End time in milliseconds<br>&#x9ED8;&#x8BA4;&#x503C; : 0L</td>
 <td style="text-align:left">1578558098000</td>
 </tr>
 <tr>
 <td style="text-align:left">status</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">&#x5F53;&#x524D;&#x72B6;&#x6001;<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;processing&apos;, &apos;processed&apos;, &apos;received&apos;, &apos;failed&apos;]</td>
+<td style="text-align:left">Comma separated status values<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;processing&apos;, &apos;processed&apos;, &apos;received&apos;, &apos;failed&apos;]</td>
 <td style="text-align:left">&quot;processing,processed&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">limit</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">&#x9650;&#x5236;&#x6761;&#x6570;(&#x9ED8;&#x8BA4;50)</td>
+<td style="text-align:left">Number of records to return</td>
 <td style="text-align:left">50</td>
 </tr>
 <tr>
 <td style="text-align:left">offset</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">&#x504F;&#x79FB;&#x91CF;(&#x9ED8;&#x8BA4;0)<br>&#x9ED8;&#x8BA4;&#x503C; : 0L</td>
+<td style="text-align:left">Number of records to skip<br>&#x9ED8;&#x8BA4;&#x503C; : 0L</td>
 <td style="text-align:left">1</td>
 </tr>
 </tbody>
@@ -974,14 +974,14 @@
 <td style="text-align:left">totalNum</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;&#x7B26;&#x5408;&#x6761;&#x4EF6;&#x7684;&#x603B;&#x6761;&#x6570;&#xFF0C;&#x7528;&#x4E8E;&#x5206;&#x9875;</td>
+<td style="text-align:left">Total number of records found</td>
 <td style="text-align:left">1</td>
 </tr>
 <tr>
 <td style="text-align:left">transactions</td>
 <td style="text-align:left">List[<a href="#UserAccountTxData">UserAccountTxData</a>]</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x4FEE;&#x6539;&#x5BC6;&#x7801;&#x5F53;&#x524D;&#x9875;&#x5217;&#x8868;</td>
+<td style="text-align:left">List of UserPasswordChangeRecord</td>
 <td style="text-align:left">/</td>
 </tr>
 </tbody>
@@ -1016,30 +1016,30 @@
 <tbody>
 <tr>
 <td style="text-align:left">100000</td>
-<td style="text-align:left">&#x672A;&#x77E5;&#x9519;&#x8BEF;</td>
+<td style="text-align:left">Unknown error</td>
 </tr>
 <tr>
 <td style="text-align:left">107001</td>
-<td style="text-align:left">&#x7528;&#x6237;ID&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+<td style="text-align:left">User ID cannot be empty</td>
 </tr>
 <tr>
 <td style="text-align:left">104001</td>
-<td style="text-align:left">APIKEY&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
+<td style="text-align:left">Empty ApiKey</td>
 </tr>
 <tr>
 <td style="text-align:left">104002</td>
-<td style="text-align:left">APIKEY&#x9A8C;&#x8BC1;&#x5931;&#x8D25;</td>
+<td style="text-align:left">Invalid ApiKey</td>
 </tr>
 <tr>
 <td style="text-align:left">104003</td>
-<td style="text-align:left">&#x7528;&#x6237;&#x4E0D;&#x5B58;&#x5728;</td>
+<td style="text-align:left">Invalid Account ID</td>
 </tr>
 </tbody>
 </table>
 <h3 id="&#x6A21;&#x578B;">&#x6A21;&#x578B;</h3>
 <hr>
 <h4 id="useraccounttxdata">UserAccountTxData</h4>
-<p><span id="UserAccountTxData"></span>&#x7528;&#x6237;&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;&#x5217;&#x8868;&#x5BF9;&#x8C61;</p>
+<p><span id="UserAccountTxData"></span>Response data</p>
 <table>
 <thead>
 <tr>
@@ -1055,7 +1055,7 @@
 <td style="text-align:left">id</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x64CD;&#x4F5C;&#x8BB0;&#x5F55;&#x552F;&#x4E00;ID</td>
+<td style="text-align:left">Unique ID</td>
 <td style="text-align:left">1</td>
 </tr>
 <tr>
@@ -1076,49 +1076,49 @@
 <td style="text-align:left">txHash</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x4EA4;&#x6613;HASH</td>
+<td style="text-align:left">Transaction hash</td>
 <td style="text-align:left">&quot;0x9d114267e8b261457d<br>567093c13cf3deea5f14<br>c9235be26c6fa833dba1<br>2a9632&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">feeAmount</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x64CD;&#x4F5C;&#x624B;&#x7EED;&#x8D39;</td>
+<td style="text-align:left">Fee amount in wei</td>
 <td style="text-align:left">&quot;1000000000000000&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">status</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x5F53;&#x524D;&#x64CD;&#x4F5C;&#x7684;&#x72B6;&#x6001;<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;processing&apos;, &apos;processed&apos;, &apos;received&apos;, &apos;failed&apos;]</td>
+<td style="text-align:left">Current status<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;processing&apos;, &apos;processed&apos;, &apos;received&apos;, &apos;failed&apos;]</td>
 <td style="text-align:left">&quot;processing&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">progress</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x8FDB;&#x5EA6;</td>
+<td style="text-align:left">Progress</td>
 <td style="text-align:left">&quot;100%&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">timestamp</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x521B;&#x5EFA;&#x65F6;&#x95F4;</td>
+<td style="text-align:left">Create time</td>
 <td style="text-align:left">1578572292000</td>
 </tr>
 <tr>
 <td style="text-align:left">blockNum</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x5757;&#x9AD8;&#x5EA6;</td>
+<td style="text-align:left">Block height</td>
 <td style="text-align:left">100</td>
 </tr>
 <tr>
 <td style="text-align:left">updatedAt</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">&#x66F4;&#x65B0;&#x65F6;&#x95F4;</td>
+<td style="text-align:left">Update time</td>
 <td style="text-align:left">1578572292000</td>
 </tr>
 </tbody>
@@ -1150,12 +1150,12 @@
 
             
                 
-                <a href="getUserCreate.html" class="navigation navigation-prev " aria-label="Previous page: 获取用户开户记录">
+                <a href="getUserCreate.html" class="navigation navigation-prev " aria-label="Previous page: Get user registration transactions">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="getUserBalances.html" class="navigation navigation-next " aria-label="Next page: 查询用户交易所余额">
+                <a href="getUserBalances.html" class="navigation navigation-next " aria-label="Next page: Get user exchange balances">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1166,7 +1166,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"获取用户更新记录","level":"3.1.21","depth":2,"next":{"title":"查询用户交易所余额","level":"3.1.22","depth":2,"path":"dex_apis/getUserBalances.md","ref":"dex_apis/getUserBalances.md","articles":[]},"previous":{"title":"获取用户开户记录","level":"3.1.20","depth":2,"path":"dex_apis/getUserCreate.md","ref":"dex_apis/getUserCreate.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/getUserUpdate.md","mtime":"2020-12-30T06:17:06.219Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T06:17:08.236Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"Get password reset transactions","level":"3.1.21","depth":2,"next":{"title":"Get user exchange balances","level":"3.1.22","depth":2,"path":"dex_apis/getUserBalances.md","ref":"dex_apis/getUserBalances.md","articles":[]},"previous":{"title":"Get user registration transactions","level":"3.1.20","depth":2,"path":"dex_apis/getUserCreate.md","ref":"dex_apis/getUserCreate.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/getUserUpdate.md","mtime":"2020-12-30T08:04:51.133Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2020-12-30T08:04:52.986Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>
