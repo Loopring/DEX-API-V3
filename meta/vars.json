@@ -46,7 +46,7 @@
         "/api/v3/amm/user/transactions",
         "/api/v3/amm/trades"
     ],
-    "no_key": ["getApiKey, submitUpdateAccount"],
+    "no_key": ["getApiKey", "submitUpdateAccount"],
     "has_eddsa_sig": ["getApiKey", "cancelOrder"],
     "has_ecdsa_sig": ["submitTransfer","submitUpdateAccount", "submitOffChainWithdrawal"],
     "cir_sig": ["submitOrder", "submitOrderV3"],
