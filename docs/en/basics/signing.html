@@ -949,7 +949,7 @@
 </code></pre><p>and <code>signatureBase</code> should be:</p>
 <pre><code>DELETE&amp;https%3A%2F%2Fapi3.loopring.io%2Fapi%2Fv3%2Forder&amp;accountId%3D10005%26clientOrderId%3DSample
 </code></pre><h2 id="off-chain-request-signatures">Off-chain Request Signatures</h2>
-<p>Loopring 3.6 supports support lots of off-chain requests: <strong>orders</strong>, <strong>order cancellation</strong>, <strong>swap</strong>, <strong>join AMM pool</strong>, <strong>exit AMM pool</strong> , <strong>transfer</strong> and <strong>off-chain withdrawals</strong>, etc. Since these off-chain requests will result in modifications to the exchange&apos;s state Merkel tree, when you submit these types of requests using Loopring&apos;s API, sometimes you must provide <strong>EXTRA</strong> special signatures required by the Loopring protocol.</p>
+<p>Loopring 3.6 supports lots of off-chain requests: <strong>orders</strong>, <strong>order cancellation</strong>, <strong>swap</strong>, <strong>join AMM pool</strong>, <strong>exit AMM pool</strong> , <strong>transfer</strong> and <strong>off-chain withdrawals</strong>, etc. Since these off-chain requests will result in modifications to the exchange&apos;s state Merkel tree, when you submit these types of requests using Loopring&apos;s API, sometimes you must provide <strong>EXTRA</strong> special signatures required by the Loopring protocol.</p>
 <h3 id="overview-of-signatures-and-requests">Overview of signatures and requests</h3>
 <p>Below is a signature type table for all those requests, each request asks for different signature methods due to different business models.</p>
 <table>
