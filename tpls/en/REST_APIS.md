@@ -7,7 +7,7 @@ This article describes some common parts for Loopring's REST API.
 ## Base URL
 
 ```
-https://api.loopring.io
+https://api3.loopring.io
 ```
 
 ## Rate Limit

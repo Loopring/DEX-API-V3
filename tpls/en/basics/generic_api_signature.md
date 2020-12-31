@@ -30,7 +30,7 @@ Please make sure you use only the following HTTP methods, in upper case letters.
 Also make sure the HTTPS header is included and is in lower case. For example:
 
 ```
-https://api.loopring.io/api/v3/apiKey
+https://api3.loopring.io/api/v3/apiKey
 ```
 
 #### Example
@@ -41,7 +41,7 @@ Actually So far only 2 API need this special EDDSA API signing -- **updateApiKey
 For the above url with the following url query parameters:
 
 ```
-https://api.loopring.io/api/v3/apiKey?accountId=10005
+https://api3.loopring.io/api/v3/apiKey?accountId=10005
 ```
 
 or
@@ -57,7 +57,7 @@ accountId=10005
 
 and `signatureBase` should be:
 ```
-GET&https%3A%2F%2Fapi.loopring.io%2Fapi%2Fv2%2FapiKey&accountId%3D10005
+GET&https%3A%2F%2Fapi3.loopring.io%2Fapi%2Fv2%2FapiKey&accountId%3D10005
 ```
 
 ##### Cancel Order

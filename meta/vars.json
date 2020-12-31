@@ -46,11 +46,11 @@
         "/api/v3/amm/user/transactions",
         "/api/v3/amm/trades"
     ],
-    "no_key": ["getApiKey", "submitUpdateAccount"],
+    "no_key": ["getApiKey", "submitUpdateAccount", "getTimestamp"],
     "has_eddsa_sig": ["getApiKey", "cancelOrder"],
     "has_ecdsa_sig": ["submitTransfer","submitUpdateAccount", "submitOffChainWithdrawal"],
     "cir_sig": ["submitOrder", "submitOrderV3"],
-    "hosturl" : "http://acec3f4fd19c04947b09377be33682d0-1254556765.us-east-2.elb.amazonaws.com",
-    "fetchurl" : "http://acec3f4fd19c04947b09377be33682d0-1254556765.us-east-2.elb.amazonaws.com",
+    "hosturl" : "https://api3.loopring.io",
+    "fetchurl" : "https://api3.loopring.io",
     "tpsConfig" : "git@github.com:Loopring/loopring-prod-config.git"
 }

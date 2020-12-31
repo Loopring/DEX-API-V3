@@ -897,12 +897,12 @@
 <li>DELETE</li>
 </ul>
 <p>Also make sure the HTTPS header is included and is in lower case. For example:</p>
-<pre><code>https://api.loopring.io/api/v3/apiKey
+<pre><code>https://api3.loopring.io/api/v3/apiKey
 </code></pre><h4 id="example">Example</h4>
 <p>Actually So far only 2 API need this special EDDSA API signing -- <strong>updateApiKey</strong> &amp; <strong>cancel order</strong>, let&apos;s see how the signatureBase is contructed.</p>
 <h5 id="update-user-api-key">Update user API key</h5>
 <p>For the above url with the following url query parameters:</p>
-<pre><code>https://api.loopring.io/api/v3/apiKey?accountId=10005
+<pre><code>https://api3.loopring.io/api/v3/apiKey?accountId=10005
 </code></pre><p>or</p>
 <table>
 <thead>
@@ -921,7 +921,7 @@
 <p><code>parameterString</code> shoule be:</p>
 <pre><code>accountId=10005
 </code></pre><p>and <code>signatureBase</code> should be:</p>
-<pre><code>GET&amp;https%3A%2F%2Fapi.loopring.io%2Fapi%2Fv2%2FapiKey&amp;accountId%3D10005
+<pre><code>GET&amp;https%3A%2F%2Fapi3.loopring.io%2Fapi%2Fv2%2FapiKey&amp;accountId%3D10005
 </code></pre><h5 id="cancel-order">Cancel Order</h5>
 <p>For the above url with the following url query parameters:</p>
 <pre><code>https://api3.loopring.io/api/v3/order?accountId=10005&amp;clientOrderId=Sample

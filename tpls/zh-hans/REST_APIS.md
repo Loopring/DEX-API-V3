@@ -7,7 +7,7 @@
 ## 接入URL
 
 ```
-https://api.loopring.io
+https://api3.loopring.io
 ```
 
 ## 限流
