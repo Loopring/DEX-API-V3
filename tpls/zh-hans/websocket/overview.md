@@ -3,7 +3,7 @@
 ## 接入URL
 
 ```
-mainnet: wss://ws.loopring.io/v3/ws
+mainnet: wss://ws.api3.loopring.io/v3/ws
 testnet(goerli): wss://ws.uat2.loopring.io/v3/ws
 ```
 
