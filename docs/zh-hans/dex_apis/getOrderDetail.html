@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Get order details · Loopring API</title>
+        <title>获取订单详情 · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -269,7 +269,7 @@
                 <a href="getTimestamp.html">
             
                     
-                    Get relayer's current time
+                    查询服务器当前时间
             
                 </a>
             
@@ -282,7 +282,7 @@
                 <a href="getApiKey.html">
             
                     
-                    Get user ApiKey
+                    查询用户ApiKey
             
                 </a>
             
@@ -295,7 +295,7 @@
                 <a href="applyApiKey.html">
             
                     
-                    Update user's ApiKey
+                    更新用户ApiKey
             
                 </a>
             
@@ -321,7 +321,7 @@
                 <a href="getOrderDetail.html">
             
                     
-                    Get order details
+                    获取订单详情
             
                 </a>
             
@@ -360,7 +360,7 @@
                 <a href="getOrders.html">
             
                     
-                    Get multiple orders
+                    获取用户订单列表
             
                 </a>
             
@@ -373,7 +373,7 @@
                 <a href="getMarkets.html">
             
                     
-                    Get market configurations
+                    查询交易所支持的市场配置
             
                 </a>
             
@@ -386,7 +386,7 @@
                 <a href="getTokens.html">
             
                     
-                    Get token configurations
+                    查询交易所支持的通证信息
             
                 </a>
             
@@ -399,7 +399,7 @@
                 <a href="getExchangeInfo.html">
             
                     
-                    Get exchange configurations
+                    查询交易所的基本必要信息
             
                 </a>
             
@@ -412,7 +412,7 @@
                 <a href="getDepth.html">
             
                     
-                    Get market orderbook
+                    获取市场深度信息
             
                 </a>
             
@@ -425,7 +425,7 @@
                 <a href="getTicker.html">
             
                     
-                    Get market ticker
+                    查询交易所Ticker
             
                 </a>
             
@@ -438,7 +438,7 @@
                 <a href="getCandlestick.html">
             
                     
-                    Get market candlestick
+                    查询K线数据
             
                 </a>
             
@@ -451,7 +451,7 @@
                 <a href="getPrice.html">
             
                     
-                    Get token fiat prices
+                    查询token法币价
             
                 </a>
             
@@ -464,7 +464,7 @@
                 <a href="getMarketTrade.html">
             
                     
-                    Get market recent trades
+                    查询市场交易
             
                 </a>
             
@@ -477,7 +477,7 @@
                 <a href="submitTransfer.html">
             
                     
-                    Submit internal transfer
+                    提交内部转账
             
                 </a>
             
@@ -490,7 +490,7 @@
                 <a href="getAccount.html">
             
                     
-                    Query user information
+                    查询用户信息
             
                 </a>
             
@@ -516,7 +516,7 @@
                 <a href="getUserCreate.html">
             
                     
-                    Get user registration transactions
+                    获取用户开户记录
             
                 </a>
             
@@ -529,7 +529,7 @@
                 <a href="getUserUpdate.html">
             
                     
-                    Get password reset transactions
+                    获取用户更新记录
             
                 </a>
             
@@ -542,7 +542,7 @@
                 <a href="getUserBalances.html">
             
                     
-                    Get user exchange balances
+                    查询用户交易所余额
             
                 </a>
             
@@ -555,7 +555,7 @@
                 <a href="getUserDeposits.html">
             
                     
-                    Get user deposit history
+                    获取用户充值记录
             
                 </a>
             
@@ -568,7 +568,7 @@
                 <a href="getUserWithdrawals.html">
             
                     
-                    Get user onchain withdrawal history
+                    获取用户链上提现记录
             
                 </a>
             
@@ -594,7 +594,7 @@
                 <a href="getUserTransfers.html">
             
                     
-                    Get user transfer list
+                    获取用户转账记录
             
                 </a>
             
@@ -607,7 +607,7 @@
                 <a href="getUserTrades.html">
             
                     
-                    Get user trade history
+                    获取用户交易记录
             
                 </a>
             
@@ -620,7 +620,7 @@
                 <a href="getUserFeeRates.html">
             
                     
-                    Query user place order fee rate
+                    查询用户下单费率
             
                 </a>
             
@@ -845,7 +845,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Get order details</a>
+        <a href=".." >获取订单详情</a>
     </h1>
 </div>
 
@@ -860,7 +860,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="get-order-details">Get order details</h2>
+                                <h2 id="&#x83B7;&#x53D6;&#x8BA2;&#x5355;&#x8BE6;&#x60C5;">&#x83B7;&#x53D6;&#x8BA2;&#x5355;&#x8BE6;&#x60C5;</h2>
 <p>&#x6D41;&#x91CF;&#x63A7;&#x5236;:  &#x6BCF;
  &#x79D2;</p>
 <h3 id="&#x6458;&#x8981;">&#x6458;&#x8981;</h3>
@@ -870,7 +870,7 @@
 <h4 id="&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;">&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;</h4>
 <p><strong>/api/v3/order</strong></p>
 <h4 id="&#x529F;&#x80FD;">&#x529F;&#x80FD;</h4>
-<p>Get the details of an order based on order hash.</p>
+<p>&#x6839;&#x636E;&#x6307;&#x5B9A;hash&#x83B7;&#x53D6;&#x8BA2;&#x5355;&#x8BE6;&#x60C5;</p>
 <h3 id="api-&#x63CF;&#x8FF0;">API &#x63CF;&#x8FF0;</h3>
 <hr>
 <h4 id="http&#x5934;">HTTP&#x5934;</h4>
@@ -910,14 +910,14 @@
 <td style="text-align:left">accountId</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">Account ID</td>
+<td style="text-align:left">&#x7528;&#x6237;ID</td>
 <td style="text-align:left">1</td>
 </tr>
 <tr>
 <td style="text-align:left">orderHash</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">Order hash</td>
+<td style="text-align:left">&#x8BA2;&#x5355;HASH</td>
 <td style="text-align:left">&quot;13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859&quot;</td>
 </tr>
 </tbody>
@@ -946,35 +946,35 @@
 <td style="text-align:left">hash</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">Order hash</td>
+<td style="text-align:left">&#x8BA2;&#x5355;HASH</td>
 <td style="text-align:left">&quot;0xfb5e711c2f044e9432<br>2ed262229cd8f0d0da00<br>c22e1a00a0f5d881e45a<br>38e1cf&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">clientOrderId</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">Order&apos;s client-side ID</td>
+<td style="text-align:left">&#x5BA2;&#x6237;&#x7AEF;&#x8BA2;&#x5355;&#x552F;&#x4E00;ID</td>
 <td style="text-align:left">&quot;200310143135081332&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">side</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">Order&apos;s side<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;SELL&apos;, &apos;BUY&apos;]</td>
+<td style="text-align:left">&#x4E70;&#x5356;&#x65B9;&#x5411;<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;SELL&apos;, &apos;BUY&apos;]</td>
 <td style="text-align:left">&quot;SELL&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">market</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">Trading pair</td>
+<td style="text-align:left">&#x5E02;&#x573A;&#x5BF9;</td>
 <td style="text-align:left">&quot;LRC-ETH&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">price</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">Order price</td>
+<td style="text-align:left">&#x6210;&#x4EA4;&#x4EF7;&#x683C;</td>
 <td style="text-align:left">&quot;0.01987608&quot;</td>
 </tr>
 <tr>
@@ -1002,7 +1002,7 @@
 <td style="text-align:left">status</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">Order status<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;processing&apos;, &apos;processed&apos;, &apos;cancelling&apos;, &apos;cancelled&apos;, &apos;expired&apos;, &apos;waiting&apos;]</td>
+<td style="text-align:left">&#x8BA2;&#x5355;&#x72B6;&#x6001;<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;processing&apos;, &apos;processed&apos;, &apos;cancelling&apos;, &apos;cancelled&apos;, &apos;expired&apos;, &apos;waiting&apos;]</td>
 <td style="text-align:left">&quot;processing&quot;</td>
 </tr>
 </tbody>
@@ -1040,31 +1040,31 @@
 <tbody>
 <tr>
 <td style="text-align:left">100000</td>
-<td style="text-align:left">Unknown error</td>
+<td style="text-align:left">&#x672A;&#x77E5;&#x9519;&#x8BEF;</td>
 </tr>
 <tr>
 <td style="text-align:left">107001</td>
-<td style="text-align:left">User ID cannot be empty</td>
+<td style="text-align:left">&#x7528;&#x6237;ID&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
 </tr>
 <tr>
 <td style="text-align:left">107002</td>
-<td style="text-align:left">Order Hash cannot be empty</td>
+<td style="text-align:left">&#x8BA2;&#x5355;HASH&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
 </tr>
 <tr>
 <td style="text-align:left">107003</td>
-<td style="text-align:left">Order does not exist</td>
+<td style="text-align:left">&#x8BA2;&#x5355;&#x4E0D;&#x5B58;&#x5728;</td>
 </tr>
 <tr>
 <td style="text-align:left">104001</td>
-<td style="text-align:left">Empty ApiKey</td>
+<td style="text-align:left">APIKEY&#x4E0D;&#x80FD;&#x4E3A;&#x7A7A;</td>
 </tr>
 <tr>
 <td style="text-align:left">104002</td>
-<td style="text-align:left">Invalid ApiKey</td>
+<td style="text-align:left">APIKEY&#x9A8C;&#x8BC1;&#x5931;&#x8D25;</td>
 </tr>
 <tr>
 <td style="text-align:left">104003</td>
-<td style="text-align:left">Invalid Account ID</td>
+<td style="text-align:left">&#x7528;&#x6237;&#x4E0D;&#x5B58;&#x5728;</td>
 </tr>
 </tbody>
 </table>
@@ -1192,7 +1192,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Get order details","level":"3.1.5","depth":2,"next":{"title":"Submit an order","level":"3.1.6","depth":2,"path":"dex_apis/submitOrderV3.md","ref":"dex_apis/submitOrderV3.md","articles":[]},"previous":{"title":"Get next storage ID","level":"3.1.4","depth":2,"path":"dex_apis/getNextStorageId.md","ref":"dex_apis/getNextStorageId.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/getOrderDetail.md","mtime":"2021-01-06T13:05:02.972Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-06T13:05:04.900Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"获取订单详情","level":"3.1.5","depth":2,"next":{"title":"Submit an order","level":"3.1.6","depth":2,"path":"dex_apis/submitOrderV3.md","ref":"dex_apis/submitOrderV3.md","articles":[]},"previous":{"title":"Get next storage ID","level":"3.1.4","depth":2,"path":"dex_apis/getNextStorageId.md","ref":"dex_apis/getNextStorageId.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/getOrderDetail.md","mtime":"2021-01-08T03:36:11.825Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-08T03:36:13.519Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>
