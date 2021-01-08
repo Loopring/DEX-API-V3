@@ -75,4 +75,4 @@ gitbook install 命令用来安装插件，一般来说运行一次即可。除�
 ```
 
 文档会发布到下面的页面：
-https://loopring.github.io/DEX-API/
+https://loopring.github.io/DEX-API-V3/
