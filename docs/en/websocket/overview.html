@@ -862,49 +862,51 @@
                                 
                                 <h1 id="websocket-api">WebSocket API</h1>
 <h2 id="base-url">Base URL</h2>
-<pre><code>mainnet: wss://ws.api3.loopring.io/v3/ws
-testnet(goerli): wss://ws.uat2.loopring.io/v3/ws
-</code></pre><h2 id="before-subscription">Before Subscription</h2>
-<p>Before subscription, user needs to get a connect key, otherwise, websocket connection will be refused. The full connection steps are listed below:</p>
-<ol>
-<li>Get wsApiKey by access REST path &quot;/v3/ws/key&quot;, and you will get response like <code>{&quot;key&quot;:&quot;fx2xW5hoVFbcaanWS&quot;}</code></li>
-<li>Use <code>fx2xW5hoVFbcaanWS</code> as a wsApiKey param in ws path, i.e., wss://ws.uat2.loopring.io/v3/ws?wsApiKey=fx2xW5hoVFbcaanWS.</li>
-</ol>
-<h2 id="subscription">Subscription</h2>
-<p>Clients can send JSON to subscribe to multiple topics:</p>
-<pre><code class="lang-JSON">{
-  <span class="hljs-string">&quot;op&quot;</span>: <span class="hljs-string">&quot;sub&quot;</span>,
-  <span class="hljs-string">&quot;sequence&quot;</span>: <span class="hljs-number">10000</span>,
-  <span class="hljs-string">&quot;apiKey&quot;</span>: <span class="hljs-string">&quot;.....&quot;</span>,
-  <span class="hljs-string">&quot;unsubscribeAll&quot;</span>: <span class="hljs-literal">true</span>,
-  <span class="hljs-string">&quot;topics&quot;</span>: [
+<p>``
+mainnet: wss://ws.api3.loopring.io/v3/ws
+testnet(goerli): wss://ws.uat3.loopring.io/v3/ws</p>
+<pre><code>
+## Before Subscription
+Before subscription, user needs to get a connect key, otherwise, websocket connection will be refused. The full connection steps are listed below:
+1. Get wsApiKey by access REST path &quot;/v3/ws/key&quot;, and you will get response like `{&quot;key&quot;:&quot;fx2xW5hoVFbcaanWS&quot;}`
+2. Use `fx2xW5hoVFbcaanWS` as a wsApiKey param in ws path, i.e., wss://ws.uat3.loopring.io/v3/ws?wsApiKey=fx2xW5hoVFbcaanWS.
+
+## Subscription
+Clients can send JSON to subscribe to multiple topics:
+
+```JSON
+{
+  &quot;op&quot;: &quot;sub&quot;,
+  &quot;sequence&quot;: 10000,
+  &quot;apiKey&quot;: &quot;.....&quot;,
+  &quot;unsubscribeAll&quot;: true,
+  &quot;topics&quot;: [
     {
-      <span class="hljs-string">&quot;topic&quot;</span>: <span class="hljs-string">&quot;account&quot;</span>
+      &quot;topic&quot;: &quot;account&quot;
     },
     {
-      <span class="hljs-string">&quot;topic&quot;</span>: <span class="hljs-string">&quot;order&quot;</span>,
-      <span class="hljs-string">&quot;market&quot;</span>: <span class="hljs-string">&quot;LRC-ETH&quot;</span>
+      &quot;topic&quot;: &quot;order&quot;,
+      &quot;market&quot;: &quot;LRC-ETH&quot;
     },
     {
-      <span class="hljs-string">&quot;topic&quot;</span>: <span class="hljs-string">&quot;order&quot;</span>,
-      <span class="hljs-string">&quot;market&quot;</span>: <span class="hljs-string">&quot;LRC-USDT&quot;</span>
+      &quot;topic&quot;: &quot;order&quot;,
+      &quot;market&quot;: &quot;LRC-USDT&quot;
     },
     {
-      <span class="hljs-string">&quot;topic&quot;</span>: <span class="hljs-string">&quot;orderbook&quot;</span>,
-      <span class="hljs-string">&quot;market&quot;</span>: <span class="hljs-string">&quot;LRC-ETH&quot;</span>,
-      <span class="hljs-string">&quot;level&quot;</span>: <span class="hljs-number">0</span>
+      &quot;topic&quot;: &quot;orderbook&quot;,
+      &quot;market&quot;: &quot;LRC-ETH&quot;,
+      &quot;level&quot;: 0
     },
     {
-      <span class="hljs-string">&quot;topic&quot;</span>: <span class="hljs-string">&quot;orderbook&quot;</span>,
-      <span class="hljs-string">&quot;market&quot;</span>: <span class="hljs-string">&quot;LRC-USDT&quot;</span>,
-      <span class="hljs-string">&quot;level&quot;</span>: <span class="hljs-number">0</span>,
-      <span class="hljs-string">&quot;count&quot;</span>: <span class="hljs-number">20</span>,
-      <span class="hljs-string">&quot;snapshot&quot;</span>: <span class="hljs-literal">true</span>
+      &quot;topic&quot;: &quot;orderbook&quot;,
+      &quot;market&quot;: &quot;LRC-USDT&quot;,
+      &quot;level&quot;: 0,
+      &quot;count&quot;: 20,
+      &quot;snapshot&quot;: true
     }
   ]
 }
-</code></pre>
-<ol>
+</code></pre><ol>
 <li>In one subscription request, if at least one topic requires the ApiKey, then the <code>apiKey</code> filed is required;</li>
 <li>In one subscription request, the same topic configuration can only occur once;</li>
 <li>In one subscription request, if there are any configuration errors, the entire subscription request fails;</li>
@@ -1182,7 +1184,7 @@ testnet(goerli): wss://ws.uat2.loopring.io/v3/ws
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"WebSocket API","level":"4.1","depth":1,"next":{"title":"Account Notification","level":"4.1.1","depth":2,"path":"websocket/account.md","ref":"websocket/account.md","articles":[]},"previous":{"title":"get AMM pool trade transactions","level":"3.1.34","depth":2,"path":"dex_apis/getAmmTrades.md","ref":"dex_apis/getAmmTrades.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"websocket/overview.md","mtime":"2021-01-08T03:36:11.987Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-08T03:36:13.519Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"WebSocket API","level":"4.1","depth":1,"next":{"title":"Account Notification","level":"4.1.1","depth":2,"path":"websocket/account.md","ref":"websocket/account.md","articles":[]},"previous":{"title":"get AMM pool trade transactions","level":"3.1.34","depth":2,"path":"dex_apis/getAmmTrades.md","ref":"dex_apis/getAmmTrades.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"websocket/overview.md","mtime":"2021-01-08T08:41:46.659Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-01-08T08:41:48.776Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
