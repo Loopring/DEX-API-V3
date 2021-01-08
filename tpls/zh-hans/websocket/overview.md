@@ -4,8 +4,13 @@
 
 ```
 mainnet: wss://ws.api3.loopring.io/v3/ws
-testnet(goerli): wss://ws.uat2.loopring.io/v3/ws
+testnet(goerli): wss://ws.uat3.loopring.io/v3/ws
 ```
+
+## 订阅要求
+在订阅websocket之前，需要先拿到wsApiKey，然后用该wsApiKey进行连接，步骤如下：
+1. 访问REST API"/v3/ws/key"得到返回的`{"key":"fx2xW5hoVFbcaanWS"}`
+2. 将`fx2xW5hoVFbcaanWS`拼接到url地址进行websocket连接, 即连接wss://ws.uat3.loopring.io/v3/ws?wsApiKey=fx2xW5hoVFbcaanWS.
 
 ## 订阅
 客户端可以通过发送JSON数据订阅多个主题：
