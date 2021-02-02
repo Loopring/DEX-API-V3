@@ -77,6 +77,7 @@
     "ticker": "Ticker Notification",
     "candlestick": "Candlestick Notification",
     "account": "Account Notification",
-    "order": "Order Notification"
+    "order": "Order Notification",
+    "ammsnapshot": "AMM Pool Snapshot"
   }
 }

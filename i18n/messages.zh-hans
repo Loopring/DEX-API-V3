@@ -77,6 +77,7 @@
     "ticker": "Ticker更新",
     "candlestick": "Candlestick更新",
     "account": "账号金额更新",
-    "order": "用户订单更新"
+    "order": "用户订单更新",
+    "ammsnapshot": "AMM资金池快照"
   }
 }

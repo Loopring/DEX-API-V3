@@ -29,4 +29,5 @@
     * [{{l.websocket.trade}}](websocket/trade.md)
     * [{{l.websocket.ticker}}](websocket/ticker.md)
     * [{{l.websocket.candlestick}}](websocket/candlestick.md)
+    * [{{l.websocket.ammsnapshot}}](websocket/ammsnapshot.md)
 
