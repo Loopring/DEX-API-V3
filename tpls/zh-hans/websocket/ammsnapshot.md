@@ -1,20 +1,19 @@
-# Ticker Notification
+# AMM Pool Snapshot Notification
 
 
-Subscribe to this topic to receive notifications about ticker updates for specific trading pairs.
+Subscribe to this topic to receive notifications about token balance updates for specific AMM Pool.
 
 ## Rules
 
 - Topic name: `ammpool`
 - ApiKey requred: No
-
+- snapshot mode ONLY!
 
 ## Parameters
 
 |  Parameter |  Required |              Note                |
 | :---- | :--- |:--------------------------------- |
-| poolAddress | Y | [Trading pair](../dex_apis/getAmmPools.md)|
-
+| poolAddress | Y | [poolAddress](../dex_apis/getAmmPools.md)|
 
 
 ## Status code
