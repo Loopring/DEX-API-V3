@@ -45,6 +45,11 @@ Clients can send JSON to subscribe to multiple topics:
       "level": 0,
       "count": 20,
       "snapshot": true
+    },
+    {
+      "topic": "ammpool",
+      "poolAddress": "0x18920d6E6Fb7EbE057a4DD9260D6D95845c95036",
+      "snapshot": true
     }
   ]
 }

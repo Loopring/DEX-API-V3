@@ -45,6 +45,11 @@ testnet(goerli): wss://ws.uat3.loopring.io/v3/ws
       "level": 0,
       "count": 20,
       "snapshot": true
+    },
+    {
+      "topic": "ammpool",
+      "poolAddress": "0x18920d6E6Fb7EbE057a4DD9260D6D95845c95036",
+      "snapshot": true
     }
   ]
 }
