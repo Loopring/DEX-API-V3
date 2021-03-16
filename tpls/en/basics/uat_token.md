@@ -12,4 +12,4 @@
 https://goerli.etherscan.io/address/0x3a7fc292b0a669298ee481e10b3270b00323c556#writeContract
 
 ### UAT test UI
-https://loopring-amm.herokuapp.com/
+https://beta.loopring.io/

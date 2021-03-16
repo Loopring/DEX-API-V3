@@ -11,7 +11,7 @@ testnet(goerli): wss://ws.uat3.loopring.io/v3/ws
 ## Before Subscription
 Before subscription, user needs to get a connect key, otherwise, websocket connection will be refused. The full connection steps are listed below:
 1. Get wsApiKey by access REST path "/v3/ws/key", and you will get response like `{"key":"fx2xW5hoVFbcaanWS"}`
-2. Use `fx2xW5hoVFbcaanWS` as a wsApiKey param in ws path, i.e., wss://ws.uat3.loopring.io/v3/ws?wsApiKey=fx2xW5hoVFbcaanWS.
+2. Use `fx2xW5hoVFbcaanWS` as a wsApiKey param in ws path, i.e., wss://ws.uat2.loopring.io/v3/ws?wsApiKey=fx2xW5hoVFbcaanWS.
 
 ## Subscription
 Clients can send JSON to subscribe to multiple topics:
