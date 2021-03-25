@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>Get market configurations · Loopring API</title>
+        <title>Query current fee amount · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -85,10 +85,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="getTokens.html" />
+    <link rel="next" href="getAmmPools.html" />
     
     
-    <link rel="prev" href="getOrders.html" />
+    <link rel="prev" href="getOrderUserRateAmount.html" />
     
 
     </head>
@@ -368,7 +368,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="3.1.9" data-path="getMarkets.html">
+        <li class="chapter " data-level="3.1.9" data-path="getMarkets.html">
             
                 <a href="getMarkets.html">
             
@@ -667,7 +667,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.32" data-path="getBusinessFee2.html">
+        <li class="chapter active" data-level="3.1.32" data-path="getBusinessFee2.html">
             
                 <a href="getBusinessFee2.html">
             
@@ -910,7 +910,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >Get market configurations</a>
+        <a href=".." >Query current fee amount</a>
     </h1>
 </div>
 
@@ -925,7 +925,7 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="get-market-configurations">Get market configurations</h2>
+                                <h2 id="query-current-fee-amount">Query current fee amount</h2>
 <p>&#x6D41;&#x91CF;&#x63A7;&#x5236;:  &#x6BCF;
  &#x79D2;</p>
 <h3 id="&#x6458;&#x8981;">&#x6458;&#x8981;</h3>
@@ -933,22 +933,82 @@
 <h4 id="http-&#x65B9;&#x6CD5;">HTTP &#x65B9;&#x6CD5;</h4>
 <p><strong>GET</strong></p>
 <h4 id="&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;">&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;</h4>
-<p><strong>/api/v3/exchange/markets</strong></p>
+<p><strong>/api/v3/user/offchainFee</strong></p>
 <h4 id="&#x529F;&#x80FD;">&#x529F;&#x80FD;</h4>
-<p>Returns the configurations of all supported markets (trading pairs)</p>
+<p>Returns the fee amount</p>
 <h3 id="api-&#x63CF;&#x8FF0;">API &#x63CF;&#x8FF0;</h3>
 <hr>
 <h4 id="http&#x5934;">HTTP&#x5934;</h4>
-<p>&#x65E0;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x5FC5;&#x987B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">X-API-KEY</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">ApiKey</td>
+<td style="text-align:left">&quot;HlkcGxbqBeaF76j4rvPaOasyfPwnkQ<br>6B6DQ6THZWbvrAGxzEdulXQvOKLrRW<br>ZLnN&quot;</td>
+</tr>
+</tbody>
+</table>
 <h4 id="&#x8BF7;&#x6C42;&#x53C2;&#x6570;">&#x8BF7;&#x6C42;&#x53C2;&#x6570;</h4>
-<p>&#x65E0;</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x5FC5;&#x987B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">accountId</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">Account ID</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">requestType</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">Off-chain request type</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">tokenSymbol</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x5426;</td>
+<td style="text-align:left">The token to withdraw</td>
+<td style="text-align:left">&quot;LRC&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">amount</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x5426;</td>
+<td style="text-align:left">The amount to withdraw</td>
+<td style="text-align:left">&quot;10000000000&quot;</td>
+</tr>
+</tbody>
+</table>
 <h4 id="&#x8BF7;&#x6C42;&#x793A;&#x4F8B;">&#x8BF7;&#x6C42;&#x793A;&#x4F8B;</h4>
-<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">GET</span> <span class="hljs-string">https://api3.loopring.io/api/v3/exchange/markets</span> HTTP/1.1
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">GET</span> <span class="hljs-string">https://api3.loopring.io/api/v3/user/offchainFee?accountId=0&amp;requestType=1&amp;tokenSymbol=LRC&amp;amount=10000000000</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: api3.loopring.io
 <span class="hljs-attribute">Connection</span>: keep-alive
 <span class="hljs-attribute">Accept</span>: */*
 <span class="hljs-attribute">Accept-Encoding</span>: gzip, deflate, br
-<span class="hljs-attribute">Accept-Language</span>: zh,en;q=0.9</code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl https://api3.loopring.io/api/v3/exchange/markets</code></pre></div></div></div></p>
+<span class="hljs-attribute">Accept-Language</span>: zh,en;q=0.9
+<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa</code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> https://api3.loopring.io/api/v3/user/offchainFee\?accountId\=0\&amp;requestType\=1\&amp;tokenSymbol\=LRC\&amp;amount\=10000000000</code></pre></div></div></div></p>
 <h4 id="&#x54CD;&#x5E94;&#x5B57;&#x6BB5;">&#x54CD;&#x5E94;&#x5B57;&#x6BB5;</h4>
 <table>
 <thead>
@@ -962,26 +1022,33 @@
 </thead>
 <tbody>
 <tr>
-<td style="text-align:left">markets</td>
-<td style="text-align:left">List[<a href="#MarketInfo">MarketInfo</a>]</td>
+<td style="text-align:left">token</td>
+<td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">Markets list</td>
-<td style="text-align:left">/</td>
+<td style="text-align:left">fee token</td>
+<td style="text-align:left">&quot;ETH&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">fee</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">fee amount</td>
+<td style="text-align:left">&quot;2000000000000000&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">discount</td>
+<td style="text-align:left">number</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">token discount</td>
+<td style="text-align:left">1.0</td>
 </tr>
 </tbody>
 </table>
 <h4 id="&#x54CD;&#x5E94;&#x793A;&#x4F8B;">&#x54CD;&#x5E94;&#x793A;&#x4F8B;</h4>
 <pre><code class="lang-json">{
-    <span class="hljs-string">&quot;markets&quot;</span> : [
-        {
-            <span class="hljs-string">&quot;market&quot;</span> : <span class="hljs-string">&quot;LRC-USDT&quot;</span>,
-            <span class="hljs-string">&quot;baseTokenId&quot;</span> : <span class="hljs-number">2</span>,
-            <span class="hljs-string">&quot;quoteTokenId&quot;</span> : <span class="hljs-number">0</span>,
-            <span class="hljs-string">&quot;precisionForPrice&quot;</span> : <span class="hljs-number">6</span>,
-            <span class="hljs-string">&quot;orderbookAggLevels&quot;</span> : <span class="hljs-number">4</span>,
-            <span class="hljs-string">&quot;enabled&quot;</span> : <span class="hljs-literal">false</span>
-        }
-    ]
+    <span class="hljs-string">&quot;token&quot;</span> : <span class="hljs-string">&quot;ETH&quot;</span>,
+    <span class="hljs-string">&quot;fee&quot;</span> : <span class="hljs-string">&quot;2000000000000000&quot;</span>,
+    <span class="hljs-string">&quot;discount&quot;</span> : <span class="hljs-number">1.0</span>
 }
 </code></pre>
 <h4 id="&#x72B6;&#x6001;&#x7801;">&#x72B6;&#x6001;&#x7801;</h4>
@@ -996,65 +1063,6 @@
 <tr>
 <td style="text-align:left">100000</td>
 <td style="text-align:left">Unknown error</td>
-</tr>
-</tbody>
-</table>
-<h3 id="&#x6A21;&#x578B;">&#x6A21;&#x578B;</h3>
-<hr>
-<h4 id="marketinfo">MarketInfo</h4>
-<p><span id="MarketInfo"></span></p>
-<table>
-<thead>
-<tr>
-<th style="text-align:left">&#x5B57;&#x6BB5;</th>
-<th style="text-align:left">&#x7C7B;&#x578B;</th>
-<th style="text-align:left">&#x5FC5;&#x987B;</th>
-<th style="text-align:left">&#x8BF4;&#x660E;</th>
-<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">market</td>
-<td style="text-align:left">string</td>
-<td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">Trading pair ID</td>
-<td style="text-align:left">&quot;LRC-USDT&quot;</td>
-</tr>
-<tr>
-<td style="text-align:left">baseTokenId</td>
-<td style="text-align:left">integer</td>
-<td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">The base token ID</td>
-<td style="text-align:left">2</td>
-</tr>
-<tr>
-<td style="text-align:left">quoteTokenId</td>
-<td style="text-align:left">integer</td>
-<td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">The quote token ID</td>
-<td style="text-align:left">0</td>
-</tr>
-<tr>
-<td style="text-align:left">precisionForPrice</td>
-<td style="text-align:left">integer</td>
-<td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">The precision of price</td>
-<td style="text-align:left">6</td>
-</tr>
-<tr>
-<td style="text-align:left">orderbookAggLevels</td>
-<td style="text-align:left">integer</td>
-<td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">The max level of orderbook price aggregation</td>
-<td style="text-align:left">4</td>
-</tr>
-<tr>
-<td style="text-align:left">enabled</td>
-<td style="text-align:left">boolean</td>
-<td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">True if trading is enabled for this trading pair</td>
-<td style="text-align:left">&quot;false&quot;</td>
 </tr>
 </tbody>
 </table>
@@ -1085,12 +1093,12 @@
 
             
                 
-                <a href="getOrders.html" class="navigation navigation-prev " aria-label="Previous page: Get multiple orders">
+                <a href="getOrderUserRateAmount.html" class="navigation navigation-prev " aria-label="Previous page: Query current token minimum amount to place order based on users VIP level and max fee bips">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="getTokens.html" class="navigation navigation-next " aria-label="Next page: Get token configurations">
+                <a href="getAmmPools.html" class="navigation navigation-next " aria-label="Next page: Get AMM pool configurations">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1101,7 +1109,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Get market configurations","level":"3.1.9","depth":2,"next":{"title":"Get token configurations","level":"3.1.10","depth":2,"path":"dex_apis/getTokens.md","ref":"dex_apis/getTokens.md","articles":[]},"previous":{"title":"Get multiple orders","level":"3.1.8","depth":2,"path":"dex_apis/getOrders.md","ref":"dex_apis/getOrders.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/getMarkets.md","mtime":"2021-03-25T02:17:47.980Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-25T02:17:49.380Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"Query current fee amount","level":"3.1.32","depth":2,"next":{"title":"Get AMM pool configurations","level":"3.1.33","depth":2,"path":"dex_apis/getAmmPools.md","ref":"dex_apis/getAmmPools.md","articles":[]},"previous":{"title":"Query current token minimum amount to place order based on users VIP level and max fee bips","level":"3.1.31","depth":2,"path":"dex_apis/getOrderUserRateAmount.md","ref":"dex_apis/getOrderUserRateAmount.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/getBusinessFee2.md","mtime":"2021-03-25T02:17:48.069Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-25T02:17:49.380Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>

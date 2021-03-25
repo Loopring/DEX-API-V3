@@ -38,6 +38,10 @@
         "/api/v3/user/transfers",
         "/api/v3/user/trades",
         "/api/v3/user/feeRates",
+	"/api/v3/user/orderFee",
+	"/api/v3/user/orderAmount",
+	"/api/v3/user/orderUserRateAmount",
+	"/api/v3/user/offchainFee",
 
         "/api/v3/amm/pools",
         "/api/v3/amm/balance",
