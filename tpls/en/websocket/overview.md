@@ -5,7 +5,7 @@
 ```
 mainnet: wss://ws.api3.loopring.io/v3/ws
 
-testnet(goerli): wss://ws.uat3.loopring.io/v3/ws
+testnet(goerli): wss://ws.uat2.loopring.io/v3/ws
 ```
 
 ## Before Subscription
