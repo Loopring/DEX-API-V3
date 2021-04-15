@@ -620,7 +620,7 @@
                 <a href="getUserFeeRates.html">
             
                     
-                    Query user fee rate
+                    Query user place order fee rate
             
                 </a>
             
@@ -633,7 +633,7 @@
                 <a href="getUserFeeRates2.html">
             
                     
-                    Get user order fee rate
+                    Query user place order fee rate
             
                 </a>
             
@@ -646,7 +646,7 @@
                 <a href="getOrderAmount.html">
             
                     
-                    Get minimum order amount
+                    Query current token minimum amount to place order
             
                 </a>
             
@@ -659,7 +659,7 @@
                 <a href="getOrderUserRateAmount.html">
             
                     
-                    Get valid fee based order amount
+                    Query current token minimum amount to place order based on users VIP level and max fee bips
             
                 </a>
             
@@ -672,7 +672,7 @@
                 <a href="getBusinessFee2.html">
             
                     
-                    Get fee amount
+                    Query current fee amount
             
                 </a>
             
@@ -1060,6 +1060,7 @@
             <span class="hljs-string">&quot;hash&quot;</span> : <span class="hljs-string">&quot;0x9d114267e8b261457d567093c13cf3deea5f14c9235be26c6fa833dba12a9632&quot;</span>,
             <span class="hljs-string">&quot;owner&quot;</span> : <span class="hljs-string">&quot;0xC0Cf3f78529AB90F765406f7234cE0F2b1ed69Ee&quot;</span>,
             <span class="hljs-string">&quot;txHash&quot;</span> : <span class="hljs-string">&quot;0x9d114267e8b261457d567093c13cf3deea5f14c9235be26c6fa833dba12a9632&quot;</span>,
+            <span class="hljs-string">&quot;feeTokenSymbol&quot;</span> : <span class="hljs-string">&quot;ETH&quot;</span>,
             <span class="hljs-string">&quot;feeAmount&quot;</span> : <span class="hljs-string">&quot;1000000000000000&quot;</span>,
             <span class="hljs-string">&quot;status&quot;</span> : <span class="hljs-string">&quot;processing&quot;</span>,
             <span class="hljs-string">&quot;progress&quot;</span> : <span class="hljs-string">&quot;100%&quot;</span>,
@@ -1143,6 +1144,13 @@
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Transaction hash</td>
 <td style="text-align:left">&quot;0x9d114267e8b261457d<br>567093c13cf3deea5f14<br>c9235be26c6fa833dba1<br>2a9632&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">feeTokenSymbol</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">field.TxData.feeTokenSymbol</td>
+<td style="text-align:left">&quot;ETH&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">feeAmount</td>
@@ -1231,7 +1239,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Get password reset transactions","level":"3.1.21","depth":2,"next":{"title":"Get user exchange balances","level":"3.1.22","depth":2,"path":"dex_apis/getUserBalances.md","ref":"dex_apis/getUserBalances.md","articles":[]},"previous":{"title":"Get user registration transactions","level":"3.1.20","depth":2,"path":"dex_apis/getUserCreate.md","ref":"dex_apis/getUserCreate.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getUserUpdate.md","mtime":"2021-03-25T02:17:48.603Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-03-25T02:17:49.380Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Get password reset transactions","level":"3.1.21","depth":2,"next":{"title":"Get user exchange balances","level":"3.1.22","depth":2,"path":"dex_apis/getUserBalances.md","ref":"dex_apis/getUserBalances.md","articles":[]},"previous":{"title":"Get user registration transactions","level":"3.1.20","depth":2,"path":"dex_apis/getUserCreate.md","ref":"dex_apis/getUserCreate.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getUserUpdate.md","mtime":"2021-04-15T14:45:15.555Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-04-15T14:45:16.958Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
