@@ -615,20 +615,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.28" data-path="getUserFeeRates.html">
-            
-                <a href="getUserFeeRates.html">
-            
-                    
-                    Query user place order fee rate
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.1.29" data-path="getUserFeeRates2.html">
+        <li class="chapter " data-level="3.1.28" data-path="getUserFeeRates2.html">
             
                 <a href="getUserFeeRates2.html">
             
@@ -641,20 +628,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.30" data-path="getOrderAmount.html">
-            
-                <a href="getOrderAmount.html">
-            
-                    
-                    Query current token minimum amount to place order
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="3.1.31" data-path="getOrderUserRateAmount.html">
+        <li class="chapter " data-level="3.1.29" data-path="getOrderUserRateAmount.html">
             
                 <a href="getOrderUserRateAmount.html">
             
@@ -667,7 +641,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.32" data-path="getBusinessFee2.html">
+        <li class="chapter " data-level="3.1.30" data-path="getBusinessFee2.html">
             
                 <a href="getBusinessFee2.html">
             
@@ -680,7 +654,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.33" data-path="getAmmPools.html">
+        <li class="chapter " data-level="3.1.31" data-path="getAmmPools.html">
             
                 <a href="getAmmPools.html">
             
@@ -693,7 +667,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.34" data-path="getAmmPoolBalance.html">
+        <li class="chapter " data-level="3.1.32" data-path="getAmmPoolBalance.html">
             
                 <a href="getAmmPoolBalance.html">
             
@@ -706,7 +680,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.35" data-path="submitAmmPoolJoin.html">
+        <li class="chapter " data-level="3.1.33" data-path="submitAmmPoolJoin.html">
             
                 <a href="submitAmmPoolJoin.html">
             
@@ -719,7 +693,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.36" data-path="submitAmmPoolExit.html">
+        <li class="chapter " data-level="3.1.34" data-path="submitAmmPoolExit.html">
             
                 <a href="submitAmmPoolExit.html">
             
@@ -732,7 +706,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.37" data-path="getAmmUserTransactions.html">
+        <li class="chapter " data-level="3.1.35" data-path="getAmmUserTransactions.html">
             
                 <a href="getAmmUserTransactions.html">
             
@@ -745,7 +719,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.1.38" data-path="getAmmTrades.html">
+        <li class="chapter " data-level="3.1.36" data-path="getAmmTrades.html">
             
                 <a href="getAmmTrades.html">
             
@@ -926,8 +900,8 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="get-multiple-orders">Get multiple orders</h2>
-<p>Rate limit:  every
- seconds</p>
+<p>Rate limit: 5 every
+second</p>
 <h3 id="api-overview">API Overview</h3>
 <hr>
 <h4 id="http-method">HTTP method</h4>
@@ -1034,16 +1008,23 @@
 <td style="text-align:left">request.getOrders.orderTypes<br>Allowable : [&apos;LIMIT_ORDER&apos;, &apos;MAKER_ONLY&apos;, &apos;TAKER_ONLY&apos;, &apos;AMM&apos;]</td>
 <td style="text-align:left">&quot;LIMIT_ORDER&quot;</td>
 </tr>
+<tr>
+<td style="text-align:left">tradeChannels</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">field.SubmitOrderRequest.tradeChannel<br>Allowable : [&apos;ORDER_BOOK:0&apos;, &apos;AMM_POOL:1&apos;, &apos;MIXED:2&apos;]</td>
+<td style="text-align:left">&quot;ORDER_BOOK,AMM_POOL&quot;</td>
+</tr>
 </tbody>
 </table>
 <h4 id="request-example">Request example</h4>
-<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">GET</span> <span class="hljs-string">https://api3.loopring.io/api/v3/orders?accountId=1&amp;market=LRC-ETH&amp;start=1567053142000&amp;end=1567053242000&amp;side=BUY&amp;status=processing,processed&amp;limit=50&amp;offset=0&amp;orderTypes=LIMIT_ORDER</span> HTTP/1.1
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">GET</span> <span class="hljs-string">https://api3.loopring.io/api/v3/orders?accountId=1&amp;market=LRC-ETH&amp;start=1567053142000&amp;end=1567053242000&amp;side=BUY&amp;status=processing,processed&amp;limit=50&amp;offset=0&amp;orderTypes=LIMIT_ORDER&amp;tradeChannels=ORDER_BOOK,AMM_POOL</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: api3.loopring.io
 <span class="hljs-attribute">Connection</span>: keep-alive
 <span class="hljs-attribute">Accept</span>: */*
 <span class="hljs-attribute">Accept-Encoding</span>: gzip, deflate, br
 <span class="hljs-attribute">Accept-Language</span>: zh,en;q=0.9
-<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa</code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> https://api3.loopring.io/api/v3/orders\?accountId\=1\&amp;market\=LRC-ETH\&amp;start\=1567053142000\&amp;end\=1567053242000\&amp;side\=BUY\&amp;status\=processing,processed\&amp;<span class="hljs-built_in">limit</span>\=50\&amp;offset\=0\&amp;orderTypes\=LIMIT_ORDER</code></pre></div></div></div></p>
+<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa</code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> https://api3.loopring.io/api/v3/orders\?accountId\=1\&amp;market\=LRC-ETH\&amp;start\=1567053142000\&amp;end\=1567053242000\&amp;side\=BUY\&amp;status\=processing,processed\&amp;<span class="hljs-built_in">limit</span>\=50\&amp;offset\=0\&amp;orderTypes\=LIMIT_ORDER\&amp;tradeChannels\=ORDER_BOOK,AMM_POOL</code></pre></div></div></div></p>
 <h4 id="response-fields">Response fields</h4>
 <table>
 <thead>
@@ -1340,7 +1321,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Get multiple orders","level":"3.1.8","depth":2,"next":{"title":"Get market configurations","level":"3.1.9","depth":2,"path":"dex_apis/getMarkets.md","ref":"dex_apis/getMarkets.md","articles":[]},"previous":{"title":"Cancel order","level":"3.1.7","depth":2,"path":"dex_apis/cancelOrder.md","ref":"dex_apis/cancelOrder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getOrders.md","mtime":"2021-05-25T02:19:52.204Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-05-25T02:19:53.813Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Get multiple orders","level":"3.1.8","depth":2,"next":{"title":"Get market configurations","level":"3.1.9","depth":2,"path":"dex_apis/getMarkets.md","ref":"dex_apis/getMarkets.md","articles":[]},"previous":{"title":"Cancel order","level":"3.1.7","depth":2,"path":"dex_apis/cancelOrder.md","ref":"dex_apis/cancelOrder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getOrders.md","mtime":"2021-06-19T06:58:53.283Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-06-19T06:58:54.197Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
