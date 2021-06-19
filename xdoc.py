@@ -550,9 +550,9 @@ def get_request_headers(operationId):
     return ret
 
 def get_tps(api):
-    return 1
-    return VARS['tps'].get(
+    tps = VARS['tps'].get(
         (api['path'], api['method'].lower()), VARS['tps']['default'])
+    return tps
 
 def generate_api_doc(operationId, path, filename):
     apiTpl = ENV.get_template('api_doc.tpl')
@@ -645,7 +645,7 @@ def load_tps_config():
 
 def build_doc():
     load_info()
-    # load_tps_config()
+    load_tps_config()
     LOGGER.info('Creating gitbook files...')
     generate_structs()
     LOGGER.info('Syncing gitbook files...')
