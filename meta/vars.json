@@ -75,7 +75,7 @@
         "getAmmTrades",
         "getPoolsStats"
     ],
-    "has_eddsa_sig": ["getApiKey", "cancelOrder"],
+    "has_eddsa_sig": ["getApiKey", "applyApiKey", "cancelOrder"],
     "has_ecdsa_sig": ["submitTransfer","submitUpdateAccount", "submitOffChainWithdrawal"],
     "cir_sig": ["submitOrder", "submitOrderV3"],
     "hosturl" : "https://api3.loopring.io",
