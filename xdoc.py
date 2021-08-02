@@ -10,6 +10,7 @@ import http.client
 import json
 import logging
 import os
+import re
 import subprocess
 
 from functools import partial
@@ -38,7 +39,7 @@ loader = FileSystemLoader(path)
 ENV = Environment(loader=loader)
 
 INDENT = 4
-SEG_SIZE = 20
+SEG_SIZE = 16
 
 EXAM_HEADERS = {
     'X-API-KEY' : 'sra1aavfa',
@@ -70,8 +71,10 @@ def get_response_fields(response):
     return VARS['models'][modelName]['properties']
 
 def get_link(ref):
+    # return '<a href="%s#%s">%s</a>'%(
+    #     '../REST_APIS.md' if ref == 'ResultInfo' else '', ref, re.sub('[a-z]', '', ref))
     return '<a href="%s#%s">%s</a>'%(
-        '../REST_APIS.md' if ref == 'ResultInfo' else '', ref, ref)
+        '../REST_APIS.md' if ref == 'ResultInfo' else '', ref, seg_obj(ref, 12))
 
 def create_html_type(field):
     if (field.get('type') is None):
@@ -198,6 +201,25 @@ def seg_str(word, segSize):
     while (i < length):
         segs.append(word[i : i + segSize])
         i += segSize
+    return '<br/>'.join(segs)
+
+# This function is used to seg long objname like TokenAmountInfoV3
+# for better shown in markdown table cell.
+def seg_obj(word, segSize):
+    length = len(word)
+    if (length < segSize):
+        return word
+    res_list = re.findall('[A-Z][^A-Z]*', word)
+    segs = []
+    i = 0
+    while i < len(res_list):
+        line = res_list[i]
+        assert len(line) <= segSize
+        while i+1 < len(res_list) and len(line + res_list[i+1]) < segSize:
+            line += res_list[i+1]
+            i += 1
+        i += 1
+        segs.append(line)
     return '<br/>'.join(segs)
 
 def modifyStr(content, segSize):
