@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>api.getBusinessFee2.value · Loopring API</title>
+        <title>Query current fee amount · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -633,7 +633,7 @@
                 <a href="getOrderUserRateAmount.html">
             
                     
-                    api.getOrderUserRateAmount.value
+                    Query current token minimum amount to place order based on users VIP level and max fee bips
             
                 </a>
             
@@ -646,7 +646,7 @@
                 <a href="getBusinessFee2.html">
             
                     
-                    api.getBusinessFee2.value
+                    Query current fee amount
             
                 </a>
             
@@ -884,7 +884,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >api.getBusinessFee2.value</a>
+        <a href=".." >Query current fee amount</a>
     </h1>
 </div>
 
@@ -899,8 +899,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="apigetbusinessfee2value">api.getBusinessFee2.value</h2>
-<p>&#x6D41;&#x91CF;&#x63A7;&#x5236;: 5 &#x6BCF;
+                                <h2 id="query-current-fee-amount">Query current fee amount</h2>
+<p>&#x6D41;&#x91CF;&#x63A7;&#x5236;: 1 &#x6BCF;
 &#x79D2;</p>
 <h3 id="&#x6458;&#x8981;">&#x6458;&#x8981;</h3>
 <hr>
@@ -909,7 +909,7 @@
 <h4 id="&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;">&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;</h4>
 <p><strong>/api/v3/user/offchainFee</strong></p>
 <h4 id="&#x529F;&#x80FD;">&#x529F;&#x80FD;</h4>
-<p>api.getBusinessFee2.notes</p>
+<p>Returns the fee amount</p>
 <h3 id="api-&#x63CF;&#x8FF0;">API &#x63CF;&#x8FF0;</h3>
 <hr>
 <h4 id="http&#x5934;">HTTP&#x5934;</h4>
@@ -949,28 +949,28 @@
 <td style="text-align:left">accountId</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">request.getBusinessFee2.accountId</td>
+<td style="text-align:left">Account ID</td>
 <td style="text-align:left">0</td>
 </tr>
 <tr>
 <td style="text-align:left">requestType</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x662F;</td>
-<td style="text-align:left">request.getBusinessFee2.requestType<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;0:ORDER&apos;, &apos;1:OFFCHAIN_WITHDRAWAL&apos;, &apos;2:UPDATE_ACCOUNT&apos;, &apos;3:TRANSFER&apos;, &apos;4:FAST_OFFCHAIN_WITHDRAWAL&apos;, &apos;5:OPEN_ACCOUNT&apos;, &apos;6:AMM_EXIT&apos;, &apos;7:DEPOSIT&apos;, &apos;8:AMM_JOIN&apos;]</td>
+<td style="text-align:left">Off-chain request type<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;0:ORDER&apos;, &apos;1:OFFCHAIN_WITHDRAWAL&apos;, &apos;2:UPDATE_ACCOUNT&apos;, &apos;3:TRANSFER&apos;, &apos;4:FAST_OFFCHAIN_WITHDRAWAL&apos;, &apos;5:OPEN_ACCOUNT&apos;, &apos;6:AMM_EXIT&apos;, &apos;7:DEPOSIT&apos;, &apos;8:AMM_JOIN&apos;]</td>
 <td style="text-align:left">1</td>
 </tr>
 <tr>
 <td style="text-align:left">tokenSymbol</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">request.getBusinessFee2.tokenSymbol</td>
+<td style="text-align:left">The token to withdraw</td>
 <td style="text-align:left">&quot;LRC&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">amount</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">request.getBusinessFee2.amount</td>
+<td style="text-align:left">The amount to withdraw</td>
 <td style="text-align:left">&quot;10000000000&quot;</td>
 </tr>
 </tbody>
@@ -1067,7 +1067,7 @@
 
             
                 
-                <a href="getOrderUserRateAmount.html" class="navigation navigation-prev " aria-label="Previous page: api.getOrderUserRateAmount.value">
+                <a href="getOrderUserRateAmount.html" class="navigation navigation-prev " aria-label="Previous page: Query current token minimum amount to place order based on users VIP level and max fee bips">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -1083,7 +1083,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"api.getBusinessFee2.value","level":"3.1.30","depth":2,"next":{"title":"Get AMM pool configurations","level":"3.1.31","depth":2,"path":"dex_apis/getAmmPools.md","ref":"dex_apis/getAmmPools.md","articles":[]},"previous":{"title":"api.getOrderUserRateAmount.value","level":"3.1.29","depth":2,"path":"dex_apis/getOrderUserRateAmount.md","ref":"dex_apis/getOrderUserRateAmount.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/getBusinessFee2.md","mtime":"2021-07-07T12:00:12.601Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-07T12:00:14.671Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"Query current fee amount","level":"3.1.30","depth":2,"next":{"title":"Get AMM pool configurations","level":"3.1.31","depth":2,"path":"dex_apis/getAmmPools.md","ref":"dex_apis/getAmmPools.md","articles":[]},"previous":{"title":"Query current token minimum amount to place order based on users VIP level and max fee bips","level":"3.1.29","depth":2,"path":"dex_apis/getOrderUserRateAmount.md","ref":"dex_apis/getOrderUserRateAmount.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/getBusinessFee2.md","mtime":"2021-08-11T12:48:53.933Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-11T12:48:55.322Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>

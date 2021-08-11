@@ -633,7 +633,7 @@
                 <a href="getOrderUserRateAmount.html">
             
                     
-                    api.getOrderUserRateAmount.value
+                    Query current token minimum amount to place order based on users VIP level and max fee bips
             
                 </a>
             
@@ -646,7 +646,7 @@
                 <a href="getBusinessFee2.html">
             
                     
-                    api.getBusinessFee2.value
+                    Query current fee amount
             
                 </a>
             
@@ -900,7 +900,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="get-user-transfer-list">Get user transfer list</h2>
-<p>&#x6D41;&#x91CF;&#x63A7;&#x5236;: 5 &#x6BCF;
+<p>&#x6D41;&#x91CF;&#x63A7;&#x5236;: 1 &#x6BCF;
 &#x79D2;</p>
 <h3 id="&#x6458;&#x8981;">&#x6458;&#x8981;</h3>
 <hr>
@@ -971,7 +971,7 @@
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x5426;</td>
 <td style="text-align:left">Comma separated status values<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;processing&apos;, &apos;processed&apos;, &apos;received&apos;, &apos;failed&apos;]</td>
-<td style="text-align:left">&quot;processing,processed&quot;</td>
+<td style="text-align:left">&quot;processing,proce<br>ssed&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">limit</td>
@@ -1032,7 +1032,7 @@ Host:</span> api3.loopring.io
 </tr>
 <tr>
 <td style="text-align:left">transactions</td>
-<td style="text-align:left">List[<a href="#TransferData">TransferData</a>]</td>
+<td style="text-align:left">List[<a href="#TransferData">Transfer<br>Data</a>]</td>
 <td style="text-align:left">&#x662F;</td>
 <td style="text-align:left">User&apos;s transfer list</td>
 <td style="text-align:left">/</td>
@@ -1121,7 +1121,7 @@ Host:</span> api3.loopring.io
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
 <td style="text-align:left">hash</td>
-<td style="text-align:left">&quot;0x9d114267e8b261457d<br>567093c13cf3deea5f14<br>c9235be26c6fa833dba1<br>2a9632&quot;</td>
+<td style="text-align:left">&quot;0x9d114267e8b261<br>457d567093c13cf3<br>deea5f14c9235be2<br>6c6fa833dba12a96<br>32&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">txType</td>
@@ -1142,14 +1142,14 @@ Host:</span> api3.loopring.io
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
 <td style="text-align:left">Amount requested by the user</td>
-<td style="text-align:left">&quot;1000000000000000000&quot;</td>
+<td style="text-align:left">&quot;1000000000000000<br>000&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">senderAddress</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x5426;</td>
 <td style="text-align:left">field.TxData.senderAddress</td>
-<td style="text-align:left">&quot;0x0306b9d5c9Ed358FC7<br>b77780bACD15398D242f<br>26&quot;</td>
+<td style="text-align:left">&quot;0x0306b9d5c9Ed35<br>8FC7b77780bACD15<br>398D242f26&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">receiver</td>
@@ -1163,7 +1163,7 @@ Host:</span> api3.loopring.io
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x5426;</td>
 <td style="text-align:left">The transfer receiver&apos;s address</td>
-<td style="text-align:left">&quot;0x0306b9d5c9Ed358FC7<br>b77780bACD15398D242f<br>26&quot;</td>
+<td style="text-align:left">&quot;0x0306b9d5c9Ed35<br>8FC7b77780bACD15<br>398D242f26&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">feeTokenSymbol</td>
@@ -1259,7 +1259,7 @@ Host:</span> api3.loopring.io
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Get user transfer list","level":"3.1.26","depth":2,"next":{"title":"Get user trade history","level":"3.1.27","depth":2,"path":"dex_apis/getUserTrades.md","ref":"dex_apis/getUserTrades.md","articles":[]},"previous":{"title":"Submit offchain withdraw request","level":"3.1.25","depth":2,"path":"dex_apis/submitOffChainWithdrawal.md","ref":"dex_apis/submitOffChainWithdrawal.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/getUserTransfers.md","mtime":"2021-07-07T12:00:12.448Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-07T12:00:14.671Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"Get user transfer list","level":"3.1.26","depth":2,"next":{"title":"Get user trade history","level":"3.1.27","depth":2,"path":"dex_apis/getUserTrades.md","ref":"dex_apis/getUserTrades.md","articles":[]},"previous":{"title":"Submit offchain withdraw request","level":"3.1.25","depth":2,"path":"dex_apis/submitOffChainWithdrawal.md","ref":"dex_apis/submitOffChainWithdrawal.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/getUserTransfers.md","mtime":"2021-08-11T12:48:53.785Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-11T12:48:55.322Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>

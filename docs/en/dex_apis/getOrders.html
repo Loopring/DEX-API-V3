@@ -900,7 +900,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="get-multiple-orders">Get multiple orders</h2>
-<p>Rate limit: 5 every
+<p>Rate limit: 1 every
 second</p>
 <h3 id="api-overview">API Overview</h3>
 <hr>
@@ -985,7 +985,7 @@ second</p>
 <td style="text-align:left">string</td>
 <td style="text-align:left">N</td>
 <td style="text-align:left">Order status. You can specify one of the following values:<br>Allowable : [&apos;processing&apos;, &apos;processed&apos;, &apos;failed&apos;, &apos;cancelled&apos;, &apos;cancelling&apos;, &apos;expired&apos;]</td>
-<td style="text-align:left">&quot;processing,processed&quot;</td>
+<td style="text-align:left">&quot;processing,proce<br>ssed&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">limit</td>
@@ -1013,7 +1013,7 @@ second</p>
 <td style="text-align:left">string</td>
 <td style="text-align:left">N</td>
 <td style="text-align:left">field.SubmitOrderRequest.tradeChannel<br>Allowable : [&apos;ORDER_BOOK:0&apos;, &apos;AMM_POOL:1&apos;, &apos;MIXED:2&apos;]</td>
-<td style="text-align:left">&quot;ORDER_BOOK,AMM_POOL&quot;</td>
+<td style="text-align:left">&quot;ORDER_BOOK,AMM_P<br>OOL&quot;</td>
 </tr>
 </tbody>
 </table>
@@ -1046,7 +1046,7 @@ second</p>
 </tr>
 <tr>
 <td style="text-align:left">orders</td>
-<td style="text-align:left">List[<a href="#OrderDetailV3">OrderDetailV3</a>]</td>
+<td style="text-align:left">List[<a href="#OrderDetailV3">OrderDetail<br>V3</a>]</td>
 <td style="text-align:left">N</td>
 <td style="text-align:left">List of order</td>
 <td style="text-align:left">/</td>
@@ -1132,14 +1132,14 @@ second</p>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Order hash</td>
-<td style="text-align:left">&quot;0xfb5e711c2f044e9432<br>2ed262229cd8f0d0da00<br>c22e1a00a0f5d881e45a<br>38e1cf&quot;</td>
+<td style="text-align:left">&quot;0xfb5e711c2f044e<br>94322ed262229cd8<br>f0d0da00c22e1a00<br>a0f5d881e45a38e1<br>cf&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">clientOrderId</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Order&apos;s client-side ID</td>
-<td style="text-align:left">&quot;200310143135081332&quot;</td>
+<td style="text-align:left">&quot;2003101431350813<br>32&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">side</td>
@@ -1164,14 +1164,14 @@ second</p>
 </tr>
 <tr>
 <td style="text-align:left">volumes</td>
-<td style="text-align:left"><a href="#OrderVolumesV3">OrderVolumesV3</a></td>
+<td style="text-align:left"><a href="#OrderVolumesV3">Order<br>VolumesV3</a></td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Wraps data regarding the orders volumes (base, quote, and filled.)</td>
 <td style="text-align:left">&quot;0&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">validity</td>
-<td style="text-align:left"><a href="#OrderValidityV3">OrderValidityV3</a></td>
+<td style="text-align:left"><a href="#OrderValidityV3">Order<br>ValidityV3</a></td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Wraps data regarding time validity constraints (since and until)</td>
 <td style="text-align:left">&quot;{start: 1234, end: 2345}&quot;</td>
@@ -1187,7 +1187,7 @@ second</p>
 <td style="text-align:left">tradeChannel</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
-<td style="text-align:left">field.SubmitOrderRequestV3.tradeChannel<br>Allowable : [&apos;ORDER_BOOK&apos;, &apos;AMM_POOL&apos;, &apos;MIXED&apos;]</td>
+<td style="text-align:left">Order channel, can be ORDER_BOOK, AMM_POOL, MIXED<br>Allowable : [&apos;ORDER_BOOK&apos;, &apos;AMM_POOL&apos;, &apos;MIXED&apos;]</td>
 <td style="text-align:left">&quot;ORDER_BOOK&quot;</td>
 </tr>
 <tr>
@@ -1321,7 +1321,7 @@ second</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Get multiple orders","level":"3.1.8","depth":2,"next":{"title":"Get market configurations","level":"3.1.9","depth":2,"path":"dex_apis/getMarkets.md","ref":"dex_apis/getMarkets.md","articles":[]},"previous":{"title":"Cancel order","level":"3.1.7","depth":2,"path":"dex_apis/cancelOrder.md","ref":"dex_apis/cancelOrder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getOrders.md","mtime":"2021-07-07T12:00:13.296Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-07T12:00:14.671Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Get multiple orders","level":"3.1.8","depth":2,"next":{"title":"Get market configurations","level":"3.1.9","depth":2,"path":"dex_apis/getMarkets.md","ref":"dex_apis/getMarkets.md","articles":[]},"previous":{"title":"Cancel order","level":"3.1.7","depth":2,"path":"dex_apis/cancelOrder.md","ref":"dex_apis/cancelOrder.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getOrders.md","mtime":"2021-08-11T12:48:54.462Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-11T12:48:55.322Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>

@@ -900,7 +900,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="join-into-amm-pool">Join into AMM pool</h2>
-<p>Rate limit: 5 every
+<p>Rate limit: 1 every
 second</p>
 <h3 id="api-overview">API Overview</h3>
 <hr>
@@ -950,35 +950,35 @@ second</p>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">The account owner adderss</td>
-<td style="text-align:left">&quot;0xe25c94ba036d91b488<br>33acb637f719038f0737<br>2d&quot;</td>
+<td style="text-align:left">&quot;0xe25c94ba036d91<br>b48833acb637f719<br>038f07372d&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">poolAddress</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">AMM pool address to be joined</td>
-<td style="text-align:left">&quot;0xe25c94ba036d91b488<br>33acb637f719038f0737<br>2d&quot;</td>
+<td style="text-align:left">&quot;0xe25c94ba036d91<br>b48833acb637f719<br>038f07372d&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">joinTokens</td>
-<td style="text-align:left"><a href="#AmmPoolJoinTokens">AmmPoolJoinTokens</a></td>
+<td style="text-align:left"><a href="#AmmPoolJoinTokens">AmmPoolJoin<br>Tokens</a></td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Token amounts to be joined and the minimum mint token to be paied back</td>
 <td style="text-align:left">&quot;{&quot;pooled&quot;: [{&quot;id&quot;: 0,&quot;amount&quot;: 0}],&quot;minimumLp&quot;: 0}&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">storageIds</td>
-<td style="text-align:left">string</td>
+<td style="text-align:left">List[object]</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Offchain request storage Id</td>
-<td style="text-align:left">&quot;1&quot;</td>
+<td style="text-align:left">&quot;[1,2]&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">fee</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">fee of join request</td>
-<td style="text-align:left">&quot;1000000000000000000&quot;</td>
+<td style="text-align:left">&quot;1000000000000000<br>000&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">validUntil</td>
@@ -992,14 +992,14 @@ second</p>
 <td style="text-align:left">string</td>
 <td style="text-align:left">N</td>
 <td style="text-align:left">AMM join request eddsa signature</td>
-<td style="text-align:left">&quot;0xccf0a141fce2dc5cbb<br>d4f802c52220e9e2ce26<br>0e86704d6258603eb346<br>eefe2d4a450005c362b2<br>23b28402d087f7065ea5<br>eee0314531adf6a580fc<br>e64c25dca81c02&quot;</td>
+<td style="text-align:left">&quot;0xccf0a141fce2dc<br>5cbbd4f802c52220<br>e9e2ce260e86704d<br>6258603eb346eefe<br>2d4a450005c362b2<br>23b28402d087f706<br>5ea5eee0314531ad<br>f6a580fce64c25dc<br>a81c02&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">ecdsaSignature</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">N</td>
 <td style="text-align:left">AMM join request ecdsa signature</td>
-<td style="text-align:left">&quot;0xeb14773e8a07d19bc4<br>fe56e36d041dcb002652<br>f7e92160deaf5e6bf21e<br>05c7a9eb14773e8a07d1<br>9bc4fe56e36d041dcb00<br>2652f7e92160deaf5e6b<br>f21e05c7a9eb14773e8a<br>07d19bc4fe56e36d041d<br>cb002652f7e92160deaf<br>5e6bf21e05c7a9&quot;</td>
+<td style="text-align:left">&quot;0xeb14773e8a07d1<br>9bc4fe56e36d041d<br>cb002652f7e92160<br>deaf5e6bf21e05c7<br>a9eb14773e8a07d1<br>9bc4fe56e36d041d<br>cb002652f7e92160<br>deaf5e6bf21e05c7<br>a9eb14773e8a07d1<br>9bc4fe56e36d041d<br>cb002652f7e92160<br>deaf5e6bf21e05c7<br>a9&quot;</td>
 </tr>
 </tbody>
 </table>
@@ -1020,7 +1020,7 @@ second</p>
         <span class="hljs-string">&quot;pooled&quot;</span> : [{tokenId:0, volume: <span class="hljs-number">100000</span>},{tokenId:0, volume: <span class="hljs-number">100000</span>}],
         <span class="hljs-string">&quot;minimumLp&quot;</span> : <span class="hljs-string">&quot;1000000000&quot;</span>
     },
-    <span class="hljs-string">&quot;storageIds&quot;</span> : <span class="hljs-string">&quot;1&quot;</span>,
+    <span class="hljs-string">&quot;storageIds&quot;</span> : [<span class="hljs-number">1</span>,<span class="hljs-number">2</span>],
     <span class="hljs-string">&quot;fee&quot;</span> : <span class="hljs-string">&quot;1000000000000000000&quot;</span>,
     <span class="hljs-string">&quot;validUntil&quot;</span> : <span class="hljs-number">1598431481</span>,
     <span class="hljs-string">&quot;eddsaSignature&quot;</span> : <span class="hljs-string">&quot;0xccf0a141fce2dc5cbbd4f802c52220e9e2ce260e86704d6258603eb346eefe2d4a450005c362b223b28402d087f7065ea5eee0314531adf6a580fce64c25dca81c02&quot;</span>,
@@ -1033,7 +1033,7 @@ second</p>
         &quot;pooled&quot; : [{tokenId:0, volume: 100000},{tokenId:0, volume: 100000}],
         &quot;minimumLp&quot; : &quot;1000000000&quot;
     },
-    &quot;storageIds&quot; : &quot;1&quot;,
+    &quot;storageIds&quot; : [1,2],
     &quot;fee&quot; : &quot;1000000000000000000&quot;,
     &quot;validUntil&quot; : 1598431481,
     &quot;eddsaSignature&quot; : &quot;0xccf0a141fce2dc5cbbd4f802c52220e9e2ce260e86704d6258603eb346eefe2d4a450005c362b223b28402d087f7065ea5eee0314531adf6a580fce64c25dca81c02&quot;,
@@ -1056,7 +1056,7 @@ second</p>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">The order hash identifier set by the user at the time of submission</td>
-<td style="text-align:left">&quot;0x1d923ca7834dc90484<br>fa2eb611f0f0bc7e741b<br>b107007ebea19ba8caea<br>b4f9d3&quot;</td>
+<td style="text-align:left">&quot;0x1d923ca7834dc9<br>0484fa2eb611f0f0<br>bc7e741bb107007e<br>bea19ba8caeab4f9<br>d3&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">status</td>
@@ -1141,10 +1141,10 @@ second</p>
 <tbody>
 <tr>
 <td style="text-align:left">pooled</td>
-<td style="text-align:left">List[<a href="#TokenVolumeV3">TokenVolumeV3</a>]</td>
+<td style="text-align:left">List[<a href="#TokenVolumeV3">TokenVolume<br>V3</a>]</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Describes an amount of a specific token to be supplied to the pool, the seq matters, and must be the same as the pool token list returned by pool info</td>
-<td style="text-align:left">&quot;[{tokenId:0, volume: 100000},{tokenId:0, volume: 100000}]&quot;</td>
+<td style="text-align:left">&quot;[{tokenId:0, volume: 100000},{tokenId<br>:0, volume: 100000}]&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">minimumLp</td>
@@ -1227,7 +1227,7 @@ second</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Join into AMM pool","level":"3.1.33","depth":2,"next":{"title":"Exit an AMM pool","level":"3.1.34","depth":2,"path":"dex_apis/submitAmmPoolExit.md","ref":"dex_apis/submitAmmPoolExit.md","articles":[]},"previous":{"title":"Get AMM pool balance snapshot","level":"3.1.32","depth":2,"path":"dex_apis/getAmmPoolBalance.md","ref":"dex_apis/getAmmPoolBalance.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/submitAmmPoolJoin.md","mtime":"2021-07-07T12:00:13.196Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-07T12:00:14.671Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Join into AMM pool","level":"3.1.33","depth":2,"next":{"title":"Exit an AMM pool","level":"3.1.34","depth":2,"path":"dex_apis/submitAmmPoolExit.md","ref":"dex_apis/submitAmmPoolExit.md","articles":[]},"previous":{"title":"Get AMM pool balance snapshot","level":"3.1.32","depth":2,"path":"dex_apis/getAmmPoolBalance.md","ref":"dex_apis/getAmmPoolBalance.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/submitAmmPoolJoin.md","mtime":"2021-08-11T12:48:54.372Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-11T12:48:55.322Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>

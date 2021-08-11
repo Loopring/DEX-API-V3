@@ -900,7 +900,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="submit-an-order">Submit an order</h2>
-<p>Rate limit: 5 every
+<p>Rate limit: 1 every
 second</p>
 <h3 id="api-overview">API Overview</h3>
 <hr>
@@ -968,17 +968,17 @@ second</p>
 </tr>
 <tr>
 <td style="text-align:left">sellToken</td>
-<td style="text-align:left"><a href="#TokenVolumeV3">TokenVolumeV3</a></td>
+<td style="text-align:left"><a href="#TokenVolumeV3">TokenVolume<br>V3</a></td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Wrapper object used to describe a token associated with a certain quantity.</td>
-<td style="text-align:left">&quot;TokenVolume{tokenId: 0, volume: 1234}&quot;</td>
+<td style="text-align:left">&quot;TokenVolume{toke<br>nId: 0, volume: 1234}&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">buyToken</td>
-<td style="text-align:left"><a href="#TokenVolumeV3">TokenVolumeV3</a></td>
+<td style="text-align:left"><a href="#TokenVolumeV3">TokenVolume<br>V3</a></td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Wrapper object used to describe a token associated with a certain quantity.</td>
-<td style="text-align:left">&quot;TokenVolume{tokenId: 0, volume: 1234}&quot;</td>
+<td style="text-align:left">&quot;TokenVolume{toke<br>nId: 0, volume: 1234}&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">allOrNone</td>
@@ -1013,7 +1013,7 @@ second</p>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">The orders EdDSA signature. The signature is a hexadecimal string obtained by signing the order itself and concatenating the resulting signature parts (Rx, Ry, and S). Used to authenticate and authorize the operation.</td>
-<td style="text-align:left">&quot;13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859&quot;</td>
+<td style="text-align:left">&quot;1337545090129217<br>9417154974849571<br>7930699115173547<br>2039712502763324<br>2680470075859&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">clientOrderId</td>
@@ -1033,7 +1033,7 @@ second</p>
 <td style="text-align:left">tradeChannel</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">N</td>
-<td style="text-align:left">field.SubmitOrderRequestV3.tradeChannel<br>Allowable : [&apos;ORDER_BOOK&apos;, &apos;AMM_POOL&apos;, &apos;MIXED&apos;]</td>
+<td style="text-align:left">Order channel, can be ORDER_BOOK, AMM_POOL, MIXED<br>Allowable : [&apos;ORDER_BOOK&apos;, &apos;AMM_POOL&apos;, &apos;MIXED&apos;]</td>
 <td style="text-align:left">&quot;ORDER_BOOK&quot;</td>
 </tr>
 <tr>
@@ -1041,14 +1041,14 @@ second</p>
 <td style="text-align:left">string</td>
 <td style="text-align:left">N</td>
 <td style="text-align:left">Used by the P2P order which user specify the taker, so far its 0x0000000000000000000000000000000000000000</td>
-<td style="text-align:left">&quot;0x506d67A6f22927a2DA<br>a20a9510EA73D5E66Baf<br>18&quot;</td>
+<td style="text-align:left">&quot;0x506d67A6f22927<br>a2DAa20a9510EA73<br>D5E66Baf18&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">poolAddress</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">N</td>
 <td style="text-align:left">The AMM pool address if order type is AMM</td>
-<td style="text-align:left">&quot;0x506d67A6f22927a2DA<br>a20a9510EA73D5E66Baf<br>18&quot;</td>
+<td style="text-align:left">&quot;0x506d67A6f22927<br>a2DAa20a9510EA73<br>D5E66Baf18&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">affiliate</td>
@@ -1134,7 +1134,7 @@ second</p>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">Order hash of submit order response</td>
-<td style="text-align:left">&quot;13375450901292179417<br>15497484957179306991<br>15173547203971250276<br>33242680470075859&quot;</td>
+<td style="text-align:left">&quot;1337545090129217<br>9417154974849571<br>7930699115173547<br>2039712502763324<br>2680470075859&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">clientOrderId</td>
@@ -1344,7 +1344,7 @@ second</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Submit an order","level":"3.1.6","depth":2,"next":{"title":"Cancel order","level":"3.1.7","depth":2,"path":"dex_apis/cancelOrder.md","ref":"dex_apis/cancelOrder.md","articles":[]},"previous":{"title":"Get order details","level":"3.1.5","depth":2,"path":"dex_apis/getOrderDetail.md","ref":"dex_apis/getOrderDetail.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/submitOrderV3.md","mtime":"2021-07-07T12:00:13.320Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-07T12:00:14.671Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Submit an order","level":"3.1.6","depth":2,"next":{"title":"Cancel order","level":"3.1.7","depth":2,"path":"dex_apis/cancelOrder.md","ref":"dex_apis/cancelOrder.md","articles":[]},"previous":{"title":"Get order details","level":"3.1.5","depth":2,"path":"dex_apis/getOrderDetail.md","ref":"dex_apis/getOrderDetail.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/submitOrderV3.md","mtime":"2021-08-11T12:48:54.482Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-11T12:48:55.322Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>

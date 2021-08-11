@@ -633,7 +633,7 @@
                 <a href="getOrderUserRateAmount.html">
             
                     
-                    api.getOrderUserRateAmount.value
+                    Query current token minimum amount to place order based on users VIP level and max fee bips
             
                 </a>
             
@@ -646,7 +646,7 @@
                 <a href="getBusinessFee2.html">
             
                     
-                    api.getBusinessFee2.value
+                    Query current fee amount
             
                 </a>
             
@@ -900,7 +900,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="submit-internal-transfer">Submit internal transfer</h2>
-<p>&#x6D41;&#x91CF;&#x63A7;&#x5236;: 5 &#x6BCF;
+<p>&#x6D41;&#x91CF;&#x63A7;&#x5236;: 1 &#x6BCF;
 &#x79D2;</p>
 <h3 id="&#x6458;&#x8981;">&#x6458;&#x8981;</h3>
 <hr>
@@ -989,14 +989,14 @@
 </tr>
 <tr>
 <td style="text-align:left">token</td>
-<td style="text-align:left"><a href="#TokenVolumeV3">TokenVolumeV3</a></td>
+<td style="text-align:left"><a href="#TokenVolumeV3">TokenVolume<br>V3</a></td>
 <td style="text-align:left">&#x662F;</td>
 <td style="text-align:left">token to be transfer</td>
 <td style="text-align:left">&quot;{tokenId: 0, volume: 1000000}&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">maxFee</td>
-<td style="text-align:left"><a href="#TokenVolumeV3">TokenVolumeV3</a></td>
+<td style="text-align:left"><a href="#TokenVolumeV3">TokenVolume<br>V3</a></td>
 <td style="text-align:left">&#x662F;</td>
 <td style="text-align:left">maximum fee of the transfer</td>
 <td style="text-align:left">&quot;{tokenId: 0, volume: 1000000}&quot;</td>
@@ -1020,21 +1020,21 @@
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x5426;</td>
 <td style="text-align:left">eddsa signature</td>
-<td style="text-align:left">&quot;0xccf0a141fce2dc5cbb<br>d4f802c52220e9e2ce26<br>0e86704d6258603eb346<br>eefe2d4a450005c362b2<br>23b28402d087f7065ea5<br>eee0314531adf6a580fc<br>e64c25dca81c02&quot;</td>
+<td style="text-align:left">&quot;0xccf0a141fce2dc<br>5cbbd4f802c52220<br>e9e2ce260e86704d<br>6258603eb346eefe<br>2d4a450005c362b2<br>23b28402d087f706<br>5ea5eee0314531ad<br>f6a580fce64c25dc<br>a81c02&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">ecdsaSignature</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x5426;</td>
 <td style="text-align:left">ecdsa signature</td>
-<td style="text-align:left">&quot;0xeb14773e8a07d19bc4<br>fe56e36d041dcb002652<br>f7e92160deaf5e6bf21e<br>05c7a9eb14773e8a07d1<br>9bc4fe56e36d041dcb00<br>2652f7e92160deaf5e6b<br>f21e05c7a9eb14773e8a<br>07d19bc4fe56e36d041d<br>cb002652f7e92160deaf<br>5e6bf21e05c7a9&quot;</td>
+<td style="text-align:left">&quot;0xeb14773e8a07d1<br>9bc4fe56e36d041d<br>cb002652f7e92160<br>deaf5e6bf21e05c7<br>a9eb14773e8a07d1<br>9bc4fe56e36d041d<br>cb002652f7e92160<br>deaf5e6bf21e05c7<br>a9eb14773e8a07d1<br>9bc4fe56e36d041d<br>cb002652f7e92160<br>deaf5e6bf21e05c7<br>a9&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">hashApproved</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x5426;</td>
 <td style="text-align:left">An approved hash string which was already submitted on eth mainnet</td>
-<td style="text-align:left">&quot;0xf7c932351186c3a905<br>3f313eefa16209c018f7<br>f1dba8aa8ca7100400f7<br>c31085&quot;</td>
+<td style="text-align:left">&quot;0xf7c932351186c3<br>a9053f313eefa162<br>09c018f7f1dba8aa<br>8ca7100400f7c310<br>85&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">memo</td>
@@ -1124,7 +1124,7 @@
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x662F;</td>
 <td style="text-align:left">The order hash identifier set by the user at the time of submission</td>
-<td style="text-align:left">&quot;0x1d923ca7834dc90484<br>fa2eb611f0f0bc7e741b<br>b107007ebea19ba8caea<br>b4f9d3&quot;</td>
+<td style="text-align:left">&quot;0x1d923ca7834dc9<br>0484fa2eb611f0f0<br>bc7e741bb107007e<br>bea19ba8caeab4f9<br>d3&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">status</td>
@@ -1266,7 +1266,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Submit internal transfer","level":"3.1.17","depth":2,"next":{"title":"Query user information","level":"3.1.18","depth":2,"path":"dex_apis/getAccount.md","ref":"dex_apis/getAccount.md","articles":[]},"previous":{"title":"Get market recent trades","level":"3.1.16","depth":2,"path":"dex_apis/getMarketTrade.md","ref":"dex_apis/getMarketTrade.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/submitTransfer.md","mtime":"2021-07-07T12:00:12.543Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-07T12:00:14.671Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"Submit internal transfer","level":"3.1.17","depth":2,"next":{"title":"Query user information","level":"3.1.18","depth":2,"path":"dex_apis/getAccount.md","ref":"dex_apis/getAccount.md","articles":[]},"previous":{"title":"Get market recent trades","level":"3.1.16","depth":2,"path":"dex_apis/getMarketTrade.md","ref":"dex_apis/getMarketTrade.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/submitTransfer.md","mtime":"2021-08-11T12:48:53.891Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-11T12:48:55.322Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>

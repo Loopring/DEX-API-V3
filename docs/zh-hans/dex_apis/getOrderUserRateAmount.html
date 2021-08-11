@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>api.getOrderUserRateAmount.value · Loopring API</title>
+        <title>Query current token minimum amount to place order based on users VIP level and max fee bips · Loopring API</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -633,7 +633,7 @@
                 <a href="getOrderUserRateAmount.html">
             
                     
-                    api.getOrderUserRateAmount.value
+                    Query current token minimum amount to place order based on users VIP level and max fee bips
             
                 </a>
             
@@ -646,7 +646,7 @@
                 <a href="getBusinessFee2.html">
             
                     
-                    api.getBusinessFee2.value
+                    Query current fee amount
             
                 </a>
             
@@ -884,7 +884,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >api.getOrderUserRateAmount.value</a>
+        <a href=".." >Query current token minimum amount to place order based on users VIP level and max fee bips</a>
     </h1>
 </div>
 
@@ -899,8 +899,8 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h2 id="apigetorderuserrateamountvalue">api.getOrderUserRateAmount.value</h2>
-<p>&#x6D41;&#x91CF;&#x63A7;&#x5236;: 5 &#x6BCF;
+                                <h2 id="query-current-token-minimum-amount-to-place-order-based-on-users-vip-level-and-max-fee-bips">Query current token minimum amount to place order based on users VIP level and max fee bips</h2>
+<p>&#x6D41;&#x91CF;&#x63A7;&#x5236;: 1 &#x6BCF;
 &#x79D2;</p>
 <h3 id="&#x6458;&#x8981;">&#x6458;&#x8981;</h3>
 <hr>
@@ -909,7 +909,7 @@
 <h4 id="&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;">&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;</h4>
 <p><strong>/api/v3/user/orderUserRateAmount</strong></p>
 <h4 id="&#x529F;&#x80FD;">&#x529F;&#x80FD;</h4>
-<p>api.getOrderUserRateAmount.notes</p>
+<p>This API returns 2 minimum amounts, one is based on users fee rate, the other is based on the maximum fee bips which is 0.6%. In other words, if user wants to keep fee rate, the minimum order is higher, otherwise he needs to pay more but can place less amount orders.</p>
 <h3 id="api-&#x63CF;&#x8FF0;">API &#x63CF;&#x8FF0;</h3>
 <hr>
 <h4 id="http&#x5934;">HTTP&#x5934;</h4>
@@ -985,21 +985,21 @@
 <td style="text-align:left">gasPrice</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">field.getOrderAmountResponseData.gasPrice</td>
+<td style="text-align:left">The gas price use to calculate amount</td>
 <td style="text-align:left">&quot;10000000000&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">amounts</td>
 <td style="text-align:left">List[<a href="#TokenAmount">TokenAmount</a>]</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">field.getOrderAmountResponseData.amounts</td>
+<td style="text-align:left">Amounts</td>
 <td style="text-align:left">/</td>
 </tr>
 <tr>
 <td style="text-align:left">cacheOverdueAt</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">field.getOrderAmountResponseData.cacheOverdueAt</td>
+<td style="text-align:left">Cached price data overdue time</td>
 <td style="text-align:left">1614683483382</td>
 </tr>
 </tbody>
@@ -1044,7 +1044,7 @@
 <h3 id="&#x6A21;&#x578B;">&#x6A21;&#x578B;</h3>
 <hr>
 <h4 id="tokenamount">TokenAmount</h4>
-<p><span id="TokenAmount"></span>model.tokenAmount</p>
+<p><span id="TokenAmount"></span>The result of token amount</p>
 <table>
 <thead>
 <tr>
@@ -1060,34 +1060,34 @@
 <td style="text-align:left">tokenSymbol</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">field.tokenAmount.tokenSymbol</td>
+<td style="text-align:left">Token</td>
 <td style="text-align:left">&quot;LRC&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">discount</td>
 <td style="text-align:left">number</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">field.tokenAmount.discount</td>
+<td style="text-align:left">Fee rate discount</td>
 <td style="text-align:left">1.0</td>
 </tr>
 <tr>
 <td style="text-align:left">baseOrderInfo</td>
 <td style="text-align:left"><a href="#OrderInfo">OrderInfo</a></td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">field.tokenAmount.baseOrderInfo</td>
+<td style="text-align:left">The minimum amount accord with minimum fee rate</td>
 <td style="text-align:left">/</td>
 </tr>
 <tr>
 <td style="text-align:left">userOrderInfo</td>
 <td style="text-align:left"><a href="#OrderInfo">OrderInfo</a></td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">field.tokenAmount.userOrderInfo</td>
+<td style="text-align:left">The minimum amount accord with user fee rate</td>
 <td style="text-align:left">/</td>
 </tr>
 </tbody>
 </table>
 <h4 id="orderinfo">OrderInfo</h4>
-<p><span id="OrderInfo"></span>model.orderInfo</p>
+<p><span id="OrderInfo"></span>The result of token amount</p>
 <table>
 <thead>
 <tr>
@@ -1103,21 +1103,21 @@
 <td style="text-align:left">minAmount</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">field.orderInfo.minAmount</td>
+<td style="text-align:left">The minimum amount</td>
 <td style="text-align:left">&quot;10000000000&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">makerRate</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">field.orderInfo.makerRate</td>
+<td style="text-align:left">Maker rate</td>
 <td style="text-align:left">0</td>
 </tr>
 <tr>
 <td style="text-align:left">takerRate</td>
 <td style="text-align:left">integer</td>
 <td style="text-align:left">&#x5426;</td>
-<td style="text-align:left">field.orderInfo.takerRate</td>
+<td style="text-align:left">Taker rate</td>
 <td style="text-align:left">0</td>
 </tr>
 </tbody>
@@ -1154,7 +1154,7 @@
                 </a>
                 
                 
-                <a href="getBusinessFee2.html" class="navigation navigation-next " aria-label="Next page: api.getBusinessFee2.value">
+                <a href="getBusinessFee2.html" class="navigation navigation-next " aria-label="Next page: Query current fee amount">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -1165,7 +1165,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"api.getOrderUserRateAmount.value","level":"3.1.29","depth":2,"next":{"title":"api.getBusinessFee2.value","level":"3.1.30","depth":2,"path":"dex_apis/getBusinessFee2.md","ref":"dex_apis/getBusinessFee2.md","articles":[]},"previous":{"title":"Query user place order fee rate","level":"3.1.28","depth":2,"path":"dex_apis/getUserFeeRates2.md","ref":"dex_apis/getUserFeeRates2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/getOrderUserRateAmount.md","mtime":"2021-07-07T12:00:12.764Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-07T12:00:14.671Z"},"basePath":"..","book":{"language":"zh-hans"}});
+            gitbook.page.hasChanged({"page":{"title":"Query current token minimum amount to place order based on users VIP level and max fee bips","level":"3.1.29","depth":2,"next":{"title":"Query current fee amount","level":"3.1.30","depth":2,"path":"dex_apis/getBusinessFee2.md","ref":"dex_apis/getBusinessFee2.md","articles":[]},"previous":{"title":"Query user place order fee rate","level":"3.1.28","depth":2,"path":"dex_apis/getUserFeeRates2.md","ref":"dex_apis/getUserFeeRates2.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/getOrderUserRateAmount.md","mtime":"2021-08-11T12:48:54.021Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-11T12:48:55.322Z"},"basePath":"..","book":{"language":"zh-hans"}});
         });
     </script>
 </div>

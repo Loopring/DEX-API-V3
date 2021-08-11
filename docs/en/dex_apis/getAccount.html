@@ -900,7 +900,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="query-user-information">Query user information</h2>
-<p>Rate limit: 5 every
+<p>Rate limit: 1 every
 second</p>
 <h3 id="api-overview">API Overview</h3>
 <hr>
@@ -980,7 +980,7 @@ second</p>
 <td style="text-align:left"><a href="#PublicKey">PublicKey</a></td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">The user&apos;s public key</td>
-<td style="text-align:left">&quot;{x:0x241707bcc6d7a4c<br>cf10304be248d343a527<br>e85f61b45d721544d027<br>cc1f2fb5f,y:0x302f3a<br>521dbdd1d0eb1944c832<br>3d4ac3b3e9c9201f4aa4<br>3a2565054886369d9c}&quot;</td>
+<td style="text-align:left">&quot;{x:0x241707bcc6d<br>7a4ccf10304be248<br>d343a527e85f61b4<br>5d721544d027cc1f<br>2fb5f,y:0x302f3a<br>521dbdd1d0eb1944<br>c8323d4ac3b3e9c9<br>201f4aa43a256505<br>4886369d9c}&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">tags</td>
@@ -996,6 +996,13 @@ second</p>
 <td style="text-align:left">field.DexAccountV3.nonce</td>
 <td style="text-align:left">0</td>
 </tr>
+<tr>
+<td style="text-align:left">keyNonce</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left">field.DexAccountV3.keyNonce</td>
+<td style="text-align:left">0</td>
+</tr>
 </tbody>
 </table>
 <h4 id="response-example">Response example</h4>
@@ -1008,7 +1015,8 @@ second</p>
         <span class="hljs-string">&quot;y&quot;</span> : <span class="hljs-string">&quot;0x302f3a521dbdd1d0eb1944c8323d4ac3b3e9c9201f4aa43a2565054886369d9c&quot;</span>
     },
     <span class="hljs-string">&quot;tags&quot;</span> : <span class="hljs-string">&quot;vip_1&quot;</span>,
-    <span class="hljs-string">&quot;nonce&quot;</span> : <span class="hljs-number">0</span>
+    <span class="hljs-string">&quot;nonce&quot;</span> : <span class="hljs-number">0</span>,
+    <span class="hljs-string">&quot;keyNonce&quot;</span> : <span class="hljs-number">0</span>
 }
 </code></pre>
 <h4 id="status-code">Status code</h4>
@@ -1054,14 +1062,14 @@ second</p>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">The public keys x part.</td>
-<td style="text-align:left">&quot;0x241707bcc6d7a4ccf1<br>0304be248d343a527e85<br>f61b45d721544d027cc1<br>f2fb5f&quot;</td>
+<td style="text-align:left">&quot;0x241707bcc6d7a4<br>ccf10304be248d34<br>3a527e85f61b45d7<br>21544d027cc1f2fb<br>5f&quot;</td>
 </tr>
 <tr>
 <td style="text-align:left">y</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">Y</td>
 <td style="text-align:left">The public keys y part.</td>
-<td style="text-align:left">&quot;0x302f3a521dbdd1d0eb<br>1944c8323d4ac3b3e9c9<br>201f4aa43a2565054886<br>369d9c&quot;</td>
+<td style="text-align:left">&quot;0x302f3a521dbdd1<br>d0eb1944c8323d4a<br>c3b3e9c9201f4aa4<br>3a2565054886369d<br>9c&quot;</td>
 </tr>
 </tbody>
 </table>
@@ -1108,7 +1116,7 @@ second</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Query user information","level":"3.1.18","depth":2,"next":{"title":"Update account EDDSA key","level":"3.1.19","depth":2,"path":"dex_apis/submitUpdateAccount.md","ref":"dex_apis/submitUpdateAccount.md","articles":[]},"previous":{"title":"Submit internal transfer","level":"3.1.17","depth":2,"path":"dex_apis/submitTransfer.md","ref":"dex_apis/submitTransfer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getAccount.md","mtime":"2021-07-07T12:00:13.233Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-07-07T12:00:14.671Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Query user information","level":"3.1.18","depth":2,"next":{"title":"Update account EDDSA key","level":"3.1.19","depth":2,"path":"dex_apis/submitUpdateAccount.md","ref":"dex_apis/submitUpdateAccount.md","articles":[]},"previous":{"title":"Submit internal transfer","level":"3.1.17","depth":2,"path":"dex_apis/submitTransfer.md","ref":"dex_apis/submitTransfer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getAccount.md","mtime":"2021-08-11T12:48:54.403Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-08-11T12:48:55.322Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
