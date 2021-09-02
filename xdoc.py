@@ -38,8 +38,9 @@ path = '{}/tpls/'.format(os.path.dirname(__file__))
 loader = FileSystemLoader(path)
 ENV = Environment(loader=loader)
 
-INDENT = 4
-SEG_SIZE = 16
+INDENT = 2
+SEG_SIZE = 12
+DESCRIPTION_SIZE = 48
 
 EXAM_HEADERS = {
     'X-API-KEY' : 'sra1aavfa',
@@ -74,7 +75,7 @@ def get_link(ref):
     # return '<a href="%s#%s">%s</a>'%(
     #     '../REST_APIS.md' if ref == 'ResultInfo' else '', ref, re.sub('[a-z]', '', ref))
     return '<a href="%s#%s">%s</a>'%(
-        '../REST_APIS.md' if ref == 'ResultInfo' else '', ref, seg_obj(ref, 12))
+        '../REST_APIS.md' if ref == 'ResultInfo' else '', ref, seg_obj(ref, 8))
 
 def create_html_type(field):
     if (field.get('type') is None):
@@ -190,6 +191,37 @@ def set_field(f, t, field, tField = None,
         else:
             LOGGER.error(message)
 
+# This function is used to seg long obj name
+# for better shown in markdown table cell.
+def seg_obj(word, segSize):
+    def process(stack):
+        seg = ''.join(stack)
+        if len(seg) > segSize and len(stack) > 1:
+            last = stack.pop()
+            seg = ''.join(stack)
+            return seg, [last]
+        elif len(seg) > segSize:
+            seg = ''.join(stack)
+            return seg, []
+        else:
+            return "", stack
+
+    words = [w for w in re.split("(?=[A-Z])", word) if w]
+    assert(len(words) > 0)
+    segs = []
+    stack = []
+    while(len(words) > 0):
+        stack.append(words.pop(0))
+        seg, stack = process(stack)
+        if seg:
+            segs.append(seg)
+
+    # while (len(stack) > 0)
+    segs.append(''.join(stack))
+    print(f"seg obj {word} to {segs}")
+
+    return '<br/>'.join(segs)
+
 # This function is used to seg long word
 # for better shown in markdown table cell.
 def seg_str(word, segSize):
@@ -201,25 +233,6 @@ def seg_str(word, segSize):
     while (i < length):
         segs.append(word[i : i + segSize])
         i += segSize
-    return '<br/>'.join(segs)
-
-# This function is used to seg long objname like TokenAmountInfoV3
-# for better shown in markdown table cell.
-def seg_obj(word, segSize):
-    length = len(word)
-    if (length < segSize):
-        return word
-    res_list = re.findall('[A-Z][^A-Z]*', word)
-    segs = []
-    i = 0
-    while i < len(res_list):
-        line = res_list[i]
-        assert len(line) <= segSize
-        while i+1 < len(res_list) and len(line + res_list[i+1]) < segSize:
-            line += res_list[i+1]
-            i += 1
-        i += 1
-        segs.append(line)
     return '<br/>'.join(segs)
 
 def modifyStr(content, segSize):

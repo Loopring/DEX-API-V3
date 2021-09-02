@@ -1,5 +1,8 @@
 {
   "summary": {
+    "ChangeLog": {
+      "ChangeLog": "版本更新日志"
+    },
     "About": {
       "About": "关于",
       "Loopring": "路印",
@@ -78,6 +81,7 @@
     "candlestick": "Candlestick更新",
     "account": "账号金额更新",
     "order": "用户订单更新",
-    "ammsnapshot": "AMM资金池快照"
+    "ammsnapshot": "AMM资金池快照",
+    "blockgen": "二层提交块信息"
   }
 }

@@ -11,7 +11,13 @@
 
 ## 参数列表
 
-该主题不支持任何参数。
+该主题支持一个可选的`v3`标记，用于表示是否订阅`v3`格式，即包含NFT信息的消息。
+
+|  Parameter |  Required |              Note                |
+| :---- | :--- |:--------------------------------- |
+| accountId | N | apiKey绑定了account,因此不必传 |
+| v3 | N | 是否订阅`v3`格式，默认为否，即兼容之前的订阅格式 |
+
 
 
 ## 推送示例
@@ -35,11 +41,33 @@
 
 #### 推送消息数据结构
 
+如果是`v3`消息
+
+| 字段  |        类型         | 必现 |       说明       |
+| :--- | :----------------- | :------ | :-------------- |
+| topic |       JSON        |    是    | 主题和参数 |
+|  ts   |       integer       |    是    |     推送时间（毫秒）     |
+| data  | [BalanceV3](#balanceV3) |    是    |     余额信息(包含NFT信息)     |
+
+否则和之前一样
+
 | 字段  |        类型         | 必现 |       说明       |
 | :--- | :----------------- | :------ | :-------------- |
 | topic |       JSON        |    是    | 主题和参数 |
 |  ts   |       integer       |    是    |     推送时间（毫秒）     |
 | data  | [Balance](#balance) |    是    |     余额信息     |
+
+#### <span id= "balanceV3">BalanceV3</span> 
+
+|     Field     |  Type   | Required |    Note    |
+| :---------- | :----- | :------ | :-------- |
+|  accountId   | integer |    Y    |   Account ID   |
+|   tokenId    | integer |    Y    |   Token ID   |
+| total  | string  |    Y    |  Total token balance  |
+| locked | string  |    Y    | Token balance locked by orders |
+| nftId  | string  |    N    |  NFT ID if it's NFT token  |
+| nftData | string  |    N    | NFT hash data if it's NFT token |
+| tokenAddress  | string  |    N    |  Nft token address if it's NFT token  |
 
 #### <span id= "balance">Balance数据结构</span> 
 

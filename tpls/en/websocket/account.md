@@ -8,11 +8,14 @@ Subscribe to this topic to receive notifications about user balance update.
 - Topic name: `account`
 ApiKey requred: Yes
 
-
-
 ## Parameters
 
-This topic doesn't support any parameter.
+This topic has an optional flag: `v3`, which indicates the response is for v3 which has also include NFT info. if the flag is false or absent, the response is just like before.
+
+|  Parameter |  Required |              Note                |
+| :---- | :--- |:--------------------------------- |
+| accountId | N | not required as apiKey also link to an account |
+| v3 | N | If it's a v3 sub which contains NFT info, default is false for compatible with previous sub topic |
 
 
 ## Notification example
@@ -36,11 +39,33 @@ This topic doesn't support any parameter.
 
 #### Notification
 
+If v3 is `true`:
+
+| Field  |        Type         | Required |       Note       |
+| :--- | :----------------- | :------ | :-------------- |
+| topic |       JSON        |    Y    | Topic and parameters |
+|  ts   |       integer       |    Y    |     Notification timestamp (milliseconds)     |
+| data  | [BalanceV3](#balanceV3) |    Y    |     User's new balances (NFT info included)  |
+
+Otherwise:
+
 | Field  |        Type         | Required |       Note       |
 | :--- | :----------------- | :------ | :-------------- |
 | topic |       JSON        |    Y    | Topic and parameters |
 |  ts   |       integer       |    Y    |     Notification timestamp (milliseconds)     |
 | data  | [Balance](#balance) |    Y    |     User's new balances   |
+
+#### <span id= "balanceV3">BalanceV3</span> 
+
+|     Field     |  Type   | Required |    Note    |
+| :---------- | :----- | :------ | :-------- |
+|  accountId   | integer |    Y    |   Account ID   |
+|   tokenId    | integer |    Y    |   Token ID   |
+| total  | string  |    Y    |  Total token balance  |
+| locked | string  |    Y    | Token balance locked by orders |
+| nftId  | string  |    N    |  NFT ID if it's NFT token  |
+| nftData | string  |    N    | NFT hash data if it's NFT token |
+| tokenAddress  | string  |    N    |  Nft token address if it's NFT token  |
 
 #### <span id= "balance">Balance</span> 
 

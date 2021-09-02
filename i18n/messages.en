@@ -1,5 +1,8 @@
 {
   "summary": {
+    "ChangeLog": {
+      "ChangeLog": "ChangeLog"
+    },
     "About": {
       "About": "About",
       "Loopring": "Loopring",
@@ -78,6 +81,7 @@
     "candlestick": "Candlestick Notification",
     "account": "Account Notification",
     "order": "Order Notification",
-    "ammsnapshot": "AMM Pool Snapshot"
+    "ammsnapshot": "AMM Pool Snapshot",
+    "blockgen": "L2 Block Generation"
   }
 }

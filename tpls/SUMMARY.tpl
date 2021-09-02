@@ -1,5 +1,9 @@
 # Summary
 
+## {{l.summary.ChangeLog.ChangeLog}}
+
+* [{{l.summary.ChangeLog.ChangeLog}}](ChangeLog.md)
+
 ## {{l.summary.About.About}}
 
 * [{{l.summary.About.Loopring}}](README.md)
@@ -30,4 +34,5 @@
     * [{{l.websocket.ticker}}](websocket/ticker.md)
     * [{{l.websocket.candlestick}}](websocket/candlestick.md)
     * [{{l.websocket.ammsnapshot}}](websocket/ammsnapshot.md)
+    * [{{l.websocket.blockgen}}](websocket/blockgen.md)
 

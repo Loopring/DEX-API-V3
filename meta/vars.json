@@ -46,7 +46,10 @@
         "/api/v3/amm/join",
         "/api/v3/amm/exit",
         "/api/v3/amm/user/transactions",
-        "/api/v3/amm/trades"
+        "/api/v3/amm/trades",
+
+        "/api/v3/block/getBlock",
+        "/api/v3/block/getPendingRequests"
     ],
     "no_key": [
         "------------------user---------------",
