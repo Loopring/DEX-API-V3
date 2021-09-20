@@ -14,3 +14,7 @@
   2. Refine block generation websocket notification, add `verbose` flag to get detail info.
   3. Add `hashes` filter to L2 tx queries.
   4. getStorageId logic changed, a new flag `maxNext` to back compatible with previous behavior.
+
+## 2021.09.20:
+  1. Make /api/v3/user/transfers a general transfer query by hash without accountId.
+
