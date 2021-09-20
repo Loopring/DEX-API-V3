@@ -959,7 +959,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="users-amm-joinexit-transactions">User&apos;s AMM join/exit transactions</h2>
-<p>Rate limit: 1 every
+<p>Rate limit: 5 every
 second</p>
 <h3 id="api-overview">API Overview</h3>
 <hr>
@@ -1103,7 +1103,9 @@ second</p>
         <span class="hljs-string">&quot;feeAmount&quot;</span> : <span class="hljs-string">&quot;500000&quot;</span>
       },
       <span class="hljs-string">&quot;createdAt&quot;</span> : <span class="hljs-number">1608189538074</span>,
-      <span class="hljs-string">&quot;updatedAt&quot;</span> : <span class="hljs-number">1608209538074</span>
+      <span class="hljs-string">&quot;updatedAt&quot;</span> : <span class="hljs-number">1608209538074</span>,
+      <span class="hljs-string">&quot;blockId&quot;</span> : integer,
+      <span class="hljs-string">&quot;indexInBlock&quot;</span> : integer
     }
   ]
 }
@@ -1217,6 +1219,20 @@ second</p>
 <td style="text-align:left">Transaction update time</td>
 <td style="text-align:left">1608209538074</td>
 </tr>
+<tr>
+<td style="text-align:left">blockId</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">/</td>
+</tr>
+<tr>
+<td style="text-align:left">indexInBlock</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">Y</td>
+<td style="text-align:left"></td>
+<td style="text-align:left">/</td>
+</tr>
 </tbody>
 </table>
 <h4 id="ammtransferdatav3">AmmTransferDataV3</h4>
@@ -1305,7 +1321,7 @@ second</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"User's AMM join/exit transactions","level":"4.1.35","depth":2,"next":{"title":"get AMM pool trade transactions","level":"4.1.36","depth":2,"path":"dex_apis/getAmmTrades.md","ref":"dex_apis/getAmmTrades.md","articles":[]},"previous":{"title":"Exit an AMM pool","level":"4.1.34","depth":2,"path":"dex_apis/submitAmmPoolExit.md","ref":"dex_apis/submitAmmPoolExit.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getAmmUserTransactions.md","mtime":"2021-09-02T07:09:28.238Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-02T07:09:29.420Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"User's AMM join/exit transactions","level":"4.1.35","depth":2,"next":{"title":"get AMM pool trade transactions","level":"4.1.36","depth":2,"path":"dex_apis/getAmmTrades.md","ref":"dex_apis/getAmmTrades.md","articles":[]},"previous":{"title":"Exit an AMM pool","level":"4.1.34","depth":2,"path":"dex_apis/submitAmmPoolExit.md","ref":"dex_apis/submitAmmPoolExit.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getAmmUserTransactions.md","mtime":"2021-09-20T11:39:42.587Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-20T11:39:44.051Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>

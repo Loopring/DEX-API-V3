@@ -959,7 +959,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="update-account-eddsa-key">Update account EDDSA key</h2>
-<p>Rate limit: 1 every
+<p>Rate limit: 5 every
 second</p>
 <h3 id="api-overview">API Overview</h3>
 <hr>
@@ -1054,6 +1054,13 @@ second</p>
 <td style="text-align:left">1</td>
 </tr>
 <tr>
+<td style="text-align:left">keySeed</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">KeySeed of users L2 eddsaKey, the L2 key should be generated from this seed, i.e., L2_EDDSA_KEY=eth.sign(keySeed). Otherwise, user may meet error in login loopring DEX</td>
+<td style="text-align:left">&quot;Sign this message to access Loopring Exchange: 0xbbbbca6a90<br>1c926f240b89<br>eacb641d8aec<br>7aeafd with key nonce: 103&quot;</td>
+</tr>
+<tr>
 <td style="text-align:left">eddsaSignature</td>
 <td style="text-align:left">string</td>
 <td style="text-align:left">N</td>
@@ -1100,6 +1107,7 @@ second</p>
   },
   <span class="hljs-attr">&quot;validUntil&quot;</span> : <span class="hljs-number">1583183141</span>,
   <span class="hljs-attr">&quot;nonce&quot;</span> : <span class="hljs-number">1</span>,
+  <span class="hljs-attr">&quot;keySeed&quot;</span> : <span class="hljs-string">&quot;Sign this message to access Loopring Exchange: 0xbbbbca6a901c926f240b89eacb641d8aec7aeafd with key nonce: 103&quot;</span>,
   <span class="hljs-attr">&quot;eddsaSignature&quot;</span> : <span class="hljs-string">&quot;0xccf0a141fce2dc5cbbd4f802c52220e9e2ce260e86704d6258603eb346eefe2d4a450005c362b223b28402d087f7065ea5eee0314531adf6a580fce64c25dca81c02&quot;</span>,
   <span class="hljs-attr">&quot;ecdsaSignature&quot;</span> : <span class="hljs-string">&quot;0xeb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9eb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9eb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9&quot;</span>,
   <span class="hljs-attr">&quot;hashApproved&quot;</span> : <span class="hljs-string">&quot;0xf7c932351186c3a9053f313eefa16209c018f7f1dba8aa8ca7100400f7c31085&quot;</span>
@@ -1118,6 +1126,7 @@ second</p>
   },
   &quot;validUntil&quot; : 1583183141,
   &quot;nonce&quot; : 1,
+  &quot;keySeed&quot; : &quot;Sign this message to access Loopring Exchange: 0xbbbbca6a901c926f240b89eacb641d8aec7aeafd with key nonce: 103&quot;,
   &quot;eddsaSignature&quot; : &quot;0xccf0a141fce2dc5cbbd4f802c52220e9e2ce260e86704d6258603eb346eefe2d4a450005c362b223b28402d087f7065ea5eee0314531adf6a580fce64c25dca81c02&quot;,
   &quot;ecdsaSignature&quot; : &quot;0xeb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9eb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9eb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9&quot;,
   &quot;hashApproved&quot; : &quot;0xf7c932351186c3a9053f313eefa16209c018f7f1dba8aa8ca7100400f7c31085&quot;
@@ -1310,7 +1319,7 @@ second</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Update account EDDSA key","level":"4.1.19","depth":2,"next":{"title":"Get user registration transactions","level":"4.1.20","depth":2,"path":"dex_apis/getUserCreate.md","ref":"dex_apis/getUserCreate.md","articles":[]},"previous":{"title":"Query user information","level":"4.1.18","depth":2,"path":"dex_apis/getAccount.md","ref":"dex_apis/getAccount.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/submitUpdateAccount.md","mtime":"2021-09-02T07:09:28.129Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-02T07:09:29.420Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Update account EDDSA key","level":"4.1.19","depth":2,"next":{"title":"Get user registration transactions","level":"4.1.20","depth":2,"path":"dex_apis/getUserCreate.md","ref":"dex_apis/getUserCreate.md","articles":[]},"previous":{"title":"Query user information","level":"4.1.18","depth":2,"path":"dex_apis/getAccount.md","ref":"dex_apis/getAccount.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/submitUpdateAccount.md","mtime":"2021-09-20T11:39:42.487Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-20T11:39:44.051Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
