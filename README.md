@@ -1,6 +1,8 @@
 # DEX-API
 Loopring 文档。
 
+## use node v12.16.3    
+
 ## 准备
 
 ### 安装 node.js

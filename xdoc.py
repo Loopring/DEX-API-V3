@@ -585,9 +585,9 @@ def get_request_headers(operationId):
     return ret
 
 def get_tps(api):
-    tps = VARS['tps'].get(
-        (api['path'], api['method'].lower()), VARS['tps']['default'])
-    return tps
+    # tps = VARS['tps'].get(
+    #     (api['path'], api['method'].lower()), VARS['tps']['default'])
+    return 5
 
 def generate_api_doc(operationId, path, filename):
     apiTpl = ENV.get_template('api_doc.tpl')
@@ -673,10 +673,11 @@ def load_info():
     inf.close()
 
 def load_tps_config():
-    global VARS
-    inf = open('./%s/gatewayconf/limit_rate.json'%(TPS_CONFIG))
-    VARS['tps'] = parse_tps(json.loads(inf.read()))
-    inf.close()
+    # global VARS
+    # inf = open('./%s/gatewayconf/limit_rate.json'%(TPS_CONFIG))
+    # VARS['tps'] = parse_tps(json.loads(inf.read()))
+    # inf.close()
+    pass
 
 def build_doc():
     load_info()
