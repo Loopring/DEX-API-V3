@@ -172,7 +172,20 @@
         
         
     
-        <li class="chapter " data-level="3.1" data-path="../basics/general_info.html">
+        <li class="chapter " data-level="3.1" data-path="../basics/status.html">
+            
+                <a href="../basics/status.html">
+            
+                    
+                    Relayer Status
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../basics/general_info.html">
             
                 <a href="../basics/general_info.html">
             
@@ -185,7 +198,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.2" data-path="../basics/key_mgmt.html">
+        <li class="chapter " data-level="3.3" data-path="../basics/key_mgmt.html">
             
                 <a href="../basics/key_mgmt.html">
             
@@ -198,7 +211,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.3" data-path="../basics/signing.html">
+        <li class="chapter " data-level="3.4" data-path="../basics/signing.html">
             
                 <a href="../basics/signing.html">
             
@@ -211,7 +224,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.4" data-path="../basics/orders.html">
+        <li class="chapter " data-level="3.5" data-path="../basics/orders.html">
             
                 <a href="../basics/orders.html">
             
@@ -224,7 +237,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.5" data-path="../basics/examples.html">
+        <li class="chapter " data-level="3.6" data-path="../basics/examples.html">
             
                 <a href="../basics/examples.html">
             
@@ -237,7 +250,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.6" data-path="../basics/contracts.html">
+        <li class="chapter " data-level="3.7" data-path="../basics/contracts.html">
             
                 <a href="../basics/contracts.html">
             
@@ -250,7 +263,7 @@
             
         </li>
     
-        <li class="chapter " data-level="3.7" data-path="../basics/uat_token.html">
+        <li class="chapter " data-level="3.8" data-path="../basics/uat_token.html">
             
                 <a href="../basics/uat_token.html">
             
@@ -959,7 +972,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h2 id="query-user-information">Query user information</h2>
-<p>Rate limit: 5 every
+<p>Rate limit: 1 every
 second</p>
 <h3 id="api-overview">API Overview</h3>
 <hr>
@@ -988,19 +1001,26 @@ second</p>
 <tr>
 <td style="text-align:left">owner</td>
 <td style="text-align:left">string</td>
-<td style="text-align:left">Y</td>
-<td style="text-align:left">Ethereum address</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">Ethereum address, either owner or accountId should be presented.</td>
 <td style="text-align:left">&quot;0x123456&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">accountId</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">N</td>
+<td style="text-align:left">AccountID, if owner is presented, it must be align with the owners accountId, otherwise an error occurs.</td>
+<td style="text-align:left">10003</td>
 </tr>
 </tbody>
 </table>
 <h4 id="request-example">Request example</h4>
-<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">GET</span> <span class="hljs-string">https://api3.loopring.io/api/v3/account?owner=0x123456</span> HTTP/1.1
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">GET</span> <span class="hljs-string">https://api3.loopring.io/api/v3/account?owner=0x123456&amp;accountId=10003</span> HTTP/1.1
 <span class="hljs-attribute">Host</span>: api3.loopring.io
 <span class="hljs-attribute">Connection</span>: keep-alive
 <span class="hljs-attribute">Accept</span>: */*
 <span class="hljs-attribute">Accept-Encoding</span>: gzip, deflate, br
-<span class="hljs-attribute">Accept-Language</span>: zh,en;q=0.9</code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl https://api3.loopring.io/api/v3/account\?owner\=0x123456</code></pre></div></div></div></p>
+<span class="hljs-attribute">Accept-Language</span>: zh,en;q=0.9</code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl https://api3.loopring.io/api/v3/account\?owner\=0x123456\&amp;accountId\=10003</code></pre></div></div></div></p>
 <h4 id="response-fields">Response fields</h4>
 <table>
 <thead>
@@ -1183,7 +1203,7 @@ second</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Query user information","level":"4.1.18","depth":2,"next":{"title":"Update account EDDSA key","level":"4.1.19","depth":2,"path":"dex_apis/submitUpdateAccount.md","ref":"dex_apis/submitUpdateAccount.md","articles":[]},"previous":{"title":"Submit internal transfer","level":"4.1.17","depth":2,"path":"dex_apis/submitTransfer.md","ref":"dex_apis/submitTransfer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getAccount.md","mtime":"2021-09-20T13:12:21.307Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-09-20T13:12:22.542Z"},"basePath":"..","book":{"language":"en"}});
+            gitbook.page.hasChanged({"page":{"title":"Query user information","level":"4.1.18","depth":2,"next":{"title":"Update account EDDSA key","level":"4.1.19","depth":2,"path":"dex_apis/submitUpdateAccount.md","ref":"dex_apis/submitUpdateAccount.md","articles":[]},"previous":{"title":"Submit internal transfer","level":"4.1.17","depth":2,"path":"dex_apis/submitTransfer.md","ref":"dex_apis/submitTransfer.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"en","gitbook":"*"},"file":{"path":"dex_apis/getAccount.md","mtime":"2021-10-28T10:04:19.226Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2021-10-28T10:04:20.580Z"},"basePath":"..","book":{"language":"en"}});
         });
     </script>
 </div>
