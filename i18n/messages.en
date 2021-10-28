@@ -9,6 +9,7 @@
       "Glossary": "Glossary"
     },
     "Basics": {
+      "Status": "Relayer Status",
       "Basics": "Fundamental",
       "GeneralInfo": "General Info",
       "ManageAPIKey": "Key Management",

@@ -9,6 +9,7 @@
       "Glossary": "术语"
     },
     "Basics": {
+      "Status": "后台服务状态",
       "Basics": "基础",
       "GeneralInfo": "基本信息",
       "ManageAPIKey": "秘钥管理",
