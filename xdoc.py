@@ -586,7 +586,7 @@ def get_request_headers(operationId):
 
 def get_tps(api):
     tps = VARS['tps'].get(
-        (api['path'], api['method'].lower()), VARS['tps']['default'])
+        (api['path'], api['method'].lower()), 5)
     return tps
 
 def generate_api_doc(operationId, path, filename):
