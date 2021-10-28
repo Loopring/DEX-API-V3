@@ -10,7 +10,7 @@
 * [{{l.summary.About.Glossary}}](GLOSSARY.md)
 
 ## {{l.summary.Basics.Basics}}
-
+* [{{l.summary.Basics.Status}}](basics/status.md)
 * [{{l.summary.Basics.GeneralInfo}}](basics/general_info.md)
 * [{{l.summary.Basics.ManageAPIKey}}](basics/key_mgmt.md)
 * [{{l.summary.Basics.HashAndSigning}}](basics/signing.md)
