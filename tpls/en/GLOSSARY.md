@@ -21,7 +21,7 @@ User requests sent to Loopring Exchange using Loopring's API.
 The target token to trade. For example, in the LRC-ETH trading pair, LRC is referred to as the base token.
 
 ### Quote Token
-The token to quote price. For example, in the LRC-ETH trading pair, ETH is referred to as the base token.
+The token to quote price. For example, in the LRC-ETH trading pair, ETH is referred to as the quote token.
 
 ### Size
 The quantity of the base token in an order or a fill.

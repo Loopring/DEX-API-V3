@@ -17,3 +17,6 @@
 
 ## 2021.09.20:
   1. Make /api/v3/user/transfers a general transfer query by hash without accountId.
+
+## 2021.11.29:
+1. Fix typo
