@@ -13,7 +13,7 @@ header:
 X-API-KEY = bEef7a3Nzk7lgaHm85E0O1JO5ufu0iQ96p3bCmrsZz8TLGG83jTpPDYwcjUC0vlF
 
 request:
-https://uat2.loopring.io/api/v3/user/offchainFee?accountId=11329&requestType=3&tokenSymbol=0x0000000000000000000000000000000000000000&amount=2000000000000
+https://api3.loopring.io/api/v3/user/offchainFee?accountId=11329&requestType=3&tokenSymbol=0x0000000000000000000000000000000000000000&amount=2000000000000
 
 response:
 {
@@ -49,7 +49,7 @@ header:
 X-API-KEY = bEef7a3Nzk7lgaHm85E0O1JO5ufu0iQ96p3bCmrsZz8TLGG83jTpPDYwcjUC0vlF
 
 request:
-https://uat2.loopring.io/api/v3/storageId?accountId=11329&sellTokenId=0
+https://api3.loopring.io/api/v3/storageId?accountId=11329&sellTokenId=0
 
 response:
 {
@@ -73,7 +73,7 @@ payeeId: set to 0 is ok
 
 
 ````
-https://uat2.loopring.io/api/v3/transfer
+https://api3.loopring.io/api/v3/transfer
 
 header: 
 X-API-KEY = bEef7a3Nzk7lgaHm85E0O1JO5ufu0iQ96p3bCmrsZz8TLGG83jTpPDYwcjUC0vlF
