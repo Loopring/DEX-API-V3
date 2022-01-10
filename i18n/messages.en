@@ -19,6 +19,10 @@
       "DEXContracts": "Smart Contracts",
       "UatToken":"Uat Tokens"
     },
+    "Integrations": {
+      "Integrations": "Integrations",
+      "TransferToken": "Transfer Token"
+    },
     "APISpec": {
       "APISpec": "API Specification (2.0)",
       "RESTAPI": "REST API",

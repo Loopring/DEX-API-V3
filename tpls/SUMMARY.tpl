@@ -19,6 +19,10 @@
 * [{{l.summary.Basics.DEXContracts}}](basics/contracts.md)
 * [{{l.summary.Basics.UatToken}}](basics/uat_token.md)
 
+## {{l.summary.Integrations.Integrations}}
+
+* [{{l.summary.Integrations.TransferToken}}](integrations/transfer_token.md)
+
 ## [{{l.summary.APISpec.APISpec}}](dex_api_overview.md)
 
 * [{{l.summary.APISpec.RESTAPI}}](REST_APIS.md)

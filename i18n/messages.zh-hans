@@ -19,6 +19,10 @@
       "DEXContracts": "智能合约",
       "UatToken":"Uat环境Token"
     },
+    "Integrations": {
+      "Integrations": "集成用例",
+      "TransferToken": "Token转账"
+    },
     "APISpec": {
       "APISpec": "API规范（2.0）",
       "RESTAPI": "REST API",
