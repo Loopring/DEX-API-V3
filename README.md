@@ -76,3 +76,8 @@ gitbook install 命令用来安装插件，一般来说运行一次即可。除�
 
 文档会发布到下面的页面：
 https://loopring.github.io/DEX-API-V3/
+https://docs.loopring.io
+
+
+## 自动部署
+目前该文档是有王东在Vercel平台上自动部署的，部署使用的分支是v3-draft，部署过程假设docs目录已经生成完善。也就是说部署过程其实不运行任何命令行来更新文档。
