@@ -2,13 +2,13 @@
 
 ## route:
 
-    http://powerlight.loopring.network:8080/prod/status?language=en    
-    
+    https://static.loopring.io/status/dexStatus.json
+
 ## status
 
     status code of Relayer service.
     0: means healthy status
-    1 means relayer is under upgrading
+    1: means relayer is under upgrading
 
 ## from
 
