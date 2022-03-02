@@ -21,7 +21,11 @@
     },
     "Integrations": {
       "Integrations": "集成用例",
-      "TransferToken": "Token转账"
+      "OpenLayer2Account": "创建二层账号",
+      "TransferErc20Token": "ERC20转账",
+      "CounterFactualNft": "反事实NFT",
+      "PayPayeeUpdateAccountFee": "支付收款方UpdateAccount Fee",
+      "UpdateAccountKeySeed": "设置UpdateAccount KeySeed"
     },
     "APISpec": {
       "APISpec": "API规范（2.0）",

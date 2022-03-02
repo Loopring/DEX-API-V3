@@ -21,7 +21,11 @@
     },
     "Integrations": {
       "Integrations": "Integrations",
-      "TransferToken": "Transfer Token"
+      "OpenLayer2Account": "Layer2 OpenAccount",
+      "TransferErc20Token": "Transfer ERC20",
+      "CounterFactualNft": "CounterFactual Nft",
+      "PayPayeeUpdateAccountFee": "Pay Payee UpdateAccount Fee",
+      "UpdateAccountKeySeed": "Set UpdateAccount KeySeed"
     },
     "APISpec": {
       "APISpec": "API Specification (2.0)",

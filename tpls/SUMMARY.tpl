@@ -21,7 +21,11 @@
 
 ## {{l.summary.Integrations.Integrations}}
 
-* [{{l.summary.Integrations.TransferToken}}](integrations/transfer_token.md)
+* [{{l.summary.Integrations.OpenLayer2Account}}](integrations/open_layer2_account.md)
+* [{{l.summary.Integrations.TransferErc20Token}}](integrations/transfer_erc20_token.md)
+* [{{l.summary.Integrations.CounterFactualNft}}](integrations/counter_factual_nft.md)
+* [{{l.summary.Integrations.PayPayeeUpdateAccountFee}}](integrations/pay_payee_updateAccount_fee.md)
+* [{{l.summary.Integrations.UpdateAccountKeySeed}}](integrations/update_account_with_keyseed.md)
 
 ## [{{l.summary.APISpec.APISpec}}](dex_api_overview.md)
 

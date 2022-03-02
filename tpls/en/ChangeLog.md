@@ -19,4 +19,7 @@
   1. Make /api/v3/user/transfers a general transfer query by hash without accountId.
 
 ## 2021.11.29:
-1. Fix typo
+  1. Fix typo
+
+## 2022.03.02:
+  1. Add NFT related
