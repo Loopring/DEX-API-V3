@@ -1,0 +1,1777 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Mint a NFT token in Loopring L2 · Loopring API</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-katex/katex.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-codetabs/codetabs.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-insert-logo/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-flexible-alerts/style.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-hints/plugin-hints.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-code/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="submitNftTransfer.html" />
+    
+    
+    <link rel="prev" href="getMixedMarkets.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        <li class="header">版本更新日志</li>
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../ChangeLog.html">
+            
+                <a href="../ChangeLog.html">
+            
+                    
+                    版本更新日志
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">关于</li>
+        
+        
+    
+        <li class="chapter " data-level="2.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    路印
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="2.2" data-path="../GLOSSARY.html">
+            
+                <a href="../GLOSSARY.html">
+            
+                    
+                    术语
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">基础</li>
+        
+        
+    
+        <li class="chapter " data-level="3.1" data-path="../basics/status.html">
+            
+                <a href="../basics/status.html">
+            
+                    
+                    后台服务状态
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.2" data-path="../basics/general_info.html">
+            
+                <a href="../basics/general_info.html">
+            
+                    
+                    基本信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.3" data-path="../basics/key_mgmt.html">
+            
+                <a href="../basics/key_mgmt.html">
+            
+                    
+                    秘钥管理
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.4" data-path="../basics/signing.html">
+            
+                <a href="../basics/signing.html">
+            
+                    
+                    请求签名
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.5" data-path="../basics/orders.html">
+            
+                <a href="../basics/orders.html">
+            
+                    
+                    订单模型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.6" data-path="../basics/examples.html">
+            
+                <a href="../basics/examples.html">
+            
+                    
+                    示范代码
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.7" data-path="../basics/contracts.html">
+            
+                <a href="../basics/contracts.html">
+            
+                    
+                    智能合约
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="3.8" data-path="../basics/uat_token.html">
+            
+                <a href="../basics/uat_token.html">
+            
+                    
+                    Uat环境Token
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">集成用例</li>
+        
+        
+    
+        <li class="chapter " data-level="4.1" data-path="../integrations/transfer_token.md">
+            
+                <span>
+            
+                    
+                    Token转账
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+    
+        
+        <li class="header">API规范（2.0）</li>
+        
+        
+    
+        <li class="chapter " data-level="5.1" data-path="../REST_APIS.html">
+            
+                <a href="../REST_APIS.html">
+            
+                    
+                    REST API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="5.1.1" data-path="getTimestamp.html">
+            
+                <a href="getTimestamp.html">
+            
+                    
+                    Get relayer's current time
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.2" data-path="getApiKey.html">
+            
+                <a href="getApiKey.html">
+            
+                    
+                    Get user ApiKey
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.3" data-path="applyApiKey.html">
+            
+                <a href="applyApiKey.html">
+            
+                    
+                    Update user's ApiKey
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.4" data-path="getNextStorageId.html">
+            
+                <a href="getNextStorageId.html">
+            
+                    
+                    Get next storage ID
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.5" data-path="getOrderDetail.html">
+            
+                <a href="getOrderDetail.html">
+            
+                    
+                    Get order details
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.6" data-path="submitOrderV3.html">
+            
+                <a href="submitOrderV3.html">
+            
+                    
+                    Submit an order
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.7" data-path="cancelOrder.html">
+            
+                <a href="cancelOrder.html">
+            
+                    
+                    Cancel order
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.8" data-path="getOrders.html">
+            
+                <a href="getOrders.html">
+            
+                    
+                    Get multiple orders
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.9" data-path="getMarkets.html">
+            
+                <a href="getMarkets.html">
+            
+                    
+                    Get market configurations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.10" data-path="getTokens.html">
+            
+                <a href="getTokens.html">
+            
+                    
+                    Get token configurations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.11" data-path="getExchangeInfo.html">
+            
+                <a href="getExchangeInfo.html">
+            
+                    
+                    Get exchange configurations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.12" data-path="getDepth.html">
+            
+                <a href="getDepth.html">
+            
+                    
+                    Get market orderbook
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.13" data-path="getTicker.html">
+            
+                <a href="getTicker.html">
+            
+                    
+                    Get market ticker
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.14" data-path="getCandlestick.html">
+            
+                <a href="getCandlestick.html">
+            
+                    
+                    Get market candlestick
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.15" data-path="getPrice.html">
+            
+                <a href="getPrice.html">
+            
+                    
+                    Get token fiat prices
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.16" data-path="getMarketTrade.html">
+            
+                <a href="getMarketTrade.html">
+            
+                    
+                    Get market recent trades
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.17" data-path="submitTransfer.html">
+            
+                <a href="submitTransfer.html">
+            
+                    
+                    Submit internal transfer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.18" data-path="getAccount.html">
+            
+                <a href="getAccount.html">
+            
+                    
+                    Query user information
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.19" data-path="submitUpdateAccount.html">
+            
+                <a href="submitUpdateAccount.html">
+            
+                    
+                    Update account EDDSA key
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.20" data-path="getUserCreate.html">
+            
+                <a href="getUserCreate.html">
+            
+                    
+                    Get user registration transactions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.21" data-path="getUserUpdate.html">
+            
+                <a href="getUserUpdate.html">
+            
+                    
+                    Get password reset transactions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.22" data-path="getUserBalances.html">
+            
+                <a href="getUserBalances.html">
+            
+                    
+                    Get user exchange balances
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.23" data-path="getUserDeposits.html">
+            
+                <a href="getUserDeposits.html">
+            
+                    
+                    Get user deposit history
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.24" data-path="getUserWithdrawals.html">
+            
+                <a href="getUserWithdrawals.html">
+            
+                    
+                    Get user onchain withdrawal history
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.25" data-path="submitOffChainWithdrawal.html">
+            
+                <a href="submitOffChainWithdrawal.html">
+            
+                    
+                    Submit offchain withdraw request
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.26" data-path="getUserTransfers.html">
+            
+                <a href="getUserTransfers.html">
+            
+                    
+                    Get user transfer list
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.27" data-path="getUserTrades.html">
+            
+                <a href="getUserTrades.html">
+            
+                    
+                    Get user trade history
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.28" data-path="getUserFeeRates2.html">
+            
+                <a href="getUserFeeRates2.html">
+            
+                    
+                    Query user place order fee rate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.29" data-path="getOrderUserRateAmount.html">
+            
+                <a href="getOrderUserRateAmount.html">
+            
+                    
+                    Query current token minimum amount to place order based on users VIP level and max fee bips
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.30" data-path="getBusinessFee2.html">
+            
+                <a href="getBusinessFee2.html">
+            
+                    
+                    Query current fee amount
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.31" data-path="getAmmPools.html">
+            
+                <a href="getAmmPools.html">
+            
+                    
+                    Get AMM pool configurations
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.32" data-path="getAmmPoolBalance.html">
+            
+                <a href="getAmmPoolBalance.html">
+            
+                    
+                    Get AMM pool balance snapshot
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.33" data-path="submitAmmPoolJoin.html">
+            
+                <a href="submitAmmPoolJoin.html">
+            
+                    
+                    Join into AMM pool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.34" data-path="submitAmmPoolExit.html">
+            
+                <a href="submitAmmPoolExit.html">
+            
+                    
+                    Exit an AMM pool
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.35" data-path="getAmmUserTransactions.html">
+            
+                <a href="getAmmUserTransactions.html">
+            
+                    
+                    User's AMM join/exit transactions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.36" data-path="getAmmTrades.html">
+            
+                <a href="getAmmTrades.html">
+            
+                    
+                    get AMM pool trade transactions
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.37" data-path="getMixedDepth.html">
+            
+                <a href="getMixedDepth.html">
+            
+                    
+                    api.getMixedDepth.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.38" data-path="getMixedTicker.html">
+            
+                <a href="getMixedTicker.html">
+            
+                    
+                    api.getMixedTicker.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.39" data-path="getMixedCandlestick.html">
+            
+                <a href="getMixedCandlestick.html">
+            
+                    
+                    api.getMixedCandlestick.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.40" data-path="getMixedMarkets.html">
+            
+                <a href="getMixedMarkets.html">
+            
+                    
+                    api.getMixedMarkets.value
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="5.1.41" data-path="submitMintNft.html">
+            
+                <a href="submitMintNft.html">
+            
+                    
+                    Mint a NFT token in Loopring L2
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.42" data-path="submitNftTransfer.html">
+            
+                <a href="submitNftTransfer.html">
+            
+                    
+                    Submit internal NFT transfer
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.43" data-path="validateNftOrder.html">
+            
+                <a href="validateNftOrder.html">
+            
+                    
+                    Validate a NFT order
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.44" data-path="submitNftTrade.html">
+            
+                <a href="submitNftTrade.html">
+            
+                    
+                    Settle down an NFT trade which has two matched orders
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.45" data-path="submitOffChainNftWithdrawal.html">
+            
+                <a href="submitOffChainNftWithdrawal.html">
+            
+                    
+                    Withdraw a NFT token
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.46" data-path="getNftsInfo.html">
+            
+                <a href="getNftsInfo.html">
+            
+                    
+                    Query NFT info by looprings nftData
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.47" data-path="getNftData.html">
+            
+                <a href="getNftData.html">
+            
+                    
+                    Query nftDatas by minter, tokenAddress and nftID.
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.48" data-path="getNftHolders.html">
+            
+                <a href="getNftHolders.html">
+            
+                    
+                    Query NFT holders by looprings nftData
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.49" data-path="getNftOrderUserRateAmount.html">
+            
+                <a href="getNftOrderUserRateAmount.html">
+            
+                    
+                    Query current token minimum amount to place order based on users VIP level and max fee bips
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.50" data-path="getUserNftBalances.html">
+            
+                <a href="getUserNftBalances.html">
+            
+                    
+                    Get users NFT balance
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.51" data-path="getNftTrades.html">
+            
+                <a href="getNftTrades.html">
+            
+                    
+                    Users Nft trade list
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.52" data-path="getNftTransfers.html">
+            
+                <a href="getNftTransfers.html">
+            
+                    
+                    Get user NFT transfer history
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.53" data-path="getUserNftMints.html">
+            
+                <a href="getUserNftMints.html">
+            
+                    
+                    Get user NFT mint history
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.54" data-path="getNftDeposits.html">
+            
+                <a href="getNftDeposits.html">
+            
+                    
+                    Get user NFT deposit history
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.55" data-path="getNftWithdrawals.html">
+            
+                <a href="getNftWithdrawals.html">
+            
+                    
+                    Get user NFT withdraw history
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.56" data-path="getNftRequestFees.html">
+            
+                <a href="getNftRequestFees.html">
+            
+                    
+                    Query current NFT requests fee amount
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.57" data-path="getUserNftOrderFeeRates.html">
+            
+                <a href="getUserNftOrderFeeRates.html">
+            
+                    
+                    Query user place order fee rate
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.58" data-path="getBlock.html">
+            
+                <a href="getBlock.html">
+            
+                    
+                    Get L2 block info
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="5.1.59" data-path="getPendingRequests.html">
+            
+                <a href="getPendingRequests.html">
+            
+                    
+                    Get pending txs
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+        
+        <li class="divider"></li>
+        
+        
+    
+        <li class="chapter " data-level="6.1" data-path="../websocket/overview.html">
+            
+                <a href="../websocket/overview.html">
+            
+                    
+                    WebSocket API
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="6.1.1" data-path="../websocket/account.html">
+            
+                <a href="../websocket/account.html">
+            
+                    
+                    账号金额更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.2" data-path="../websocket/order.html">
+            
+                <a href="../websocket/order.html">
+            
+                    
+                    用户订单更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.3" data-path="../websocket/orderbook.html">
+            
+                <a href="../websocket/orderbook.html">
+            
+                    
+                    订单簿更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.4" data-path="../websocket/trade.html">
+            
+                <a href="../websocket/trade.html">
+            
+                    
+                    最新成交更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.5" data-path="../websocket/ticker.html">
+            
+                <a href="../websocket/ticker.html">
+            
+                    
+                    Ticker更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.6" data-path="../websocket/candlestick.html">
+            
+                <a href="../websocket/candlestick.html">
+            
+                    
+                    Candlestick更新
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.7" data-path="../websocket/ammsnapshot.html">
+            
+                <a href="../websocket/ammsnapshot.html">
+            
+                    
+                    AMM资金池快照
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="6.1.8" data-path="../websocket/blockgen.html">
+            
+                <a href="../websocket/blockgen.html">
+            
+                    
+                    二层提交块信息
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >Mint a NFT token in Loopring L2</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h2 id="mint-a-nft-token-in-loopring-l2">Mint a NFT token in Loopring L2</h2>
+<p>&#x6D41;&#x91CF;&#x63A7;&#x5236;: 5 &#x6BCF;
+&#x79D2;</p>
+<h3 id="&#x6458;&#x8981;">&#x6458;&#x8981;</h3>
+<hr>
+<h4 id="http-&#x65B9;&#x6CD5;">HTTP &#x65B9;&#x6CD5;</h4>
+<p><strong>POST</strong></p>
+<h4 id="&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;">&#x8BBF;&#x95EE;&#x8DEF;&#x5F84;</h4>
+<p><strong>/api/v3/nft/mint</strong></p>
+<h4 id="&#x529F;&#x80FD;">&#x529F;&#x80FD;</h4>
+<p>Mint a NFT token in Loopring L2</p>
+<h3 id="api-&#x63CF;&#x8FF0;">API &#x63CF;&#x8FF0;</h3>
+<hr>
+<h4 id="http&#x5934;">HTTP&#x5934;</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x5FC5;&#x987B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">X-API-KEY</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">ApiKey</td>
+<td style="text-align:left">&quot;HlkcGxbqBeaF76j4rvPaOasyfPwnkQ<br>6B6DQ6THZWbvrAGxzEdulXQvOKLrRW<br>ZLnN&quot;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x8BF7;&#x6C42;&#x53C2;&#x6570;">&#x8BF7;&#x6C42;&#x53C2;&#x6570;</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x5FC5;&#x987B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">exchange</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">field.SubmitNftMintRequest.exchange</td>
+<td style="text-align:left">&quot;1&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">minterId</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">minters accountId</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">minterAddress</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">minters address</td>
+<td style="text-align:left">&quot;0xbbbbca6a90<br>1c926f240b89<br>eacb641d8aec<br>7aeafd&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">toAccountId</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">=The account receive the minted NFT token, now should be minter himself.</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">toAddress</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x5426;</td>
+<td style="text-align:left">field.SubmitNftMintRequest.toAddress</td>
+<td style="text-align:left">&quot;0xbbbbca6a90<br>1c926f240b89<br>eacb641d8aec<br>7aeafd&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">nftType</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">nftType: 0 for EIP1155, 1 for EIP712. EIP1155 by default.</td>
+<td style="text-align:left">&quot;0:ERC1155,1:<br>ERC721&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">tokenAddress</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">field.SubmitNftMintRequest.tokenAddress</td>
+<td style="text-align:left">&quot;0xbbbbca6a90<br>1c926f240b89<br>eacb641d8aec<br>7aeafd&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">nftId</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">NFT_ID</td>
+<td style="text-align:left">&quot;0xf7c9323511<br>86c3a9053f31<br>3eefa16209c0<br>18f7f1dba8aa<br>8ca7100400f7<br>c31085&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">amount</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">how many tokens to be mint.</td>
+<td style="text-align:left">&quot;1&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">creatorFeeBips</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">fee to the creator of each NFT transaction.</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">validUntil</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">field.SubmitNftMintRequest.validUntil</td>
+<td style="text-align:left">1567053142</td>
+</tr>
+<tr>
+<td style="text-align:left">storageId</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">field.SubmitNftMintRequest.storageId</td>
+<td style="text-align:left">1</td>
+</tr>
+<tr>
+<td style="text-align:left">maxFee</td>
+<td style="text-align:left"><a href="#TokenAmountInfo">Token<br>Amount<br>Info</a></td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">field.SubmitNftMintRequest.tokenB</td>
+<td style="text-align:left">&quot;TokenAmount{<br>tokenId: 0, amount: 1234}&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">eddsaSignature</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x5426;</td>
+<td style="text-align:left">field.SubmitNftMintRequest.eddsaSignature</td>
+<td style="text-align:left">&quot;0xccf0a141fc<br>e2dc5cbbd4f8<br>02c52220e9e2<br>ce260e86704d<br>6258603eb346<br>eefe2d4a4500<br>05c362b223b2<br>8402d087f706<br>5ea5eee03145<br>31adf6a580fc<br>e64c25dca81c<br>02&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">ecdsaSignature</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x5426;</td>
+<td style="text-align:left">field.SubmitNftMintRequest.ecdsaSignature</td>
+<td style="text-align:left">&quot;0xeb14773e8a<br>07d19bc4fe56<br>e36d041dcb00<br>2652f7e92160<br>deaf5e6bf21e<br>05c7a9eb1477<br>3e8a07d19bc4<br>fe56e36d041d<br>cb002652f7e9<br>2160deaf5e6b<br>f21e05c7a9eb<br>14773e8a07d1<br>9bc4fe56e36d<br>041dcb002652<br>f7e92160deaf<br>5e6bf21e05c7<br>a9&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">hashApproved</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x5426;</td>
+<td style="text-align:left">field.SubmitNftMintRequest.hashApproved</td>
+<td style="text-align:left">&quot;0xf7c9323511<br>86c3a9053f31<br>3eefa16209c0<br>18f7f1dba8aa<br>8ca7100400f7<br>c31085&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">forceToMint</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">&#x5426;</td>
+<td style="text-align:left">force to mint, regardless the previous mint record</td>
+<td style="text-align:left">&quot;false&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">counterFactualNftInfo</td>
+<td style="text-align:left"><a href="#CounterFactualNftInfo">Counter<br>Factual<br>NftInfo</a></td>
+<td style="text-align:left">&#x5426;</td>
+<td style="text-align:left">field.SubmitNftMintRequest.counterFactualNftInfo</td>
+<td style="text-align:left">&quot;{nftFactory: 0xABCD, nftOwner: 0xABCD, nftBaseUri: }&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">royaltyAddress</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x5426;</td>
+<td style="text-align:left">field.CounterFactualNftInfo.royaltyAddress</td>
+<td style="text-align:left">&quot;0xbbbbca6a90<br>1c926f240b89<br>eacb641d8aec<br>7aeafd&quot;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x8BF7;&#x6C42;&#x793A;&#x4F8B;">&#x8BF7;&#x6C42;&#x793A;&#x4F8B;</h4>
+<p><div class="codetabs"><div class="codetabs-header"><div class="tab active" data-codetab="0">HTTP</div><div class="tab" data-codetab="1">CURL</div></div><div class="codetabs-body"><div class="tab active" data-codetab="0"><pre><code class="lang-http"><span class="hljs-keyword">POST</span> <span class="hljs-string">https://api3.loopring.io/api/v3/nft/mint</span> HTTP/1.1
+<span class="hljs-attribute">Host</span>: api3.loopring.io
+<span class="hljs-attribute">Connection</span>: keep-alive
+<span class="hljs-attribute">Accept</span>: */*
+<span class="hljs-attribute">Accept-Encoding</span>: gzip, deflate, br
+<span class="hljs-attribute">Accept-Language</span>: zh,en;q=0.9
+<span class="hljs-attribute">X-API-KEY</span>: sra1aavfa
+<span class="hljs-attribute">Content-Type</span>: application/json
+
+<span class="clojure">{
+  <span class="hljs-string">&quot;exchange&quot;</span> : <span class="hljs-string">&quot;1&quot;</span>,
+  <span class="hljs-string">&quot;minterId&quot;</span> : <span class="hljs-number">1</span>,
+  <span class="hljs-string">&quot;minterAddress&quot;</span> : <span class="hljs-string">&quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;</span>,
+  <span class="hljs-string">&quot;toAccountId&quot;</span> : <span class="hljs-number">1</span>,
+  <span class="hljs-string">&quot;toAddress&quot;</span> : <span class="hljs-string">&quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;</span>,
+  <span class="hljs-string">&quot;nftType&quot;</span> : <span class="hljs-number">0</span><span class="hljs-symbol">:ERC1155</span>,<span class="hljs-number">1</span><span class="hljs-symbol">:ERC721</span>,
+  <span class="hljs-string">&quot;tokenAddress&quot;</span> : <span class="hljs-string">&quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;</span>,
+  <span class="hljs-string">&quot;nftId&quot;</span> : <span class="hljs-string">&quot;0xf7c932351186c3a9053f313eefa16209c018f7f1dba8aa8ca7100400f7c31085&quot;</span>,
+  <span class="hljs-string">&quot;amount&quot;</span> : <span class="hljs-string">&quot;1&quot;</span>,
+  <span class="hljs-string">&quot;creatorFeeBips&quot;</span> : <span class="hljs-number">0</span>,
+  <span class="hljs-string">&quot;validUntil&quot;</span> : <span class="hljs-number">1567053142</span>,
+  <span class="hljs-string">&quot;storageId&quot;</span> : <span class="hljs-number">1</span>,
+  <span class="hljs-string">&quot;maxFee&quot;</span> : {
+    <span class="hljs-string">&quot;tokenId&quot;</span> : <span class="hljs-number">0</span>,
+    <span class="hljs-string">&quot;amount&quot;</span> : <span class="hljs-string">&quot;1&quot;</span>
+  },
+  <span class="hljs-string">&quot;eddsaSignature&quot;</span> : <span class="hljs-string">&quot;0xccf0a141fce2dc5cbbd4f802c52220e9e2ce260e86704d6258603eb346eefe2d4a450005c362b223b28402d087f7065ea5eee0314531adf6a580fce64c25dca81c02&quot;</span>,
+  <span class="hljs-string">&quot;ecdsaSignature&quot;</span> : <span class="hljs-string">&quot;0xeb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9eb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9eb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9&quot;</span>,
+  <span class="hljs-string">&quot;hashApproved&quot;</span> : <span class="hljs-string">&quot;0xf7c932351186c3a9053f313eefa16209c018f7f1dba8aa8ca7100400f7c31085&quot;</span>,
+  <span class="hljs-string">&quot;forceToMint&quot;</span> : <span class="hljs-literal">false</span>,
+  <span class="hljs-string">&quot;counterFactualNftInfo&quot;</span> : {
+    <span class="hljs-string">&quot;nftFactory&quot;</span> : <span class="hljs-string">&quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;</span>,
+    <span class="hljs-string">&quot;nftOwner&quot;</span> : <span class="hljs-string">&quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;</span>,
+    <span class="hljs-string">&quot;nftBaseUri&quot;</span> : <span class="hljs-string">&quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;</span>
+  },
+  <span class="hljs-string">&quot;royaltyAddress&quot;</span> : <span class="hljs-string">&quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;</span>
+}</span></code></pre></div><div class="tab" data-codetab="1"><pre><code class="lang-bash">curl -X POST -H <span class="hljs-string">&quot;X-API-KEY:sra1aavfa&quot;</span> -H <span class="hljs-string">&quot;Content-Type:application/json&quot;</span> https://api3.loopring.io/api/v3/nft/mint <span class="hljs-_">-d</span> \
+<span class="hljs-string">&apos;{
+  &quot;exchange&quot; : &quot;1&quot;,
+  &quot;minterId&quot; : 1,
+  &quot;minterAddress&quot; : &quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;,
+  &quot;toAccountId&quot; : 1,
+  &quot;toAddress&quot; : &quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;,
+  &quot;nftType&quot; : 0:ERC1155,1:ERC721,
+  &quot;tokenAddress&quot; : &quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;,
+  &quot;nftId&quot; : &quot;0xf7c932351186c3a9053f313eefa16209c018f7f1dba8aa8ca7100400f7c31085&quot;,
+  &quot;amount&quot; : &quot;1&quot;,
+  &quot;creatorFeeBips&quot; : 0,
+  &quot;validUntil&quot; : 1567053142,
+  &quot;storageId&quot; : 1,
+  &quot;maxFee&quot; : {
+    &quot;tokenId&quot; : 0,
+    &quot;amount&quot; : &quot;1&quot;
+  },
+  &quot;eddsaSignature&quot; : &quot;0xccf0a141fce2dc5cbbd4f802c52220e9e2ce260e86704d6258603eb346eefe2d4a450005c362b223b28402d087f7065ea5eee0314531adf6a580fce64c25dca81c02&quot;,
+  &quot;ecdsaSignature&quot; : &quot;0xeb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9eb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9eb14773e8a07d19bc4fe56e36d041dcb002652f7e92160deaf5e6bf21e05c7a9&quot;,
+  &quot;hashApproved&quot; : &quot;0xf7c932351186c3a9053f313eefa16209c018f7f1dba8aa8ca7100400f7c31085&quot;,
+  &quot;forceToMint&quot; : false,
+  &quot;counterFactualNftInfo&quot; : {
+    &quot;nftFactory&quot; : &quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;,
+    &quot;nftOwner&quot; : &quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;,
+    &quot;nftBaseUri&quot; : &quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;
+  },
+  &quot;royaltyAddress&quot; : &quot;0xbbbbca6a901c926f240b89eacb641d8aec7aeafd&quot;
+}&apos;</span></code></pre></div></div></div></p>
+<h4 id="&#x54CD;&#x5E94;&#x5B57;&#x6BB5;">&#x54CD;&#x5E94;&#x5B57;&#x6BB5;</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x5FC5;&#x987B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">hash</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">Mint request hash.</td>
+<td style="text-align:left">&quot;133754509012<br>921794171549<br>748495717930<br>699115173547<br>203971250276<br>332426804700<br>75859&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">nftTokenId</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">field.SubmitMintNftResponseItem.nftTokenId</td>
+<td style="text-align:left">32768</td>
+</tr>
+<tr>
+<td style="text-align:left">nftData</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">Mint tokens nftData.</td>
+<td style="text-align:left">&quot;0xf7c9323511<br>86c3a9053f31<br>3eefa16209c0<br>18f7f1dba8aa<br>8ca7100400f7<br>c31085&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">status</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">Mint status.<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [&apos;processing&apos;, &apos;processed&apos;, &apos;cancelling&apos;, &apos;cancelled&apos;, &apos;expired&apos;, &apos;failed&apos;]</td>
+<td style="text-align:left">&quot;cancelled&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">isIdempotent</td>
+<td style="text-align:left">boolean</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">Idempotent of submit order response. True if the same request is sent more than once.<br>&#x53D6;&#x503C;&#x8303;&#x56F4; : [True, False]</td>
+<td style="text-align:left">&quot;false&quot;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="&#x54CD;&#x5E94;&#x793A;&#x4F8B;">&#x54CD;&#x5E94;&#x793A;&#x4F8B;</h4>
+<pre><code class="lang-json">{
+  <span class="hljs-string">&quot;hash&quot;</span> : <span class="hljs-string">&quot;13375450901292179417154974849571793069911517354720397125027633242680470075859&quot;</span>,
+  <span class="hljs-string">&quot;nftTokenId&quot;</span> : <span class="hljs-number">32768</span>,
+  <span class="hljs-string">&quot;nftData&quot;</span> : <span class="hljs-string">&quot;0xf7c932351186c3a9053f313eefa16209c018f7f1dba8aa8ca7100400f7c31085&quot;</span>,
+  <span class="hljs-string">&quot;status&quot;</span> : <span class="hljs-string">&quot;cancelled&quot;</span>,
+  <span class="hljs-string">&quot;isIdempotent&quot;</span> : <span class="hljs-literal">false</span>
+}
+</code></pre>
+<h4 id="&#x72B6;&#x6001;&#x7801;">&#x72B6;&#x6001;&#x7801;</h4>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x72B6;&#x6001;&#x7801;</th>
+<th style="text-align:left">&#x63CF;&#x8FF0;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">100000</td>
+<td style="text-align:left">Unknown error</td>
+</tr>
+<tr>
+<td style="text-align:left">100001</td>
+<td style="text-align:left">Invalid argument</td>
+</tr>
+<tr>
+<td style="text-align:left">102001</td>
+<td style="text-align:left">Exchange ID is incorrect</td>
+</tr>
+<tr>
+<td style="text-align:left">102021</td>
+<td style="text-align:left">Nonce is invalid</td>
+</tr>
+<tr>
+<td style="text-align:left">102022</td>
+<td style="text-align:left">Transfer sender is invalid</td>
+</tr>
+<tr>
+<td style="text-align:left">102023</td>
+<td style="text-align:left">Transfer receiver is invalid</td>
+</tr>
+<tr>
+<td style="text-align:left">102024</td>
+<td style="text-align:left">Fee token is unsupported</td>
+</tr>
+<tr>
+<td style="text-align:left">102025</td>
+<td style="text-align:left">Transfer token isnt consistent with fee token</td>
+</tr>
+<tr>
+<td style="text-align:left">108003</td>
+<td style="text-align:left">code.108003</td>
+</tr>
+</tbody>
+</table>
+<h3 id="&#x6A21;&#x578B;">&#x6A21;&#x578B;</h3>
+<hr>
+<h4 id="tokenamountinfo">TokenAmountInfo</h4>
+<p><span id="TokenAmountInfo"></span>Wrapper object used to describe a token associated with a certain quantity.</p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x5FC5;&#x987B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">tokenId</td>
+<td style="text-align:left">integer</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">The Loopring&apos;s NFT token identifier.</td>
+<td style="text-align:left">0</td>
+</tr>
+<tr>
+<td style="text-align:left">amount</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">The amount of the NFT token</td>
+<td style="text-align:left">&quot;1&quot;</td>
+</tr>
+</tbody>
+</table>
+<h4 id="counterfactualnftinfo">CounterFactualNftInfo</h4>
+<p><span id="CounterFactualNftInfo"></span></p>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">&#x5B57;&#x6BB5;</th>
+<th style="text-align:left">&#x7C7B;&#x578B;</th>
+<th style="text-align:left">&#x5FC5;&#x987B;</th>
+<th style="text-align:left">&#x8BF4;&#x660E;</th>
+<th style="text-align:left">&#x4E3E;&#x4F8B;</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">nftFactory</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">field.CounterFactualNftInfo.nftFactory</td>
+<td style="text-align:left">&quot;0xbbbbca6a90<br>1c926f240b89<br>eacb641d8aec<br>7aeafd&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">nftOwner</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x662F;</td>
+<td style="text-align:left">field.CounterFactualNftInfo.nftOwner</td>
+<td style="text-align:left">&quot;0xbbbbca6a90<br>1c926f240b89<br>eacb641d8aec<br>7aeafd&quot;</td>
+</tr>
+<tr>
+<td style="text-align:left">nftBaseUri</td>
+<td style="text-align:left">string</td>
+<td style="text-align:left">&#x5426;</td>
+<td style="text-align:left">field.CounterFactualNftInfo.nftBaseUri</td>
+<td style="text-align:left">&quot;0xbbbbca6a90<br>1c926f240b89<br>eacb641d8aec<br>7aeafd&quot;</td>
+</tr>
+</tbody>
+</table>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="getMixedMarkets.html" class="navigation navigation-prev " aria-label="Previous page: api.getMixedMarkets.value">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="submitNftTransfer.html" class="navigation navigation-next " aria-label="Next page: Submit internal NFT transfer">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Mint a NFT token in Loopring L2","level":"5.1.41","depth":2,"next":{"title":"Submit internal NFT transfer","level":"5.1.42","depth":2,"path":"dex_apis/submitNftTransfer.md","ref":"dex_apis/submitNftTransfer.md","articles":[]},"previous":{"title":"api.getMixedMarkets.value","level":"5.1.40","depth":2,"path":"dex_apis/getMixedMarkets.md","ref":"dex_apis/getMixedMarkets.md","articles":[]},"dir":"ltr"},"config":{"plugins":["-lunr","-search","-sharing","-fontsettings","expandable-chapters","custom-favicon","katex","codetabs","search-pro","insert-logo","sharing-plus","flexible-alerts","hints","back-to-top-button","code"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"search-pro":{},"codetabs":{},"sharing-plus":{"qq":false,"all":["facebook","google","twitter","instapaper","linkedin","pocket","stumbleupon"],"douban":false,"facebook":true,"weibo":false,"instapaper":false,"whatsapp":false,"hatenaBookmark":false,"twitter":true,"messenger":false,"line":false,"vk":false,"pocket":true,"google":false,"viber":false,"stumbleupon":false,"qzone":false,"linkedin":false},"hints":{"danger":"fa fa-exclamation-circle","info":"fa fa-info-circle","tip":"fa fa-mortar-board","working":"fa fa-wrench"},"code":{"copyButtons":true},"katex":{},"fontsettings":{"theme":"white","family":"sans","size":1},"highlight":{},"favicon":"./gitbook/images/favicon.ico","back-to-top-button":{},"custom-favicon":{},"flexible-alerts":{"danger":{"className":"danger","icon":"fa fa-ban","label":"Attention"},"note":{"className":"info","icon":"fa fa-info-circle","label":"Note"},"style":"callout","tip":{"className":"tip","icon":"fa fa-lightbulb-o","label":"Tip"},"warning":{"className":"warning","icon":"fa fa-exclamation-triangle","label":"Warning"}},"sharing":{"weibo":true,"facebook":true},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false},"insert-logo":{"style":"background: none; max-height: 28px; min-height: 28px","url":"https://exchange.loopring.io/assets/images/logo.svg"},"expandable-chapters":{}},"theme":"default","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Loopring API","language":"zh-hans","gitbook":"*"},"file":{"path":"dex_apis/submitMintNft.md","mtime":"2022-03-02T08:46:47.881Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2022-03-02T08:46:50.575Z"},"basePath":"..","book":{"language":"zh-hans"}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-expandable-chapters/expandable-chapters.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-codetabs/codetabs.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-insert-logo/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing-plus/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-flexible-alerts/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-code/plugin.js"></script>
+        
+    
+
+    </body>
+</html>
+
