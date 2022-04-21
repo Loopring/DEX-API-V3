@@ -1347,12 +1347,12 @@ respone:
 </code></pre><h2 id="2-erc20-transfer">2 ERC20 transfer</h2>
 <h3 id="21-get-fee">2.1 Get fee</h3>
 <p><a href="https://docs-uat.loopring.io/en/dex_apis/getBusinessFee2.html" target="_blank">GET api: api/v3/user/offchainFee</a></p>
-<p>transfer: requestType is 3</p>
+<p>transfer: requestType is 15 (TRANSFER_AND_UPDATE_ACCOUNT)</p>
 <pre><code>header: 
 X-API-KEY = bEef7a3Nzk7lgaHm85E0O1JO5ufu0iQ96p3bCmrsZz8TLGG83jTpPDYwcjUC0vlF
 
 request:
-https://uat2.loopring.io/api/v3/user/offchainFee?accountId=11329&amp;requestType=3&amp;tokenSymbol=0x0000000000000000000000000000000000000000&amp;amount=2000000000000
+https://uat2.loopring.io/api/v3/user/offchainFee?accountId=11329&amp;requestType=15
 
 response:
 {
