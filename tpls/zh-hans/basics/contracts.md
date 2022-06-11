@@ -19,4 +19,4 @@ The following is a list of smart contract addresses for the Loopring Protocol an
 
 #### Open Sourced
 
-The code of the Loopring Protocol is entirely open-sourced, including its [design document](https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/DESIGN.md), [smart contracts](https://github.com/Loopring/protocols/tree/master/packages/loopring_v3/contracts), and [ZKP circuits](https://github.com/Loopring/protocols/tree/master/packages/loopring_v3/circuit). If you have any questions, please email the Loopring Foundation at [foundation@loopirng.org](email:foundation@looopring.org).
+The code of the Loopring Protocol is entirely open-sourced, including its [design document](https://github.com/Loopring/protocols/blob/master/packages/loopring_v3/DESIGN.md), [smart contracts](https://github.com/Loopring/protocols/tree/master/packages/loopring_v3/contracts), and [ZKP circuits](https://github.com/Loopring/protocols/tree/master/packages/loopring_v3/circuit). If you have any questions, please email the Loopring Foundation at [foundation@loopring.org](email:foundation@loopring.org).
