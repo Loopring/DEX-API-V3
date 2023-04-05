@@ -1330,7 +1330,7 @@
  keccak256(abi.encodePacked(NFT_CONTRACT_CREATION, owner, baseURI)),
  keccak256(CloneFactory.getByteCode(implementation))
 );
-</code></pre><p>Loopring only supports our own <em>NFTFactory</em> implementation. On Ethereum mainnet, our official <em>NFTFactory</em> address is <code>0xc852aC7aAe4b0f0a0Deb9e8A391ebA2047d80026</code>(the old one is <code>0xDB42E6F6cB2A2eFcF4c638cb7A61AdE5beD82609</code>); on Goerli testnet, the address is <code>0x25315F9878BA07221db684b7ad3676502E914894</code>(the old one is <code>0x40F2C1770E11c5bbA3A26aEeF89616D209705C5D</code>). Third-party counterfactual NFT factories will be supported shortly.</p>
+</code></pre><p>Loopring only supports our own <em>NFTFactory</em> implementation. On Ethereum mainnet, our official <em>NFTFactory</em> address is <code>0xc852aC7aAe4b0f0a0Deb9e8A391ebA2047d80026</code>(the old one is <code>0xDB42E6F6cB2A2eFcF4c638cb7A61AdE5beD82609</code>); on Goerli testnet, the address is <code>0x25315F9878BA07221db684b7ad3676502E914894</code>(the old one is <code>0x0ad87482a1bfd0B3036Bb4b13708C88ACAe1b8bA</code>). Third-party counterfactual NFT factories will be supported shortly.</p>
 <h4 id="compute-nft-address-api">Compute NFT Address API</h4>
 <p>You can compute counterfactual NFT addresses by interacting with the factory smart contract. We also provide an API for convenience.</p>
 <p><strong>Endpoint</strong>: <code>/api/v3/nft/info/computeTokenAddress</code> 
@@ -1340,9 +1340,9 @@
 <li><em>nftOwner</em>: the owner of the NFT contract who can mint on layer1 and layer2.</li>
 <li><em>nftBaseUri</em>: this is to support another feature in the future, but currently not supported.</li>
 </ol>
-<p>An example: <a href="https://uat2.loopring.io/api/v3/nft/info/computeTokenAddress?nftFactory=0x40F2C1770E11c5bbA3A26aEeF89616D209705C5D&amp;nftOwner=0xE20cF871f1646d8651ee9dC95AAB1d93160b3467&amp;nftBaseUri" target="_blank">https://uat2.loopring.io/api/v3/nft/info/computeTokenAddress?nftFactory=0x40F2C1770E11c5bbA3A26aEeF89616D209705C5D&amp;nftOwner=0xE20cF871f1646d8651ee9dC95AAB1d93160b3467</a> returns:</p>
+<p>An example: <a href="https://uat2.loopring.io/api/v3/nft/info/computeTokenAddress?nftFactory=0x0ad87482a1bfd0B3036Bb4b13708C88ACAe1b8bA&amp;nftOwner=0xE20cF871f1646d8651ee9dC95AAB1d93160b3467&amp;nftBaseUri" target="_blank">https://uat2.loopring.io/api/v3/nft/info/computeTokenAddress?nftFactory=0x0ad87482a1bfd0B3036Bb4b13708C88ACAe1b8bA&amp;nftOwner=0xE20cF871f1646d8651ee9dC95AAB1d93160b3467</a> returns:</p>
 <pre><code>{
-  tokenAddress: &quot;0xee354d81778a4c5a08fd9dbeb5cfd01a840a746d&quot;
+  tokenAddress: &quot;0xc00cb8d1f71b00c1bb54a1a7233fe6a1c9c65a00&quot;
 }
 </code></pre><h4 id="when-to-deploy-counterfactual-nft-contracts">When to deploy counterfactual NFT contracts?</h4>
 <p>If all the NFTs under a counterfactual NFT contract ever stay on layer2, the contract will never need to be deployed. But layer1 deployment is necessary for the following transactions to be successful: </p>
@@ -1371,13 +1371,13 @@
 <p>You can use the <a href="https://docs-uat.loopring.io/en/dex_apis/submitMintNft.html" target="_blank">POST /api/v3/nft/mint</a> API to transfer NFTs on layer2. </p>
 <h5 id="1-compute-nft-tokenaddress">1 compute nft tokenAddress</h5>
 <p>Params&#xFF1A;</p>
-<p>&#x200B;    nftFactory: deployed in ethereum, uat can use 0x40F2C1770E11c5bbA3A26aEeF89616D209705C5D</p>
+<p>&#x200B;    nftFactory: deployed in ethereum, uat can use 0x0ad87482a1bfd0B3036Bb4b13708C88ACAe1b8bA</p>
 <p>&#x200B;    nftOwner: should be the same as minter</p>
 <p>&#x200B;    nftBaseUri: the uri, should be empty now</p>
 <p>Api: /api/v3/nft/info/computeTokenAddress</p>
 <p>Returns&#xFF1A;nft tokenAddress</p>
 <pre><code>Request:
-https://uat2.loopring.io/api/v3/nft/info/computeTokenAddress?nftFactory=0x40F2C1770E11c5bbA3A26aEeF89616D209705C5D&amp;nftOwner=0xE20cF871f1646d8651ee9dC95AAB1d93160b3467&amp;nftBaseUri
+https://uat2.loopring.io/api/v3/nft/info/computeTokenAddress?nftFactory=0x0ad87482a1bfd0B3036Bb4b13708C88ACAe1b8bA&amp;nftOwner=0xE20cF871f1646d8651ee9dC95AAB1d93160b3467&amp;nftBaseUri
 
 Respone:
 {&quot;tokenAddress&quot;:&quot;0xee354d81778a4c5a08fd9dbeb5cfd01a840a746d&quot;}
@@ -1429,7 +1429,7 @@ params:
       maxFee: { tokenId: 0, amount: &apos;666000000000000&apos; },
       forceToMint: false,
       counterFactualNftInfo: {
-        nftFactory: &apos;0x40F2C1770E11c5bbA3A26aEeF89616D209705C5D&apos;,
+        nftFactory: &apos;0x0ad87482a1bfd0B3036Bb4b13708C88ACAe1b8bA&apos;,
         nftOwner: &apos;0x466E892Ee9319EA50a19ec1E76CB550ecb196D1A&apos;,
         nftBaseUri: &apos;&apos;
       }
